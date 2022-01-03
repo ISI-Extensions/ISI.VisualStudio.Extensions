@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
+	<Include href="KnownImageIds.vsct"/>
+	<Include href="VSGlobals.vsct"/>
+
+	<Commands package="PackageUuid">
+		<Buttons>
+			<Button guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" priority="0x0600" type="Button">
+				<Parent guid="guidSHLMainMenu" id="IDG_VS_CODEWIN_TEXTEDIT"/>
+				<Strings>
+					<CommandName>Insert New Guid</CommandName>
+					<ButtonText>Insert New Guid</ButtonText>
+					<LocCanonicalName>.Edit.InsertNewGuid</LocCanonicalName>
+				</Strings>
+			</Button>
+		</Buttons>
+	</Commands>
+
+	<KeyBindings>
+		<KeyBinding guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" editor="PackageTextEditorCommandSetUuid" key1="G" mod1="Control Shift" />
+	</KeyBindings>
+
+	<Symbols>
+		<GuidSymbol name="PackageTextEditorCommandSetUuid" value="{8b382828-6202-11d1-8870-0000f87579d2}" />
+
+		<GuidSymbol name="PackageUuid" value="{a7a5b1a5-2b35-4eab-af56-8d3beda18c7a}">
+			<IDSymbol name="GuidExtensionsInsertNewGuidMenuItemId" value="0x0801" />
+
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>
