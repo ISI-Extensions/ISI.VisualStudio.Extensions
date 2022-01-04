@@ -13,7 +13,7 @@ namespace ISI.VisualStudio.Extensions
 	[Guid(PackageGuids.PackageUuidString)]
 	public sealed class Package : ToolkitPackage
 	{
-		private PackageServiceProvider PackageServiceProvider { get; } = new();
+		internal PackageServiceProvider PackageServiceProvider { get; } = new();
 
 		protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
 		{
@@ -21,9 +21,11 @@ namespace ISI.VisualStudio.Extensions
 	
 			PackageServiceProvider.Initialize();
 
-			AddService(typeof(ISI.Extensions.Cake.CakeApi), PackageServiceProvider.GetServiceAsync);
+			//AddService(typeof(ISI.Extensions.Cake.CakeApi), PackageServiceProvider.GetServiceAsync);
 	
 			await InsertNewGuidCommand.InitializeAsync(this);
+	
+			await CakeExecuteDefaultTargetCommand.InitializeAsync(this);
 		}
 	}
 }

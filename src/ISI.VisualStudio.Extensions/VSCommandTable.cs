@@ -23,6 +23,37 @@ namespace ISI.VisualStudio.Extensions
     /// </summary>
     internal sealed partial class PackageIds
     {
+        public const int AboutMenuGroupId = 0x1020;
+        public const int ToolsMenuGroupId = 0x1021;
+        public const int SolutionMenuGroupId = 0x1022;
+        public const int ProjectMenuGroupId = 0x1023;
+        public const int FolderMenuGroupId = 0x1024;
+        public const int ItemMenuGroupId = 0x1025;
+        public const int EditorContextMenuGroupId = 0x1026;
+        public const int ProjectReferenceMenuGroupId = 0x1027;
         public const int GuidExtensionsInsertNewGuidMenuItemId = 0x0801;
+        public const int CakeExtensionsExecuteDefaultTargetMenuItemId = 0x0520;
+        public const int CakeExtensionsExecuteTargetMenuSubgroupId = 0x0521;
+        public const int CakeExtensionsExecuteTargetSubMenuId = 0x0522;
+        public const int CakeExtensionsExecuteTargetMenuItemId1 = 0x0523;
+        public const int CakeExtensionsExecuteTargetMenuItemId2 = 0x0524;
+        public const int CakeExtensionsExecuteTargetMenuItemId3 = 0x0525;
+        public const int CakeExtensionsExecuteTargetMenuItemId4 = 0x0526;
+        public const int CakeExtensionsExecuteTargetMenuItemId5 = 0x0527;
+        public const int CakeExtensionsExecuteTargetMenuItemId6 = 0x0528;
+        public const int CakeExtensionsExecuteTargetMenuItemId7 = 0x0529;
+        public const int CakeExtensionsExecuteTargetMenuItemId8 = 0x052A;
+        public const int CakeExtensionsExecuteTargetMenuItemId9 = 0x052B;
+        public const int CakeExtensionsExecuteTargetMenuItemId10 = 0x052C;
+        public const int CakeExtensionsExecuteTargetMenuItemId11 = 0x052D;
+        public const int CakeExtensionsExecuteTargetMenuItemId12 = 0x052E;
+        public const int CakeExtensionsExecuteTargetMenuItemId13 = 0x052F;
+        public const int CakeExtensionsExecuteTargetMenuItemId14 = 0x0530;
+        public const int CakeExtensionsExecuteTargetMenuItemId15 = 0x0531;
+        public const int CakeExtensionsExecuteTargetMenuItemId16 = 0x0532;
+        public const int CakeExtensionsExecuteTargetMenuItemId17 = 0x0533;
+        public const int CakeExtensionsExecuteTargetMenuItemId18 = 0x0534;
+        public const int CakeExtensionsExecuteTargetMenuItemId19 = 0x0535;
+        public const int CakeExtensionsExecuteTargetMenuItemId20 = 0x0536;
     }
 }

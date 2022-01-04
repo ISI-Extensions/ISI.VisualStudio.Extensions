@@ -12,7 +12,7 @@ namespace ISI.VisualStudio.Extensions
 {
 	internal class PackageServiceProvider
 	{
-		private System.IServiceProvider _serviceProvider { get; set; }
+		internal System.IServiceProvider ServiceProvider { get; set; }
 
 		public void Initialize()
 		{
@@ -42,15 +42,15 @@ namespace ISI.VisualStudio.Extensions
 				.ProcessServiceRegistrars()
 				;
 
-			_serviceProvider = services.BuildServiceProvider<ISI.Extensions.DependencyInjection.Iunq.ServiceProviderBuilder>(configuration);
+			ServiceProvider = services.BuildServiceProvider<ISI.Extensions.DependencyInjection.Iunq.ServiceProviderBuilder>(configuration);
 
-			_serviceProvider.SetServiceLocator();
+			ServiceProvider.SetServiceLocator();
 		}
 
 
 		public Task<object> GetServiceAsync(Microsoft.VisualStudio.Shell.IAsyncServiceContainer container, System.Threading.CancellationToken cancellationToken, Type serviceType)
 		{
-			return new Task<object>(() => _serviceProvider.GetService(serviceType));
+			return new Task<object>(() => ServiceProvider.GetService(serviceType));
 		}
 	}
 }
