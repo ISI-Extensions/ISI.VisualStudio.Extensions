@@ -1,0 +1,114 @@
+﻿<platformUi:DialogWindow x:Class="ISI.VisualStudio.Extensions.GenerateClassDefinitionDialog"
+											 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+											 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+											 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+											 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+											 xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+											 xmlns:theming="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Imaging"
+											 xmlns:util="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Utilities"
+											 xmlns:catalog="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+											 xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
+											 xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+											 toolkit:Themes.UseVsTheme="True"
+											 mc:Ignorable="d"
+											 Title="Paste As"
+											 WindowStartupLocation="CenterScreen"
+											 Width="830" Height="620">
+	<Grid Margin="5">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="200" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="305" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<WrapPanel Grid.Row="0" Grid.ColumnSpan="4" Margin="0">
+			<Grid Width="800">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="25" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Label Name="lblMain" Grid.Row="0">Preview:</Label>
+				<Border  Grid.Row="1" Height="200" Margin="0,0,-747,0" BorderBrush="Silver" BorderThickness="5" >
+					<ScrollViewer>
+						<TextBlock Name="txtPreview" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" />
+					</ScrollViewer>
+				</Border>
+			</Grid>
+		</WrapPanel>
+
+		<GroupBox Grid.Row="1" Grid.Column="0" Padding="3" Margin="3" Header="Format PropertyName">
+			<StackPanel>
+				<RadioButton Margin="5,5,0,0" GroupName="FormatPropertyName" Name="rdoFormatPropertyNameNo" Checked="rdoFormatPropertyNameNo_OnChecked">No</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="FormatPropertyName" Name="rdoFormatPropertyNameYesUsingCamelCase" Checked="rdoFormatPropertyNameYesUsingCamelCase_OnChecked">Yes, Using Camel Case</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="FormatPropertyName" Name="rdoFormatPropertyNameYesUsingPascalCase" Checked="rdoFormatPropertyNameYesUsingPascalCase_OnChecked">Yes, Using Pascal Case</RadioButton>
+			</StackPanel>
+		</GroupBox>
+
+		<GroupBox Grid.Row="1" Grid.Column="1" Padding="3" Margin="3" Header="DataContract">
+			<StackPanel>
+				<GroupBox Header="Attributes">
+					<StackPanel>
+						<RadioButton Margin="5,5,0,0" GroupName="DataContractNameFormat" Name="rdoDataContractNameFormatNo" Checked="rdoDataContractNameFormatNo_OnChecked">No</RadioButton>
+						<RadioButton Margin="5,5,0,0" GroupName="DataContractNameFormat" Name="rdoDataContractNameFormatYes" Checked="rdoDataContractNameFormatYes_OnChecked">Yes</RadioButton>
+						<RadioButton Margin="5,5,0,0" GroupName="DataContractNameFormat" Name="rdoDataContractNameFormatYesWithNoNaming" Checked="rdoDataContractNameFormatYesWithNoNaming_OnChecked">Yes, With No Naming</RadioButton>
+						<RadioButton Margin="5,5,0,0" GroupName="DataContractNameFormat" Name="rdoDataContractNameFormatYesUseCamelCaseIfNotDefined" Checked="rdoDataContractNameFormatYesUseCamelCaseIfNotDefined_OnChecked">Yes, Camel Case, If Not Defined</RadioButton>
+						<RadioButton Margin="5,5,0,0" GroupName="DataContractNameFormat" Name="rdoDataContractNameFormatYesUsingCamelCase" Checked="rdoDataContractNameFormatYesUsingCamelCase_OnChecked">Yes, Using Camel Case</RadioButton>
+						<RadioButton Margin="5,5,0,0" GroupName="DataContractNameFormat" Name="rdoDataContractNameFormatYesUsePascalCaseIfNotDefined" Checked="rdoDataContractNameFormatYesUsePascalCaseIfNotDefined_OnChecked">Yes, Pascal Case, If Not Defined</RadioButton>
+						<RadioButton Margin="5,5,0,0" GroupName="DataContractNameFormat" Name="rdoDataContractNameFormatYesUsingPascalCase" Checked="rdoDataContractNameFormatYesUsingPascalCase_OnChecked">Yes, Using Pascal Case</RadioButton>
+					</StackPanel>
+				</GroupBox>
+				<CheckBox Name="chkDataContractEmitDefaultValueFalse" Margin="10,7,0,5" Checked="chkDataContractEmitDefaultValueFalse_Changed" Unchecked="chkDataContractEmitDefaultValueFalse_Changed">EmitDefaultValue = false</CheckBox>
+				<GroupBox Header="Serializer">
+					<StackPanel>
+						<RadioButton Margin="5,5,0,0" GroupName="PreferredSerializer" Name="rdoPreferredSerializerNone" Checked="rdoPreferredSerializerNone_OnChecked">None</RadioButton>
+						<RadioButton Margin="5,5,0,0" GroupName="PreferredSerializer" Name="rdoPreferredSerializerJson" Checked="rdoPreferredSerializerJson_OnChecked">Json</RadioButton>
+						<RadioButton Margin="5,5,0,0" GroupName="PreferredSerializer" Name="rdoPreferredSerializerXml" Checked="rdoPreferredSerializerXml_OnChecked">Xml</RadioButton>
+					</StackPanel>
+				</GroupBox>
+			</StackPanel>
+		</GroupBox>
+
+		<StackPanel Grid.Row="1" Grid.Column="2" Margin="3">
+			<GroupBox Header="Repository Attributes" Padding="3" Margin="3">
+				<StackPanel>
+					<RadioButton Margin="5,5,0,0" GroupName="RepositoryNameFormat" Name="rdoRepositoryNameFormatNo" Checked="rdoRepositoryNameFormatNo_OnChecked">No</RadioButton>
+					<RadioButton Margin="5,5,0,0" GroupName="RepositoryNameFormat" Name="rdoRepositoryNameFormatYes" Checked="rdoRepositoryNameFormatYes_OnChecked">Yes</RadioButton>
+					<RadioButton Margin="5,5,0,0" GroupName="RepositoryNameFormat" Name="rdoRepositoryNameFormatYesWithNoNaming" Checked="rdoRepositoryNameFormatYesWithNoNaming_OnChecked">Yes, With No Naming</RadioButton>
+					<RadioButton Margin="5,5,0,0" GroupName="RepositoryNameFormat" Name="rdoRepositoryNameFormatYesUseCamelCaseIfNotDefined" Checked="rdoRepositoryNameFormatYesUseCamelCaseIfNotDefined_OnChecked">Yes, Camel Case, If Not Defined</RadioButton>
+					<RadioButton Margin="5,5,0,0" GroupName="RepositoryNameFormat" Name="rdoRepositoryNameFormatYesUsingCamelCase" Checked="rdoRepositoryNameFormatYesUsingCamelCase_OnChecked">Yes, Using Camel Case</RadioButton>
+					<RadioButton Margin="5,5,0,0" GroupName="RepositoryNameFormat" Name="rdoRepositoryNameFormatYesUsePascalCaseIfNotDefined" Checked="rdoRepositoryNameFormatYesUsePascalCaseIfNotDefined_OnChecked">Yes, Pascal Case, If Not Defined</RadioButton>
+					<RadioButton Margin="5,5,0,0" GroupName="RepositoryNameFormat" Name="rdoRepositoryNameFormatYesUsingPascalCase" Checked="rdoRepositoryNameFormatYesUsingPascalCase_OnChecked">Yes, Using Pascal Case</RadioButton>
+				</StackPanel>
+			</GroupBox>
+			<GroupBox Header="Spreadsheet Attributes" Padding="3" Margin="3">
+				<CheckBox Margin="10,5,0,0" Name="chkUseSpreadsheetAttributes" Checked="chkUseSpreadsheetAttributes_Changed" Unchecked="chkUseSpreadsheetAttributes_Changed">Use Spreadsheet Attributes</CheckBox>
+			</GroupBox>
+		</StackPanel>
+
+		<GroupBox Grid.Row="1" Grid.Column="3"  Padding="3" Margin="3" Header="DataDocument Attributes">
+			<StackPanel>
+				<RadioButton Margin="5,5,0,0" GroupName="DataDocumentNameFormat" Name="rdoDataDocumentNameFormatNo" Checked="rdoDataDocumentNameFormatNo_OnChecked">No</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="DataDocumentNameFormat" Name="rdoDataDocumentNameFormatYes" Checked="rdoDataDocumentNameFormatYes_OnChecked">Yes</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="DataDocumentNameFormat" Name="rdoDataDocumentNameFormatYesWithNoNaming" Checked="rdoDataDocumentNameFormatYesWithNoNaming_OnChecked">Yes, With No Naming</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="DataDocumentNameFormat" Name="rdoDataDocumentNameFormatYesUseCamelCaseIfNotDefined" Checked="rdoDataDocumentNameFormatYesUseCamelCaseIfNotDefined_OnChecked">Yes, Camel Case, If Not Defined</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="DataDocumentNameFormat" Name="rdoDataDocumentNameFormatYesUsingCamelCase" Checked="rdoDataDocumentNameFormatYesUsingCamelCase_OnChecked">Yes, Using Camel Case</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="DataDocumentNameFormat" Name="rdoDataDocumentNameFormatYesUsePascalCaseIfNotDefined" Checked="rdoDataDocumentNameFormatYesUsePascalCaseIfNotDefined_OnChecked">Yes, Pascal Case, If Not Defined</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="DataDocumentNameFormat" Name="rdoDataDocumentNameFormatYesUsingPascalCase" Checked="rdoDataDocumentNameFormatYesUsingPascalCase_OnChecked">Yes, Using Pascal Case</RadioButton>
+			</StackPanel>
+		</GroupBox>
+
+		<WrapPanel Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,5,0,0" HorizontalAlignment="Right">
+			<Button IsDefault="True" x:Name="btnPaste" Click="btnPaste_Click" Width="79" Height="25" Margin="3, 3, 3, 3" Content="_Paste"/>
+			<Button IsCancel="True"  Width="79" Height="25" Margin="3, 3, 3, 3" Content="_Cancel"/>
+		</WrapPanel>
+	</Grid>
+</platformUi:DialogWindow>

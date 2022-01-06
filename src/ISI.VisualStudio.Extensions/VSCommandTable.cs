@@ -31,6 +31,9 @@ namespace ISI.VisualStudio.Extensions
         public const int ItemMenuGroupId = 0x1025;
         public const int EditorContextMenuGroupId = 0x1026;
         public const int ProjectReferenceMenuGroupId = 0x1027;
+        public const int ClipboardExtensionsPasteAsMenuItemId = 0x0700;
+        public const int ClipboardExtensionsContextMenuSubgroupId = 0x0770;
+        public const int ClipboardExtensionsContextSubMenuId = 0x0771;
         public const int GuidExtensionsInsertNewGuidMenuItemId = 0x0801;
         public const int CakeExtensionsExecuteDefaultTargetMenuItemId = 0x0520;
         public const int CakeExtensionsExecuteTargetMenuSubgroupId = 0x0521;

@@ -60,6 +60,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteDefaultTargetMenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
 					<CommandName>CakeExtensionsExecuteDefaultTargetMenuItemId</CommandName>
@@ -67,10 +68,10 @@
 				</Strings>
 			</Button>
 
-
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId1" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -82,6 +83,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId2" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -93,6 +95,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId3" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -104,6 +107,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId4" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -115,6 +119,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId5" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -126,6 +131,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId6" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -137,6 +143,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId7" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -148,6 +155,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId8" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -159,6 +167,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId9" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -170,6 +179,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId10" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -181,6 +191,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId11" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -192,6 +203,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId12" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -203,6 +215,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId13" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -214,6 +227,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId14" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -225,6 +239,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId15" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -236,6 +251,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId16" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -247,6 +263,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId17" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -258,6 +275,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId18" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -269,6 +287,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId19" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -280,6 +299,7 @@
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId20" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
@@ -287,8 +307,8 @@
 					<ButtonText>Target 20</ButtonText>
 				</Strings>
 			</Button>
-			
-			
+
+
 			<Button guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" priority="0x0600" type="Button">
 				<Parent guid="guidSHLMainMenu" id="IDG_VS_CODEWIN_TEXTEDIT"/>
 				<Strings>
@@ -297,11 +317,35 @@
 					<LocCanonicalName>.Edit.InsertNewGuid</LocCanonicalName>
 				</Strings>
 			</Button>
+
+			<Button guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="guidSHLMainMenu" id="IDG_VS_EDIT_PASTE" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>Paste as ...</CommandName>
+					<ButtonText>Paste as ...</ButtonText>
+				</Strings>
+			</Button>
 		</Buttons>
 	</Commands>
 
+	<CommandPlacements>
+		<!--<CommandPlacement guid="PackagePasteAsXmlCommandSetUuid" id="PasteAsXmlMenuItemId" priority="0x0600">
+			<Parent guid="PackageCommandSetUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
+		</CommandPlacement>
+		<CommandPlacement guid="PackagePasteAsJsonCommandSetUuid" id="PasteAsJsonMenuItemId" priority="0x0600">
+			<Parent guid="PackageCommandSetUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
+		</CommandPlacement>-->
+		<CommandPlacement guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
+		</CommandPlacement>
+	</CommandPlacements>
+
 	<KeyBindings>
 		<KeyBinding guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" editor="PackageTextEditorCommandSetUuid" key1="G" mod1="Control Shift" />
+		<KeyBinding guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" editor="PackageTextEditorCommandSetUuid" key1="V" mod1="Shift Alt" />
 	</KeyBindings>
 
 	<Symbols>
@@ -316,6 +360,11 @@
 			<IDSymbol name="ItemMenuGroupId" value="0x1025" />
 			<IDSymbol name="EditorContextMenuGroupId" value="0x1026" />
 			<IDSymbol name="ProjectReferenceMenuGroupId" value="0x1027" />
+
+			<IDSymbol name="ClipboardExtensionsPasteAsMenuItemId" value="0x0700" />
+
+			<IDSymbol name="ClipboardExtensionsContextMenuSubgroupId" value="0x0770" />
+			<IDSymbol name="ClipboardExtensionsContextSubMenuId" value="0x0771" />
 
 			<IDSymbol name="GuidExtensionsInsertNewGuidMenuItemId" value="0x0801" />
 

@@ -1,7 +1,11 @@
-﻿using ISI.Extensions.Extensions;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Threading;
+using Community.VisualStudio.Toolkit;
 using Microsoft.VisualStudio.Shell;
-using System;
+using ISI.Extensions.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ISI.VisualStudio.Extensions
 {
@@ -126,6 +130,8 @@ namespace ISI.VisualStudio.Extensions
 					if (selectedItem != null)
 					{
 						_outputWindowPane ??= await Community.VisualStudio.Toolkit.VS.Windows.CreateOutputWindowPaneAsync("Cake");
+
+						await _outputWindowPane.ActivateAsync();
 
 						await System.Threading.Tasks.Task.Run(() =>
 						{

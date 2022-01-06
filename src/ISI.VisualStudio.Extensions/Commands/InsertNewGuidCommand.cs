@@ -4,6 +4,8 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Community.VisualStudio.Toolkit;
 using Microsoft.VisualStudio.Shell;
+using ISI.Extensions.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ISI.VisualStudio.Extensions
 {
