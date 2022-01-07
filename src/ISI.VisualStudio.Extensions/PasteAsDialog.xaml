@@ -1,0 +1,35 @@
+﻿<platformUi:DialogWindow x:Class="ISI.VisualStudio.Extensions.PasteAsDialog"
+											 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+											 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+											 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+											 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+											 xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+											 xmlns:theming="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Imaging"
+											 xmlns:util="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Utilities"
+											 xmlns:catalog="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+											 xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
+											 xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+											 toolkit:Themes.UseVsTheme="True"
+											 mc:Ignorable="d"
+											 Title="Paste As"
+											 WindowStartupLocation="CenterScreen"
+											 Width="330" Height="270">
+	<Grid Margin="5">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="50" />
+			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="50" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="50" />
+		</Grid.RowDefinitions>
+
+		<Button IsDefault="True" Width="Auto" Height="Auto" Margin="3, 3, 3, 3" Grid.Row="1" Grid.Column="1" Content="_Properties" FontSize="24" Click="btnProperties_Click"/>
+		<Button Width="Auto" Height="Auto" Margin="3, 3, 3, 3" Grid.Row="2" Grid.Column="1" Content="_Conversion" FontSize="24" Click="btnConversion_Click"/>
+		<Button Width="Auto" Height="Auto" Margin="3, 3, 3, 3" Grid.Row="3" Grid.Column="1" Content="Cancel" FontSize="24" IsCancel="True"/>
+	</Grid>
+</platformUi:DialogWindow>

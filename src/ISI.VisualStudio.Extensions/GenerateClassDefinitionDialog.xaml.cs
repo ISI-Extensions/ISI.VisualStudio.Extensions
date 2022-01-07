@@ -198,7 +198,7 @@ namespace ISI.VisualStudio.Extensions
 					IncludeDocumentDataAttributes = IncludeDocumentDataAttributes,
 					IncludeSpreadSheetsAttributes = IncludeSpreadSheetsAttributes,
 					PreferredSerializer = PreferredSerializer,
-				}).ClassDefinition;
+				}).Content;
 			}
 		}
 

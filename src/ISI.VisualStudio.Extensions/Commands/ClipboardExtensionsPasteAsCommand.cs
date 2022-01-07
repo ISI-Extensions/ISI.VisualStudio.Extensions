@@ -41,21 +41,48 @@ namespace ISI.VisualStudio.Extensions
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
 		{
-			var project = await VS.Solutions.GetActiveProjectAsync();
+			var pasteAsDialog = new PasteAsDialog();
 
-			var activeDocumentView = await Community.VisualStudio.Toolkit.VS.Documents.GetActiveDocumentViewAsync();
+			var pasteAsDialogResult = await pasteAsDialog.ShowDialogAsync();
 
-			var generateClassDefinitionDialog = new GenerateClassDefinitionDialog(CodeGenerationApi, project, ParseClipboardForProperties());
-
-			var generateClassDefinitionDialogShowDialogResult = await generateClassDefinitionDialog.ShowDialogAsync();
-
-			if (generateClassDefinitionDialogShowDialogResult.GetValueOrDefault())
+			if (pasteAsDialogResult.GetValueOrDefault())
 			{
-				var position = activeDocumentView.TextView?.Selection.Start.Position.Position;
+				var project = await VS.Solutions.GetActiveProjectAsync();
 
-				if (position.HasValue)
+				var activeDocumentView = await Community.VisualStudio.Toolkit.VS.Documents.GetActiveDocumentViewAsync();
+
+				if (pasteAsDialog.PasteAsProperties)
 				{
-					activeDocumentView.TextBuffer.Insert(position.Value, generateClassDefinitionDialog.PasteText);
+					var generateClassDefinitionDialog = new GenerateClassDefinitionDialog(CodeGenerationApi, project, ParseClipboardForProperties());
+
+					var generateClassDefinitionDialogShowDialogResult = await generateClassDefinitionDialog.ShowDialogAsync();
+
+					if (generateClassDefinitionDialogShowDialogResult.GetValueOrDefault())
+					{
+						var position = activeDocumentView.TextView?.Selection.Start.Position.Position;
+
+						if (position.HasValue)
+						{
+							activeDocumentView.TextBuffer.Insert(position.Value, generateClassDefinitionDialog.PasteText);
+						}
+					}
+				}
+
+				if (pasteAsDialog.PasteAsConversion)
+				{
+					var generateClassDefinitionConversionDialog = new GenerateClassDefinitionConversionDialog(CodeGenerationApi, project, ParseClipboardForProperties());
+
+					var generateClassDefinitionDialogShowDialogResult = await generateClassDefinitionConversionDialog.ShowDialogAsync();
+
+					if (generateClassDefinitionDialogShowDialogResult.GetValueOrDefault())
+					{
+						var position = activeDocumentView.TextView?.Selection.Start.Position.Position;
+
+						if (position.HasValue)
+						{
+							activeDocumentView.TextBuffer.Insert(position.Value, generateClassDefinitionConversionDialog.PasteText);
+						}
+					}
 				}
 			}
 		}

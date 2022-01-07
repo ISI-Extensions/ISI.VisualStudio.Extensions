@@ -52,6 +52,12 @@
     <Compile Include="Commands\ClipboardExtensionsPasteAsCommand.cs" />
     <Compile Include="Commands\InsertNewGuidCommand.cs" />
     <Compile Include="Extensions\ProjectExtensions\GetCodeExtensionProvider.cs" />
+    <Compile Include="GenerateClassDefinitionConversionDialog.xaml.cs">
+      <DependentUpon>GenerateClassDefinitionConversionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PasteAsDialog.xaml.cs">
+      <DependentUpon>PasteAsDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GenerateClassDefinitionDialog.xaml.cs">
       <DependentUpon>GenerateClassDefinitionDialog.xaml</DependentUpon>
     </Compile>
@@ -105,13 +111,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8041.35858" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8041.35858" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8041.35858" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8041.35858" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8041.35858" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8041.35858" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8041.35858" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8042.3418" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8042.3418" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8042.3418" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8042.3418" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8042.3418" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8042.3418" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8042.3418" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +127,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="GenerateClassDefinitionConversionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PasteAsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GenerateClassDefinitionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
