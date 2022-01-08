@@ -17,13 +17,13 @@ namespace ISI.VisualStudio.Extensions
 		public string PasteText => txtPreview.Text;
 		private bool ProcessUpdatePreview { get; set; }
 
-		private static ISI.Extensions.VisualStudio.StringCaseFormat FormatPropertyName { get; set; } = ISI.Extensions.VisualStudio.StringCaseFormat.No;
-		private static ISI.Extensions.VisualStudio.IncludePropertyAttribute IncludeDataContractAttributes { get; set; } = ISI.Extensions.VisualStudio.IncludePropertyAttribute.No;
-		private static bool EmitDefaultValueFalse { get; set; } = true;
-		private static ISI.Extensions.VisualStudio.PreferredSerializer PreferredSerializer { get; set; } = ISI.Extensions.VisualStudio.PreferredSerializer.Json;
-		private static ISI.Extensions.VisualStudio.IncludePropertyAttribute IncludeRepositoryAttributes { get; set; } = ISI.Extensions.VisualStudio.IncludePropertyAttribute.No;
-		private static bool IncludeSpreadSheetsAttributes { get; set; } = false;
-		private static ISI.Extensions.VisualStudio.IncludePropertyAttribute IncludeDocumentDataAttributes { get; set; } = ISI.Extensions.VisualStudio.IncludePropertyAttribute.No;
+		public static ISI.Extensions.VisualStudio.StringCaseFormat FormatPropertyName { get; private set; } = ISI.Extensions.VisualStudio.StringCaseFormat.No;
+		public static ISI.Extensions.VisualStudio.IncludePropertyAttribute IncludeDataContractAttributes { get; private set; } = ISI.Extensions.VisualStudio.IncludePropertyAttribute.No;
+		public static bool EmitDefaultValueFalse { get; private set; } = true;
+		public static ISI.Extensions.VisualStudio.PreferredSerializer PreferredSerializer { get; private set; } = ISI.Extensions.VisualStudio.PreferredSerializer.Json;
+		public static ISI.Extensions.VisualStudio.IncludePropertyAttribute IncludeRepositoryAttributes { get; private set; } = ISI.Extensions.VisualStudio.IncludePropertyAttribute.No;
+		public static bool IncludeSpreadSheetsAttributes { get; private set; } = false;
+		public static ISI.Extensions.VisualStudio.IncludePropertyAttribute IncludeDocumentDataAttributes { get; private set; } = ISI.Extensions.VisualStudio.IncludePropertyAttribute.No;
 
 		public GenerateClassDefinitionDialog(
 			ISI.Extensions.VisualStudio.CodeGenerationApi codeGenerationApi,

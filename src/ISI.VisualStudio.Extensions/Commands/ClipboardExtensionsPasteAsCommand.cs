@@ -1,4 +1,5 @@
-﻿using Community.VisualStudio.Toolkit;
+﻿using System.Linq;
+using Community.VisualStudio.Toolkit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.Shell;
 using System.Threading.Tasks;
@@ -41,16 +42,16 @@ namespace ISI.VisualStudio.Extensions
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
 		{
+			var project = await VS.Solutions.GetActiveProjectAsync();
+
+			var activeDocumentView = await Community.VisualStudio.Toolkit.VS.Documents.GetActiveDocumentViewAsync();
+
 			var pasteAsDialog = new PasteAsDialog();
 
 			var pasteAsDialogResult = await pasteAsDialog.ShowDialogAsync();
 
 			if (pasteAsDialogResult.GetValueOrDefault())
 			{
-				var project = await VS.Solutions.GetActiveProjectAsync();
-
-				var activeDocumentView = await Community.VisualStudio.Toolkit.VS.Documents.GetActiveDocumentViewAsync();
-
 				if (pasteAsDialog.PasteAsProperties)
 				{
 					var generateClassDefinitionDialog = new GenerateClassDefinitionDialog(CodeGenerationApi, project, ParseClipboardForProperties());
@@ -59,11 +60,13 @@ namespace ISI.VisualStudio.Extensions
 
 					if (generateClassDefinitionDialogShowDialogResult.GetValueOrDefault())
 					{
-						var position = activeDocumentView.TextView?.Selection.Start.Position.Position;
+						var selection = activeDocumentView.TextView?.Selection.SelectedSpans.FirstOrDefault();
 
-						if (position.HasValue)
+						activeDocumentView?.TextBuffer.Replace(selection.Value, generateClassDefinitionDialog.PasteText);
+
+						if (GenerateClassDefinitionDialog.IncludeDataContractAttributes != ISI.Extensions.VisualStudio.IncludePropertyAttribute.No)
 						{
-							activeDocumentView.TextBuffer.Insert(position.Value, generateClassDefinitionDialog.PasteText);
+							//check to add System.Runtime.Serialization
 						}
 					}
 				}
@@ -76,12 +79,9 @@ namespace ISI.VisualStudio.Extensions
 
 					if (generateClassDefinitionDialogShowDialogResult.GetValueOrDefault())
 					{
-						var position = activeDocumentView.TextView?.Selection.Start.Position.Position;
+						var selection = activeDocumentView.TextView?.Selection.SelectedSpans.FirstOrDefault();
 
-						if (position.HasValue)
-						{
-							activeDocumentView.TextBuffer.Insert(position.Value, generateClassDefinitionConversionDialog.PasteText);
-						}
+						activeDocumentView?.TextBuffer.Replace(selection.Value, generateClassDefinitionConversionDialog.PasteText);
 					}
 				}
 			}
