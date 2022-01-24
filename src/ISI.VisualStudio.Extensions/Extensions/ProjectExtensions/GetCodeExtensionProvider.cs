@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ISI.Extensions.Extensions;
+﻿using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions.Extensions
 {
-	public static class ProjectExtensions
+	public static partial class ProjectExtensions
 	{
 		public static ISI.Extensions.VisualStudio.ICodeExtensionProvider GetCodeExtensionProvider(this Community.VisualStudio.Toolkit.Project project)
 		{

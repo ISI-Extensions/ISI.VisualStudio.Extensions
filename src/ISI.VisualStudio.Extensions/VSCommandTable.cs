@@ -12,17 +12,36 @@ namespace ISI.VisualStudio.Extensions
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string PackageTextEditorCommandSetUuidString = "8b382828-6202-11d1-8870-0000f87579d2";
-        public static Guid PackageTextEditorCommandSetUuid = new Guid(PackageTextEditorCommandSetUuidString);
+        public const string LanternIconUuidString = "a52a4dbc-6209-46ac-9c01-d9c1be7c7b3a";
+        public static Guid LanternIconUuid = new Guid(LanternIconUuidString);
 
         public const string PackageUuidString = "a7a5b1a5-2b35-4eab-af56-8d3beda18c7a";
         public static Guid PackageUuid = new Guid(PackageUuidString);
+
+        public const string PackagePasteAsXmlCommandSetUuidString = "ead526ca-8a42-440d-968b-39444312d652";
+        public static Guid PackagePasteAsXmlCommandSetUuid = new Guid(PackagePasteAsXmlCommandSetUuidString);
+
+        public const string PackagePasteAsJsonCommandSetUuidString = "822a7feb-3d9d-4161-bf13-92834f141157";
+        public static Guid PackagePasteAsJsonCommandSetUuid = new Guid(PackagePasteAsJsonCommandSetUuidString);
+
+        public const string PackageTextEditorCommandSetUuidString = "8b382828-6202-11d1-8870-0000f87579d2";
+        public static Guid PackageTextEditorCommandSetUuid = new Guid(PackageTextEditorCommandSetUuidString);
+
+        public const string PackageHtmlCommandSetUuidString = "78f03954-2fb8-4087-8ce7-59d71710b3bb";
+        public static Guid PackageHtmlCommandSetUuid = new Guid(PackageHtmlCommandSetUuidString);
+
+        public const string PackageCssCommandSetUuidString = "64da400e-b4ad-4d67-aa92-4b7acb01ecd5";
+        public static Guid PackageCssCommandSetUuid = new Guid(PackageCssCommandSetUuidString);
+
+        public const string PackageJsonCommandSetUuidString = "f718ca06-cf4f-4a0c-9106-e79e9ee5e7cd";
+        public static Guid PackageJsonCommandSetUuid = new Guid(PackageJsonCommandSetUuidString);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
     /// </summary>
     internal sealed partial class PackageIds
     {
+        public const int LanternIcon = 0x0001;
         public const int AboutMenuGroupId = 0x1020;
         public const int ToolsMenuGroupId = 0x1021;
         public const int SolutionMenuGroupId = 0x1022;
@@ -31,10 +50,67 @@ namespace ISI.VisualStudio.Extensions
         public const int ItemMenuGroupId = 0x1025;
         public const int EditorContextMenuGroupId = 0x1026;
         public const int ProjectReferenceMenuGroupId = 0x1027;
-        public const int ClipboardExtensionsPasteAsMenuItemId = 0x0700;
-        public const int ClipboardExtensionsContextMenuSubgroupId = 0x0770;
-        public const int ClipboardExtensionsContextSubMenuId = 0x0771;
-        public const int GuidExtensionsInsertNewGuidMenuItemId = 0x0801;
+        public const int AboutMenuItemId = 0x0105;
+        public const int XmlConfigurationExtensionsAddTransformMenuItemId = 0x0300;
+        public const int XmlConfigurationExtensionsExecuteTransformMenuSubgroupId = 0x0301;
+        public const int XmlConfigurationExtensionsExecuteTransformSubMenuId = 0x0302;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId = 0x0303;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId1 = 0x0304;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId2 = 0x0305;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId3 = 0x0306;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId4 = 0x0307;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId5 = 0x0308;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId6 = 0x0309;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId7 = 0x030A;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId8 = 0x030B;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId9 = 0x030C;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId10 = 0x030D;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId11 = 0x030E;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId12 = 0x030F;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId13 = 0x0310;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId14 = 0x0311;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId15 = 0x0312;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId16 = 0x0313;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId17 = 0x0314;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId18 = 0x0315;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId19 = 0x0316;
+        public const int XmlConfigurationExtensionsExecuteMenuItemId20 = 0x0317;
+        public const int RecipeExtensions_AspNetMvc_5x_MenuSubgroupId = 0x0410;
+        public const int RecipeExtensions_AspNetMvc_5x_SubMenuId = 0x0411;
+        public const int RecipeExtensions_AspNetMvc_5x_CreateTemplates_MenuItemId = 0x0412;
+        public const int RecipeExtensions_AspNetMvc_5x_AddArea_MenuItemId = 0x0413;
+        public const int RecipeExtensions_AspNetMvc_5x_AddController_MenuItemId = 0x0414;
+        public const int RecipeExtensions_AspNetMvc_5x_AddActionWithView_MenuItemId = 0x0416;
+        public const int RecipeExtensions_AspNetMvc_5x_AddActionWithPartialView_MenuItemId = 0x0417;
+        public const int RecipeExtensions_AspNetMvc_5x_AddRestMethod_MenuItemId = 0x0418;
+        public const int RecipeExtensions_AspNetWebApi_5x_MenuSubgroupId = 0x0430;
+        public const int RecipeExtensions_AspNetWebApi_5x_SubMenuId = 0x0431;
+        public const int RecipeExtensions_AspNetWebApi_5x_CreateTemplates_MenuItemId = 0x0432;
+        public const int RecipeExtensions_AspNetWebApi_5x_AddArea_MenuItemId = 0x0433;
+        public const int RecipeExtensions_AspNetWebApi_5x_AddController_MenuItemId = 0x0434;
+        public const int RecipeExtensions_AspNetWebApi_5x_AddActionWithView_MenuItemId = 0x0435;
+        public const int RecipeExtensions_AspNetWebApi_5x_AddActionWithPartialView_MenuItemId = 0x0436;
+        public const int RecipeExtensions_AspNetWebApi_5x_AddRestMethod_MenuItemId = 0x0437;
+        public const int RecipeExtensions_AspNetMvc_6x_MenuSubgroupId = 0x0440;
+        public const int RecipeExtensions_AspNetMvc_6x_SubMenuId = 0x0441;
+        public const int RecipeExtensions_AspNetMvc_6x_CreateTemplates_MenuItemId = 0x0442;
+        public const int RecipeExtensions_AspNetMvc_6x_AddArea_MenuItemId = 0x0443;
+        public const int RecipeExtensions_AspNetMvc_6x_AddController_MenuItemId = 0x0444;
+        public const int RecipeExtensions_AspNetMvc_6x_AddActionWithView_MenuItemId = 0x0446;
+        public const int RecipeExtensions_AspNetMvc_6x_AddActionWithPartialView_MenuItemId = 0x0447;
+        public const int RecipeExtensions_AspNetMvc_6x_AddRestMethod_MenuItemId = 0x0448;
+        public const int RecipeExtensions_ProjectPartialClass_MenuSubgroupId = 0x04A0;
+        public const int RecipeExtensions_Project_SubMenuId = 0x04A1;
+        public const int RecipeExtensions_ProjectPartialClass_AddPartialClass_MenuItemId = 0x04A2;
+        public const int RecipeExtensions_ProjectPartialClass_AddPartialClassMethod_MenuItemId = 0x04A3;
+        public const int RecipeExtensions_ProjectPartialClass_AddPartialClassPrivateMethod_MenuItemId = 0x04A4;
+        public const int RecipeExtensions_ProjectPartialClass_AddPartialClassSubClass_MenuItemId = 0x04A5;
+        public const int RecipeExtensions_ProjectPartialClass_SyncPartialClassUsingStatements_MenuItemId = 0x04A6;
+        public const int RecipeExtensions_Project_AddDataTransferObjectRequestResponse_MenuItemId = 0x04AA;
+        public const int RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId = 0x04B1;
+        public const int RecipeExtensions_Project_AddStartUpClass_MenuItemId = 0x04C0;
+        public const int RecipeExtensions_Project_AddDependencyRegisterClass_MenuItemId = 0x04C1;
+        public const int RecipeExtensionsSolutionAddSolutionHelpersMenuItemId = 0x04F0;
         public const int CakeExtensionsExecuteDefaultTargetMenuItemId = 0x0520;
         public const int CakeExtensionsExecuteTargetMenuSubgroupId = 0x0521;
         public const int CakeExtensionsExecuteTargetSubMenuId = 0x0522;
@@ -58,5 +134,29 @@ namespace ISI.VisualStudio.Extensions
         public const int CakeExtensionsExecuteTargetMenuItemId18 = 0x0534;
         public const int CakeExtensionsExecuteTargetMenuItemId19 = 0x0535;
         public const int CakeExtensionsExecuteTargetMenuItemId20 = 0x0536;
+        public const int JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId = 0x05A0;
+        public const int JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId = 0x05A1;
+        public const int AspNetMvcExtensionsChangeMvcBuildViewsMenuItemId = 0x0600;
+        public const int AspNetMvcExtensionsAutoTurnMvcBuildViewsOnMenuItemId = 0x0601;
+        public const int ClipboardExtensionsPasteAsMenuItemId = 0x0700;
+        public const int ClipboardExtensionsPasteAsCmdAppendMenuItemId = 0x0701;
+        public const int ClipboardExtensionsPasteAsPropertiesMenuItemId = 0x0702;
+        public const int ClipboardExtensionsPasteAsDataContractPropertiesMenuItemId = 0x0703;
+        public const int ClipboardExtensionsPasteAsRepositoryPropertiesMenuItemId = 0x0704;
+        public const int ClipboardExtensionsPasteAsDocumentDataPropertiesMenuItemId = 0x0705;
+        public const int ClipboardExtensionsPasteAsConversionMenuItemId = 0x0750;
+        public const int ClipboardExtensionsContextMenuSubgroupId = 0x0770;
+        public const int ClipboardExtensionsContextSubMenuId = 0x0771;
+        public const int GuidExtensionsInsertNewGuidMenuItemId = 0x0801;
+        public const int SolutionExtensionsAddExistingProjectsMenuItemId = 0x0901;
+        public const int LibraryExtensionsSolutionAddMissingProjectsMenuItemId = 0x0A11;
+        public const int LibraryExtensionsProjectAddMissingProjectsMenuItemId = 0x0A12;
+        public const int ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId = 0x0B01;
+        public const int NugetExtensionsPasteAsNugetPackagesMenuItemId = 0x0C01;
+        public const int PasteAsXmlMenuItemId = 0x0300;
+        public const int PasteAsJsonMenuItemId = 0x0100;
+        public const int HtmlClipboardSubMenuId = 0x0064;
+        public const int CssClipboardSubMenuId = 0x0064;
+        public const int JsonClipboardSubMenuId = 0x0064;
     }
 }

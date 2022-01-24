@@ -1,14 +1,16 @@
-﻿using System.Linq;
-using Community.VisualStudio.Toolkit;
+﻿using Community.VisualStudio.Toolkit;
+using ISI.Extensions.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.Shell;
-using System.Threading.Tasks;
+using System;
+using System.Linq;
 using System.Windows;
+using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
 	[Command(PackageIds.ClipboardExtensionsPasteAsMenuItemId)]
-	internal sealed class ClipboardExtensionsPasteAsCommand : BaseCommand<ClipboardExtensionsPasteAsCommand>
+	internal sealed class ClipboardExtensions_PasteAs_Command : BaseCommand<ClipboardExtensions_PasteAs_Command>
 	{
 		private ISI.Extensions.VisualStudio.CodeGenerationApi CodeGenerationApi { get; set; }
 
@@ -44,7 +46,7 @@ namespace ISI.VisualStudio.Extensions
 		{
 			var project = await VS.Solutions.GetActiveProjectAsync();
 
-			var activeDocumentView = await Community.VisualStudio.Toolkit.VS.Documents.GetActiveDocumentViewAsync();
+			var activeDocumentView = await VS.Documents.GetActiveDocumentViewAsync();
 
 			var pasteAsDialog = new PasteAsDialog();
 

@@ -48,13 +48,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands\CakeExecuteDefaultTargetCommand.cs" />
-    <Compile Include="Commands\ClipboardExtensionsPasteAsCommand.cs" />
-    <Compile Include="Commands\InsertNewGuidCommand.cs" />
+    <Compile Include="Commands\AboutExtensions_About_Command.cs" />
+    <Compile Include="Commands\CakeExtensions_ExecuteTarget_Command.cs" />
+    <Compile Include="Commands\ClipboardExtensions_PasteAs_Command.cs" />
+    <Compile Include="Commands\GuidExtensions_InsertNewGuid_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddArea_Command.cs" />
+    <Compile Include="Commands\XmlConfigurationExtensions_ExecuteTransform_Command.cs" />
+    <Compile Include="Commands\XmlConfigurationExtensions_AddTransform_Command.cs" />
     <Compile Include="Extensions\ProjectExtensions\GetCodeExtensionProvider.cs" />
+    <Compile Include="InputDialog.xaml.cs">
+      <DependentUpon>InputDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GenerateClassDefinitionConversionDialog.xaml.cs">
       <DependentUpon>GenerateClassDefinitionConversionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Options\RecipeExtensions_Solution.cs" />
+    <Compile Include="Options\RecipeExtensions_Project.cs" />
+    <Compile Include="Options\RecipeExtensions_AspNetWebApi_5x.cs" />
+    <Compile Include="Options\RecipeExtensions_AspNetMvc_6x.cs" />
+    <Compile Include="Options\RecipeExtensions_AspNetMvc_5x.cs" />
+    <Compile Include="Options\RecipeExtensions.cs" />
     <Compile Include="PasteAsDialog.xaml.cs">
       <DependentUpon>PasteAsDialog.xaml</DependentUpon>
     </Compile>
@@ -64,6 +77,41 @@
     <Compile Include="PackageServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />
+    <Compile Include="RecipeExtensionsHelper\AddFromRecipesAsync.cs" />
+    <Compile Include="RecipeExtensionsHelper\GetContent.cs" />
+    <Compile Include="RecipeExtensionsHelper\AddFromRecipeAsync.cs" />
+    <Compile Include="RecipeExtensionsHelper\_contentFileExtensions.cs" />
+    <Compile Include="RecipeExtensionsHelper\_RecipeItem.cs" />
+    <Compile Include="RecipeExtensionsHelper\GetOutputWindowPaneAsync.cs" />
+    <Compile Include="RecipeExtensionsHelper\IsAreasFolder.cs" />
+    <Compile Include="RecipeExtensionsHelper\IsProjectRoot.cs" />
+    <Compile Include="RecipeExtensionsHelper\IsAspNetMvc_5x_Project.cs" />
+    <Compile Include="RecipeExtensionsHelper\__RecipeExtensionsHelper.cs" />
+    <Compile Include="RecipeExtensions\Project_Recipes.Designer.cs">
+      <DependentUpon>Project_Recipes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RecipeExtensions\AspNetWebApi_5x_Recipes.Designer.cs">
+      <DependentUpon>AspNetWebApi_5x_Recipes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RecipeExtensions\AspNetMvc_6x_Recipes.Designer.cs">
+      <DependentUpon>AspNetMvc_6x_Recipes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RecipeExtensions\AspNetMvc_5x_Recipes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AspNetMvc_5x_Recipes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeExtensions\Solution_Recipes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Solution_Recipes.resx</DependentUpon>
+    </Compile>
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +131,28 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RecipeExtensions\Project_Recipes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Project_Recipes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecipeExtensions\AspNetWebApi_5x_Recipes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AspNetWebApi_5x_Recipes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecipeExtensions\AspNetMvc_6x_Recipes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AspNetMvc_6x_Recipes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecipeExtensions\AspNetMvc_5x_Recipes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AspNetMvc_5x_Recipes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecipeExtensions\Solution_Recipes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Solution_Recipes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lantern.ico" />
     <EmbeddedResource Include="Resources\Lantern.png" />
     <None Include="source.extension.vsixmanifest">
@@ -95,29 +165,30 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Design" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Community.VisualStudio.VSCT" Version="16.0.29.6" PrivateAssets="all" />
-    <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.355" ExcludeAssets="Runtime">
+    <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.394" ExcludeAssets="Runtime">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Imaging">
-      <Version>17.0.31902.203</Version>
+      <Version>17.0.32112.339</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.0.5233">
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.1.4054">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8042.3418" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8042.3418" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8042.3418" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8042.3418" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8042.3418" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8042.3418" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8042.3418" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8058.7735" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8058.7735" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8058.7735" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8058.7735" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8058.7735" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8058.7735" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8058.7735" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +198,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="InputDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GenerateClassDefinitionConversionDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

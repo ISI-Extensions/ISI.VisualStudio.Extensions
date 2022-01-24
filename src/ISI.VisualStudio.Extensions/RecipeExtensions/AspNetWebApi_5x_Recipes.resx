@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddActionWithPartialView_Action" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Controllers
+{
+	public partial class ${ControllerKey}Controller 
+	{
+		[System.Web.Http.AcceptVerbs(System.Net.WebRequestMethods.Http.Get)]
+		public virtual System.Net.Http.HttpResponseMessage ${ControllerActionKey}()
+		{
+			System.Net.Http.HttpResponseMessage result = null;
+
+			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+
+			result = Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}Partials.${ControllerActionKey}_cshtml, model);
+
+			return result;
+		}
+	}
+}</value>
+  </data>
+  <data name="AddActionWithPartialView_Model" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ${Namespace.Area}.Models.${ControllerKey}
+{
+	public class ${ControllerActionKey}Model : BaseModel
+	{
+
+	}
+}</value>
+  </data>
+  <data name="AddActionWithPartialView_PartialView" xml:space="preserve">
+    <value>@inherits ISI.Libraries.RazorEngine.WebApi.TemplateBase&lt;${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model&gt;</value>
+  </data>
+  <data name="AddActionWithView_Action" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Controllers
+{
+	public partial class ${ControllerKey}Controller 
+	{
+		[System.Web.Http.AcceptVerbs(System.Net.WebRequestMethods.Http.Get)]
+		public virtual System.Net.Http.HttpResponseMessage ${ControllerActionKey}()
+		{
+			System.Net.Http.HttpResponseMessage result = null;
+
+			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+
+			result = Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
+
+			return result;
+		}
+
+		[System.Web.Http.AcceptVerbs(System.Net.WebRequestMethods.Http.Post), System.Web.Http.ActionName(nameof(${ControllerActionKey}))]
+		public virtual System.Net.Http.HttpResponseMessage ${ControllerActionKey}Save()
+		{
+			System.Net.Http.HttpResponseMessage result = null;
+
+			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+
+			result = Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
+
+			return result;
+		}
+	}
+}</value>
+  </data>
+  <data name="AddActionWithView_JavaScript" xml:space="preserve">
+    <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.${ControllerActionKey}", function(jQuery) {
+	var model = {};
+	var view = {};
+	var controller = {
+		setup: function (config) {
+			controller.eventBinder();
+		},
+		eventBinder: function () {
+		}
+	};
+
+	return {
+		Setup: controller.setup
+	};
+} (jQuery));
+
+jQuery(document).ready(function (jQuery) {
+	${Namespace.Area}.${ControllerKey}.${ControllerActionKey}.Setup();
+});</value>
+  </data>
+  <data name="AddActionWithView_Model" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ${Namespace.Area}.Models.${ControllerKey}
+{
+	public class ${ControllerActionKey}Model : BaseModel
+	{
+
+	}
+}</value>
+  </data>
+  <data name="AddActionWithView_StyleSheet" xml:space="preserve">
+    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
+  </data>
+  <data name="AddActionWithView_View" xml:space="preserve">
+    <value>@inherits ISI.Libraries.RazorEngine.WebApi.TemplateBase&lt;${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model&gt;
+
+@{
+	Model.SetTitle("${ViewTitle}");
+	Layout = ${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}._Layout_cshtml;
+}
+
+@section StyleSheetIncludes
+{
+	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_csless)
+}
+
+@section JavaScriptIncludes
+{
+	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}.${ControllerActionKey}_csjs)
+}
+
+@section JavaScriptContent
+{
+}</value>
+  </data>
+  <data name="AddArea_BaseModelRoot" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ${Namespace}.Models
+{
+	public abstract class BaseModel
+	{
+
+	}
+}</value>
+  </data>
+  <data name="AddArea_ControllerRoot" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using ISI.Libraries.Extensions;
+
+namespace ${Namespace.Area}.Controllers
+{
+	public abstract partial class Controller : ISI.Libraries.WebApi.AbstractController
+	{
+		protected Controller(ISI.Libraries.Tracing.ITrace trace)
+			: base(trace)
+		{
+
+		}
+	}
+}</value>
+  </data>
+  <data name="AddController_BaseModel" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ${Namespace.Area}.Models.${ControllerKey}
+{
+	public abstract class BaseModel : Models.BaseModel
+	{
+	}
+}</value>
+  </data>
+  <data name="AddController_BaseModelRoot" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ${Namespace}.Models
+{
+	public abstract class BaseModel
+	{
+
+	}
+}</value>
+  </data>
+  <data name="AddController_Controller" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using ISI.Libraries.Extensions;
+
+namespace ${Namespace.Area}.Controllers
+{
+	public partial class ${ControllerKey}Controller : ApiController
+	{
+		public ${ControllerKey}Controller(ISI.Libraries.Tracing.ITrace trace)
+			: base(trace)
+		{
+
+		}
+	}
+}</value>
+  </data>
+  <data name="AddController_ControllerRoot" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using ISI.Libraries.Extensions;
+
+namespace ${Namespace.Area}.Controllers
+{
+	public abstract partial class Controller : ISI.Libraries.WebApi.AbstractController
+	{
+		protected Controller(ISI.Libraries.Tracing.ITrace trace)
+			: base(trace)
+		{
+
+		}
+	}
+}</value>
+  </data>
+  <data name="AddController_Routes" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading.Tasks;
+using ISI.Libraries.Web.Routes;
+
+namespace ${Namespace.Area}
+{
+	public partial class Routes
+	{
+		public partial class ${ControllerKey}
+		{
+			#pragma warning disable 649
+			public class RouteNames : IRouteNames
+			{
+				//${RouteNames}
+			}
+			#pragma warning restore 649
+
+			static ${ControllerKey}()
+			{
+				(new RouteNames()).AssignRouteNames();
+			}
+
+			internal static readonly string UrlRoot = Routes.UrlRoot${RouteUrl};
+
+			internal static void RegisterRoutes(System.Web.Http.HttpRouteCollection routes)
+			{
+				//${ApiRoutes}
+			}
+		}
+	}
+}</value>
+  </data>
+  <data name="AddController_RoutesRoot" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading.Tasks;
+
+namespace ${Namespace.Area}
+{
+	public partial class Routes
+	{
+		internal static readonly string UrlRoot = string.Empty;
+
+		public static void RegisterRoutes(System.Web.Http.HttpRouteCollection routes)
+		{
+			//${ApiRoutes}
+		}
+	}
+}</value>
+  </data>
+  <data name="AddRestMethod_Method" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using ISI.Libraries.WebApi.Extensions;
+using ISI.Libraries.Extensions;
+
+namespace ${Namespace.Area}.Controllers
+{
+	public partial class ${ControllerKey}Controller 
+	{
+		[AcceptVerbs(WebRequestMethods.Http.Get)]
+		public virtual HttpResponseMessage ${ControllerActionKey}()
+		{
+			HttpResponseMessage result = null;
+
+			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+
+			return result ?? Request.CreateResponse(HttpStatusCode.BadRequest);
+		}
+
+		[AcceptVerbs(WebRequestMethods.Http.Post), ActionName("${ControllerActionKey}")]
+		public virtual HttpResponseMessage ${ControllerActionKey}Save()
+		{
+			HttpResponseMessage result = null;
+
+			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+
+			return result ?? Request.CreateResponse(HttpStatusCode.BadRequest);
+		}
+	}
+}</value>
+  </data>
+  <data name="AddRestMethod_Model" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ISI.Libraries.Extensions;
+
+namespace ${Namespace.Area}.Models.${ControllerKey}
+{
+	public class ${ControllerActionKey}Model : BaseModel
+	{
+
+	}
+}</value>
+  </data>
+  <data name="JavaScriptsControllerLayout" xml:space="preserve">
+    <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.Layout", function(jQuery) {
+	var model = {};
+	var view = {};
+	var controller = {
+		setup: function (config) {
+			controller.eventBinder();
+		},
+		eventBinder: function () {
+		}
+	};
+
+	return {
+		Setup: controller.setup
+	};
+} (jQuery));
+
+jQuery(document).ready(function (jQuery) {
+	${Namespace.Area}.${ControllerKey}.Layout.Setup();
+});</value>
+  </data>
+  <data name="StyleSheetsControllerLayout" xml:space="preserve">
+    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
+  </data>
+  <data name="ViewsControllerLayout" xml:space="preserve">
+    <value>@model ${Namespace.Area}.Models.${ControllerKey}.BaseModel
+
+@{
+	Layout = ${Namespace}.T4Files.${Areas.AreaName}Views._Shared._Layout_cshtml;
+}
+
+@section StyleSheetIncludes
+{
+	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_csless)
+	@RenderSection("StyleSheetIncludes", false)
+}
+
+@RenderBody()
+
+@section JavaScriptIncludes
+{
+	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}._Layout_csjs)
+	@RenderSection("JavaScriptIncludes", false)
+}
+
+@section JavaScriptContent
+{
+	@RenderSection("JavaScriptContent", false)
+}</value>
+  </data>
+</root>

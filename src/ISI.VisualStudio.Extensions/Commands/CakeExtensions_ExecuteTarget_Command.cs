@@ -1,24 +1,24 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
-using System.Threading;
-using Community.VisualStudio.Toolkit;
-using Microsoft.VisualStudio.Shell;
+﻿using Community.VisualStudio.Toolkit;
 using ISI.Extensions.Extensions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.Shell;
+using System;
+using System.Linq;
+using System.Windows;
+using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Community.VisualStudio.Toolkit.Command(PackageIds.CakeExtensionsExecuteDefaultTargetMenuItemId)]
-	internal sealed class CakeExecuteDefaultTargetCommand : Community.VisualStudio.Toolkit.BaseCommand<CakeExecuteDefaultTargetCommand>
+	[Command(PackageIds.CakeExtensionsExecuteDefaultTargetMenuItemId)]
+	internal sealed class CakeExtensions_ExecuteTarget_Command : BaseDynamicCommand<CakeExtensions_ExecuteTarget_Command, string>
 	{
-		private Community.VisualStudio.Toolkit.OutputWindowPane _outputWindowPane = null;
+		private OutputWindowPane _outputWindowPane = null;
 
-		private Microsoft.VisualStudio.Shell.OleMenuCommand[] _executeTargetSubMenus = null;
+		private OleMenuCommand[] _executeTargetSubMenus = null;
 
 		private ISI.Extensions.Cake.CakeApi CakeApi { get; set; }
 
-		protected override async System.Threading.Tasks.Task InitializeCompletedAsync()
+		protected override async Task InitializeCompletedAsync()
 		{
 			CakeApi = (Package as Package)?.PackageServiceProvider.ServiceProvider.GetService<ISI.Extensions.Cake.CakeApi>();
 
@@ -26,16 +26,16 @@ namespace ISI.VisualStudio.Extensions
 
 			if (serviceAsync != null)
 			{
-				_executeTargetSubMenus ??= new Microsoft.VisualStudio.Shell.OleMenuCommand[20];
+				_executeTargetSubMenus ??= new OleMenuCommand[20];
 
 				for (var index = 1; index <= _executeTargetSubMenus.Length; index++)
 				{
 					var menuCommandId = new System.ComponentModel.Design.CommandID(PackageGuids.PackageUuid, PackageIds.CakeExtensionsExecuteTargetSubMenuId + index);
-					var menuCommand = new Microsoft.VisualStudio.Shell.OleMenuCommand((object sender, EventArgs eventArgs) => Package.JoinableTaskFactory.RunAsync((async () =>
+					var menuCommand = new OleMenuCommand((object sender, EventArgs eventArgs) => Package.JoinableTaskFactory.RunAsync((async () =>
 					{
 						try
 						{
-							await this.ExecuteTargetAsync(sender, (Microsoft.VisualStudio.Shell.OleMenuCmdEventArgs)eventArgs);
+							await this.ExecuteTargetAsync(sender, (OleMenuCmdEventArgs)eventArgs);
 						}
 						catch (System.Exception ex)
 						{
@@ -51,6 +51,16 @@ namespace ISI.VisualStudio.Extensions
 			await base.InitializeCompletedAsync();
 		}
 
+		protected override System.Collections.Generic.IReadOnlyList<string> GetItems()
+		{
+			throw new NotImplementedException();
+		}
+
+		protected override void BeforeQueryStatus(OleMenuCommand menuItem, EventArgs e, string item)
+		{
+			throw new NotImplementedException();
+		}
+
 		protected override void BeforeQueryStatus(System.EventArgs eventArgs)
 		{
 			var showCommand = false;
@@ -58,17 +68,17 @@ namespace ISI.VisualStudio.Extensions
 			var solutionExplorer = Community.VisualStudio.Toolkit.VS.Windows.GetSolutionExplorerWindowAsync().GetAwaiter().GetResult();
 			if (solutionExplorer != null)
 			{
-				var selectedItems = solutionExplorer.GetSelectionAsync().GetAwaiter().GetResult();
+				var solutionItems = solutionExplorer.GetSelectionAsync().GetAwaiter().GetResult();
 
-				if (selectedItems.NullCheckedCount() == 1)
+				if (solutionItems.NullCheckedCount() == 1)
 				{
-					var selectedItem = selectedItems.NullCheckedFirstOrDefault();
+					var solutionItem = solutionItems.NullCheckedFirstOrDefault();
 
-					if (selectedItem != null)
+					if (solutionItem != null)
 					{
 						var activeTargetKeys = CakeApi.GetTargetKeysFromBuildScript(new ISI.Extensions.Cake.DataTransferObjects.CakeApi.GetTargetKeysFromBuildScriptRequest()
 						{
-							BuildScriptFullName = selectedItem.FullPath,
+							BuildScriptFullName = solutionItem.FullPath,
 						}).Targets ?? Array.Empty<string>();
 
 						for (var index = 1; index <= _executeTargetSubMenus.Length; index++)
@@ -121,15 +131,15 @@ namespace ISI.VisualStudio.Extensions
 			var solutionExplorer = await Community.VisualStudio.Toolkit.VS.Windows.GetSolutionExplorerWindowAsync();
 			if (solutionExplorer != null)
 			{
-				var selectedItems = await solutionExplorer.GetSelectionAsync();
+				var solutionItems = await solutionExplorer.GetSelectionAsync();
 
-				if (selectedItems.NullCheckedCount() == 1)
+				if (solutionItems.NullCheckedCount() == 1)
 				{
-					var selectedItem = selectedItems.NullCheckedFirstOrDefault();
+					var solutionItem = solutionItems.NullCheckedFirstOrDefault();
 
-					if (selectedItem != null)
+					if (solutionItem != null)
 					{
-						_outputWindowPane ??= await Community.VisualStudio.Toolkit.VS.Windows.CreateOutputWindowPaneAsync("Cake");
+						_outputWindowPane ??= await Community.VisualStudio.Toolkit.VS.Windows.CreateOutputWindowPaneAsync("ISI.VisualStudio.Extensions.Cake");
 
 						await _outputWindowPane.ActivateAsync();
 
@@ -137,7 +147,7 @@ namespace ISI.VisualStudio.Extensions
 						{
 							CakeApi.ExecuteBuildTarget(new ISI.Extensions.Cake.DataTransferObjects.CakeApi.ExecuteBuildTargetRequest()
 							{
-								BuildScriptFullName = selectedItem.FullPath,
+								BuildScriptFullName = solutionItem.FullPath,
 								Target = target,
 								AddToLog = description => _outputWindowPane.WriteLine(description.TrimEnd('\r', '\n')),
 							});

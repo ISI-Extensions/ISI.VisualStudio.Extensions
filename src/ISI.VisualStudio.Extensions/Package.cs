@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Community.VisualStudio.Toolkit;
+using Microsoft.VisualStudio.Shell;
+using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Community.VisualStudio.Toolkit;
-using Microsoft.VisualStudio.Shell;
+using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
@@ -16,6 +16,8 @@ namespace ISI.VisualStudio.Extensions
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionHasMultipleProjects_string, PackageAutoLoadFlags.BackgroundLoad)]
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionHasSingleProject_string, PackageAutoLoadFlags.BackgroundLoad)]
+	[ProvideOptionPage(typeof(OptionsProvider.RecipeExtensionsOptionsPage), "ISI.VisualStudio.Extensions", "RecipeExtensions_Options", 0, 0, true)]
+	[ProvideProfile(typeof(OptionsProvider.RecipeExtensionsOptionsPage), "ISI.VisualStudio.Extensions", "RecipeExtensions_Options", 0, 0, true)]
 	public sealed class Package : ToolkitPackage
 	{
 		internal PackageServiceProvider PackageServiceProvider { get; } = new();
@@ -25,19 +27,26 @@ namespace ISI.VisualStudio.Extensions
 		protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
 		{
 			await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-	
+
+			OutputWindowPane ??= await Community.VisualStudio.Toolkit.VS.Windows.CreateOutputWindowPaneAsync(Vsix.Name);
+
 			PackageServiceProvider.Initialize();
 
-			OutputWindowPane ??= await Community.VisualStudio.Toolkit.VS.Windows.CreateOutputWindowPaneAsync("ISI.VisualStudio.Extensions");
-	
-			await InsertNewGuidCommand.InitializeAsync(this);
-	
-			await ClipboardExtensionsPasteAsCommand.InitializeAsync(this);
+			await AboutExtensions_About_Command.InitializeAsync(this);
 
-			await CakeExecuteDefaultTargetCommand.InitializeAsync(this);
+			await XmlConfigurationExtensions_AddTransform_Command.InitializeAsync(this);
+			await XmlConfigurationExtensions_ExecuteTransform_Command.InitializeAsync(this);
+
+			await RecipeExtensions_AspNetMvc_5x_AddArea_Command.InitializeAsync(this);
+
+			await GuidExtensions_InsertNewGuid_Command.InitializeAsync(this);
+
+			await ClipboardExtensions_PasteAs_Command.InitializeAsync(this);
+
+			await CakeExtensions_ExecuteTarget_Command.InitializeAsync(this);
 
 			await OutputWindowPane.ActivateAsync();
-			await OutputWindowPane.WriteLineAsync("ISI.VisualStudio.Extensions Loaded");
+			await OutputWindowPane.WriteLineAsync(string.Format("{0} Loaded", Vsix.Name));
 		}
 	}
 }
