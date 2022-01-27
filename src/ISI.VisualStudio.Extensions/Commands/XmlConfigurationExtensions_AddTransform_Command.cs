@@ -10,24 +10,23 @@ using System.Threading.Tasks;
 namespace ISI.VisualStudio.Extensions
 {
 	[Command(PackageIds.XmlConfigurationExtensionsAddTransformMenuItemId)]
-	internal sealed class XmlConfigurationExtensions_AddTransform_Command : BaseCommand<XmlConfigurationExtensions_AddTransform_Command>
+	public class XmlConfigurationExtensions_AddTransform_Command : BaseCommand<XmlConfigurationExtensions_AddTransform_Command>
 	{
-		protected override void BeforeQueryStatus(System.EventArgs eventArgs)
+		private static XmlConfigurationExtensionsHelper _xmlConfigurationExtensionsHelper = null;
+		protected XmlConfigurationExtensionsHelper XmlConfigurationExtensionsHelper => _xmlConfigurationExtensionsHelper ??= Package.GetServiceProvider().GetService<XmlConfigurationExtensionsHelper>();
+
+		protected override void BeforeQueryStatus(EventArgs eventArgs)
 		{
 			var showCommand = false;
 
 			var solutionItem = VS.Solutions.GetActiveItemAsync().GetAwaiter().GetResult();
-			if (solutionItem?.Type == SolutionItemType.PhysicalFile)
-			{
-				showCommand = (string.Equals(System.IO.Path.GetExtension(solutionItem.FullPath), ".config", StringComparison.InvariantCultureIgnoreCase));
-			}
 
-			Command.Visible = showCommand;
+			Command.Visible = XmlConfigurationExtensionsHelper.IsXmlConfiguration(solutionItem);
 
 			base.BeforeQueryStatus(eventArgs);
 		}
 
-		protected override async System.Threading.Tasks.Task ExecuteAsync(Microsoft.VisualStudio.Shell.OleMenuCmdEventArgs oleMenuCmdEventArgs)
+		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{
 			var project = await VS.Solutions.GetActiveProjectAsync();
 

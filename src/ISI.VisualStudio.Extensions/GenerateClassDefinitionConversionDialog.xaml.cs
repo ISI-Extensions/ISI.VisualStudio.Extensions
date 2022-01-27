@@ -1,4 +1,4 @@
-﻿using ISI.VisualStudio.Extensions.Extensions;
+﻿using ISI.VisualStudio.Extensions;
 using System.Windows;
 
 namespace ISI.VisualStudio.Extensions

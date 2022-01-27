@@ -26,20 +26,19 @@
 			</Group>
 
 			<Group guid="PackageUuid" id="ProjectReferenceMenuGroupId" priority="0x0600">
-				<Parent guid="VSMainMenu" id="ReferencesNode" />
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_REFERENCEROOT" />
 			</Group>
 
 			<Group guid="PackageUuid" id="FolderMenuGroupId" priority="0x0600">
-				<Parent guid="VSMainMenu" id="FolderNode" />
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
 			</Group>
 
 			<Group guid="PackageUuid" id="ItemMenuGroupId" priority="0x0600">
-				<Parent guid="VSMainMenu" id="ItemNode" />
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
 			</Group>
 
 			<Group guid="PackageUuid" id="EditorContextMenuGroupId" priority="0x0600">
 				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
-				<!--<Parent guid="VSMainMenu" id="CodeWindow.TextEditGroup" />-->
 			</Group>
 
 
@@ -138,7 +137,6 @@
 			</Button>
 
 
-
 			<!-- Transformation Extensions -->
 			<Button guid="PackageUuid" id="XmlConfigurationExtensionsAddTransformMenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
@@ -152,261 +150,23 @@
 			</Button>
 
 			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
+				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
+				<CommandFlag>DynamicItemStart</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId</CommandName>
-					<ButtonText>Dummy</ButtonText>
+					<ButtonText>Loading...</ButtonText>
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId1" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId1</CommandName>
-					<ButtonText>Target 1</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId2" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId2</CommandName>
-					<ButtonText>Target 2</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId3" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId3</CommandName>
-					<ButtonText>Target3</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId4" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId4</CommandName>
-					<ButtonText>Target4</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId5" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId5</CommandName>
-					<ButtonText>Target5</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId6" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId6</CommandName>
-					<ButtonText>Target6</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId7" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId7</CommandName>
-					<ButtonText>Target7</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId8" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId8</CommandName>
-					<ButtonText>Target8</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId9" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId9</CommandName>
-					<ButtonText>Target9</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId10" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId10</CommandName>
-					<ButtonText>Target10</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId11" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId11</CommandName>
-					<ButtonText>Target11</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId12" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId12</CommandName>
-					<ButtonText>Target12</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId13" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId13</CommandName>
-					<ButtonText>Target13</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId14" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId14</CommandName>
-					<ButtonText>Target14</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId15" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId15</CommandName>
-					<ButtonText>Target15</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId16" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId16</CommandName>
-					<ButtonText>Target16</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId17" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId17</CommandName>
-					<ButtonText>Target17</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId18" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId18</CommandName>
-					<ButtonText>Target18</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId19" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId19</CommandName>
-					<ButtonText>Target19</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId20" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>XmlConfigurationExtensionsExecuteMenuItemId20</CommandName>
-					<ButtonText>Target20</ButtonText>
-				</Strings>
-			</Button>
 
 			<!-- Recipe Extensions -->
 			<!--   AspNet Mvc 5.x -->
 			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_CreateTemplates_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_MenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
 					<CommandName>RecipeExtensions_AspNetMvc_5x_CreateTemplates_MenuItemId</CommandName>
@@ -417,6 +177,7 @@
 			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_AddArea_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_MenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
 					<CommandName>RecipeExtensions_AspNetMvc_5x_AddArea_MenuItemId</CommandName>
@@ -427,6 +188,7 @@
 			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_AddController_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_MenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
 					<CommandName>RecipeExtensions_AspNetMvc_5x_AddController_MenuItemId</CommandName>
@@ -437,6 +199,7 @@
 			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_AddActionWithView_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_MenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
 					<CommandName>RecipeExtensions_AspNetMvc_5x_AddActionWithView_MenuItemId</CommandName>
@@ -447,6 +210,7 @@
 			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_AddActionWithPartialView_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_MenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
 					<CommandName>RecipeExtensions_AspNetMvc_5x_AddActionWithPartialView_MenuItemId</CommandName>
@@ -457,13 +221,13 @@
 			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_AddRestMethod_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_MenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
 					<CommandName>RecipeExtensions_AspNetMvc_5x_AddRestMethod_MenuItemId</CommandName>
 					<ButtonText>Add Rest Method</ButtonText>
 				</Strings>
 			</Button>
-
 
 
 			<!-- Cake Extensions -->
@@ -478,243 +242,15 @@
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId1" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicItemStart</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId1</CommandName>
-					<ButtonText>Target 1</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId2" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId2</CommandName>
-					<ButtonText>Target 2</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId3" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId3</CommandName>
-					<ButtonText>Target 3</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId4" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId4</CommandName>
-					<ButtonText>Target 4</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId5" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId5</CommandName>
-					<ButtonText>Target 5</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId6" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId6</CommandName>
-					<ButtonText>Target 6</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId7" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId7</CommandName>
-					<ButtonText>Target 7</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId8" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId8</CommandName>
-					<ButtonText>Target 8</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId9" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId9</CommandName>
-					<ButtonText>Target 9</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId10" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId10</CommandName>
-					<ButtonText>Target 10</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId11" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId11</CommandName>
-					<ButtonText>Target 11</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId12" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId12</CommandName>
-					<ButtonText>Target 12</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId13" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId13</CommandName>
-					<ButtonText>Target 13</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId14" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId14</CommandName>
-					<ButtonText>Target 14</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId15" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId15</CommandName>
-					<ButtonText>Target 15</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId16" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId16</CommandName>
-					<ButtonText>Target 16</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId17" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId17</CommandName>
-					<ButtonText>Target 17</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId18" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId18</CommandName>
-					<ButtonText>Target 18</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId19" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId19</CommandName>
-					<ButtonText>Target 19</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId20" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteTargetMenuItemId20</CommandName>
-					<ButtonText>Target 20</ButtonText>
+					<ButtonText>Loading...</ButtonText>
 				</Strings>
 			</Button>
 
@@ -742,6 +278,27 @@
 	</Commands>
 
 	<CommandPlacements>
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_SubMenuId" priority="0x0600">
+			<Parent guid="PackageUuid" id="FolderMenuGroupId" />
+		</CommandPlacement>
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_SubMenuId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ItemMenuGroupId" />
+		</CommandPlacement>
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_SubMenuId" priority="0x0600">
+			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu"/>
+		</CommandPlacement>
+
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_SubMenuId" priority="0x0600">
+			<Parent guid="PackageUuid" id="FolderMenuGroupId" />
+		</CommandPlacement>
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_SubMenuId" priority="0x0600">
+			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu"/>
+		</CommandPlacement>
+
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ProjectMenuGroupId" />
+		</CommandPlacement>
+
 		<CommandPlacement guid="PackagePasteAsXmlCommandSetUuid" id="PasteAsXmlMenuItemId" priority="0x0600">
 			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
 		</CommandPlacement>
@@ -804,27 +361,6 @@
 			<IDSymbol name="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" value="0x0301" />
 			<IDSymbol name="XmlConfigurationExtensionsExecuteTransformSubMenuId" value="0x0302" />
 			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId" value="0x0303" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId1" value="0x0304" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId2" value="0x0305" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId3" value="0x0306" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId4" value="0x0307" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId5" value="0x0308" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId6" value="0x0309" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId7" value="0x030A" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId8" value="0x030B" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId9" value="0x030C" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId10" value="0x030D" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId11" value="0x030E" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId12" value="0x030F" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId13" value="0x0310" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId14" value="0x0311" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId15" value="0x0312" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId16" value="0x0313" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId17" value="0x0314" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId18" value="0x0315" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId19" value="0x0316" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId20" value="0x0317" />
-
 
 
 			<IDSymbol name="RecipeExtensions_AspNetMvc_5x_MenuSubgroupId" value="0x0410" />
@@ -878,26 +414,7 @@
 			<IDSymbol name="CakeExtensionsExecuteDefaultTargetMenuItemId" value="0x0520" />
 			<IDSymbol name="CakeExtensionsExecuteTargetMenuSubgroupId" value="0x0521" />
 			<IDSymbol name="CakeExtensionsExecuteTargetSubMenuId" value="0x0522" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId1" value="0x0523" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId2" value="0x0524" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId3" value="0x0525" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId4" value="0x0526" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId5" value="0x0527" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId6" value="0x0528" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId7" value="0x0529" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId8" value="0x052A" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId9" value="0x052B" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId10" value="0x052C" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId11" value="0x052D" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId12" value="0x052E" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId13" value="0x052F" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId14" value="0x0530" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId15" value="0x0531" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId16" value="0x0532" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId17" value="0x0533" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId18" value="0x0534" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId19" value="0x0535" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId20" value="0x0536" />
+			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId" value="0x0523" />
 
 			<IDSymbol name="JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId" value="0x05A0" />
 			<IDSymbol name="JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId" value="0x05A1" />

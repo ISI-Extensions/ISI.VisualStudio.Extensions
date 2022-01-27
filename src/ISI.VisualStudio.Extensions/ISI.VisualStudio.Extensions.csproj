@@ -48,13 +48,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CakeExtensionsHelper\IsCakeBuildScript.cs" />
+    <Compile Include="CakeExtensionsHelper\GetTargetKeysFromBuildScript.cs" />
+    <Compile Include="CakeExtensionsHelper\GetOutputWindowPaneAsync.cs" />
+    <Compile Include="CakeExtensionsHelper\ExecuteBuildTarget.cs" />
+    <Compile Include="CakeExtensionsHelper\__CakeExtensionsHelper.cs" />
     <Compile Include="Commands\AboutExtensions_About_Command.cs" />
     <Compile Include="Commands\CakeExtensions_ExecuteTarget_Command.cs" />
+    <Compile Include="Commands\CakeExtensions_ExecuteDefaultTarget_Command.cs" />
     <Compile Include="Commands\ClipboardExtensions_PasteAs_Command.cs" />
     <Compile Include="Commands\GuidExtensions_InsertNewGuid_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddRestMethod_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddActionWithPartialView_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddActionWithView_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddController_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddArea_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_ExecuteTransform_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_AddTransform_Command.cs" />
+    <Compile Include="Extensions\PackageExtensions\GetServiceProviderAsync.cs" />
     <Compile Include="Extensions\ProjectExtensions\GetCodeExtensionProvider.cs" />
     <Compile Include="InputDialog.xaml.cs">
       <DependentUpon>InputDialog.xaml</DependentUpon>
@@ -74,12 +85,24 @@
     <Compile Include="GenerateClassDefinitionDialog.xaml.cs">
       <DependentUpon>GenerateClassDefinitionDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PackageServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="RecipeExtensionsHelper\AddFromRecipesAsync.cs" />
+    <Compile Include="RecipeExtensionsHelper\IsProjectUsingJQueryExtensions.cs" />
+    <Compile Include="RecipeExtensionsHelper\IsProjectUsingBootstrapExtensions.cs" />
+    <Compile Include="RecipeExtensionsHelper\IsProjectUsingCmsExtensions.cs" />
+    <Compile Include="RecipeExtensionsHelper\FilterWebConfig.cs" />
+    <Compile Include="RecipeExtensionsHelper\GetControllerName.cs" />
+    <Compile Include="RecipeExtensionsHelper\GetProjectDirectory.cs" />
+    <Compile Include="RecipeExtensionsHelper\GetAreasDirectory.cs" />
+    <Compile Include="RecipeExtensionsHelper\GetAreaDirectory.cs" />
+    <Compile Include="RecipeExtensionsHelper\GetAreaName.cs" />
+    <Compile Include="RecipeExtensionsHelper\IsControllerFolder.cs" />
+    <Compile Include="RecipeExtensionsHelper\ReplaceFileContent.cs" />
+    <Compile Include="RecipeExtensionsHelper\GetRootNamespace.cs" />
     <Compile Include="RecipeExtensionsHelper\GetContent.cs" />
     <Compile Include="RecipeExtensionsHelper\AddFromRecipeAsync.cs" />
+    <Compile Include="RecipeExtensionsHelper\IsControllersFolder.cs" />
     <Compile Include="RecipeExtensionsHelper\_contentFileExtensions.cs" />
     <Compile Include="RecipeExtensionsHelper\_RecipeItem.cs" />
     <Compile Include="RecipeExtensionsHelper\GetOutputWindowPaneAsync.cs" />
@@ -117,6 +140,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
+    <Compile Include="XmlConfigurationExtensionsHelper\GetOutputWindowPaneAsync.cs" />
+    <Compile Include="XmlConfigurationExtensionsHelper\IsXmlConfiguration.cs" />
+    <Compile Include="XmlConfigurationExtensionsHelper\__XmlConfigurationExtensionsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <VSCTCompile Include="VSCommandTable.vsct">
@@ -168,9 +194,14 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Design" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Community.VisualStudio.Toolkit.DependencyInjection.Core.17">
+      <Version>17.0.6</Version>
+    </PackageReference>
     <PackageReference Include="Community.VisualStudio.VSCT" Version="16.0.29.6" PrivateAssets="all" />
     <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.394" ExcludeAssets="Runtime">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -182,13 +213,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8058.7735" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8058.7735" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8058.7735" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8058.7735" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8058.7735" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8058.7735" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8058.7735" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8062.6074" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8062.6074" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8062.6074" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8062.6074" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8062.6074" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8062.6074" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8062.6074" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>

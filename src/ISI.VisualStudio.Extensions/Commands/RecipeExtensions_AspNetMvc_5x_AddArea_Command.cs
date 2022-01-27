@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows;
-using Community.VisualStudio.Toolkit;
+﻿using Community.VisualStudio.Toolkit;
+using ISI.Extensions.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.Shell;
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Windows;
+using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Community.VisualStudio.Toolkit.Command(PackageIds.RecipeExtensions_AspNetMvc_5x_AddArea_MenuItemId)]
-	internal sealed class RecipeExtensions_AspNetMvc_5x_AddArea_Command : BaseCommand<RecipeExtensions_AspNetMvc_5x_AddArea_Command>
+	[Command(PackageIds.RecipeExtensions_AspNetMvc_5x_AddArea_MenuItemId)]
+	public class RecipeExtensions_AspNetMvc_5x_AddArea_Command : BaseCommand<RecipeExtensions_AspNetMvc_5x_AddArea_Command>
 	{
-		protected RecipeExtensionsHelper RecipeExtensionsHelper { get; } = new RecipeExtensionsHelper();
+		private static RecipeExtensionsHelper _recipeExtensionsHelper = null;
+		protected RecipeExtensionsHelper RecipeExtensionsHelper => _recipeExtensionsHelper ??= Package.GetServiceProvider().GetService<RecipeExtensionsHelper>();
 
-		protected override void BeforeQueryStatus(System.EventArgs eventArgs)
+		protected override void BeforeQueryStatus(EventArgs eventArgs)
 		{
 			var showCommand = false;
 
@@ -29,7 +33,7 @@ namespace ISI.VisualStudio.Extensions
 			base.BeforeQueryStatus(eventArgs);
 		}
 
-		protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
+		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{
 			try
 			{
@@ -39,14 +43,10 @@ namespace ISI.VisualStudio.Extensions
 
 				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.Value))
 				{
-					var areaKey = inputDialog.Value;
+					var areaKey = inputDialog.Value.Replace(" ", string.Empty);
 
 					if (!string.IsNullOrWhiteSpace(areaKey))
 					{
-						var solition = await VS.Solutions.GetCurrentSolutionAsync();
-						var project = await VS.Solutions.GetActiveProjectAsync();
-
-
 						var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
 
 						await outputWindowPane.ActivateAsync();
@@ -55,23 +55,24 @@ namespace ISI.VisualStudio.Extensions
 
 						await outputWindowPane.WriteLineAsync("New Mvc Area");
 
+						var solution = await VS.Solutions.GetCurrentSolutionAsync();
+						var project = await VS.Solutions.GetActiveProjectAsync();
+
 						areaKey = areaKey.Replace(" ", string.Empty);
 
-						var solutionDirectory = System.IO.Path.GetDirectoryName(solition.FullPath);
+						var solutionDirectory = System.IO.Path.GetDirectoryName(solution.FullPath);
 						var solutionRecipesDirectory = System.IO.Path.Combine(solutionDirectory, ".recipes");
 
-						var projectDirectory = project.FullPath.Substring(0, project.FullPath.LastIndexOf('\\', project.FullPath.Length - 2));
-						var @namespace = await project.GetAttributeAsync("DefaultNamespace");
+						var projectDirectory = RecipeExtensionsHelper.GetProjectDirectory(project);
+						var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
 
-						var areasDirectory = string.Format("{0}\\Areas", projectDirectory);
+						var areasDirectory = RecipeExtensionsHelper.GetAreasDirectory(project);
 						System.IO.Directory.CreateDirectory(areasDirectory);
 
 						var areaDirectory = System.IO.Path.Combine(areasDirectory, areaKey);
 
 						if (!System.IO.Directory.Exists(areaDirectory))
 						{
-							//_recipeExtensions.Package.GetDte2().Documents.SaveAll();
-
 							System.IO.Directory.CreateDirectory(areaDirectory);
 
 							var routeUrl = System.Text.RegularExpressions.Regex.Replace(areaKey, @"(?<begin>(\w*?))(?<end>[A-Z]+)", string.Format(@"${{begin}}{0}${{end}}", "-")).Substring(1).Trim().ToLower();
@@ -85,22 +86,22 @@ namespace ISI.VisualStudio.Extensions
 								{ "${BaseUrl}", routeUrl }
 							};
 
-							var controllersDirectory = System.IO.Path.Combine(areaDirectory, "Controllers");
+							var controllersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensionsHelper.ControllersFolderName);
 							System.IO.Directory.CreateDirectory(controllersDirectory);
-							var modelBindersDirectory = System.IO.Path.Combine(areaDirectory, "ModelBinders");
+							var modelBindersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensionsHelper.ModelBindersFolderName);
 							System.IO.Directory.CreateDirectory(modelBindersDirectory);
-							var modelsDirectory = System.IO.Path.Combine(areaDirectory, "Models");
+							var modelsDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensionsHelper.ModelsFolderName);
 							System.IO.Directory.CreateDirectory(modelsDirectory);
-							var routesDirectory = System.IO.Path.Combine(areaDirectory, "Routes");
+							var routesDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensionsHelper.RoutesFolderName);
 							System.IO.Directory.CreateDirectory(routesDirectory);
 
 							var recipes = new[]
 							{
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(controllersDirectory, "__Controller.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_Controller)), controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelBindersDirectory, "_ModelBinders.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_ModelBinders)), modelBindersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelsDirectory, "_BaseModel.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_BaseModel)), modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(routesDirectory, "__Routes.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_Routes)), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(areaDirectory, "AreaRegistration.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_AreaRegistration)), areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(controllersDirectory, "__Controller.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_Controller)), controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelBindersDirectory, "_ModelBinders.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_ModelBinders)), modelBindersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelsDirectory, "_BaseModel.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_BaseModel)), modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(routesDirectory, "__Routes.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_Routes)), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(areaDirectory, "AreaRegistration.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_AreaRegistration)), areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
@@ -115,7 +116,9 @@ namespace ISI.VisualStudio.Extensions
 			}
 			catch (Exception exception)
 			{
-				//_recipeExtensions.AddToExceptionLog(exception);
+				var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
+
+				await outputWindowPane.WriteLineAsync(exception.ErrorMessageFormatted());
 
 				throw;
 			}

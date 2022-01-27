@@ -10,16 +10,10 @@ using System.Threading.Tasks;
 namespace ISI.VisualStudio.Extensions
 {
 	[Command(PackageIds.ClipboardExtensionsPasteAsMenuItemId)]
-	internal sealed class ClipboardExtensions_PasteAs_Command : BaseCommand<ClipboardExtensions_PasteAs_Command>
+	public class ClipboardExtensions_PasteAs_Command : BaseCommand<ClipboardExtensions_PasteAs_Command>
 	{
-		private ISI.Extensions.VisualStudio.CodeGenerationApi CodeGenerationApi { get; set; }
-
-		protected override async System.Threading.Tasks.Task InitializeCompletedAsync()
-		{
-			CodeGenerationApi = (Package as Package)?.PackageServiceProvider.ServiceProvider.GetService<ISI.Extensions.VisualStudio.CodeGenerationApi>();
-
-			await base.InitializeCompletedAsync();
-		}
+		private static ISI.Extensions.VisualStudio.CodeGenerationApi _codeGenerationApi = null;
+		protected ISI.Extensions.VisualStudio.CodeGenerationApi CodeGenerationApi => _codeGenerationApi ??= Package.GetServiceProvider().GetService<ISI.Extensions.VisualStudio.CodeGenerationApi>();
 
 		protected override void BeforeQueryStatus(System.EventArgs eventArgs)
 		{

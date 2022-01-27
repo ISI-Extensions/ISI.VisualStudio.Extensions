@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ISI.VisualStudio.Extensions
 {
 	[Command(PackageIds.GuidExtensionsInsertNewGuidMenuItemId)]
-	internal sealed class GuidExtensions_InsertNewGuid_Command : BaseCommand<GuidExtensions_InsertNewGuid_Command>
+	public class GuidExtensions_InsertNewGuid_Command : BaseCommand<GuidExtensions_InsertNewGuid_Command>
 	{
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{

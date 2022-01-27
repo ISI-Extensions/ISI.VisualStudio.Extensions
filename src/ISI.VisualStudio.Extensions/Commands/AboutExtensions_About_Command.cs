@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace ISI.VisualStudio.Extensions
 {
 	[Command(PackageIds.AboutMenuItemId)]
-	internal sealed class AboutExtensions_About_Command : BaseCommand<AboutExtensions_About_Command>
+	public class AboutExtensions_About_Command : BaseCommand<AboutExtensions_About_Command>
 	{
-		protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
+		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{
 			var vsVersion = await VS.Shell.GetVsVersionAsync();
 

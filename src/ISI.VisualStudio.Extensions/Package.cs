@@ -1,9 +1,13 @@
 ﻿using Community.VisualStudio.Toolkit;
+using Community.VisualStudio.Toolkit.DependencyInjection;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using ISI.Extensions.ConfigurationHelper.Extensions;
+using ISI.Extensions.DependencyInjection.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
@@ -16,37 +20,78 @@ namespace ISI.VisualStudio.Extensions
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionHasMultipleProjects_string, PackageAutoLoadFlags.BackgroundLoad)]
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionHasSingleProject_string, PackageAutoLoadFlags.BackgroundLoad)]
-	[ProvideOptionPage(typeof(OptionsProvider.RecipeExtensionsOptionsPage), "ISI.VisualStudio.Extensions", "RecipeExtensions_Options", 0, 0, true)]
-	[ProvideProfile(typeof(OptionsProvider.RecipeExtensionsOptionsPage), "ISI.VisualStudio.Extensions", "RecipeExtensions_Options", 0, 0, true)]
+	[ProvideOptionPage(typeof(OptionsProvider.RecipeExtensionsOptionsPage), Vsix.Name, "RecipeExtensions_Options", 0, 0, true)]
+	[ProvideProfile(typeof(OptionsProvider.RecipeExtensionsOptionsPage), Vsix.Name, "RecipeExtensions_Options", 0, 0, true)]
 	public sealed class Package : ToolkitPackage
 	{
-		internal PackageServiceProvider PackageServiceProvider { get; } = new();
+		public IServiceProvider ServiceProvider { get; private set; } = null!;
 
-		internal Community.VisualStudio.Toolkit.OutputWindowPane OutputWindowPane = null;
+		private OutputWindowPane OutputWindowPane = null;
 
 		protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
 		{
+			await base.InitializeAsync(cancellationToken, progress);
+
 			await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
-			OutputWindowPane ??= await Community.VisualStudio.Toolkit.VS.Windows.CreateOutputWindowPaneAsync(Vsix.Name);
+			var configurationBuilder = new Microsoft.Extensions.Configuration.ConfigurationBuilder();
+			var configurationRoot = configurationBuilder.Build();
+			
+			var services = new ServiceCollection();
+			services
+				.AddOptions()
+				.AddSingleton<Microsoft.Extensions.Configuration.IConfiguration>(configurationRoot);
 
-			PackageServiceProvider.Initialize();
+			services.AddAllConfigurations(configurationRoot)
 
-			await AboutExtensions_About_Command.InitializeAsync(this);
+				//.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.Abstractions.NullLoggerFactory>()
+				.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.LoggerFactory>()
+				//.AddLogging(builder => builder
+				//		//.AddConsole()
+				//	//.AddFilter(level => level >= Microsoft.Extensions.Logging.LogLevel.Information)
+				//)
+				.AddSingleton<Microsoft.Extensions.Logging.ILogger>(_ => new ISI.Extensions.NullLogger())
 
-			await XmlConfigurationExtensions_AddTransform_Command.InitializeAsync(this);
-			await XmlConfigurationExtensions_ExecuteTransform_Command.InitializeAsync(this);
+				.AddSingleton<ISI.Extensions.DateTimeStamper.IDateTimeStamper, ISI.Extensions.DateTimeStamper.LocalMachineDateTimeStamper>()
 
-			await RecipeExtensions_AspNetMvc_5x_AddArea_Command.InitializeAsync(this);
+				.AddSingleton<ISI.Extensions.JsonSerialization.IJsonSerializer, ISI.Extensions.JsonSerialization.Newtonsoft.NewtonsoftJsonSerializer>()
+				.AddSingleton<ISI.Extensions.Serialization.ISerialization, ISI.Extensions.Serialization.Serialization>()
 
-			await GuidExtensions_InsertNewGuid_Command.InitializeAsync(this);
+				.AddSingleton<CakeExtensionsHelper>()
+				.AddSingleton<RecipeExtensionsHelper>()
+				.AddSingleton<XmlConfigurationExtensionsHelper>()
 
-			await ClipboardExtensions_PasteAs_Command.InitializeAsync(this);
+				.AddConfigurationRegistrations(configurationRoot)
+				.ProcessServiceRegistrars()
+				;
 
-			await CakeExtensions_ExecuteTarget_Command.InitializeAsync(this);
+			ServiceProvider = services.BuildServiceProvider<ISI.Extensions.DependencyInjection.Iunq.ServiceProviderBuilder>(configurationRoot);
+
+			ServiceProvider.SetServiceLocator();
+
+			OutputWindowPane ??= await VS.Windows.CreateOutputWindowPaneAsync(Vsix.Name);
+
+			await this.RegisterCommandsAsync();
 
 			await OutputWindowPane.ActivateAsync();
 			await OutputWindowPane.WriteLineAsync(string.Format("{0} Loaded", Vsix.Name));
 		}
 	}
+
+	internal class ToolkitServiceProvider<TPackage> : Community.VisualStudio.Toolkit.DependencyInjection.Core.IToolkitServiceProvider<TPackage>
+		where TPackage : AsyncPackage
+	{
+		private readonly IServiceProvider _serviceProvider;
+
+		public ToolkitServiceProvider(IServiceProvider services)
+		{
+			_serviceProvider = services;
+		}
+
+		public object GetService(Type serviceType)
+		{
+			return _serviceProvider.GetService(serviceType);
+		}
+	}
+
 }

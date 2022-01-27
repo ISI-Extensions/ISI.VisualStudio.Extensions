@@ -8,17 +8,12 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public bool IsAreasFolder(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
-			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFile)
+			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFolder)
 			{
-				var directory = solutionItem.FullPath.TrimEnd('\\', '/');
+				var areasDirectory = GetAreasDirectory(project);
+				var directory = solutionItem.FullPath;
 
-				if (string.Equals(directory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault(), "Areas", StringComparison.InvariantCultureIgnoreCase))
-				{
-					var projectRootDirectory = System.IO.Path.GetDirectoryName(project.FullPath).TrimEnd('\\', '/');
-					var rootDirectory = directory.TrimEnd("Areas", StringComparison.InvariantCultureIgnoreCase).TrimEnd('\\', '/');
-
-					return (string.Equals(projectRootDirectory, rootDirectory, System.StringComparison.InvariantCultureIgnoreCase));
-				}
+				return ISI.Extensions.IO.Path.IsPathEqual(directory, areasDirectory);
 			}
 
 			return false;

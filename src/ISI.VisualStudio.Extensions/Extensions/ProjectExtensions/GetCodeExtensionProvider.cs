@@ -1,6 +1,6 @@
 ﻿using ISI.Extensions.Extensions;
 
-namespace ISI.VisualStudio.Extensions.Extensions
+namespace ISI.VisualStudio.Extensions
 {
 	public static partial class ProjectExtensions
 	{
