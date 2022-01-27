@@ -5,7 +5,7 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensionsHelper
+	public partial class RecipeExtensions_Helper
 	{
 		public void ReplaceFileContent(string fileName, IEnumerable<KeyValuePair<string, string>> replacementValues)
 		{

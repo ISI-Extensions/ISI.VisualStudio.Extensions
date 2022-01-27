@@ -5,7 +5,7 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensionsHelper
+	public partial class RecipeExtensions_Helper
 	{
 		protected virtual HashSet<string> _contentFileExtensions { get; } = new HashSet<string>(new[] { "tt" }, StringComparer.InvariantCultureIgnoreCase);
 	}

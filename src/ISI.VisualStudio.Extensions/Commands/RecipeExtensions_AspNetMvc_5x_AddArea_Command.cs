@@ -13,8 +13,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.RecipeExtensions_AspNetMvc_5x_AddArea_MenuItemId)]
 	public class RecipeExtensions_AspNetMvc_5x_AddArea_Command : BaseCommand<RecipeExtensions_AspNetMvc_5x_AddArea_Command>
 	{
-		private static RecipeExtensionsHelper _recipeExtensionsHelper = null;
-		protected RecipeExtensionsHelper RecipeExtensionsHelper => _recipeExtensionsHelper ??= Package.GetServiceProvider().GetService<RecipeExtensionsHelper>();
+		private static RecipeExtensions_AspNetMvc_5x_Helper _recipeExtensionsHelper = null;
+		protected RecipeExtensions_AspNetMvc_5x_Helper RecipeExtensionsHelper => _recipeExtensionsHelper ??= Package.GetServiceProvider().GetService<RecipeExtensions_AspNetMvc_5x_Helper>();
 
 		protected override void BeforeQueryStatus(EventArgs eventArgs)
 		{
@@ -57,8 +57,8 @@ namespace ISI.VisualStudio.Extensions
 
 						var solution = await VS.Solutions.GetCurrentSolutionAsync();
 						var project = await VS.Solutions.GetActiveProjectAsync();
-
-						areaKey = areaKey.Replace(" ", string.Empty);
+						
+						await project?.SaveAsync();
 
 						var solutionDirectory = System.IO.Path.GetDirectoryName(solution.FullPath);
 						var solutionRecipesDirectory = System.IO.Path.Combine(solutionDirectory, ".recipes");
@@ -86,27 +86,25 @@ namespace ISI.VisualStudio.Extensions
 								{ "${BaseUrl}", routeUrl }
 							};
 
-							var controllersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensionsHelper.ControllersFolderName);
+							var controllersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensions_AspNetMvc_5x_Helper.ControllersFolderName);
 							System.IO.Directory.CreateDirectory(controllersDirectory);
-							var modelBindersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensionsHelper.ModelBindersFolderName);
+							var modelBindersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensions_AspNetMvc_5x_Helper.ModelBindersFolderName);
 							System.IO.Directory.CreateDirectory(modelBindersDirectory);
-							var modelsDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensionsHelper.ModelsFolderName);
+							var modelsDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensions_AspNetMvc_5x_Helper.ModelsFolderName);
 							System.IO.Directory.CreateDirectory(modelsDirectory);
-							var routesDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensionsHelper.RoutesFolderName);
+							var routesDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensions_AspNetMvc_5x_Helper.RoutesFolderName);
 							System.IO.Directory.CreateDirectory(routesDirectory);
 
 							var recipes = new[]
 							{
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(controllersDirectory, "__Controller.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_Controller)), controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelBindersDirectory, "_ModelBinders.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_ModelBinders)), modelBindersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelsDirectory, "_BaseModel.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_BaseModel)), modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(routesDirectory, "__Routes.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_Routes)), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(areaDirectory, "AreaRegistration.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_AreaRegistration)), areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(controllersDirectory, "__Controller.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_Controller)), controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(modelBindersDirectory, "_ModelBinders.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_ModelBinders)), modelBindersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(modelsDirectory, "_BaseModel.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_BaseModel)), modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, "__Routes.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_Routes)), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(areaDirectory, "AreaRegistration.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(RecipeExtensions.AspNetMvc_5x_Recipes.AddArea_AreaRegistration)), areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
-
-							//T4Manager.T4Extensions.Instance.CheckProject(_recipeExtensions.GetSelectedProject());
 
 							await outputWindowPane.WriteLineAsync("Done\n");
 							await outputWindowPane.ActivateAsync();

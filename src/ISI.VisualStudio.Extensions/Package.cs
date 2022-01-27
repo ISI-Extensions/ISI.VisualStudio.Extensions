@@ -24,6 +24,7 @@ namespace ISI.VisualStudio.Extensions
 	[ProvideProfile(typeof(OptionsProvider.RecipeExtensionsOptionsPage), Vsix.Name, "RecipeExtensions_Options", 0, 0, true)]
 	public sealed class Package : ToolkitPackage
 	{
+		public EnvDTE80.DTE2 DTE2 { get; private set; } = null!;
 		public IServiceProvider ServiceProvider { get; private set; } = null!;
 
 		private OutputWindowPane OutputWindowPane = null;
@@ -58,7 +59,7 @@ namespace ISI.VisualStudio.Extensions
 				.AddSingleton<ISI.Extensions.Serialization.ISerialization, ISI.Extensions.Serialization.Serialization>()
 
 				.AddSingleton<CakeExtensionsHelper>()
-				.AddSingleton<RecipeExtensionsHelper>()
+				.AddSingleton<RecipeExtensions_AspNetMvc_5x_Helper>()
 				.AddSingleton<XmlConfigurationExtensionsHelper>()
 
 				.AddConfigurationRegistrations(configurationRoot)
@@ -70,6 +71,9 @@ namespace ISI.VisualStudio.Extensions
 			ServiceProvider.SetServiceLocator();
 
 			OutputWindowPane ??= await VS.Windows.CreateOutputWindowPaneAsync(Vsix.Name);
+
+			DTE2 = await GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE80.DTE2;
+			Microsoft.Assumes.Present(DTE2);
 
 			await this.RegisterCommandsAsync();
 

@@ -5,7 +5,7 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensionsHelper
+	public partial class RecipeExtensions_AspNetMvc_5x_Helper
 	{
 		public string GetAreaDirectory(Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{

@@ -65,7 +65,10 @@
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddArea_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_ExecuteTransform_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_AddTransform_Command.cs" />
-    <Compile Include="Extensions\PackageExtensions\GetServiceProviderAsync.cs" />
+    <Compile Include="Extensions\DTE2Extensions\GetSelectedProject.cs" />
+    <Compile Include="Extensions\PackageExtensions\GetDTE2.cs" />
+    <Compile Include="Extensions\PackageExtensions\GetServiceProvider.cs" />
+    <Compile Include="Extensions\ProjectExtensions\RunT4LocalContents.cs" />
     <Compile Include="Extensions\ProjectExtensions\GetCodeExtensionProvider.cs" />
     <Compile Include="InputDialog.xaml.cs">
       <DependentUpon>InputDialog.xaml</DependentUpon>
@@ -87,29 +90,29 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />
-    <Compile Include="RecipeExtensionsHelper\AddFromRecipesAsync.cs" />
-    <Compile Include="RecipeExtensionsHelper\IsProjectUsingJQueryExtensions.cs" />
-    <Compile Include="RecipeExtensionsHelper\IsProjectUsingBootstrapExtensions.cs" />
-    <Compile Include="RecipeExtensionsHelper\IsProjectUsingCmsExtensions.cs" />
-    <Compile Include="RecipeExtensionsHelper\FilterWebConfig.cs" />
-    <Compile Include="RecipeExtensionsHelper\GetControllerName.cs" />
-    <Compile Include="RecipeExtensionsHelper\GetProjectDirectory.cs" />
-    <Compile Include="RecipeExtensionsHelper\GetAreasDirectory.cs" />
-    <Compile Include="RecipeExtensionsHelper\GetAreaDirectory.cs" />
-    <Compile Include="RecipeExtensionsHelper\GetAreaName.cs" />
-    <Compile Include="RecipeExtensionsHelper\IsControllerFolder.cs" />
-    <Compile Include="RecipeExtensionsHelper\ReplaceFileContent.cs" />
-    <Compile Include="RecipeExtensionsHelper\GetRootNamespace.cs" />
-    <Compile Include="RecipeExtensionsHelper\GetContent.cs" />
-    <Compile Include="RecipeExtensionsHelper\AddFromRecipeAsync.cs" />
-    <Compile Include="RecipeExtensionsHelper\IsControllersFolder.cs" />
-    <Compile Include="RecipeExtensionsHelper\_contentFileExtensions.cs" />
-    <Compile Include="RecipeExtensionsHelper\_RecipeItem.cs" />
-    <Compile Include="RecipeExtensionsHelper\GetOutputWindowPaneAsync.cs" />
-    <Compile Include="RecipeExtensionsHelper\IsAreasFolder.cs" />
-    <Compile Include="RecipeExtensionsHelper\IsProjectRoot.cs" />
-    <Compile Include="RecipeExtensionsHelper\IsAspNetMvc_5x_Project.cs" />
-    <Compile Include="RecipeExtensionsHelper\__RecipeExtensionsHelper.cs" />
+    <Compile Include="RecipeExtensions_Helper\AddFromRecipesAsync.cs" />
+    <Compile Include="RecipeExtensions_Helper\IsProjectUsingJQueryExtensions.cs" />
+    <Compile Include="RecipeExtensions_Helper\IsProjectUsingBootstrapExtensions.cs" />
+    <Compile Include="RecipeExtensions_Helper\IsProjectUsingCmsExtensions.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\FilterWebConfig.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetControllerName.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetProjectDirectory.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreasDirectory.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreaDirectory.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreaName.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsControllerFolder.cs" />
+    <Compile Include="RecipeExtensions_Helper\ReplaceFileContent.cs" />
+    <Compile Include="RecipeExtensions_Helper\GetRootNamespace.cs" />
+    <Compile Include="RecipeExtensions_Helper\GetContent.cs" />
+    <Compile Include="RecipeExtensions_Helper\AddFromRecipeAsync.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsControllersFolder.cs" />
+    <Compile Include="RecipeExtensions_Helper\_contentFileExtensions.cs" />
+    <Compile Include="RecipeExtensions_Helper\_RecipeItem.cs" />
+    <Compile Include="RecipeExtensions_Helper\GetOutputWindowPaneAsync.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsAreasFolder.cs" />
+    <Compile Include="RecipeExtensions_Helper\IsProjectRoot.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsAspNetMvc_5x_Project.cs" />
+    <Compile Include="RecipeExtensions_Helper\__RecipeExtensions_Helper.cs" />
     <Compile Include="RecipeExtensions\Project_Recipes.Designer.cs">
       <DependentUpon>Project_Recipes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -135,6 +138,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Solution_Recipes.resx</DependentUpon>
     </Compile>
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\__RecipeExtensions_AspNetMvc_5x_Helper.cs" />
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -246,7 +250,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Extensions\SolutionItemExtensions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

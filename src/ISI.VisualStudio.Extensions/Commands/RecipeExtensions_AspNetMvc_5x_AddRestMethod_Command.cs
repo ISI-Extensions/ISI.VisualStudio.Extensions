@@ -13,8 +13,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.RecipeExtensions_AspNetMvc_5x_AddRestMethod_MenuItemId)]
 	public class RecipeExtensions_AspNetMvc_5x_AddRestMethod_Command : BaseCommand<RecipeExtensions_AspNetMvc_5x_AddRestMethod_Command>
 	{
-		private static RecipeExtensionsHelper _recipeExtensionsHelper = null;
-		protected RecipeExtensionsHelper RecipeExtensionsHelper => _recipeExtensionsHelper ??= Package.GetServiceProvider().GetService<RecipeExtensionsHelper>();
+		private static RecipeExtensions_AspNetMvc_5x_Helper _recipeExtensionsHelper = null;
+		protected RecipeExtensions_AspNetMvc_5x_Helper RecipeExtensionsHelper => _recipeExtensionsHelper ??= Package.GetServiceProvider().GetService<RecipeExtensions_AspNetMvc_5x_Helper>();
 
 		protected override void BeforeQueryStatus(EventArgs eventArgs)
 		{
@@ -64,6 +64,8 @@ namespace ISI.VisualStudio.Extensions
 						var solutionItem = await VS.Solutions.GetActiveItemAsync();
 						var solution = await VS.Solutions.GetCurrentSolutionAsync();
 						var project = await VS.Solutions.GetActiveProjectAsync();
+						
+						await project?.SaveAsync();
 
 						var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
 						var areaName = RecipeExtensionsHelper.GetAreaName(solutionItem);
@@ -79,7 +81,7 @@ namespace ISI.VisualStudio.Extensions
 						var areasDirectory = RecipeExtensionsHelper.GetAreasDirectory(project);
 						var areaDirectory = RecipeExtensionsHelper.GetAreaDirectory(solutionItem);
 
-						var controllersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensionsHelper.ControllersFolderName);
+						var controllersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensions_AspNetMvc_5x_Helper.ControllersFolderName);
 						var controllerDirectory = System.IO.Path.Combine(controllersDirectory, controllerKey);
 
 						var usings = @"using System;
@@ -123,11 +125,11 @@ using ISI.Libraries.Extensions;
 
 						var recipes = new[]
 						{
-							new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}{1}.cs", controllerActionKey, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", (isAsync ? nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddAsyncRestMethod_Action) : nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddRestMethod_Action))), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+							new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}{1}.cs", controllerActionKey, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", (isAsync ? nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddAsyncRestMethod_Action) : nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddRestMethod_Action))), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 
-							new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddRestMethod_Model)), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddRestMethod_Model)), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
-							new RecipeExtensionsHelper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
+							new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
 								(projectItems, fullName, content, replacementValues) =>
 								{
 									var routePath = System.Text.RegularExpressions.Regex.Replace(controllerActionKey, @"(?<begin>(\w*?))(?<end>[A-Z]+)", string.Format(@"${{begin}}{0}${{end}}", "-")).Substring(1).Trim().ToLower();
@@ -143,8 +145,6 @@ using ISI.Libraries.Extensions;
 						};
 
 						await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
-
-						//T4Manager.T4Extensions.Instance.CheckProject(_recipeExtensions.GetSelectedProject());
 
 						await outputWindowPane.WriteLineAsync("Done\n");
 						await outputWindowPane.ActivateAsync();

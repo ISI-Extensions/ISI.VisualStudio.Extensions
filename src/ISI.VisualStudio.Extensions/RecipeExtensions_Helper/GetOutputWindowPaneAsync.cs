@@ -4,7 +4,7 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensionsHelper
+	public partial class RecipeExtensions_Helper
 	{
 		private Community.VisualStudio.Toolkit.OutputWindowPane _outputWindowPane = null;
 
