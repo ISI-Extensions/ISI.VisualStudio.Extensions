@@ -213,13 +213,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8062.6074" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8062.6074" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8062.6074" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8062.6074" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8062.6074" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8062.6074" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8062.6074" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8062.8072" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8062.8072" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8062.8072" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8062.8072" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8062.8072" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8062.8072" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8062.8072" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
