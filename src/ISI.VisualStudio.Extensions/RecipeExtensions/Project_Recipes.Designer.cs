@@ -11,6 +11,7 @@
 namespace ISI.VisualStudio.Extensions.RecipeExtensions {
     using System;
     
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -169,7 +170,7 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         /// <summary>
         ///   Looks up a localized string similar to &lt;#@ template debug=&quot;true&quot; hostSpecific=&quot;true&quot; #&gt;
         ///&lt;#@ output extension=&quot;.generated.cs&quot; #&gt;
-        ///&lt;#@ template language=&quot;C#v3.5&quot; #&gt;
+        ///&lt;#@ template language=&quot;C#&quot; #&gt;
         ///&lt;#@ assembly name=&quot;System.Core&quot; #&gt;
         ///&lt;#@ Assembly Name=&quot;EnvDTE&quot; #&gt;
         ///&lt;#@ Assembly Name=&quot;System.Data&quot; #&gt;
@@ -180,7 +181,7 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///&lt;#@ import namespace=&quot;System.Text.RegularExpressions&quot; #&gt;
         ///&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
         ///&lt;#
-        ///		string enumName = Pat [rest of string was truncated]&quot;;.
+        ///		string enumName = Path.Ge [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AddEnumTextTemplate {
             get {
@@ -189,22 +190,7 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ISI.Extensions.Tracing.ITrace	Trace	Checked
-        ///ISI.Extensions.DateTimeStamper.IDateTimeStamper	DateTimeStamper	Checked.
-        /// </summary>
-        internal static string AddExtensionsPartialClassInjectors {
-            get {
-                return ResourceManager.GetString("AddExtensionsPartialClassInjectors", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to using System;
-        ///using System.Collections.Generic;
-        ///using System.Linq;
-        ///using System.Text;
-        ///using System.Threading.Tasks;
-        ///using ISI.Libraries.Extensions;
+        ///   Looks up a localized string similar to ${Usings}
         ///
         ///namespace ${Namespace}
         ///{
@@ -221,20 +207,6 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         internal static string AddPartialClass {
             get {
                 return ResourceManager.GetString("AddPartialClass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ISI.Extensions.Tracing.ITrace	Trace
-        ///ISI.Extensions.DateTimeStamper.IDateTimeStamper	DateTimeStamper
-        ///ISI.Libraries.Tracing.ITrace	Trace	Checked
-        ///ISI.Libraries.Cache.ICacheManager	CacheManager
-        ///ISI.Libraries.IDateTimeStamper	DateTimeStamper	Checked
-        ///ISI.Libraries.Documents.DocumentGenerator.IGenerator	DocumentGenerator.
-        /// </summary>
-        internal static string AddPartialClassInjectors {
-            get {
-                return ResourceManager.GetString("AddPartialClassInjectors", resourceCulture);
             }
         }
         

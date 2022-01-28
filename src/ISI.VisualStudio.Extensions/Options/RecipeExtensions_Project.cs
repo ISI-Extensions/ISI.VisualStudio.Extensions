@@ -13,14 +13,6 @@ namespace ISI.VisualStudio.Extensions
 		public string Project_AddPartialClass { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.Project_Recipes.AddPartialClass;
 
 		[Category("Project Recipes")]
-		[DisplayName("Add Partial Class Injectors")]
-		public string Project_AddPartialClassInjectors { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.Project_Recipes.AddPartialClassInjectors;
-
-		[Category("Project Recipes")]
-		[DisplayName("Add ISI.Extensions Partial Class Injectors")]
-		public string Project_AddExtensionsPartialClassInjectors { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.Project_Recipes.AddExtensionsPartialClassInjectors;
-
-		[Category("Project Recipes")]
 		[DisplayName("Add Partial Class Method")]
 		public string Project_AddPartialClassMethod { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.Project_Recipes.AddPartialClassMethod;
 

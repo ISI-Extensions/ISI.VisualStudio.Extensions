@@ -229,6 +229,106 @@
 				</Strings>
 			</Button>
 
+			<!--   Project -->
+			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="FolderMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId</CommandName>
+					<ButtonText>Add Enum Text Template</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_AddPartialClass_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_ProjectPartialClass_AddPartialClass_MenuItemId</CommandName>
+					<ButtonText>Add Partial Class</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_AddPartialClassMethod_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_ProjectPartialClass_AddPartialClassMethod_MenuItemId</CommandName>
+					<ButtonText>Add Partial Class Method</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_AddPartialClassPrivateMethod_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_ProjectPartialClass_AddPartialClassPrivateMethod_MenuItemId</CommandName>
+					<ButtonText>Add Partial Class Private Method</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_AddPartialClassSubClass_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_ProjectPartialClass_AddPartialClassSubClass_MenuItemId</CommandName>
+					<ButtonText>Add Partial Class SubClass</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_SyncPartialClassUsingStatements_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_ProjectPartialClass_SyncPartialClassUsingStatements_MenuItemId</CommandName>
+					<ButtonText>Sync Partial Class Using Statements</ButtonText>
+				</Strings>
+			</Button>
+			
+			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddDataTransferObjectRequestResponse_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="FolderMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_Project_AddDataTransferObjectRequestResponse_MenuItemId</CommandName>
+					<ButtonText>Add Request and Response DTOs</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddStartUpClass_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_Project_AddStartUpClass_MenuItemId</CommandName>
+					<ButtonText>Add StartUp Class</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddDependencyRegisterClass_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_Project_AddSDependencyRegisterClass_MenuItemId</CommandName>
+					<ButtonText>Add DependencyRegister Class</ButtonText>
+				</Strings>
+			</Button>
+
 
 			<!-- Cake Extensions -->
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteDefaultTargetMenuItemId" priority="0x0100" type="Button">
@@ -255,6 +355,7 @@
 			</Button>
 
 
+			<!-- Guid Extensions -->
 			<Button guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" priority="0x0600" type="Button">
 				<Parent guid="VSMainMenu" id="CodeWindow.TextEditGroup"/>
 				<Strings>
@@ -264,6 +365,31 @@
 				</Strings>
 			</Button>
 
+
+			<!-- Jenkins Extensions -->
+			<Button guid="PackageUuid" id="JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId</CommandName>
+					<ButtonText>Push to Jenkins</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId</CommandName>
+					<ButtonText>Pull From Jenkins</ButtonText>
+				</Strings>
+			</Button>
+
+			<!-- Clipboard Extensions -->
 			<Button guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" priority="0x0100" type="Button">
 				<Parent guid="VSMainMenu" id="Edit.PasteGroup" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
@@ -409,8 +535,6 @@
 			<IDSymbol name="RecipeExtensions_Project_AddDependencyRegisterClass_MenuItemId" value="0x04C1" />
 
 
-			<IDSymbol name="RecipeExtensionsSolutionAddSolutionHelpersMenuItemId" value="0x04F0" />
-
 			<IDSymbol name="CakeExtensionsExecuteDefaultTargetMenuItemId" value="0x0520" />
 			<IDSymbol name="CakeExtensionsExecuteTargetMenuSubgroupId" value="0x0521" />
 			<IDSymbol name="CakeExtensionsExecuteTargetSubMenuId" value="0x0522" />
@@ -419,17 +543,9 @@
 			<IDSymbol name="JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId" value="0x05A0" />
 			<IDSymbol name="JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId" value="0x05A1" />
 
-			<IDSymbol name="AspNetMvcExtensionsChangeMvcBuildViewsMenuItemId" value="0x0600" />
-			<IDSymbol name="AspNetMvcExtensionsAutoTurnMvcBuildViewsOnMenuItemId" value="0x0601" />
-
 
 			<IDSymbol name="ClipboardExtensionsPasteAsMenuItemId" value="0x0700" />
 			<IDSymbol name="ClipboardExtensionsPasteAsCmdAppendMenuItemId" value="0x0701" />
-			<IDSymbol name="ClipboardExtensionsPasteAsPropertiesMenuItemId" value="0x0702" />
-			<IDSymbol name="ClipboardExtensionsPasteAsDataContractPropertiesMenuItemId" value="0x0703" />
-			<IDSymbol name="ClipboardExtensionsPasteAsRepositoryPropertiesMenuItemId" value="0x0704" />
-			<IDSymbol name="ClipboardExtensionsPasteAsDocumentDataPropertiesMenuItemId" value="0x0705" />
-
 			<IDSymbol name="ClipboardExtensionsPasteAsConversionMenuItemId" value="0x0750" />
 
 			<IDSymbol name="ClipboardExtensionsContextMenuSubgroupId" value="0x0770" />

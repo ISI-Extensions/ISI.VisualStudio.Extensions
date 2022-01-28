@@ -59,7 +59,10 @@ namespace ISI.VisualStudio.Extensions
 				.AddSingleton<ISI.Extensions.Serialization.ISerialization, ISI.Extensions.Serialization.Serialization>()
 
 				.AddSingleton<CakeExtensionsHelper>()
+				.AddSingleton<JenkinsExtensionsHelper>()
 				.AddSingleton<RecipeExtensions_AspNetMvc_5x_Helper>()
+				.AddSingleton<RecipeExtensions_Project_Helper>()
+				.AddSingleton<RecipeExtensions_ProjectPartialClass_Helper>()
 				.AddSingleton<XmlConfigurationExtensionsHelper>()
 
 				.AddConfigurationRegistrations(configurationRoot)

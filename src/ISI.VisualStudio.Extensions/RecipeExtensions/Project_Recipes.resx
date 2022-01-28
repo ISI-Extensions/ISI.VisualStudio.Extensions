@@ -200,7 +200,7 @@ namespace ${Namespace}
   <data name="AddEnumTextTemplate" xml:space="preserve">
     <value>&lt;#@ template debug="true" hostSpecific="true" #&gt;
 &lt;#@ output extension=".generated.cs" #&gt;
-&lt;#@ template language="C#v3.5" #&gt;
+&lt;#@ template language="C#" #&gt;
 &lt;#@ assembly name="System.Core" #&gt;
 &lt;#@ Assembly Name="EnvDTE" #&gt;
 &lt;#@ Assembly Name="System.Data" #&gt;
@@ -328,17 +328,8 @@ namespace &lt;#= @namespace #&gt;
 #&gt;  }
 }</value>
   </data>
-  <data name="AddExtensionsPartialClassInjectors" xml:space="preserve">
-    <value>ISI.Extensions.Tracing.ITrace	Trace	Checked
-ISI.Extensions.DateTimeStamper.IDateTimeStamper	DateTimeStamper	Checked</value>
-  </data>
   <data name="AddPartialClass" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ISI.Libraries.Extensions;
+    <value>${Usings}
 
 namespace ${Namespace}
 {
@@ -351,14 +342,6 @@ ${ClassInjectorAssignments}
 		}
 	}
 }</value>
-  </data>
-  <data name="AddPartialClassInjectors" xml:space="preserve">
-    <value>ISI.Extensions.Tracing.ITrace	Trace
-ISI.Extensions.DateTimeStamper.IDateTimeStamper	DateTimeStamper
-ISI.Libraries.Tracing.ITrace	Trace	Checked
-ISI.Libraries.Cache.ICacheManager	CacheManager
-ISI.Libraries.IDateTimeStamper	DateTimeStamper	Checked
-ISI.Libraries.Documents.DocumentGenerator.IGenerator	DocumentGenerator</value>
   </data>
   <data name="AddPartialClassMethod" xml:space="preserve">
     <value>${Usings}

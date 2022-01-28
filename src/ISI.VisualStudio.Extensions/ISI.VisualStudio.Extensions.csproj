@@ -58,11 +58,15 @@
     <Compile Include="Commands\CakeExtensions_ExecuteDefaultTarget_Command.cs" />
     <Compile Include="Commands\ClipboardExtensions_PasteAs_Command.cs" />
     <Compile Include="Commands\GuidExtensions_InsertNewGuid_Command.cs" />
+    <Compile Include="Commands\JenkinsExtensions_PullJenkinsConfigFromJenkins_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_ProjectPartialClass_AddPartialClass_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddEnumTextTemplate_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddRestMethod_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddActionWithPartialView_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddActionWithView_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddController_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddArea_Command.cs" />
+    <Compile Include="Commands\JenkinsExtensions_PushJenkinsConfigToJenkins_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_ExecuteTransform_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_AddTransform_Command.cs" />
     <Compile Include="Extensions\DTE2Extensions\GetSelectedProject.cs" />
@@ -70,12 +74,17 @@
     <Compile Include="Extensions\PackageExtensions\GetServiceProvider.cs" />
     <Compile Include="Extensions\ProjectExtensions\RunT4LocalContents.cs" />
     <Compile Include="Extensions\ProjectExtensions\GetCodeExtensionProvider.cs" />
+    <Compile Include="AddEnumTextTemplateDialog.xaml.cs">
+      <DependentUpon>AddEnumTextTemplateDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InputDialog.xaml.cs">
       <DependentUpon>InputDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="GenerateClassDefinitionConversionDialog.xaml.cs">
       <DependentUpon>GenerateClassDefinitionConversionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="JenkinsExtensionsHelper\IsJenkinsConfigFile.cs" />
+    <Compile Include="JenkinsExtensionsHelper\__JenkinsExtensionsHelper.cs" />
     <Compile Include="Options\RecipeExtensions_Solution.cs" />
     <Compile Include="Options\RecipeExtensions_Project.cs" />
     <Compile Include="Options\RecipeExtensions_AspNetWebApi_5x.cs" />
@@ -91,12 +100,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="RecipeExtensions_Helper\AddFromRecipesAsync.cs" />
+    <Compile Include="RecipeExtensions_Helper\IsProjectFolder.cs" />
     <Compile Include="RecipeExtensions_Helper\IsProjectUsingJQueryExtensions.cs" />
     <Compile Include="RecipeExtensions_Helper\IsProjectUsingBootstrapExtensions.cs" />
     <Compile Include="RecipeExtensions_Helper\IsProjectUsingCmsExtensions.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\FilterWebConfig.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetControllerName.cs" />
-    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetProjectDirectory.cs" />
+    <Compile Include="RecipeExtensions_Helper\GetProjectDirectory.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreasDirectory.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreaDirectory.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreaName.cs" />
@@ -139,6 +149,8 @@
       <DependentUpon>Solution_Recipes.resx</DependentUpon>
     </Compile>
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\__RecipeExtensions_AspNetMvc_5x_Helper.cs" />
+    <Compile Include="RecipeExtensions_ProjectPartialClass_Helper\__RecipeExtensions_ProjectPartialClass_Helper.cs" />
+    <Compile Include="RecipeExtensions_Project_Helper\__RecipeExtensions_Project_Helper.cs" />
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,6 +222,9 @@
     <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.394" ExcludeAssets="Runtime">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="ISI.Extensions.Jenkins.Forms">
+      <Version>10.0.8063.30046</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Imaging">
       <Version>17.0.32112.339</Version>
     </PackageReference>
@@ -217,13 +232,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8062.8072" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8062.8072" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8062.8072" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8062.8072" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8062.8072" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8062.8072" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8062.8072" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8063.30046" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8063.30046" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8063.30046" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8063.30046" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8063.30046" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8063.30046" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8063.30046" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +248,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddEnumTextTemplateDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="InputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
