@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class JenkinsExtensionsHelper
+	public partial class JenkinsExtensionsHelper : ExtensionsHelper
 	{
 		protected ISI.Extensions.Jenkins.JenkinsApi JenkinsApi { get; }
 

@@ -125,11 +125,11 @@ using ISI.Libraries.Extensions;
 
 						var recipes = new[]
 						{
-							new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}{1}.cs", controllerActionKey, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", (isAsync ? nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddAsyncRestMethod_Action) : nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddRestMethod_Action))), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+							new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}{1}.cs", controllerActionKey, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", (isAsync ? nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddAsyncRestMethod_Action) : nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddRestMethod_Action))), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 
-							new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddRestMethod_Model)), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AddRestMethod_Model)), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
-							new RecipeExtensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
+							new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
 								(projectItems, fullName, content, replacementValues) =>
 								{
 									var routePath = System.Text.RegularExpressions.Regex.Replace(controllerActionKey, @"(?<begin>(\w*?))(?<end>[A-Z]+)", string.Format(@"${{begin}}{0}${{end}}", "-")).Substring(1).Trim().ToLower();

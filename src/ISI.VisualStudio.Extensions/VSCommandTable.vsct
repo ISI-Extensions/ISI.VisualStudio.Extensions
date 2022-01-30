@@ -26,6 +26,10 @@
 			</Group>
 
 			<Group guid="PackageUuid" id="ProjectReferenceMenuGroupId" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_REFERENCE" />
+			</Group>
+
+			<Group guid="PackageUuid" id="ProjectReferencesMenuGroupId" priority="0x0600">
 				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_REFERENCEROOT" />
 			</Group>
 
@@ -329,6 +333,17 @@
 				</Strings>
 			</Button>
 
+			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddServiceRegistrarClass_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_Project_AddServiceRegistrarClass_MenuItemId</CommandName>
+					<ButtonText>Add DependencyRegister Class</ButtonText>
+				</Strings>
+			</Button>
+
 
 			<!-- Cake Extensions -->
 			<Button guid="PackageUuid" id="CakeExtensionsExecuteDefaultTargetMenuItemId" priority="0x0100" type="Button">
@@ -354,6 +369,29 @@
 				</Strings>
 			</Button>
 
+
+			<!-- Nuget Extensions -->
+			<Button guid="PackageUuid" id="NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectReferenceMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<!--<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>-->
+				<Strings>
+					<CommandName>Copy References As Nuget Packages</CommandName>
+					<ButtonText>Copy References As Nuget Packages</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="NugetExtensionsPasteAsNugetPackagesMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectReferencesMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<Strings>
+					<CommandName>Paste as Nuget Packages</CommandName>
+					<ButtonText>Paste as Nuget Packages</ButtonText>
+				</Strings>
+			</Button>
 
 			<!-- Guid Extensions -->
 			<Button guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" priority="0x0600" type="Button">
@@ -478,7 +516,8 @@
 			<IDSymbol name="FolderMenuGroupId" value="0x1024" />
 			<IDSymbol name="ItemMenuGroupId" value="0x1025" />
 			<IDSymbol name="EditorContextMenuGroupId" value="0x1026" />
-			<IDSymbol name="ProjectReferenceMenuGroupId" value="0x1027" />
+			<IDSymbol name="ProjectReferencesMenuGroupId" value="0x1027" />
+			<IDSymbol name="ProjectReferenceMenuGroupId" value="0x1028" />
 
 
 			<IDSymbol name="AboutMenuItemId" value="0x0105" />
@@ -533,6 +572,7 @@
 			<IDSymbol name="RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId" value="0x04B1" />
 			<IDSymbol name="RecipeExtensions_Project_AddStartUpClass_MenuItemId" value="0x04C0" />
 			<IDSymbol name="RecipeExtensions_Project_AddDependencyRegisterClass_MenuItemId" value="0x04C1" />
+			<IDSymbol name="RecipeExtensions_Project_AddServiceRegistrarClass_MenuItemId" value="0x04C2" />
 
 
 			<IDSymbol name="CakeExtensionsExecuteDefaultTargetMenuItemId" value="0x0520" />
@@ -560,6 +600,7 @@
 
 			<IDSymbol name="ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId" value="0x0B01" />
 
+			<IDSymbol name="NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId" value="0x0C00" />
 			<IDSymbol name="NugetExtensionsPasteAsNugetPackagesMenuItemId" value="0x0C01" />
 		</GuidSymbol>
 

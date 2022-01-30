@@ -22,14 +22,14 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Project_Recipes {
+    internal class ProjectPartialClass_Recipes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Project_Recipes() {
+        internal ProjectPartialClass_Recipes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ISI.VisualStudio.Extensions.RecipeExtensions.Project_Recipes", typeof(Project_Recipes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ISI.VisualStudio.Extensions.RecipeExtensions.ProjectPartialClass_Recipes", typeof(ProjectPartialClass_Recipes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -65,113 +65,21 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///
         ///namespace ${Namespace}
         ///{
-        ///	public partial class ${ClassNamePrefix}Request
+        ///	public partial class ${ClassName}
         ///	{
-        ///
-        ///		public System.Threading.CancellationToken CancellationToken { get; set; } = default;
-        ///	}
-        ///}.
-        /// </summary>
-        internal static string AddAsyncDataTransferObjectRequest {
-            get {
-                return ResourceManager.GetString("AddAsyncDataTransferObjectRequest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ${Usings}
-        ///
-        ///namespace ${Namespace}
-        ///{
-        ///	public partial class ${ClassNamePrefix}Request
-        ///	{
-        ///	}
-        ///}.
-        /// </summary>
-        internal static string AddDataTransferObjectRequest {
-            get {
-                return ResourceManager.GetString("AddDataTransferObjectRequest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ${Usings}
-        ///
-        ///namespace ${Namespace}
-        ///{
-        ///	public partial class ${ClassNamePrefix}Response
-        ///	{
-        ///	}
-        ///}.
-        /// </summary>
-        internal static string AddDataTransferObjectResponse {
-            get {
-                return ResourceManager.GetString("AddDataTransferObjectResponse", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ${Usings}
-        ///
-        ///namespace ${Namespace}
-        ///{
-        ///	[ISI.Libraries.DependencyRegister]
-        ///	public class DependencyRegister : ISI.Libraries.IDependencyRegister
-        ///	{
-        ///		void ISI.Libraries.IDependencyRegister.Register(ISI.Libraries.IDependencyResolver dependencyResolver)
+        ///		public async Task&lt;DTOs.${MethodName}Response&gt; ${MethodName}Async(DTOs.${MethodName}Request request)
         ///		{
-        ///			dependencyResolver.Register&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;(ISI.Libraries.DependencyResolverLifetime.Singleton);
+        ///			var response = new DTOs.${MethodName}Response();
+        ///			
+        ///			
+        ///			return response;
         ///		}
         ///	}
         ///}.
         /// </summary>
-        internal static string AddDependencyRegisterClass {
+        internal static string AddAsyncPartialClassMethod {
             get {
-                return ResourceManager.GetString("AddDependencyRegisterClass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;#@ template debug=&quot;true&quot; hostSpecific=&quot;true&quot; #&gt;
-        ///&lt;#@ output extension=&quot;.generated.cs&quot; #&gt;
-        ///&lt;#@ template language=&quot;C#&quot; #&gt;
-        ///&lt;#@ assembly name=&quot;System.Core&quot; #&gt;
-        ///&lt;#@ Assembly Name=&quot;EnvDTE&quot; #&gt;
-        ///&lt;#@ Assembly Name=&quot;System.Data&quot; #&gt;
-        ///&lt;#@ import namespace=&quot;EnvDTE&quot; #&gt;
-        ///&lt;#@ import namespace=&quot;System.Data&quot; #&gt;
-        ///&lt;#@ import namespace=&quot;System.Data.SqlClient&quot; #&gt;
-        ///&lt;#@ import namespace=&quot;System.IO&quot; #&gt;
-        ///&lt;#@ import namespace=&quot;System.Text.RegularExpressions&quot; #&gt;
-        ///&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
-        ///&lt;#
-        ///		string enumName = Path.Ge [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string AddEnumTextTemplate {
-            get {
-                return ResourceManager.GetString("AddEnumTextTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ${Usings}
-        ///using Microsoft.Extensions.DependencyInjection;
-        ///
-        ///namespace ${Namespace}
-        ///{
-        ///	[ISI.Extensions.DependencyInjection.ServiceRegistrar]
-        ///	public class ServiceRegistrar : ISI.Extensions.DependencyInjection.IServiceRegistrar
-        ///	{
-        ///		public void ServiceRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection services)
-        ///		{
-        ///			services.AddSingleton&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;();
-        ///		}
-        ///	}
-        ///}.
-        /// </summary>
-        internal static string AddServiceRegistrarClass {
-            get {
-                return ResourceManager.GetString("AddServiceRegistrarClass", resourceCulture);
+                return ResourceManager.GetString("AddAsyncPartialClassMethod", resourceCulture);
             }
         }
         
@@ -180,25 +88,102 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///
         ///namespace ${Namespace}
         ///{
-        ///	[ISI.Libraries.StartUp]
-        ///	public class StartUp : ISI.Libraries.IStartUp
+        ///	public partial class ${ClassName}
         ///	{
-        ///		private static bool _isInitialized = false;
-        ///		public void Start()
+        ///		private async Task ${MethodName}()
         ///		{
-        ///			if (!_isInitialized)
-        ///			{
-        ///				_isInitialized = true;
         ///
-        ///				ISI.Libraries.VirtualFileRepositories.Register(typeof(StartUp));
-        ///			}
         ///		}
         ///	}
         ///}.
         /// </summary>
-        internal static string AddStartUpClass {
+        internal static string AddAsyncPartialClassPrivateMethod {
             get {
-                return ResourceManager.GetString("AddStartUpClass", resourceCulture);
+                return ResourceManager.GetString("AddAsyncPartialClassPrivateMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	public partial class ${ClassName} : I${ClassName}
+        ///	{
+        ///${ClassInjectorProperties}
+        ///		public ${ClassName}(${ClassInjectors})
+        ///		{
+        ///${ClassInjectorAssignments}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string AddPartialClass {
+            get {
+                return ResourceManager.GetString("AddPartialClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	public partial class ${ClassName}
+        ///	{
+        ///		public DTOs.${MethodName}Response ${MethodName}(DTOs.${MethodName}Request request)
+        ///		{
+        ///			var response = new DTOs.${MethodName}Response();
+        ///			
+        ///			
+        ///			return response;
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string AddPartialClassMethod {
+            get {
+                return ResourceManager.GetString("AddPartialClassMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	public partial class ${ClassName}
+        ///	{
+        ///		private void ${MethodName}()
+        ///		{
+        ///
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string AddPartialClassPrivateMethod {
+            get {
+                return ResourceManager.GetString("AddPartialClassPrivateMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	public partial class ${ClassName}
+        ///	{
+        ///		public partial class ${SubClassName}
+        ///		{
+        ///
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string AddPartialClassSubClass {
+            get {
+                return ResourceManager.GetString("AddPartialClassSubClass", resourceCulture);
             }
         }
     }

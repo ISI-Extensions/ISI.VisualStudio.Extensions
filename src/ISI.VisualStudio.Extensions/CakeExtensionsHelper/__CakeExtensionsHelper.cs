@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class CakeExtensionsHelper
+	public partial class CakeExtensionsHelper : ExtensionsHelper
 	{
 		protected ISI.Extensions.Cake.CakeApi CakeApi { get; }
 

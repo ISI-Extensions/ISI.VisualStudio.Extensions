@@ -117,13 +117,95 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="editorconfig" xml:space="preserve">
-    <value># Top-most EditorConfig file
-root = true
+  <data name="AddAsyncPartialClassMethod" xml:space="preserve">
+    <value>${Usings}
 
-[*]
-indent_style = tab
-end_of_line = crlf
-indent_size = 2</value>
+namespace ${Namespace}
+{
+	public partial class ${ClassName}
+	{
+		public async Task&lt;DTOs.${MethodName}Response&gt; ${MethodName}Async(DTOs.${MethodName}Request request)
+		{
+			var response = new DTOs.${MethodName}Response();
+			
+			
+			return response;
+		}
+	}
+}</value>
+  </data>
+  <data name="AddAsyncPartialClassPrivateMethod" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassName}
+	{
+		private async Task ${MethodName}()
+		{
+
+		}
+	}
+}</value>
+  </data>
+  <data name="AddPartialClass" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassName} : I${ClassName}
+	{
+${ClassInjectorProperties}
+		public ${ClassName}(${ClassInjectors})
+		{
+${ClassInjectorAssignments}
+		}
+	}
+}</value>
+  </data>
+  <data name="AddPartialClassMethod" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassName}
+	{
+		public DTOs.${MethodName}Response ${MethodName}(DTOs.${MethodName}Request request)
+		{
+			var response = new DTOs.${MethodName}Response();
+			
+			
+			return response;
+		}
+	}
+}</value>
+  </data>
+  <data name="AddPartialClassPrivateMethod" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassName}
+	{
+		private void ${MethodName}()
+		{
+
+		}
+	}
+}</value>
+  </data>
+  <data name="AddPartialClassSubClass" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassName}
+	{
+		public partial class ${SubClassName}
+		{
+
+		}
+	}
+}</value>
   </data>
 </root>

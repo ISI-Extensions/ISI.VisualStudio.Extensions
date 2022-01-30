@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.RecipeExtensions_ProjectPartialClass_AddPartialClass_MenuItemId)]
-	public class RecipeExtensions_ProjectPartialClass_AddPartialClass_Command : BaseCommand<RecipeExtensions_ProjectPartialClass_AddPartialClass_Command>
+	[Command(PackageIds.RecipeExtensions_ProjectPartialClass_AddPartialClassSubClass_MenuItemId)]
+	public class RecipeExtensions_ProjectPartialClass_AddPartialClassSubClass_Command : BaseCommand<RecipeExtensions_ProjectPartialClass_AddPartialClassSubClass_Command>
 	{
 		private static RecipeExtensions_ProjectPartialClass_Helper _recipeExtensionsHelper = null;
 		protected RecipeExtensions_ProjectPartialClass_Helper RecipeExtensionsHelper => _recipeExtensionsHelper ??= Package.GetServiceProvider().GetService<RecipeExtensions_ProjectPartialClass_Helper>();
@@ -36,15 +36,15 @@ namespace ISI.VisualStudio.Extensions
 		{
 			try
 			{
-				var inputDialog = new InputDialog("New Partial Class");
+				var inputDialog = new InputDialog("Add Partial Class SubClass");
 
 				var inputDialogResult = await inputDialog.ShowDialogAsync();
 
 				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.Value))
 				{
-					var partialClassName = inputDialog.Value.Replace(" ", string.Empty);
+					var subClassName = inputDialog.Value.Replace(" ", string.Empty);
 
-					if (!string.IsNullOrWhiteSpace(partialClassName))
+					if (!string.IsNullOrWhiteSpace(subClassName))
 					{
 						var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
 
@@ -52,7 +52,7 @@ namespace ISI.VisualStudio.Extensions
 
 						await outputWindowPane.ClearAsync();
 
-						await outputWindowPane.WriteLineAsync("New Partial Class");
+						await outputWindowPane.WriteLineAsync("Add Partial Class SubClass");
 
 						var solution = await VS.Solutions.GetCurrentSolutionAsync();
 						var project = await VS.Solutions.GetActiveProjectAsync();
@@ -64,43 +64,26 @@ namespace ISI.VisualStudio.Extensions
 						var solutionRecipesDirectory = System.IO.Path.Combine(solutionDirectory, ".recipes");
 
 						var projectDirectory = RecipeExtensionsHelper.GetProjectDirectory(project);
+						var partialClassDirectory = solutionItem.FullPath;
+						var directory = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(partialClassDirectory));
+
+						var partialClassName = partialClassDirectory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+
 						var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
+						@namespace = string.Format("{0}.{1}", @namespace, directory.Substring(projectDirectory.Length).Replace("\\", ".").Trim('.')).TrimEnd('.');
 
-						var directory = (solutionItem.Type == SolutionItemType.Project ? projectDirectory : solutionItem.FullPath);
-						var partialClassDirectory = System.IO.Path.Combine(directory, partialClassName);
 
-						if (!System.IO.Directory.Exists(partialClassDirectory))
+						if (System.IO.Directory.Exists(partialClassDirectory))
 						{
-							System.IO.Directory.CreateDirectory(partialClassDirectory);
-
 							var codeExtensionProvider = project.GetCodeExtensionProvider();
 
 							var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
-							if (partialClassName.EndsWith("Api", StringComparison.InvariantCulture))
 							{
-								try
+								var fileName = System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
+
+								if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fileName))
 								{
-									usings.Add(string.Format("using DTOs = {0}.DataTransferObjects.{1};", @namespace.TrimEnd(".Api"), partialClassName));
-								}
-								catch
-								{
-								}
-								try
-								{
-									usings.Add(string.Format("using RepositoryDTOs = {0}.DataTransferObjects.{1}Repository;", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")));
-								}
-								catch
-								{
-								}
-							}
-							if (partialClassName.EndsWith("Repository", StringComparison.InvariantCulture))
-							{
-								try
-								{
-									usings.Add(string.Format("using DTOs = {0}.DataTransferObjects.{1};", @namespace.TrimEnd(".Repository"), partialClassName));
-								}
-								catch
-								{
+									usings = new List<string>(System.IO.File.ReadAllLines(fileName).Where(line => line.StartsWith("using ", StringComparison.InvariantCulture)));
 								}
 							}
 
@@ -109,14 +92,12 @@ namespace ISI.VisualStudio.Extensions
 								{"${Usings}", string.Join("\r\n", usings)},
 								{"${Namespace}", @namespace},
 								{"${ClassName}", partialClassName},
-								{"${ClassInjectorProperties}", string.Join(string.Empty, codeExtensionProvider.DefaultClassInjectors.Select(injector => string.Format("\t\tprotected {0} {1} {{ get; }}\r\n", injector.Type, injector.Name)))},
-								{"${ClassInjectors}", string.Join(",", codeExtensionProvider.DefaultClassInjectors.Select(injector => string.Format("\r\n\t\t\t{0} {1}", injector.Type, ISI.Extensions.StringFormat.CamelCase(injector.Name))))},
-								{"${ClassInjectorAssignments}", string.Join("\r\n", codeExtensionProvider.DefaultClassInjectors.Select(injector => string.Format("\t\t\t{0} = {1};", injector.Name, ISI.Extensions.StringFormat.CamelCase(injector.Name))))},
+								{"${SubClassName}", subClassName},
 							};
 
-							var recipes = new []
+							var recipes = new[]
 							{
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(partialClassDirectory, string.Format("__{0}.cs", partialClassName)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.ProjectPartialClass_AddPartialClass), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(partialClassDirectory, string.Format("{0}.cs", subClassName)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.ProjectPartialClass_AddPartialClassSubClass), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

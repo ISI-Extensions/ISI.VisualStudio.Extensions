@@ -5,7 +5,7 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_Helper
+	public partial class ExtensionsHelper
 	{
 		public delegate void RecipeItemPostAction(Community.VisualStudio.Toolkit.Project project, string fullName, string content, IEnumerable<KeyValuePair<string, string>> replacementValues);
 

@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.RecipeExtensions_ProjectPartialClass_AddPartialClass_MenuItemId)]
-	public class RecipeExtensions_ProjectPartialClass_AddPartialClass_Command : BaseCommand<RecipeExtensions_ProjectPartialClass_AddPartialClass_Command>
+	[Command(PackageIds.RecipeExtensions_Project_AddDataTransferObjectRequestResponse_MenuItemId)]
+	public class RecipeExtensions_Project_AddDataTransferObjectRequestResponse_Command : BaseCommand<RecipeExtensions_Project_AddDataTransferObjectRequestResponse_Command>
 	{
 		private static RecipeExtensions_ProjectPartialClass_Helper _recipeExtensionsHelper = null;
 		protected RecipeExtensions_ProjectPartialClass_Helper RecipeExtensionsHelper => _recipeExtensionsHelper ??= Package.GetServiceProvider().GetService<RecipeExtensions_ProjectPartialClass_Helper>();
@@ -22,7 +22,7 @@ namespace ISI.VisualStudio.Extensions
 
 			var solutionItem = VS.Solutions.GetActiveItemAsync().GetAwaiter().GetResult();
 
-			if (RecipeExtensionsHelper.IsProjectRoot(solutionItem) || RecipeExtensionsHelper.IsProjectFolder(solutionItem))
+			if (RecipeExtensionsHelper.IsProjectFolder(solutionItem))
 			{
 				showCommand = true;
 			}
@@ -42,9 +42,15 @@ namespace ISI.VisualStudio.Extensions
 
 				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.Value))
 				{
-					var partialClassName = inputDialog.Value.Replace(" ", string.Empty);
+					var classNamePrefix = inputDialog.Value.Replace(" ", string.Empty);
+					
+					var isAsync = classNamePrefix.EndsWith("Async", StringComparison.InvariantCulture);
+					if (isAsync)
+					{
+						classNamePrefix = classNamePrefix.Substring(0, classNamePrefix.Length - "Async".Length);
+					}
 
-					if (!string.IsNullOrWhiteSpace(partialClassName))
+					if (!string.IsNullOrWhiteSpace(classNamePrefix))
 					{
 						var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
 
@@ -66,8 +72,8 @@ namespace ISI.VisualStudio.Extensions
 						var projectDirectory = RecipeExtensionsHelper.GetProjectDirectory(project);
 						var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
 
-						var directory = (solutionItem.Type == SolutionItemType.Project ? projectDirectory : solutionItem.FullPath);
-						var partialClassDirectory = System.IO.Path.Combine(directory, partialClassName);
+						var directory = solutionItem.FullPath;
+						var partialClassDirectory = System.IO.Path.Combine(directory, classNamePrefix);
 
 						if (!System.IO.Directory.Exists(partialClassDirectory))
 						{
@@ -76,47 +82,18 @@ namespace ISI.VisualStudio.Extensions
 							var codeExtensionProvider = project.GetCodeExtensionProvider();
 
 							var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
-							if (partialClassName.EndsWith("Api", StringComparison.InvariantCulture))
-							{
-								try
-								{
-									usings.Add(string.Format("using DTOs = {0}.DataTransferObjects.{1};", @namespace.TrimEnd(".Api"), partialClassName));
-								}
-								catch
-								{
-								}
-								try
-								{
-									usings.Add(string.Format("using RepositoryDTOs = {0}.DataTransferObjects.{1}Repository;", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")));
-								}
-								catch
-								{
-								}
-							}
-							if (partialClassName.EndsWith("Repository", StringComparison.InvariantCulture))
-							{
-								try
-								{
-									usings.Add(string.Format("using DTOs = {0}.DataTransferObjects.{1};", @namespace.TrimEnd(".Repository"), partialClassName));
-								}
-								catch
-								{
-								}
-							}
 
 							var contentReplacements = new Dictionary<string, string>
 							{
 								{"${Usings}", string.Join("\r\n", usings)},
 								{"${Namespace}", @namespace},
-								{"${ClassName}", partialClassName},
-								{"${ClassInjectorProperties}", string.Join(string.Empty, codeExtensionProvider.DefaultClassInjectors.Select(injector => string.Format("\t\tprotected {0} {1} {{ get; }}\r\n", injector.Type, injector.Name)))},
-								{"${ClassInjectors}", string.Join(",", codeExtensionProvider.DefaultClassInjectors.Select(injector => string.Format("\r\n\t\t\t{0} {1}", injector.Type, ISI.Extensions.StringFormat.CamelCase(injector.Name))))},
-								{"${ClassInjectorAssignments}", string.Join("\r\n", codeExtensionProvider.DefaultClassInjectors.Select(injector => string.Format("\t\t\t{0} = {1};", injector.Name, ISI.Extensions.StringFormat.CamelCase(injector.Name))))},
+								{"${ClassNamePrefix}", classNamePrefix},
 							};
 
 							var recipes = new []
 							{
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(partialClassDirectory, string.Format("__{0}.cs", partialClassName)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.ProjectPartialClass_AddPartialClass), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(directory, string.Format("{0}Request.cs", classNamePrefix)), RecipeExtensionsHelper.GetContent((isAsync ? nameof(RecipeExtensionsOptions.Project_AddAsyncDataTransferObjectRequest) : nameof(RecipeExtensionsOptions.Project_AddDataTransferObjectRequest)), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(directory, string.Format("{0}Response.cs", classNamePrefix)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_AddDataTransferObjectResponse), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

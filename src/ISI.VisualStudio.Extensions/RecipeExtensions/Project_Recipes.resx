@@ -117,73 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddAsyncDataTransferObjectRequest" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ${Namespace}
-{
-	public partial class ${ClassNamePrefix}Request
-	{
-
-		public System.Threading.CancellationToken CancellationToken { get; set; } = default;
-	}
-}</value>
-  </data>
-  <data name="AddAsyncPartialClassMethod" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace}
-{
-	public partial class ${ClassName}
-	{
-		public async Task&lt;DTOs.${MethodName}Response&gt; ${MethodName}Async(DTOs.${MethodName}Request request)
-		{
-			var response = new DTOs.${MethodName}Response();
-			
-			
-			return response;
-		}
-	}
-}</value>
-  </data>
-  <data name="AddDataTransferObjectRequest" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ${Namespace}
-{
-	public partial class ${ClassNamePrefix}Request
-	{
-	}
-}</value>
-  </data>
-  <data name="AddDataTransferObjectResponse" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ${Namespace}
-{
-	public partial class ${ClassNamePrefix}Response
-	{
-	}
-}</value>
-  </data>
   <data name="AddDependencyRegisterClass" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+    <value>${Usings}
 
 namespace ${Namespace}
 {
@@ -328,72 +263,8 @@ namespace &lt;#= @namespace #&gt;
 #&gt;  }
 }</value>
   </data>
-  <data name="AddPartialClass" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace}
-{
-	public partial class ${ClassName} : I${ClassName}
-	{
-${ClassInjectorProperties}
-		public ${ClassName}(${ClassInjectors})
-		{
-${ClassInjectorAssignments}
-		}
-	}
-}</value>
-  </data>
-  <data name="AddPartialClassMethod" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace}
-{
-	public partial class ${ClassName}
-	{
-		public DTOs.${MethodName}Response ${MethodName}(DTOs.${MethodName}Request request)
-		{
-			var response = new DTOs.${MethodName}Response();
-			
-			
-			return response;
-		}
-	}
-}</value>
-  </data>
-  <data name="AddPartialClassPrivateMethod" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace}
-{
-	public partial class ${ClassName}
-	{
-		public void ${MethodName}()
-		{
-
-		}
-	}
-}</value>
-  </data>
-  <data name="AddPartialClassSubClass" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace}
-{
-	public partial class ${ClassName}
-	{
-		public partial class ${SubClassName}
-		{
-
-		}
-	}
-}</value>
-  </data>
   <data name="AddStartUpClass" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+    <value>${Usings}
 
 namespace ${Namespace}
 {
@@ -409,6 +280,54 @@ namespace ${Namespace}
 
 				ISI.Libraries.VirtualFileRepositories.Register(typeof(StartUp));
 			}
+		}
+	}
+}</value>
+  </data>
+  <data name="AddDataTransferObjectRequest" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassNamePrefix}Request
+	{
+	}
+}</value>
+  </data>
+  <data name="AddDataTransferObjectResponse" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassNamePrefix}Response
+	{
+	}
+}</value>
+  </data>
+  <data name="AddAsyncDataTransferObjectRequest" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassNamePrefix}Request
+	{
+
+		public System.Threading.CancellationToken CancellationToken { get; set; } = default;
+	}
+}</value>
+  </data>
+  <data name="AddServiceRegistrarClass" xml:space="preserve">
+    <value>${Usings}
+using Microsoft.Extensions.DependencyInjection;
+
+namespace ${Namespace}
+{
+	[ISI.Extensions.DependencyInjection.ServiceRegistrar]
+	public class ServiceRegistrar : ISI.Extensions.DependencyInjection.IServiceRegistrar
+	{
+		public void ServiceRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection services)
+		{
+			services.AddSingleton&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;();
 		}
 	}
 }</value>

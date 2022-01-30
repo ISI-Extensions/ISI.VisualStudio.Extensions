@@ -4,7 +4,7 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_Helper
+	public partial class ExtensionsHelper
 	{
 		public async System.Threading.Tasks.Task<Community.VisualStudio.Toolkit.PhysicalFile> AddFromRecipeAsync(Community.VisualStudio.Toolkit.Project project, string fullName, string content, IEnumerable<KeyValuePair<string, string>> replacementValues)
 		{

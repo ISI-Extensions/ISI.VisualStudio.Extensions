@@ -49,7 +49,8 @@ namespace ISI.VisualStudio.Extensions
         public const int FolderMenuGroupId = 0x1024;
         public const int ItemMenuGroupId = 0x1025;
         public const int EditorContextMenuGroupId = 0x1026;
-        public const int ProjectReferenceMenuGroupId = 0x1027;
+        public const int ProjectReferencesMenuGroupId = 0x1027;
+        public const int ProjectReferenceMenuGroupId = 0x1028;
         public const int AboutMenuItemId = 0x0105;
         public const int XmlConfigurationExtensionsAddTransformMenuItemId = 0x0300;
         public const int XmlConfigurationExtensionsExecuteTransformMenuSubgroupId = 0x0301;
@@ -90,6 +91,7 @@ namespace ISI.VisualStudio.Extensions
         public const int RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId = 0x04B1;
         public const int RecipeExtensions_Project_AddStartUpClass_MenuItemId = 0x04C0;
         public const int RecipeExtensions_Project_AddDependencyRegisterClass_MenuItemId = 0x04C1;
+        public const int RecipeExtensions_Project_AddServiceRegistrarClass_MenuItemId = 0x04C2;
         public const int CakeExtensionsExecuteDefaultTargetMenuItemId = 0x0520;
         public const int CakeExtensionsExecuteTargetMenuSubgroupId = 0x0521;
         public const int CakeExtensionsExecuteTargetSubMenuId = 0x0522;
@@ -106,6 +108,7 @@ namespace ISI.VisualStudio.Extensions
         public const int LibraryExtensionsSolutionAddMissingProjectsMenuItemId = 0x0A11;
         public const int LibraryExtensionsProjectAddMissingProjectsMenuItemId = 0x0A12;
         public const int ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId = 0x0B01;
+        public const int NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId = 0x0C00;
         public const int NugetExtensionsPasteAsNugetPackagesMenuItemId = 0x0C01;
         public const int PasteAsXmlMenuItemId = 0x0300;
         public const int PasteAsJsonMenuItemId = 0x0100;

@@ -5,7 +5,7 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_Helper
+	public partial class ExtensionsHelper
 	{
 		protected static IDictionary<string, Func<string>> _optionValueRetrievers = null;
 		protected IDictionary<string, Func<string>> OptionValueRetrievers => (_optionValueRetrievers ??= BuildOptionValueRetrievers());

@@ -56,9 +56,19 @@
     <Compile Include="Commands\AboutExtensions_About_Command.cs" />
     <Compile Include="Commands\CakeExtensions_ExecuteTarget_Command.cs" />
     <Compile Include="Commands\CakeExtensions_ExecuteDefaultTarget_Command.cs" />
+    <Compile Include="Commands\ClipboardExtensions_PasteAsCmdAppend_Command.cs" />
     <Compile Include="Commands\ClipboardExtensions_PasteAs_Command.cs" />
     <Compile Include="Commands\GuidExtensions_InsertNewGuid_Command.cs" />
     <Compile Include="Commands\JenkinsExtensions_PullJenkinsConfigFromJenkins_Command.cs" />
+    <Compile Include="Commands\NugetExtensions_CopyReferencesAsNugetPackages_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddServiceRegistrarClass_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddDependencyRegisterClass_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddStartUpClass_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddDataTransferObjectRequestResponse_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_ProjectPartialClass_SyncPartialClassUsingStatements_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_ProjectPartialClass_AddPartialClassSubClass_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_ProjectPartialClass_AddPartialClassPrivateMethod_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_ProjectPartialClass_AddPartialClassMethod_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_ProjectPartialClass_AddPartialClass_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddEnumTextTemplate_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddRestMethod_Command.cs" />
@@ -67,6 +77,7 @@
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddController_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_5x_AddArea_Command.cs" />
     <Compile Include="Commands\JenkinsExtensions_PushJenkinsConfigToJenkins_Command.cs" />
+    <Compile Include="Commands\NugetExtensions_PasteAsNugetPackages_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_ExecuteTransform_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_AddTransform_Command.cs" />
     <Compile Include="Extensions\DTE2Extensions\GetSelectedProject.cs" />
@@ -83,12 +94,21 @@
     <Compile Include="GenerateClassDefinitionConversionDialog.xaml.cs">
       <DependentUpon>GenerateClassDefinitionConversionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="JenkinsExtensionsHelper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="JenkinsExtensionsHelper\IsJenkinsConfigFile.cs" />
     <Compile Include="JenkinsExtensionsHelper\__JenkinsExtensionsHelper.cs" />
-    <Compile Include="Options\RecipeExtensions_Solution.cs" />
+    <Compile Include="NugetExtensionsHelper\GetNugetPackageKeysFromProject.cs" />
+    <Compile Include="NugetExtensionsHelper\GetOutputWindowPaneAsync.cs" />
+    <Compile Include="NugetExtensionsHelper\InstallPackages.cs" />
+    <Compile Include="NugetExtensionsHelper\ParseCsProj.cs" />
+    <Compile Include="NugetExtensionsHelper\ParseNugetPackageKeyClipped.cs" />
+    <Compile Include="NugetExtensionsHelper\ParsePackageConfig.cs" />
+    <Compile Include="NugetExtensionsHelper\GetPackageKeysFromClipboard.cs" />
+    <Compile Include="NugetExtensionsHelper\IsReferencesFolder.cs" />
+    <Compile Include="NugetExtensionsHelper\__NugetExtensionsHelper.cs" />
+    <Compile Include="Options\RecipeExtensions_ProjectPartialClass.cs" />
     <Compile Include="Options\RecipeExtensions_Project.cs" />
     <Compile Include="Options\RecipeExtensions_AspNetWebApi_5x.cs" />
-    <Compile Include="Options\RecipeExtensions_AspNetMvc_6x.cs" />
     <Compile Include="Options\RecipeExtensions_AspNetMvc_5x.cs" />
     <Compile Include="Options\RecipeExtensions.cs" />
     <Compile Include="PasteAsDialog.xaml.cs">
@@ -99,30 +119,35 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />
-    <Compile Include="RecipeExtensions_Helper\AddFromRecipesAsync.cs" />
-    <Compile Include="RecipeExtensions_Helper\IsProjectFolder.cs" />
-    <Compile Include="RecipeExtensions_Helper\IsProjectUsingJQueryExtensions.cs" />
-    <Compile Include="RecipeExtensions_Helper\IsProjectUsingBootstrapExtensions.cs" />
-    <Compile Include="RecipeExtensions_Helper\IsProjectUsingCmsExtensions.cs" />
+    <Compile Include="RecipeExtensions\ProjectPartialClass_Recipes.Designer.cs">
+      <DependentUpon>ProjectPartialClass_Recipes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ExtensionsHelper\AddFromRecipesAsync.cs" />
+    <Compile Include="ExtensionsHelper\IsProjectFolder.cs" />
+    <Compile Include="ExtensionsHelper\IsProjectUsingJQueryExtensions.cs" />
+    <Compile Include="ExtensionsHelper\IsProjectUsingBootstrapExtensions.cs" />
+    <Compile Include="ExtensionsHelper\IsProjectUsingCmsExtensions.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\FilterWebConfig.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetControllerName.cs" />
-    <Compile Include="RecipeExtensions_Helper\GetProjectDirectory.cs" />
+    <Compile Include="ExtensionsHelper\GetProjectDirectory.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreasDirectory.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreaDirectory.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreaName.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsControllerFolder.cs" />
-    <Compile Include="RecipeExtensions_Helper\ReplaceFileContent.cs" />
-    <Compile Include="RecipeExtensions_Helper\GetRootNamespace.cs" />
-    <Compile Include="RecipeExtensions_Helper\GetContent.cs" />
-    <Compile Include="RecipeExtensions_Helper\AddFromRecipeAsync.cs" />
+    <Compile Include="ExtensionsHelper\ReplaceFileContent.cs" />
+    <Compile Include="ExtensionsHelper\GetRootNamespace.cs" />
+    <Compile Include="ExtensionsHelper\GetContent.cs" />
+    <Compile Include="ExtensionsHelper\AddFromRecipeAsync.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsControllersFolder.cs" />
-    <Compile Include="RecipeExtensions_Helper\_contentFileExtensions.cs" />
-    <Compile Include="RecipeExtensions_Helper\_RecipeItem.cs" />
-    <Compile Include="RecipeExtensions_Helper\GetOutputWindowPaneAsync.cs" />
+    <Compile Include="ExtensionsHelper\_contentFileExtensions.cs" />
+    <Compile Include="ExtensionsHelper\_RecipeItem.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsAreasFolder.cs" />
-    <Compile Include="RecipeExtensions_Helper\IsProjectRoot.cs" />
+    <Compile Include="ExtensionsHelper\IsProjectRoot.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsAspNetMvc_5x_Project.cs" />
-    <Compile Include="RecipeExtensions_Helper\__RecipeExtensions_Helper.cs" />
+    <Compile Include="ExtensionsHelper\__AbstractExtensionsHelper.cs" />
     <Compile Include="RecipeExtensions\Project_Recipes.Designer.cs">
       <DependentUpon>Project_Recipes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -133,23 +158,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RecipeExtensions\AspNetMvc_6x_Recipes.Designer.cs">
-      <DependentUpon>AspNetMvc_6x_Recipes.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="RecipeExtensions\AspNetMvc_5x_Recipes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AspNetMvc_5x_Recipes.resx</DependentUpon>
     </Compile>
-    <Compile Include="RecipeExtensions\Solution_Recipes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Solution_Recipes.resx</DependentUpon>
-    </Compile>
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\__RecipeExtensions_AspNetMvc_5x_Helper.cs" />
+    <Compile Include="RecipeExtensions_ProjectPartialClass_Helper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="RecipeExtensions_ProjectPartialClass_Helper\__RecipeExtensions_ProjectPartialClass_Helper.cs" />
+    <Compile Include="RecipeExtensions_Project_Helper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="RecipeExtensions_Project_Helper\__RecipeExtensions_Project_Helper.cs" />
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>
@@ -173,6 +190,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RecipeExtensions\ProjectPartialClass_Recipes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProjectPartialClass_Recipes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="RecipeExtensions\Project_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Project_Recipes.Designer.cs</LastGenOutput>
@@ -182,18 +204,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AspNetWebApi_5x_Recipes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecipeExtensions\AspNetMvc_6x_Recipes.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AspNetMvc_6x_Recipes.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="RecipeExtensions\AspNetMvc_5x_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AspNetMvc_5x_Recipes.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RecipeExtensions\Solution_Recipes.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Solution_Recipes.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lantern.ico" />
     <EmbeddedResource Include="Resources\Lantern.png" />
@@ -223,7 +236,10 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8063.30046</Version>
+      <Version>10.0.8065.33135</Version>
+    </PackageReference>
+    <PackageReference Include="ISI.Extensions.Nuget.Forms">
+      <Version>10.0.8065.33135</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Imaging">
       <Version>17.0.32112.339</Version>
@@ -232,14 +248,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8063.30046" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8063.30046" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8063.30046" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8063.30046" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8063.30046" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8063.30046" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8063.30046" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8065.33135" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8065.33135" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8065.33135" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8065.33135" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8065.33135" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8065.33135" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8065.33135" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="NuGet.VisualStudio">
+      <Version>6.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE.txt">

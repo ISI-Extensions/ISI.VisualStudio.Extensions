@@ -5,7 +5,7 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_Helper
+	public partial class ExtensionsHelper
 	{
 		public bool IsProjectUsingBootstrapExtensions(Community.VisualStudio.Toolkit.Project project)
 		{

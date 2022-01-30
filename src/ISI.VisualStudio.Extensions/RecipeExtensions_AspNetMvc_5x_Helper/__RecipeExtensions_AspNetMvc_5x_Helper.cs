@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_AspNetMvc_5x_Helper : RecipeExtensions_Helper
+	public partial class RecipeExtensions_AspNetMvc_5x_Helper : ExtensionsHelper
 	{
 		public const string AreasFolderName = "Areas";
 		public const string ControllersFolderName = "Controllers";

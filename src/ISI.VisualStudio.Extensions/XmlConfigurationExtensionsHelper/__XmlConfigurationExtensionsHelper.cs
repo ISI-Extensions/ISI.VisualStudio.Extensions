@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class XmlConfigurationExtensionsHelper
+	public partial class XmlConfigurationExtensionsHelper : ExtensionsHelper
 	{
 		protected ISI.Extensions.VisualStudio.XmlTransformApi XmlTransformApi { get; }
 
