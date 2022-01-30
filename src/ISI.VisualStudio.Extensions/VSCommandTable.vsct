@@ -141,6 +141,50 @@
 			</Button>
 
 
+			<!-- Solution Extensions -->
+			<Button guid="PackageUuid" id="SolutionExtensionsAddExistingProjectsMenuItemId" priority="0x0201" type="Button">
+				<Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_SOLUTION_ADD_PROJ"/>
+				<Strings>
+					<CommandName>Add Existing Projects</CommandName>
+					<ButtonText>Existing Projects...</ButtonText>
+				</Strings>
+			</Button>
+
+			
+			<!-- Project Extensions -->
+			<Button guid="PackageUuid" id="ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId" priority="0x0201" type="Button">
+				<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
+				<Strings>
+					<CommandName>Add Embedded Resources</CommandName>
+					<ButtonText>Add Embedded Resources</ButtonText>
+				</Strings>
+			</Button>
+
+
+			<!-- Guid Extensions -->
+			<Button guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" priority="0x0600" type="Button">
+				<Parent guid="VSMainMenu" id="CodeWindow.TextEditGroup"/>
+				<Strings>
+					<CommandName>Insert New Guid</CommandName>
+					<ButtonText>Insert New Guid</ButtonText>
+					<LocCanonicalName>.Edit.InsertNewGuid</LocCanonicalName>
+				</Strings>
+			</Button>
+
+
+			<!-- Clipboard Extensions -->
+			<Button guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="VSMainMenu" id="Edit.PasteGroup" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>Paste as ...</CommandName>
+					<ButtonText>Paste as ...</ButtonText>
+				</Strings>
+			</Button>
+
+
 			<!-- Transformation Extensions -->
 			<Button guid="PackageUuid" id="XmlConfigurationExtensionsAddTransformMenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
@@ -161,6 +205,77 @@
 				<CommandFlag>TextChanges</CommandFlag>
 				<Strings>
 					<ButtonText>Loading...</ButtonText>
+				</Strings>
+			</Button>
+
+
+			<!-- Cake Extensions -->
+			<Button guid="PackageUuid" id="CakeExtensionsExecuteDefaultTargetMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>CakeExtensionsExecuteDefaultTargetMenuItemId</CommandName>
+					<ButtonText>Execute default Cake Target</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DynamicItemStart</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>TextChanges</CommandFlag>
+				<Strings>
+					<ButtonText>Loading...</ButtonText>
+				</Strings>
+			</Button>
+
+
+			<!-- Jenkins Extensions -->
+			<Button guid="PackageUuid" id="JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId</CommandName>
+					<ButtonText>Push to Jenkins</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId</CommandName>
+					<ButtonText>Pull From Jenkins</ButtonText>
+				</Strings>
+			</Button>
+
+
+			<!-- Nuget Extensions -->
+			<Button guid="PackageUuid" id="NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectReferenceMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<Strings>
+					<CommandName>Copy References As Nuget Packages</CommandName>
+					<ButtonText>Copy References As Nuget Packages</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="NugetExtensionsPasteAsNugetPackagesMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectReferencesMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<Strings>
+					<CommandName>Paste as Nuget Packages</CommandName>
+					<ButtonText>Paste as Nuget Packages</ButtonText>
 				</Strings>
 			</Button>
 
@@ -344,100 +459,6 @@
 				</Strings>
 			</Button>
 
-
-			<!-- Cake Extensions -->
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteDefaultTargetMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<Strings>
-					<CommandName>CakeExtensionsExecuteDefaultTargetMenuItemId</CommandName>
-					<ButtonText>Execute default Cake Target</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DynamicItemStart</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>TextChanges</CommandFlag>
-				<Strings>
-					<ButtonText>Loading...</ButtonText>
-				</Strings>
-			</Button>
-
-
-			<!-- Nuget Extensions -->
-			<Button guid="PackageUuid" id="NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="ProjectReferenceMenuGroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<!--<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>DefaultInvisible</CommandFlag>-->
-				<Strings>
-					<CommandName>Copy References As Nuget Packages</CommandName>
-					<ButtonText>Copy References As Nuget Packages</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="NugetExtensionsPasteAsNugetPackagesMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="ProjectReferencesMenuGroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<Strings>
-					<CommandName>Paste as Nuget Packages</CommandName>
-					<ButtonText>Paste as Nuget Packages</ButtonText>
-				</Strings>
-			</Button>
-
-			<!-- Guid Extensions -->
-			<Button guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" priority="0x0600" type="Button">
-				<Parent guid="VSMainMenu" id="CodeWindow.TextEditGroup"/>
-				<Strings>
-					<CommandName>Insert New Guid</CommandName>
-					<ButtonText>Insert New Guid</ButtonText>
-					<LocCanonicalName>.Edit.InsertNewGuid</LocCanonicalName>
-				</Strings>
-			</Button>
-
-
-			<!-- Jenkins Extensions -->
-			<Button guid="PackageUuid" id="JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<Strings>
-					<CommandName>JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId</CommandName>
-					<ButtonText>Push to Jenkins</ButtonText>
-				</Strings>
-			</Button>
-
-			<Button guid="PackageUuid" id="JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<Strings>
-					<CommandName>JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId</CommandName>
-					<ButtonText>Pull From Jenkins</ButtonText>
-				</Strings>
-			</Button>
-
-			<!-- Clipboard Extensions -->
-			<Button guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="VSMainMenu" id="Edit.PasteGroup" />
-				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<Strings>
-					<CommandName>Paste as ...</CommandName>
-					<ButtonText>Paste as ...</ButtonText>
-				</Strings>
-			</Button>
 		</Buttons>
 	</Commands>
 
@@ -594,9 +615,6 @@
 			<IDSymbol name="GuidExtensionsInsertNewGuidMenuItemId" value="0x0801" />
 
 			<IDSymbol name="SolutionExtensionsAddExistingProjectsMenuItemId" value="0x0901" />
-
-			<IDSymbol name="LibraryExtensionsSolutionAddMissingProjectsMenuItemId" value="0x0A11" />
-			<IDSymbol name="LibraryExtensionsProjectAddMissingProjectsMenuItemId" value="0x0A12" />
 
 			<IDSymbol name="ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId" value="0x0B01" />
 

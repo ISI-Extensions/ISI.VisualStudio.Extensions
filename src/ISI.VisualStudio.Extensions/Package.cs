@@ -58,6 +58,8 @@ namespace ISI.VisualStudio.Extensions
 				.AddSingleton<ISI.Extensions.JsonSerialization.IJsonSerializer, ISI.Extensions.JsonSerialization.Newtonsoft.NewtonsoftJsonSerializer>()
 				.AddSingleton<ISI.Extensions.Serialization.ISerialization, ISI.Extensions.Serialization.Serialization>()
 
+				.AddSingleton<SolutionExtensionsHelper>()
+				.AddSingleton<ProjectExtensionsHelper>()
 				.AddSingleton<CakeExtensionsHelper>()
 				.AddSingleton<JenkinsExtensionsHelper>()
 				.AddSingleton<RecipeExtensions_AspNetMvc_5x_Helper>()

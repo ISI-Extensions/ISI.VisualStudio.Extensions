@@ -48,6 +48,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\ISI.VisualStudio.Extensions.AssemblyInfo.cs">
+      <Link>Properties\ISI.VisualStudio.Extensions.AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\ISI.VisualStudio.Extensions.Version.cs">
+      <Link>Properties\ISI.VisualStudio.Extensions.Version.cs</Link>
+    </Compile>
     <Compile Include="CakeExtensionsHelper\IsCakeBuildScript.cs" />
     <Compile Include="CakeExtensionsHelper\GetTargetKeysFromBuildScript.cs" />
     <Compile Include="CakeExtensionsHelper\GetOutputWindowPaneAsync.cs" />
@@ -58,6 +64,8 @@
     <Compile Include="Commands\CakeExtensions_ExecuteDefaultTarget_Command.cs" />
     <Compile Include="Commands\ClipboardExtensions_PasteAsCmdAppend_Command.cs" />
     <Compile Include="Commands\ClipboardExtensions_PasteAs_Command.cs" />
+    <Compile Include="Commands\ProjectExtensions_ProjectAddEmbeddedResources_Command.cs" />
+    <Compile Include="Commands\SolutionExtensions_AddExistingProjects_Command.cs" />
     <Compile Include="Commands\GuidExtensions_InsertNewGuid_Command.cs" />
     <Compile Include="Commands\JenkinsExtensions_PullJenkinsConfigFromJenkins_Command.cs" />
     <Compile Include="Commands\NugetExtensions_CopyReferencesAsNugetPackages_Command.cs" />
@@ -80,7 +88,15 @@
     <Compile Include="Commands\NugetExtensions_PasteAsNugetPackages_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_ExecuteTransform_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_AddTransform_Command.cs" />
+    <Compile Include="EmbeddedFileNamesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmbeddedFileNamesForm.designer.cs">
+      <DependentUpon>EmbeddedFileNamesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\DTE2Extensions\GetSelectedSolutionItems.cs" />
     <Compile Include="Extensions\DTE2Extensions\GetSelectedProject.cs" />
+    <Compile Include="Extensions\MSBuildProjectExtensions.cs" />
     <Compile Include="Extensions\PackageExtensions\GetDTE2.cs" />
     <Compile Include="Extensions\PackageExtensions\GetServiceProvider.cs" />
     <Compile Include="Extensions\ProjectExtensions\RunT4LocalContents.cs" />
@@ -88,6 +104,7 @@
     <Compile Include="AddEnumTextTemplateDialog.xaml.cs">
       <DependentUpon>AddEnumTextTemplateDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FolderSelectDialog.cs" />
     <Compile Include="InputDialog.xaml.cs">
       <DependentUpon>InputDialog.xaml</DependentUpon>
     </Compile>
@@ -117,6 +134,9 @@
     <Compile Include="GenerateClassDefinitionDialog.xaml.cs">
       <DependentUpon>GenerateClassDefinitionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProjectExtensionsHelper\GetFilteredFileNameSearchPatterns.cs" />
+    <Compile Include="ProjectExtensionsHelper\GetEmbeddedFileNameSearchPatterns.cs" />
+    <Compile Include="ProjectExtensionsHelper\__ProjectExtensionsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="RecipeExtensions\ProjectPartialClass_Recipes.Designer.cs">
@@ -168,10 +188,18 @@
     <Compile Include="RecipeExtensions_ProjectPartialClass_Helper\__RecipeExtensions_ProjectPartialClass_Helper.cs" />
     <Compile Include="RecipeExtensions_Project_Helper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="RecipeExtensions_Project_Helper\__RecipeExtensions_Project_Helper.cs" />
+    <Compile Include="SolutionExtensionsHelper\ProjectExtensions.cs" />
+    <Compile Include="SolutionExtensionsHelper\GetOutputWindowPaneAsync.cs" />
+    <Compile Include="SolutionExtensionsHelper\__SolutionExtensionsHelper.cs" />
     <Compile Include="source.extension.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
+    </Compile>
+    <Compile Include="T4LocalContent\T4LocalContent1.generatedcode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4LocalContent.tt</DependentUpon>
     </Compile>
     <Compile Include="XmlConfigurationExtensionsHelper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="XmlConfigurationExtensionsHelper\IsXmlConfiguration.cs" />
@@ -190,6 +218,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EmbeddedFileNamesForm.resx">
+      <DependentUpon>EmbeddedFileNamesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RecipeExtensions\ProjectPartialClass_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ProjectPartialClass_Recipes.Designer.cs</LastGenOutput>
@@ -210,11 +241,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lantern.ico" />
     <EmbeddedResource Include="Resources\Lantern.png" />
+    <None Include="..\ISI.VisualStudio.Extensions.licenseheader">
+      <Link>ISI.VisualStudio.Extensions.licenseheader</Link>
+    </None>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>
       <LastGenOutput>source.extension.cs</LastGenOutput>
     </None>
+    <None Include="T4LocalContent\T4LocalContent.Generator.t4" />
+    <None Include="T4LocalContent\T4LocalContent.settings.t4" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -222,6 +258,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -240,6 +277,9 @@
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
       <Version>10.0.8065.33135</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Build">
+      <Version>17.0.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Imaging">
       <Version>17.0.32112.339</Version>
@@ -261,9 +301,14 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lantern.ico" />
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="T4LocalContent\T4LocalContent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4LocalContent1.generatedcode.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -290,6 +335,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\SolutionItemExtensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
