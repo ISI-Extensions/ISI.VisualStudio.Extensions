@@ -31,5 +31,13 @@ namespace ISI.VisualStudio.Extensions
 		[Category("Project Partial Class Recipes")]
 		[DisplayName("Add DataTransferObject Response")]
 		public string Project_AddDataTransferObjectResponse { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.Project_Recipes.AddDataTransferObjectResponse;
+
+		[Category("Project Partial Class Recipes")]
+		[DisplayName("Add Serializable DataTransferObject Request")]
+		public string Project_AddSerializableDataTransferObjectRequest { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.Project_Recipes.AddSerializableDataTransferObjectRequest;
+
+		[Category("Project Partial Class Recipes")]
+		[DisplayName("Add Serializable DataTransferObject Response")]
+		public string Project_AddSerializableDataTransferObjectResponse { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.Project_Recipes.AddSerializableDataTransferObjectResponse;
 	}
 }

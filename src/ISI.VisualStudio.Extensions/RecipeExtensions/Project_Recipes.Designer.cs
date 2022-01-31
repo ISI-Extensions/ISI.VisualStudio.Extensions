@@ -155,6 +155,40 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         
         /// <summary>
         ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	[DataContract]
+        ///	public partial class ${ClassNamePrefix}Request
+        ///	{
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string AddSerializableDataTransferObjectRequest {
+            get {
+                return ResourceManager.GetString("AddSerializableDataTransferObjectRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	[DataContract]
+        ///	public partial class ${ClassNamePrefix}Response
+        ///	{
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string AddSerializableDataTransferObjectResponse {
+            get {
+                return ResourceManager.GetString("AddSerializableDataTransferObjectResponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
         ///using Microsoft.Extensions.DependencyInjection;
         ///
         ///namespace ${Namespace}

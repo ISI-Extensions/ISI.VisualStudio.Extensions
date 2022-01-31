@@ -51,8 +51,7 @@ namespace ISI.VisualStudio.Extensions
 					directory = System.IO.Path.GetDirectoryName(directory);
 				}
 
-				var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
-				@namespace = string.Format("{0}.{1}", @namespace, directory.Substring(projectDirectory.Length).Replace("\\", ".").Trim('.')).TrimEnd('.');
+				var @namespace = RecipeExtensionsHelper.GetNamespace(project, solutionItem);
 
 				var addEnumTextTemplateDialog = new AddEnumTextTemplateDialog(string.Empty, @namespace, string.Empty, string.Empty, string.Empty, string.Empty, "|");
 

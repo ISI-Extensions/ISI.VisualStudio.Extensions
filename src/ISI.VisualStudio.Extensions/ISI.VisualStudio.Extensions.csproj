@@ -65,6 +65,7 @@
     <Compile Include="Commands\ClipboardExtensions_PasteAsCmdAppend_Command.cs" />
     <Compile Include="Commands\ClipboardExtensions_PasteAs_Command.cs" />
     <Compile Include="Commands\ProjectExtensions_ProjectAddEmbeddedResources_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_AddExistingProjects_Command.cs" />
     <Compile Include="Commands\GuidExtensions_InsertNewGuid_Command.cs" />
     <Compile Include="Commands\JenkinsExtensions_PullJenkinsConfigFromJenkins_Command.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Commands\NugetExtensions_PasteAsNugetPackages_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_ExecuteTransform_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_AddTransform_Command.cs" />
+    <Compile Include="ExtensionsHelper\GetNamespace.cs" />
     <Compile Include="Extensions\DTE2Extensions\GetSelectedSolutionItems.cs" />
     <Compile Include="Extensions\DTE2Extensions\GetSelectedProject.cs" />
     <Compile Include="Extensions\MSBuildProjectExtensions.cs" />

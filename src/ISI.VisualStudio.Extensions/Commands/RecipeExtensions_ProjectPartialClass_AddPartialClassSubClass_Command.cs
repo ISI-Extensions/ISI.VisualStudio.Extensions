@@ -65,13 +65,10 @@ namespace ISI.VisualStudio.Extensions
 
 						var projectDirectory = RecipeExtensionsHelper.GetProjectDirectory(project);
 						var partialClassDirectory = solutionItem.FullPath;
-						var directory = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(partialClassDirectory));
 
 						var partialClassName = partialClassDirectory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
 
-						var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
-						@namespace = string.Format("{0}.{1}", @namespace, directory.Substring(projectDirectory.Length).Replace("\\", ".").Trim('.')).TrimEnd('.');
-
+						var @namespace = RecipeExtensionsHelper.GetNamespace(project, solutionItem);
 
 						if (System.IO.Directory.Exists(partialClassDirectory))
 						{

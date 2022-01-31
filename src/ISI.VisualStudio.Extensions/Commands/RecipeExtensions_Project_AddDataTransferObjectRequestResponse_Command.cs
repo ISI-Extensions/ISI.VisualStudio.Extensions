@@ -36,7 +36,7 @@ namespace ISI.VisualStudio.Extensions
 		{
 			try
 			{
-				var inputDialog = new InputDialog("New Partial Class");
+				var inputDialog = new InputDialog("Add DataTransferObject Request Response");
 
 				var inputDialogResult = await inputDialog.ShowDialogAsync();
 
@@ -58,7 +58,7 @@ namespace ISI.VisualStudio.Extensions
 
 						await outputWindowPane.ClearAsync();
 
-						await outputWindowPane.WriteLineAsync("New Partial Class");
+						await outputWindowPane.WriteLineAsync("Add DataTransferObject Request Response");
 
 						var solution = await VS.Solutions.GetCurrentSolutionAsync();
 						var project = await VS.Solutions.GetActiveProjectAsync();
@@ -70,7 +70,7 @@ namespace ISI.VisualStudio.Extensions
 						var solutionRecipesDirectory = System.IO.Path.Combine(solutionDirectory, ".recipes");
 
 						var projectDirectory = RecipeExtensionsHelper.GetProjectDirectory(project);
-						var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
+						var @namespace = RecipeExtensionsHelper.GetNamespace(project, solutionItem);
 
 						var directory = solutionItem.FullPath;
 						var partialClassDirectory = System.IO.Path.Combine(directory, classNamePrefix);

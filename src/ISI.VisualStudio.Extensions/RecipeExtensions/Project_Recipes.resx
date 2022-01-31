@@ -332,4 +332,26 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
+  <data name="AddSerializableDataTransferObjectRequest" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	[DataContract]
+	public partial class ${ClassNamePrefix}Request
+	{
+	}
+}</value>
+  </data>
+  <data name="AddSerializableDataTransferObjectResponse" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	[DataContract]
+	public partial class ${ClassNamePrefix}Response
+	{
+	}
+}</value>
+  </data>
 </root>
