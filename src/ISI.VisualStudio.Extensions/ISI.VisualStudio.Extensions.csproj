@@ -88,12 +88,6 @@
     <Compile Include="Commands\NugetExtensions_PasteAsNugetPackages_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_ExecuteTransform_Command.cs" />
     <Compile Include="Commands\XmlConfigurationExtensions_AddTransform_Command.cs" />
-    <Compile Include="EmbeddedFileNamesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmbeddedFileNamesForm.designer.cs">
-      <DependentUpon>EmbeddedFileNamesForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\DTE2Extensions\GetSelectedSolutionItems.cs" />
     <Compile Include="Extensions\DTE2Extensions\GetSelectedProject.cs" />
     <Compile Include="Extensions\MSBuildProjectExtensions.cs" />
@@ -196,11 +190,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
-    <Compile Include="T4LocalContent\T4LocalContent1.generatedcode.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>T4LocalContent.tt</DependentUpon>
-    </Compile>
     <Compile Include="XmlConfigurationExtensionsHelper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="XmlConfigurationExtensionsHelper\IsXmlConfiguration.cs" />
     <Compile Include="XmlConfigurationExtensionsHelper\__XmlConfigurationExtensionsHelper.cs" />
@@ -218,9 +207,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="EmbeddedFileNamesForm.resx">
-      <DependentUpon>EmbeddedFileNamesForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RecipeExtensions\ProjectPartialClass_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ProjectPartialClass_Recipes.Designer.cs</LastGenOutput>
@@ -249,8 +235,6 @@
       <Generator>VsixManifestGenerator</Generator>
       <LastGenOutput>source.extension.cs</LastGenOutput>
     </None>
-    <None Include="T4LocalContent\T4LocalContent.Generator.t4" />
-    <None Include="T4LocalContent\T4LocalContent.settings.t4" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -273,10 +257,13 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8065.33135</Version>
+      <Version>10.0.8066.1000</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8065.33135</Version>
+      <Version>10.0.8066.1000</Version>
+    </PackageReference>
+    <PackageReference Include="ISI.Extensions.VisualStudio.Forms">
+      <Version>10.0.8066.1000</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.0.0</Version>
@@ -288,27 +275,22 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8065.33135" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8065.33135" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8065.33135" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8065.33135" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8065.33135" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8065.33135" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8065.33135" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8066.1000" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8066.1000" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8066.1000" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8066.1000" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8066.1000" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8066.1000" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8066.1000" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>6.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Lantern.ico" />
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="T4LocalContent\T4LocalContent.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>T4LocalContent1.generatedcode.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

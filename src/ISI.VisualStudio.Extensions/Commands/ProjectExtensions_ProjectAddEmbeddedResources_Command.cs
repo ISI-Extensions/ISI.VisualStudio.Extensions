@@ -114,7 +114,7 @@ namespace ISI.VisualStudio.Extensions
 				}
 			}
 
-			using (var form = new EmbeddedFileNamesForm(fileNames))
+			using (var form = new ISI.Extensions.VisualStudio.Forms.EmbeddedFileNamesForm(fileNames))
 			{
 				if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{

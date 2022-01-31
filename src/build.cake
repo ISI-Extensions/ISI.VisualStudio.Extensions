@@ -1,5 +1,7 @@
 //dotnet tool install Cake.Tool -g
-#addin nuget:?package=Cake.FileHelpers&version=4.0.1
+#addin nuget:?package=Cake.FileHelpers
+#tool nuget:?package=7-Zip.CommandLine
+#addin nuget:?package=Cake.7zip
 #addin nuget:?package=ISI.Cake.AddIn&loaddependencies=true
 
 //mklink /D Secrets S:\
@@ -9,16 +11,22 @@ var settings = GetSettings(settingsFullName);
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-var solutionPath = File("./ISI.VisualStudio.Extensions.sln");
-var solution = ParseSolution(solutionPath);
-
-var assemblyVersionFile = File("./ISI.VisualStudio.Extensions.Version.cs");
+var solutionFile = File("./ISI.VisualStudio.Extensions.sln");
+var solution = ParseSolution(solutionFile);
+var rootProjectFile = File("./ISI.VisualStudio.Extensions/ISI.VisualStudio.Extensions.csproj");
+var rootAssemblyVersionKey = "ISI.VisualStudio.Extensions";
+var artifactName = "ISI.VisualStudio.Extensions";
+//var artifactFileStoreUuid = new System.Guid("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+//var artifactVersionFileStoreUuid = new System.Guid("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
 var buildDateTime = DateTime.UtcNow;
 var buildDateTimeStamp = GetDateTimeStamp(buildDateTime);
 var buildRevision = GetBuildRevision(buildDateTime);
-var assemblyVersion = GetAssemblyVersion(ParseAssemblyInfo(assemblyVersionFile).AssemblyVersion, buildRevision);
-Information("AssemblyVersion: {0}", assemblyVersion);
+Information("BuildRevision: {0}", buildRevision);
+
+var assemblyVersions = GetAssemblyVersionFiles(solution, rootAssemblyVersionKey, buildRevision);
+
+var buildArtifactVsixFile = File(string.Format("../Publish/{0}.{1}.vsix", artifactName, buildDateTimeStamp));
 
 Task("Clean")
 	.Does(() =>
@@ -30,8 +38,6 @@ Task("Clean")
 			CleanDirectories(projectPath + "/**/obj/" + configuration);
 		}
 
-		CleanDirectories(nugetPackOutputDirectory);
-
 		Information("Cleaning Projects ...");
 	});
 
@@ -40,29 +46,55 @@ Task("NugetPackageRestore")
 	.Does(() =>
 	{
 		Information("Restoring Nuget Packages ...");
-		NuGetRestore(solutionPath);
+		NuGetRestore(solutionFile);
 	});
 
 Task("Build")
 	.IsDependentOn("NugetPackageRestore")
 	.Does(() => 
 	{
-		CreateAssemblyInfo(assemblyVersionFile, new AssemblyInfoSettings()
-		{
-			Version = assemblyVersion,
-		});
+		SetAssemblyVersionFiles(assemblyVersions);
 
-		MSBuild(solutionPath, configurator => configurator
-			.SetConfiguration(configuration)
-			.SetVerbosity(Verbosity.Quiet)
-			.SetMSBuildPlatform(MSBuildPlatform.Automatic)
-			.SetPlatformTarget(PlatformTarget.MSIL)
-			.WithTarget("Build"));
+		var vsixmanifestFile = File("./ISI.VisualStudio.Extensions/source.extension.vsixmanifest");
 
-		CreateAssemblyInfo(assemblyVersionFile, new AssemblyInfoSettings()
+		var xPath = "//vsx:PackageManifest/vsx:Metadata/vsx:Identity/@Version";
+		
+		var xmlPeekSettings = new XmlPeekSettings();
+		xmlPeekSettings.Namespaces.Add("vsx", "http://schemas.microsoft.com/developer/vsx-schema/2011");
+
+		var xmlPokeSettings = new XmlPokeSettings();
+		xmlPokeSettings.Namespaces.Add("vsx", "http://schemas.microsoft.com/developer/vsx-schema/2011");
+
+
+		var vsixmanifestValue = XmlPeek(vsixmanifestFile, xPath, xmlPeekSettings);
+		XmlPoke(vsixmanifestFile, xPath, assemblyVersions[rootAssemblyVersionKey].AssemblyVersion, xmlPokeSettings);
+
+		try
 		{
-			Version = GetAssemblyVersion(assemblyVersion, "*"),
-		});
+			MSBuild(solutionFile, configurator => configurator
+				.SetConfiguration(configuration)
+				.SetPlatformTarget(PlatformTarget.MSIL)
+				.SetVerbosity(Verbosity.Quiet)
+				.WithTarget("Rebuild"));
+
+			var vsixFile = File("./ISI.VisualStudio.Extensions/bin/" + configuration + "/ISI.VisualStudio.Extensions.vsix");
+
+			var publishDirectory = buildArtifactVsixFile.Path.GetDirectory().FullPath;
+			if (!System.IO.Directory.Exists(publishDirectory))
+			{
+				System.IO.Directory.CreateDirectory(publishDirectory);
+			}
+
+			CopyFile(vsixFile, buildArtifactVsixFile);
+
+			System.IO.File.WriteAllText(System.IO.Path.Combine(publishDirectory, string.Format("{0}.Current.DateTimeStamp.Version.txt", artifactName)), string.Format("{0}|{1}", buildDateTimeStamp, assemblyVersions[rootAssemblyVersionKey].AssemblyVersion));
+		}
+		finally
+		{
+			XmlPoke(vsixmanifestFile, xPath, vsixmanifestValue, xmlPokeSettings);
+
+			ResetAssemblyVersionFiles(assemblyVersions);
+		}
 	});
 
 Task("Sign")
@@ -71,15 +103,93 @@ Task("Sign")
 	{
 		if (settings.CodeSigning.DoCodeSigning && configuration.Equals("Release"))
 		{
-			
+			using(var tempDirectory = GetNewTempDirectory())
+			{
+				var buildArtifactZipFile = File(string.Format("{0}/{1}.{2}.zip", tempDirectory.FullName, artifactName, buildDateTimeStamp));
+
+				MoveFile(buildArtifactVsixFile, buildArtifactZipFile);
+
+				SevenZip(m => m
+				 .InExtractMode()
+				 .WithArchive(buildArtifactZipFile)
+				 .WithArchiveType(SwitchArchiveType.Zip)
+				 .WithOutputDirectory(Directory(tempDirectory.FullName + "/" + artifactName)));
+
+				var signableFiles = GetFiles(tempDirectory.FullName + "/**/ISI.VisualStudio.Extensions.dll");
+
+				SignAssemblies(new ISI.Cake.Addin.CodeSigning.SignAssembliesRequest()
+				{
+					AssemblyPaths = signableFiles,
+					RemoteCodeSigningServiceUri = GetNullableUri(settings.CodeSigning.RemoteCodeSigningServiceUrl),
+					RemoteCodeSigningServicePassword = settings.CodeSigning.RemoteCodeSigningServicePassword,
+					CodeSigningCertificateTokenCertificateFileName = settings.CodeSigning.Token.CertificateFileName,
+					CodeSigningCertificateTokenCryptographicProvider = settings.CodeSigning.Token.CryptographicProvider,
+					CodeSigningCertificateTokenContainerName = settings.CodeSigning.Token.ContainerName,
+					CodeSigningCertificateTokenPassword = settings.CodeSigning.Token.Password,
+					TimeStampUri = GetNullableUri(settings.CodeSigning.TimeStampUrl),
+					TimeStampDigestAlgorithm = SignToolDigestAlgorithm.Sha256,
+					CertificatePath = GetNullableFile(settings.CodeSigning.CertificateFileName),
+					CertificatePassword = settings.CodeSigning.CertificatePassword,
+					CertificateFingerprint = settings.CodeSigning.CertificateFingerprint,
+					DigestAlgorithm = SignToolDigestAlgorithm.Sha256,
+				});
+
+				SevenZip(m => m
+					.InAddMode()
+					.WithArchive(buildArtifactVsixFile)
+					.WithArchiveType(SwitchArchiveType.Zip)
+					.WithFiles(new FilePath(tempDirectory.FullName + "/" + artifactName + "/*")));
+
+				DeleteFile(buildArtifactZipFile);
+
+				SignVsixes(new ISI.Cake.Addin.CodeSigning.SignVsixesRequest()
+				{
+					VsixPaths = new FilePathCollection(new [] { buildArtifactVsixFile.Path }),
+					RemoteCodeSigningServiceUri = GetNullableUri(settings.CodeSigning.RemoteCodeSigningServiceUrl),
+					RemoteCodeSigningServicePassword = settings.CodeSigning.RemoteCodeSigningServicePassword,
+					CodeSigningCertificateTokenCertificateFileName = settings.CodeSigning.Token.CertificateFileName,
+					CodeSigningCertificateTokenCryptographicProvider = settings.CodeSigning.Token.CryptographicProvider,
+					CodeSigningCertificateTokenContainerName = settings.CodeSigning.Token.ContainerName,
+					CodeSigningCertificateTokenPassword = settings.CodeSigning.Token.Password,
+					TimeStampUri = GetNullableUri(settings.CodeSigning.TimeStampUrl),
+					TimeStampDigestAlgorithm = SignToolDigestAlgorithm.Sha256,
+					CertificatePath = GetNullableFile(settings.CodeSigning.CertificateFileName),
+					CertificatePassword = settings.CodeSigning.CertificatePassword,
+					CertificateFingerprint = settings.CodeSigning.CertificateFingerprint,
+					DigestAlgorithm = SignToolDigestAlgorithm.Sha256,
+				});
+			}
 		}
 	});
 
 Task("Publish")
 	.IsDependentOn("Sign")
 	.Does(() =>
-	{		
-		
+	{
+		var authenticationToken = GetAuthenticationToken(new ISI.Cake.Addin.Scm.GetAuthenticationTokenRequest()
+		{
+			ScmManagementUrl = settings.Scm.WebServiceUrl,
+			UserName = settings.ActiveDirectory.UserName,
+			Password = settings.ActiveDirectory.Password,
+		}).AuthenticationToken;
+
+		UploadArtifact(new ISI.Cake.Addin.BuildArtifacts.UploadArtifactRequest()
+		{
+			BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
+			AuthenticationToken = authenticationToken,
+			SourceFileName = buildArtifactVsixFile.Path.FullPath,
+			ArtifactName = artifactName,
+			DateTimeStamp = buildDateTimeStamp,
+		});
+
+		SetArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.SetArtifactEnvironmentDateTimeStampVersionRequest()
+		{
+			BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
+			AuthenticationToken = authenticationToken,
+			ArtifactName = artifactName,
+			Environment = "Build",
+			DateTimeStampVersion = string.Format("{0}|{1}", buildDateTimeStamp, assemblyVersions[rootAssemblyVersionKey].AssemblyVersion),
+		});
 	});
 
 Task("Default")
