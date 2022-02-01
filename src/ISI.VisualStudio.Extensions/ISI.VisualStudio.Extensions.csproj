@@ -64,6 +64,8 @@
     <Compile Include="Commands\CakeExtensions_ExecuteDefaultTarget_Command.cs" />
     <Compile Include="Commands\ClipboardExtensions_PasteAsCmdAppend_Command.cs" />
     <Compile Include="Commands\ClipboardExtensions_PasteAs_Command.cs" />
+    <Compile Include="Commands\ProjectExtensions_LoadProject_Command.cs" />
+    <Compile Include="Commands\ProjectExtensions_UnloadProject_Command.cs" />
     <Compile Include="Commands\ProjectExtensions_ProjectAddEmbeddedResources_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_AddExistingProjects_Command.cs" />
@@ -132,6 +134,7 @@
     </Compile>
     <Compile Include="ProjectExtensionsHelper\GetFilteredFileNameSearchPatterns.cs" />
     <Compile Include="ProjectExtensionsHelper\GetEmbeddedFileNameSearchPatterns.cs" />
+    <Compile Include="ProjectExtensionsHelper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="ProjectExtensionsHelper\__ProjectExtensionsHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />

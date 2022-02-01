@@ -160,6 +160,28 @@
 				</Strings>
 			</Button>
 
+			<Button guid="PackageUuid" id="ProjectExtensionsProjectUnloadProjectMenuItemId" priority="0x0201" type="Button">
+				<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>Unload Project</CommandName>
+					<ButtonText>Unload Project</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="ProjectExtensionsProjectLoadProjectMenuItemId" priority="0x0201" type="Button">
+				<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>Load Project</CommandName>
+					<ButtonText>Load Project</ButtonText>
+				</Strings>
+			</Button>
+
 
 			<!-- Guid Extensions -->
 			<Button guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" priority="0x0600" type="Button">
@@ -632,6 +654,8 @@
 			<IDSymbol name="SolutionExtensionsAddExistingProjectsMenuItemId" value="0x0901" />
 
 			<IDSymbol name="ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId" value="0x0B01" />
+			<IDSymbol name="ProjectExtensionsProjectUnloadProjectMenuItemId" value="0x0B02" />
+			<IDSymbol name="ProjectExtensionsProjectLoadProjectMenuItemId" value="0x0B03" />
 
 			<IDSymbol name="NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId" value="0x0C00" />
 			<IDSymbol name="NugetExtensionsPasteAsNugetPackagesMenuItemId" value="0x0C01" />
