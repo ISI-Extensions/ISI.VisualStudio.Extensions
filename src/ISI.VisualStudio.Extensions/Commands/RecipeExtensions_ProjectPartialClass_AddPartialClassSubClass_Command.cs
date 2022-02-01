@@ -68,7 +68,7 @@ namespace ISI.VisualStudio.Extensions
 
 						var partialClassName = partialClassDirectory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
 
-						var @namespace = RecipeExtensionsHelper.GetNamespace(project, solutionItem);
+						var @namespace = RecipeExtensionsHelper.GetNamespace(project, solutionItem, partialClassName);
 
 						if (System.IO.Directory.Exists(partialClassDirectory))
 						{

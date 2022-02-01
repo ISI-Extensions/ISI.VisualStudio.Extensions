@@ -7,7 +7,7 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class ExtensionsHelper
 	{
-		public string GetNamespace(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
+		public string GetNamespace(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem, string className = null)
 		{
 			var @namespace = GetRootNamespace(project);
 
@@ -17,11 +17,19 @@ namespace ISI.VisualStudio.Extensions
 
 			if (!string.IsNullOrWhiteSpace(path))
 			{
-				var pathParts = path.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries);
+				var pathParts = new List<string>(path.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries));
 
 				if (pathParts.NullCheckedAny())
 				{
-					@namespace = string.Format("{0}.{1}", @namespace, string.Join(".", pathParts));
+					if (string.Equals(pathParts.Last(), className, StringComparison.InvariantCulture))
+					{
+						pathParts.RemoveAt(pathParts.Count - 1);
+					}
+
+					if (pathParts.NullCheckedAny())
+					{
+						@namespace = string.Format("{0}.{1}", @namespace, string.Join(".", pathParts));
+					}
 				}
 			}
 
