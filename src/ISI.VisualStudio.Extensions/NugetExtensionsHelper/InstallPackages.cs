@@ -41,5 +41,5 @@ namespace ISI.VisualStudio.Extensions
 				}
 			}
 		}
-}
+	}
 }
