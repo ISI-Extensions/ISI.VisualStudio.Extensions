@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddActionWithPartialView_Action" xml:space="preserve">
+  <data name="ActionWithPartialView_Action_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
@@ -138,7 +138,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddActionWithPartialView_Model" xml:space="preserve">
+  <data name="ActionWithPartialView_Model_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -158,11 +158,11 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 	}
 }</value>
   </data>
-  <data name="AddActionWithPartialView_PartialView" xml:space="preserve">
+  <data name="ActionWithPartialView_PartialView_Template" xml:space="preserve">
     <value>@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
 </value>
   </data>
-  <data name="AddActionWithView_Action" xml:space="preserve">
+  <data name="ActionWithView_Action_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
@@ -195,7 +195,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddActionWithView_JavaScript" xml:space="preserve">
+  <data name="ActionWithView_JavaScript_Template" xml:space="preserve">
     <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.${ControllerActionKey}", function(jQuery) {
 	var model = {};
 	var view = {};
@@ -216,7 +216,7 @@ jQuery(document).ready(function (jQuery) {
 	${Namespace.Area}.${ControllerKey}.${ControllerActionKey}.Setup();
 });</value>
   </data>
-  <data name="AddActionWithView_Model" xml:space="preserve">
+  <data name="ActionWithView_Model_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -230,10 +230,10 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 	}
 }</value>
   </data>
-  <data name="AddActionWithView_StyleSheet" xml:space="preserve">
+  <data name="ActionWithView_StyleSheet_Template" xml:space="preserve">
     <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
   </data>
-  <data name="AddActionWithView_View" xml:space="preserve">
+  <data name="ActionWithView_View_Template" xml:space="preserve">
     <value>@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
 
 @{
@@ -255,7 +255,7 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 {
 }</value>
   </data>
-  <data name="AddArea_AreaRegistration" xml:space="preserve">
+  <data name="Area_AreaRegistration_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -283,7 +283,7 @@ namespace ${Namespace}.Areas.${AreaName}
 	}
 }</value>
   </data>
-  <data name="AddArea_BaseModel" xml:space="preserve">
+  <data name="Area_BaseModel_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -301,7 +301,7 @@ namespace ${Namespace.Area}.Models
 	}
 }</value>
   </data>
-  <data name="AddArea_Controller" xml:space="preserve">
+  <data name="Area_Controller_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -324,7 +324,7 @@ namespace ${Namespace}.Areas.${AreaName}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddArea_ModelBinders" xml:space="preserve">
+  <data name="Area_ModelBinders_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -346,7 +346,7 @@ namespace ${Namespace}.Areas.${AreaName}
 	}
 }</value>
   </data>
-  <data name="AddArea_Routes" xml:space="preserve">
+  <data name="Area_Routes_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -372,7 +372,7 @@ namespace ${Namespace}.Areas.${AreaName}
 	}
 }</value>
   </data>
-  <data name="AddAsyncActionWithPartialView_Action" xml:space="preserve">
+  <data name="AsyncActionWithPartialView_Action_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
@@ -393,7 +393,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddAsyncActionWithView_Action" xml:space="preserve">
+  <data name="AsyncActionWithView_Action_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
@@ -426,7 +426,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddAsyncRestMethod_Action" xml:space="preserve">
+  <data name="AsyncRestMethod_Action_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
@@ -445,25 +445,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddController_BaseModel" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-
-namespace ${Namespace.Area}.Models.${ControllerKey}
-{
-	public abstract class BaseModel : Models.BaseModel
-	{
-	}
-}</value>
-  </data>
-  <data name="AddController_BaseModelRoot" xml:space="preserve">
+  <data name="Controller_BaseModelRoot_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -482,7 +464,7 @@ namespace ${Namespace}.Models
 	}
 }</value>
   </data>
-  <data name="AddController_Controller" xml:space="preserve">
+  <data name="Controller_BaseModel_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -493,19 +475,14 @@ using System.Web.Mvc;
 using ISI.Libraries.Web.Mvc.Extensions;
 using ISI.Libraries.Extensions;
 
-namespace ${Namespace.Area}.Controllers
+namespace ${Namespace.Area}.Models.${ControllerKey}
 {
-	public partial class ${ControllerKey}Controller : Controller
+	public abstract class BaseModel : Models.BaseModel
 	{
-		public ${ControllerKey}Controller(ISI.Libraries.Tracing.ITrace trace)
-			: base(trace)
-		{
-
-		}
 	}
 }</value>
   </data>
-  <data name="AddController_ControllerRoot" xml:space="preserve">
+  <data name="Controller_ControllerRoot_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -529,7 +506,54 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddController_ModelBinders" xml:space="preserve">
+  <data name="Controller_Controller_Template" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using ISI.Libraries.Web.Mvc.Extensions;
+using ISI.Libraries.Extensions;
+
+namespace ${Namespace.Area}.Controllers
+{
+	public partial class ${ControllerKey}Controller : Controller
+	{
+		public ${ControllerKey}Controller(ISI.Libraries.Tracing.ITrace trace)
+			: base(trace)
+		{
+
+		}
+	}
+}</value>
+  </data>
+  <data name="Controller_ModelBindersRoot_Template" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using ISI.Libraries.Web.Mvc.Extensions;
+using ISI.Libraries.Extensions;
+
+namespace ${Namespace.Area}
+{
+	public partial class ModelBinders
+	{
+		public static void RegisterModelBinders(System.Web.Mvc.ModelBinderDictionary binders)
+		{
+			System.Web.Mvc.ModelBinders.Binders.DefaultBinder = new ISI.Libraries.Web.Mvc.ModelBinders.ModelBinder();
+
+			//${ModelBinders}
+		}
+	}
+}</value>
+  </data>
+  <data name="Controller_ModelBinders_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -554,7 +578,7 @@ namespace ${Namespace.Area}
 	}
 }</value>
   </data>
-  <data name="AddController_ModelBindersRoot" xml:space="preserve">
+  <data name="Controller_RoutesRoot_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -564,21 +588,26 @@ using System.Web;
 using System.Web.Mvc;
 using ISI.Libraries.Web.Mvc.Extensions;
 using ISI.Libraries.Extensions;
+using System.Web.Routing;
+using ISI.Libraries.Web.Routes;
 
 namespace ${Namespace.Area}
 {
-	public partial class ModelBinders
+	public partial class Routes
 	{
-		public static void RegisterModelBinders(System.Web.Mvc.ModelBinderDictionary binders)
-		{
-			System.Web.Mvc.ModelBinders.Binders.DefaultBinder = new ISI.Libraries.Web.Mvc.ModelBinders.ModelBinder();
+		internal static readonly string UrlRoot = string.Empty;
 
-			//${ModelBinders}
+		public static void RegisterRoutes(RouteCollection routes)
+		{
+			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+			routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.(ico|png)(/.*)?" });
+
+			//${Routes}
 		}
 	}
 }</value>
   </data>
-  <data name="AddController_Routes" xml:space="preserve">
+  <data name="Controller_Routes_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -619,36 +648,125 @@ namespace ${Namespace.Area}
 	}
 }</value>
   </data>
-  <data name="AddController_RoutesRoot" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-using System.Web.Routing;
-using ISI.Libraries.Web.Routes;
-
-namespace ${Namespace.Area}
-{
-	public partial class Routes
-	{
-		internal static readonly string UrlRoot = string.Empty;
-
-		public static void RegisterRoutes(RouteCollection routes)
-		{
-			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-			routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.(ico|png)(/.*)?" });
-
-			//${Routes}
+  <data name="JavaScriptsControllerLayout_Template" xml:space="preserve">
+    <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.Layout", function(jQuery) {
+	var model = {};
+	var view = {};
+	var controller = {
+		setup: function (config) {
+			controller.eventBinder();
+		},
+		eventBinder: function () {
 		}
-	}
-}</value>
+	};
+
+	return {
+		Setup: controller.setup
+	};
+} (jQuery));
+
+jQuery(document).ready(function (jQuery) {
+	${Namespace.Area}.${ControllerKey}.Layout.Setup();
+});</value>
   </data>
-  <data name="AddRestMethod_Action" xml:space="preserve">
+  <data name="JavaScriptsSharedLayout_Template" xml:space="preserve">
+    <value>jQuery.namespace("${Namespace}.${Areas.AreaName}Layout", function(jQuery) {
+	var model = {};
+	var view = {};
+	var controller = {
+		setup: function (config) {
+			controller.eventBinder();
+		},
+		eventBinder: function () {
+		}
+	};
+
+	return {
+		Setup: controller.setup
+	};
+} (jQuery));
+
+jQuery(document).ready(function (jQuery) {
+	${Namespace}.${Areas.AreaName}Layout.Setup();
+});</value>
+  </data>
+  <data name="JavaScriptsWebConfig_Template" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;
+&lt;configuration&gt;
+	&lt;configSections&gt;
+		&lt;sectionGroup name="system.web.webPages.razor" type="System.Web.WebPages.Razor.Configuration.RazorWebSectionGroup, System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"&gt;
+			&lt;section name="host" type="System.Web.WebPages.Razor.Configuration.HostSection, System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" /&gt;
+			&lt;section name="pages" type="System.Web.WebPages.Razor.Configuration.RazorPagesSection, System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" /&gt;
+		&lt;/sectionGroup&gt;
+	&lt;/configSections&gt;
+
+	&lt;system.web.webPages.razor&gt;
+		&lt;host factoryType="System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" /&gt;
+		&lt;pages pageBaseType="System.Web.Mvc.WebViewPage"&gt;
+			&lt;namespaces&gt;
+				&lt;add namespace="System.Web.Mvc" /&gt;
+				&lt;add namespace="System.Web.Mvc.Ajax" /&gt;
+				&lt;add namespace="System.Web.Mvc.Html" /&gt;
+				&lt;add namespace="System.Web.Optimization"/&gt;
+				&lt;add namespace="System.Web.Routing" /&gt;
+				&lt;add namespace="ISI.Libraries.Extensions" /&gt;
+				&lt;add namespace="ISI.Libraries.Web.Extensions" /&gt;
+				&lt;add namespace="ISI.Libraries.Web.Mvc.Extensions" /&gt;
+				&lt;add namespace="ISI.CMS.Web.Mvc.Extensions"/&gt;
+				&lt;add namespace="ISI.Libraries.JQuery.Web.Mvc.Extensions" /&gt;
+				&lt;add namespace="ISI.Libraries.Bootstrap.Web.Mvc.Extensions" /&gt;
+				&lt;add namespace="${Namespace}"/&gt;
+			&lt;/namespaces&gt;
+		&lt;/pages&gt;
+	&lt;/system.web.webPages.razor&gt;
+
+	&lt;appSettings&gt;
+		&lt;add key="webpages:Enabled" value="false" /&gt;
+	&lt;/appSettings&gt;
+
+	&lt;system.web&gt;
+		&lt;httpHandlers&gt;
+			&lt;add path="*.cssx" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add path="*.cscss" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add path="*.vbcss" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add path="*.less" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add path="*.lessx" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add path="*.csless" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add path="*.vbless" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add path="*.jsx" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add path="*.csjs" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add path="*.vbjs" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
+		&lt;/httpHandlers&gt;
+	&lt;/system.web&gt;
+
+	&lt;system.webServer&gt;
+		&lt;handlers&gt;
+			&lt;remove name="BlockViewHandler"/&gt;
+			&lt;remove name="BlockViewHandler-cssx"/&gt;
+			&lt;remove name="BlockViewHandler-cscss"/&gt;
+			&lt;remove name="BlockViewHandler-vbcss"/&gt;
+			&lt;remove name="BlockViewHandler-less"/&gt;
+			&lt;remove name="BlockViewHandler-lessx"/&gt;
+			&lt;remove name="BlockViewHandler-csless"/&gt;
+			&lt;remove name="BlockViewHandler-vbless"/&gt;
+			&lt;remove name="BlockViewHandler-jsx"/&gt;
+			&lt;remove name="BlockViewHandler-csjs"/&gt;
+			&lt;remove name="BlockViewHandler-vbjs"/&gt;
+			&lt;add name="BlockViewHandler-cssx" path="*.cssx" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add name="BlockViewHandler-cscss" path="*.cscss" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add name="BlockViewHandler-vbcss" path="*.vbcss" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add name="BlockViewHandler-less" path="*.less" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add name="BlockViewHandler-lessx" path="*.lessx" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add name="BlockViewHandler-csless" path="*.csless" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add name="BlockViewHandler-vbless" path="*.vbless" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add name="BlockViewHandler-jsx" path="*.jsx" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add name="BlockViewHandler-csjs" path="*.csjs" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+			&lt;add name="BlockViewHandler-vbjs" path="*.vbjs" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
+		&lt;/handlers&gt;
+	&lt;/system.webServer&gt;
+&lt;/configuration&gt;</value>
+  </data>
+  <data name="RestMethod_Action_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
@@ -667,7 +785,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddRestMethod_Model" xml:space="preserve">
+  <data name="RestMethod_Model_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -686,7 +804,7 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 	}
 }</value>
   </data>
-  <data name="AddSoapController_Controller" xml:space="preserve">
+  <data name="SoapController_Controller_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -713,49 +831,13 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="JavaScriptsControllerLayout" xml:space="preserve">
-    <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.Layout", function(jQuery) {
-	var model = {};
-	var view = {};
-	var controller = {
-		setup: function (config) {
-			controller.eventBinder();
-		},
-		eventBinder: function () {
-		}
-	};
-
-	return {
-		Setup: controller.setup
-	};
-} (jQuery));
-
-jQuery(document).ready(function (jQuery) {
-	${Namespace.Area}.${ControllerKey}.Layout.Setup();
-});</value>
+  <data name="StyleSheetsControllerLayout_Template" xml:space="preserve">
+    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
   </data>
-  <data name="JavaScriptsSharedLayout" xml:space="preserve">
-    <value>jQuery.namespace("${Namespace}.${Areas.AreaName}Layout", function(jQuery) {
-	var model = {};
-	var view = {};
-	var controller = {
-		setup: function (config) {
-			controller.eventBinder();
-		},
-		eventBinder: function () {
-		}
-	};
-
-	return {
-		Setup: controller.setup
-	};
-} (jQuery));
-
-jQuery(document).ready(function (jQuery) {
-	${Namespace}.${Areas.AreaName}Layout.Setup();
-});</value>
+  <data name="StyleSheetsSharedLayout_Template" xml:space="preserve">
+    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
   </data>
-  <data name="JavaScriptsWebConfig" xml:space="preserve">
+  <data name="StyleSheetsWebConfig_Template" xml:space="preserve">
     <value>&lt;?xml version="1.0"?&gt;
 &lt;configuration&gt;
 	&lt;configSections&gt;
@@ -831,89 +913,7 @@ jQuery(document).ready(function (jQuery) {
 	&lt;/system.webServer&gt;
 &lt;/configuration&gt;</value>
   </data>
-  <data name="StyleSheetsControllerLayout" xml:space="preserve">
-    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
-  </data>
-  <data name="StyleSheetsSharedLayout" xml:space="preserve">
-    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
-  </data>
-  <data name="StyleSheetsWebConfig" xml:space="preserve">
-    <value>&lt;?xml version="1.0"?&gt;
-&lt;configuration&gt;
-	&lt;configSections&gt;
-		&lt;sectionGroup name="system.web.webPages.razor" type="System.Web.WebPages.Razor.Configuration.RazorWebSectionGroup, System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"&gt;
-			&lt;section name="host" type="System.Web.WebPages.Razor.Configuration.HostSection, System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" /&gt;
-			&lt;section name="pages" type="System.Web.WebPages.Razor.Configuration.RazorPagesSection, System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" requirePermission="false" /&gt;
-		&lt;/sectionGroup&gt;
-	&lt;/configSections&gt;
-
-	&lt;system.web.webPages.razor&gt;
-		&lt;host factoryType="System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" /&gt;
-		&lt;pages pageBaseType="System.Web.Mvc.WebViewPage"&gt;
-			&lt;namespaces&gt;
-				&lt;add namespace="System.Web.Mvc" /&gt;
-				&lt;add namespace="System.Web.Mvc.Ajax" /&gt;
-				&lt;add namespace="System.Web.Mvc.Html" /&gt;
-				&lt;add namespace="System.Web.Optimization"/&gt;
-				&lt;add namespace="System.Web.Routing" /&gt;
-				&lt;add namespace="ISI.Libraries.Extensions" /&gt;
-				&lt;add namespace="ISI.Libraries.Web.Extensions" /&gt;
-				&lt;add namespace="ISI.Libraries.Web.Mvc.Extensions" /&gt;
-				&lt;add namespace="ISI.CMS.Web.Mvc.Extensions"/&gt;
-				&lt;add namespace="ISI.Libraries.JQuery.Web.Mvc.Extensions" /&gt;
-				&lt;add namespace="ISI.Libraries.Bootstrap.Web.Mvc.Extensions" /&gt;
-				&lt;add namespace="${Namespace}"/&gt;
-			&lt;/namespaces&gt;
-		&lt;/pages&gt;
-	&lt;/system.web.webPages.razor&gt;
-
-	&lt;appSettings&gt;
-		&lt;add key="webpages:Enabled" value="false" /&gt;
-	&lt;/appSettings&gt;
-
-	&lt;system.web&gt;
-		&lt;httpHandlers&gt;
-			&lt;add path="*.cssx" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add path="*.cscss" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add path="*.vbcss" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add path="*.less" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add path="*.lessx" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add path="*.csless" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add path="*.vbless" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add path="*.jsx" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add path="*.csjs" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add path="*.vbjs" verb="*" type="System.Web.HttpNotFoundHandler" /&gt;
-		&lt;/httpHandlers&gt;
-	&lt;/system.web&gt;
-
-	&lt;system.webServer&gt;
-		&lt;handlers&gt;
-			&lt;remove name="BlockViewHandler"/&gt;
-			&lt;remove name="BlockViewHandler-cssx"/&gt;
-			&lt;remove name="BlockViewHandler-cscss"/&gt;
-			&lt;remove name="BlockViewHandler-vbcss"/&gt;
-			&lt;remove name="BlockViewHandler-less"/&gt;
-			&lt;remove name="BlockViewHandler-lessx"/&gt;
-			&lt;remove name="BlockViewHandler-csless"/&gt;
-			&lt;remove name="BlockViewHandler-vbless"/&gt;
-			&lt;remove name="BlockViewHandler-jsx"/&gt;
-			&lt;remove name="BlockViewHandler-csjs"/&gt;
-			&lt;remove name="BlockViewHandler-vbjs"/&gt;
-			&lt;add name="BlockViewHandler-cssx" path="*.cssx" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add name="BlockViewHandler-cscss" path="*.cscss" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add name="BlockViewHandler-vbcss" path="*.vbcss" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add name="BlockViewHandler-less" path="*.less" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add name="BlockViewHandler-lessx" path="*.lessx" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add name="BlockViewHandler-csless" path="*.csless" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add name="BlockViewHandler-vbless" path="*.vbless" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add name="BlockViewHandler-jsx" path="*.jsx" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add name="BlockViewHandler-csjs" path="*.csjs" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-			&lt;add name="BlockViewHandler-vbjs" path="*.vbjs" verb="*" preCondition="integratedMode" type="System.Web.HttpNotFoundHandler" /&gt;
-		&lt;/handlers&gt;
-	&lt;/system.webServer&gt;
-&lt;/configuration&gt;</value>
-  </data>
-  <data name="ViewsControllerLayout" xml:space="preserve">
+  <data name="ViewsControllerLayout_Template" xml:space="preserve">
     <value>@model ${Namespace.Area}.Models.${ControllerKey}.BaseModel
 
 @{
@@ -939,7 +939,7 @@ jQuery(document).ready(function (jQuery) {
 	@RenderSection("JavaScriptContent", false)
 }</value>
   </data>
-  <data name="ViewsSharedLayout" xml:space="preserve">
+  <data name="ViewsSharedLayout_Template" xml:space="preserve">
     <value>@model ${Namespace.Area}.Models.BaseModel
 
 @{
@@ -965,7 +965,7 @@ jQuery(document).ready(function (jQuery) {
 	@RenderSection("JavaScriptContent", false)
 }</value>
   </data>
-  <data name="ViewsWebConfig" xml:space="preserve">
+  <data name="ViewsWebConfig_Template" xml:space="preserve">
     <value>&lt;?xml version="1.0"?&gt;
 &lt;configuration&gt;
 	&lt;configSections&gt;

@@ -54,6 +54,9 @@
     <Compile Include="..\ISI.VisualStudio.Extensions.Version.cs">
       <Link>Properties\ISI.VisualStudio.Extensions.Version.cs</Link>
     </Compile>
+    <Compile Include="AddT4LocalContentDialog.xaml.cs">
+      <DependentUpon>AddT4LocalContentDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CakeExtensionsHelper\IsCakeBuildScript.cs" />
     <Compile Include="CakeExtensionsHelper\GetTargetKeysFromBuildScript.cs" />
     <Compile Include="CakeExtensionsHelper\GetOutputWindowPaneAsync.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="Commands\ProjectExtensions_LoadProject_Command.cs" />
     <Compile Include="Commands\ProjectExtensions_UnloadProject_Command.cs" />
     <Compile Include="Commands\ProjectExtensions_ProjectAddEmbeddedResources_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddT4LocalContent_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_ShowSccInformation_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_AddExistingProjects_Command.cs" />
@@ -269,16 +273,16 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8069.33760</Version>
+      <Version>10.0.8071.35320</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8069.33760</Version>
+      <Version>10.0.8071.35320</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8069.33760</Version>
+      <Version>10.0.8071.35320</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.VisualStudio.Forms">
-      <Version>10.0.8069.33760</Version>
+      <Version>10.0.8071.35320</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.0.0</Version>
@@ -290,13 +294,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8069.33760" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8069.33760" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8069.33760" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8069.33760" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8069.33760" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8069.33760" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8069.33760" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8071.35320" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8071.35320" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8071.35320" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8071.35320" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8071.35320" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8071.35320" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8071.35320" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>6.0.0</Version>
@@ -309,6 +313,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddT4LocalContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddEnumTextTemplateDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

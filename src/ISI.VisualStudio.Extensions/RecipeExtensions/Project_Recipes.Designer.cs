@@ -72,9 +72,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddAsyncDataTransferObjectRequest {
+        internal static string AsyncDataTransferObjectRequest_Template {
             get {
-                return ResourceManager.GetString("AddAsyncDataTransferObjectRequest", resourceCulture);
+                return ResourceManager.GetString("AsyncDataTransferObjectRequest_Template", resourceCulture);
             }
         }
         
@@ -88,9 +88,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddDataTransferObjectRequest {
+        internal static string DataTransferObjectRequest_Template {
             get {
-                return ResourceManager.GetString("AddDataTransferObjectRequest", resourceCulture);
+                return ResourceManager.GetString("DataTransferObjectRequest_Template", resourceCulture);
             }
         }
         
@@ -104,9 +104,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddDataTransferObjectResponse {
+        internal static string DataTransferObjectResponse_Template {
             get {
-                return ResourceManager.GetString("AddDataTransferObjectResponse", resourceCulture);
+                return ResourceManager.GetString("DataTransferObjectResponse_Template", resourceCulture);
             }
         }
         
@@ -125,9 +125,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddDependencyRegisterClass {
+        internal static string DependencyRegisterClass_Template {
             get {
-                return ResourceManager.GetString("AddDependencyRegisterClass", resourceCulture);
+                return ResourceManager.GetString("DependencyRegisterClass_Template", resourceCulture);
             }
         }
         
@@ -147,9 +147,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///&lt;#
         ///		string enumName = Path.Ge [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string AddEnumTextTemplate {
+        internal static string EnumTextTemplate_Template {
             get {
-                return ResourceManager.GetString("AddEnumTextTemplate", resourceCulture);
+                return ResourceManager.GetString("EnumTextTemplate_Template", resourceCulture);
             }
         }
         
@@ -164,9 +164,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddSerializableDataTransferObjectRequest {
+        internal static string SerializableDataTransferObjectRequest_Template {
             get {
-                return ResourceManager.GetString("AddSerializableDataTransferObjectRequest", resourceCulture);
+                return ResourceManager.GetString("SerializableDataTransferObjectRequest_Template", resourceCulture);
             }
         }
         
@@ -181,9 +181,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddSerializableDataTransferObjectResponse {
+        internal static string SerializableDataTransferObjectResponse_Template {
             get {
-                return ResourceManager.GetString("AddSerializableDataTransferObjectResponse", resourceCulture);
+                return ResourceManager.GetString("SerializableDataTransferObjectResponse_Template", resourceCulture);
             }
         }
         
@@ -203,9 +203,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddServiceRegistrarClass {
+        internal static string ServiceRegistrarClass_Template {
             get {
-                return ResourceManager.GetString("AddServiceRegistrarClass", resourceCulture);
+                return ResourceManager.GetString("ServiceRegistrarClass_Template", resourceCulture);
             }
         }
         
@@ -230,9 +230,58 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddStartUpClass {
+        internal static string StartUpClass_Template {
             get {
-                return ResourceManager.GetString("AddStartUpClass", resourceCulture);
+                return ResourceManager.GetString("StartUpClass_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;#
+        ////*
+        ///Copyright (c) 2022, Integrated Solutions, Inc.
+        ///All rights reserved.
+        ///
+        ///Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+        ///
+        ///		* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+        ///		* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string T4LocalContent_Generator_t4_Template {
+            get {
+                return ResourceManager.GetString("T4LocalContent.Generator.t4_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;#+
+        ///		readonly string Namespace = &quot;${Namespace}&quot;;
+        ///		
+        ///		readonly bool IsWebRoot = ${IsWebRoot};
+        ///		readonly bool BuildT4Files = ${BuildT4Files};
+        ///		readonly string FilesSubClassName = &quot;T4Files&quot;;
+        ///		readonly bool BuildT4Links = ${BuildT4Links};
+        ///		readonly string LinksSubClassName = &quot;T4Links&quot;;
+        ///		readonly bool BuildT4Embedded = ${BuildT4Embedded};
+        ///		readonly string EmbeddedSubClassName = &quot;T4Embedded&quot;;
+        ///		readonly bool BuildT4Resources = ${BuildT4Resources};
+        ///		readonly string ResourcesSubClassName = &quot;T4Re [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string T4LocalContent_settings_t4_Template {
+            get {
+                return ResourceManager.GetString("T4LocalContent.settings.t4_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;#@ template language=&quot;C#&quot; debug=&quot;true&quot; hostspecific=&quot;true&quot; #&gt;
+        ///&lt;#@ output extension=&quot;.generatedcode.cs&quot; #&gt;
+        ///&lt;#@ Include File=&quot;T4LocalContent.settings.t4&quot; #&gt;
+        ///&lt;#@ Include File=&quot;T4LocalContent.Generator.t4&quot; #&gt;.
+        /// </summary>
+        internal static string T4LocalContent_tt_Template {
+            get {
+                return ResourceManager.GetString("T4LocalContent.tt_Template", resourceCulture);
             }
         }
     }

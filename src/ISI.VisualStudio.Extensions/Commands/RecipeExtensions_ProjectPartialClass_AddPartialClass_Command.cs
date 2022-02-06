@@ -78,7 +78,6 @@ namespace ISI.VisualStudio.Extensions
 							var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
 							var classInjectors = codeExtensionProvider.DefaultClassInjectors.ToList();
 
-
 							if (partialClassName.EndsWith("Api", StringComparison.InvariantCulture))
 							{
 								try

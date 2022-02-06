@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddActionWithPartialView_Action" xml:space="preserve">
+  <data name="ActionWithPartialView_Action_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
@@ -138,7 +138,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddActionWithPartialView_Model" xml:space="preserve">
+  <data name="ActionWithPartialView_Model_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -153,10 +153,10 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 	}
 }</value>
   </data>
-  <data name="AddActionWithPartialView_PartialView" xml:space="preserve">
+  <data name="ActionWithPartialView_PartialView_Template" xml:space="preserve">
     <value>@inherits ISI.Libraries.RazorEngine.WebApi.TemplateBase&lt;${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model&gt;</value>
   </data>
-  <data name="AddActionWithView_Action" xml:space="preserve">
+  <data name="ActionWithView_Action_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
@@ -189,7 +189,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddActionWithView_JavaScript" xml:space="preserve">
+  <data name="ActionWithView_JavaScript_Template" xml:space="preserve">
     <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.${ControllerActionKey}", function(jQuery) {
 	var model = {};
 	var view = {};
@@ -210,7 +210,7 @@ jQuery(document).ready(function (jQuery) {
 	${Namespace.Area}.${ControllerKey}.${ControllerActionKey}.Setup();
 });</value>
   </data>
-  <data name="AddActionWithView_Model" xml:space="preserve">
+  <data name="ActionWithView_Model_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -225,10 +225,10 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 	}
 }</value>
   </data>
-  <data name="AddActionWithView_StyleSheet" xml:space="preserve">
+  <data name="ActionWithView_StyleSheet_Template" xml:space="preserve">
     <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
   </data>
-  <data name="AddActionWithView_View" xml:space="preserve">
+  <data name="ActionWithView_View_Template" xml:space="preserve">
     <value>@inherits ISI.Libraries.RazorEngine.WebApi.TemplateBase&lt;${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model&gt;
 
 @{
@@ -250,7 +250,7 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 {
 }</value>
   </data>
-  <data name="AddArea_BaseModelRoot" xml:space="preserve">
+  <data name="Area_BaseModelRoot_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -265,7 +265,7 @@ namespace ${Namespace}.Models
 	}
 }</value>
   </data>
-  <data name="AddArea_ControllerRoot" xml:space="preserve">
+  <data name="Area_ControllerRoot_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -288,21 +288,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddController_BaseModel" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ${Namespace.Area}.Models.${ControllerKey}
-{
-	public abstract class BaseModel : Models.BaseModel
-	{
-	}
-}</value>
-  </data>
-  <data name="AddController_BaseModelRoot" xml:space="preserve">
+  <data name="Controller_BaseModelRoot_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -317,7 +303,44 @@ namespace ${Namespace}.Models
 	}
 }</value>
   </data>
-  <data name="AddController_Controller" xml:space="preserve">
+  <data name="Controller_BaseModel_Template" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ${Namespace.Area}.Models.${ControllerKey}
+{
+	public abstract class BaseModel : Models.BaseModel
+	{
+	}
+}</value>
+  </data>
+  <data name="Controller_ControllerRoot_Template" xml:space="preserve">
+    <value>using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using ISI.Libraries.Extensions;
+
+namespace ${Namespace.Area}.Controllers
+{
+	public abstract partial class Controller : ISI.Libraries.WebApi.AbstractController
+	{
+		protected Controller(ISI.Libraries.Tracing.ITrace trace)
+			: base(trace)
+		{
+
+		}
+	}
+}</value>
+  </data>
+  <data name="Controller_Controller_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -340,30 +363,28 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddController_ControllerRoot" xml:space="preserve">
+  <data name="Controller_RoutesRoot_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using ISI.Libraries.Extensions;
+using System.Threading.Tasks;
 
-namespace ${Namespace.Area}.Controllers
+namespace ${Namespace.Area}
 {
-	public abstract partial class Controller : ISI.Libraries.WebApi.AbstractController
+	public partial class Routes
 	{
-		protected Controller(ISI.Libraries.Tracing.ITrace trace)
-			: base(trace)
-		{
+		internal static readonly string UrlRoot = string.Empty;
 
+		public static void RegisterRoutes(System.Web.Http.HttpRouteCollection routes)
+		{
+			//${ApiRoutes}
 		}
 	}
 }</value>
   </data>
-  <data name="AddController_Routes" xml:space="preserve">
+  <data name="Controller_Routes_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -400,28 +421,28 @@ namespace ${Namespace.Area}
 	}
 }</value>
   </data>
-  <data name="AddController_RoutesRoot" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Tasks;
-
-namespace ${Namespace.Area}
-{
-	public partial class Routes
-	{
-		internal static readonly string UrlRoot = string.Empty;
-
-		public static void RegisterRoutes(System.Web.Http.HttpRouteCollection routes)
-		{
-			//${ApiRoutes}
+  <data name="JavaScriptsControllerLayout_Template" xml:space="preserve">
+    <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.Layout", function(jQuery) {
+	var model = {};
+	var view = {};
+	var controller = {
+		setup: function (config) {
+			controller.eventBinder();
+		},
+		eventBinder: function () {
 		}
-	}
-}</value>
+	};
+
+	return {
+		Setup: controller.setup
+	};
+} (jQuery));
+
+jQuery(document).ready(function (jQuery) {
+	${Namespace.Area}.${ControllerKey}.Layout.Setup();
+});</value>
   </data>
-  <data name="AddRestMethod_Method" xml:space="preserve">
+  <data name="RestMethod_Method_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -459,7 +480,7 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="AddRestMethod_Model" xml:space="preserve">
+  <data name="RestMethod_Model_Template" xml:space="preserve">
     <value>using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -475,31 +496,10 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 	}
 }</value>
   </data>
-  <data name="JavaScriptsControllerLayout" xml:space="preserve">
-    <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.Layout", function(jQuery) {
-	var model = {};
-	var view = {};
-	var controller = {
-		setup: function (config) {
-			controller.eventBinder();
-		},
-		eventBinder: function () {
-		}
-	};
-
-	return {
-		Setup: controller.setup
-	};
-} (jQuery));
-
-jQuery(document).ready(function (jQuery) {
-	${Namespace.Area}.${ControllerKey}.Layout.Setup();
-});</value>
-  </data>
-  <data name="StyleSheetsControllerLayout" xml:space="preserve">
+  <data name="StyleSheetsControllerLayout_Template" xml:space="preserve">
     <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
   </data>
-  <data name="ViewsControllerLayout" xml:space="preserve">
+  <data name="ViewsControllerLayout_Template" xml:space="preserve">
     <value>@model ${Namespace.Area}.Models.${ControllerKey}.BaseModel
 
 @{

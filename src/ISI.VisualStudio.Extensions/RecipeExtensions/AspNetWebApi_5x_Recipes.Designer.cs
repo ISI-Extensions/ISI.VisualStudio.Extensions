@@ -11,6 +11,7 @@
 namespace ISI.VisualStudio.Extensions.RecipeExtensions {
     using System;
     
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -75,9 +76,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///
         ///			result = Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${Control [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string AddActionWithPartialView_Action {
+        internal static string ActionWithPartialView_Action_Template {
             get {
-                return ResourceManager.GetString("AddActionWithPartialView_Action", resourceCulture);
+                return ResourceManager.GetString("ActionWithPartialView_Action_Template", resourceCulture);
             }
         }
         
@@ -96,18 +97,18 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddActionWithPartialView_Model {
+        internal static string ActionWithPartialView_Model_Template {
             get {
-                return ResourceManager.GetString("AddActionWithPartialView_Model", resourceCulture);
+                return ResourceManager.GetString("ActionWithPartialView_Model_Template", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to @inherits ISI.Libraries.RazorEngine.WebApi.TemplateBase&lt;${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model&gt;.
         /// </summary>
-        internal static string AddActionWithPartialView_PartialView {
+        internal static string ActionWithPartialView_PartialView_Template {
             get {
-                return ResourceManager.GetString("AddActionWithPartialView_PartialView", resourceCulture);
+                return ResourceManager.GetString("ActionWithPartialView_PartialView_Template", resourceCulture);
             }
         }
         
@@ -127,9 +128,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///
         ///			result = Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${Control [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string AddActionWithView_Action {
+        internal static string ActionWithView_Action_Template {
             get {
-                return ResourceManager.GetString("AddActionWithView_Action", resourceCulture);
+                return ResourceManager.GetString("ActionWithView_Action_Template", resourceCulture);
             }
         }
         
@@ -154,9 +155,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	${Namespace.Area}.${ControllerKey}.${ControllerActionKey}.Setup();
         ///});.
         /// </summary>
-        internal static string AddActionWithView_JavaScript {
+        internal static string ActionWithView_JavaScript_Template {
             get {
-                return ResourceManager.GetString("AddActionWithView_JavaScript", resourceCulture);
+                return ResourceManager.GetString("ActionWithView_JavaScript_Template", resourceCulture);
             }
         }
         
@@ -175,18 +176,18 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddActionWithView_Model {
+        internal static string ActionWithView_Model_Template {
             get {
-                return ResourceManager.GetString("AddActionWithView_Model", resourceCulture);
+                return ResourceManager.GetString("ActionWithView_Model_Template", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to @Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless).
         /// </summary>
-        internal static string AddActionWithView_StyleSheet {
+        internal static string ActionWithView_StyleSheet_Template {
             get {
-                return ResourceManager.GetString("AddActionWithView_StyleSheet", resourceCulture);
+                return ResourceManager.GetString("ActionWithView_StyleSheet_Template", resourceCulture);
             }
         }
         
@@ -207,9 +208,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///{
         ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}Jav [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string AddActionWithView_View {
+        internal static string ActionWithView_View_Template {
             get {
-                return ResourceManager.GetString("AddActionWithView_View", resourceCulture);
+                return ResourceManager.GetString("ActionWithView_View_Template", resourceCulture);
             }
         }
         
@@ -228,9 +229,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddArea_BaseModelRoot {
+        internal static string Area_BaseModelRoot_Template {
             get {
-                return ResourceManager.GetString("AddArea_BaseModelRoot", resourceCulture);
+                return ResourceManager.GetString("Area_BaseModelRoot_Template", resourceCulture);
             }
         }
         
@@ -257,9 +258,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddArea_ControllerRoot {
+        internal static string Area_ControllerRoot_Template {
             get {
-                return ResourceManager.GetString("AddArea_ControllerRoot", resourceCulture);
+                return ResourceManager.GetString("Area_ControllerRoot_Template", resourceCulture);
             }
         }
         
@@ -277,9 +278,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddController_BaseModel {
+        internal static string Controller_BaseModel_Template {
             get {
-                return ResourceManager.GetString("AddController_BaseModel", resourceCulture);
+                return ResourceManager.GetString("Controller_BaseModel_Template", resourceCulture);
             }
         }
         
@@ -298,9 +299,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddController_BaseModelRoot {
+        internal static string Controller_BaseModelRoot_Template {
             get {
-                return ResourceManager.GetString("AddController_BaseModelRoot", resourceCulture);
+                return ResourceManager.GetString("Controller_BaseModelRoot_Template", resourceCulture);
             }
         }
         
@@ -327,9 +328,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddController_Controller {
+        internal static string Controller_Controller_Template {
             get {
-                return ResourceManager.GetString("AddController_Controller", resourceCulture);
+                return ResourceManager.GetString("Controller_Controller_Template", resourceCulture);
             }
         }
         
@@ -356,9 +357,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddController_ControllerRoot {
+        internal static string Controller_ControllerRoot_Template {
             get {
-                return ResourceManager.GetString("AddController_ControllerRoot", resourceCulture);
+                return ResourceManager.GetString("Controller_ControllerRoot_Template", resourceCulture);
             }
         }
         
@@ -388,9 +389,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///			{
         ///				(new RouteNames()).AssignRouteNa [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string AddController_Routes {
+        internal static string Controller_Routes_Template {
             get {
-                return ResourceManager.GetString("AddController_Routes", resourceCulture);
+                return ResourceManager.GetString("Controller_Routes_Template", resourceCulture);
             }
         }
         
@@ -415,58 +416,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddController_RoutesRoot {
+        internal static string Controller_RoutesRoot_Template {
             get {
-                return ResourceManager.GetString("AddController_RoutesRoot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to using System;
-        ///using System.Collections.Generic;
-        ///using System.Linq;
-        ///using System.Text;
-        ///using System.Threading.Tasks;
-        ///using System.Net;
-        ///using System.Net.Http;
-        ///using System.Web.Http;
-        ///using ISI.Libraries.WebApi.Extensions;
-        ///using ISI.Libraries.Extensions;
-        ///
-        ///namespace ${Namespace.Area}.Controllers
-        ///{
-        ///	public partial class ${ControllerKey}Controller 
-        ///	{
-        ///		[AcceptVerbs(WebRequestMethods.Http.Get)]
-        ///		public virtual HttpResponseMessage ${ControllerActionKey}()
-        ///		{
-        ///			HttpResponseMessage result = null; [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string AddRestMethod_Method {
-            get {
-                return ResourceManager.GetString("AddRestMethod_Method", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to using System;
-        ///using System.Collections.Generic;
-        ///using System.Linq;
-        ///using System.Text;
-        ///using System.Threading.Tasks;
-        ///using ISI.Libraries.Extensions;
-        ///
-        ///namespace ${Namespace.Area}.Models.${ControllerKey}
-        ///{
-        ///	public class ${ControllerActionKey}Model : BaseModel
-        ///	{
-        ///
-        ///	}
-        ///}.
-        /// </summary>
-        internal static string AddRestMethod_Model {
-            get {
-                return ResourceManager.GetString("AddRestMethod_Model", resourceCulture);
+                return ResourceManager.GetString("Controller_RoutesRoot_Template", resourceCulture);
             }
         }
         
@@ -491,18 +443,67 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	${Namespace.Area}.${ControllerKey}.Layout.Setup();
         ///});.
         /// </summary>
-        internal static string JavaScriptsControllerLayout {
+        internal static string JavaScriptsControllerLayout_Template {
             get {
-                return ResourceManager.GetString("JavaScriptsControllerLayout", resourceCulture);
+                return ResourceManager.GetString("JavaScriptsControllerLayout_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to using System;
+        ///using System.Collections.Generic;
+        ///using System.Linq;
+        ///using System.Text;
+        ///using System.Threading.Tasks;
+        ///using System.Net;
+        ///using System.Net.Http;
+        ///using System.Web.Http;
+        ///using ISI.Libraries.WebApi.Extensions;
+        ///using ISI.Libraries.Extensions;
+        ///
+        ///namespace ${Namespace.Area}.Controllers
+        ///{
+        ///	public partial class ${ControllerKey}Controller 
+        ///	{
+        ///		[AcceptVerbs(WebRequestMethods.Http.Get)]
+        ///		public virtual HttpResponseMessage ${ControllerActionKey}()
+        ///		{
+        ///			HttpResponseMessage result = null; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RestMethod_Method_Template {
+            get {
+                return ResourceManager.GetString("RestMethod_Method_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to using System;
+        ///using System.Collections.Generic;
+        ///using System.Linq;
+        ///using System.Text;
+        ///using System.Threading.Tasks;
+        ///using ISI.Libraries.Extensions;
+        ///
+        ///namespace ${Namespace.Area}.Models.${ControllerKey}
+        ///{
+        ///	public class ${ControllerActionKey}Model : BaseModel
+        ///	{
+        ///
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string RestMethod_Model_Template {
+            get {
+                return ResourceManager.GetString("RestMethod_Model_Template", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to @Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless).
         /// </summary>
-        internal static string StyleSheetsControllerLayout {
+        internal static string StyleSheetsControllerLayout_Template {
             get {
-                return ResourceManager.GetString("StyleSheetsControllerLayout", resourceCulture);
+                return ResourceManager.GetString("StyleSheetsControllerLayout_Template", resourceCulture);
             }
         }
         
@@ -526,9 +527,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}._Layout_csjs)
         ///	@RenderSection(&quot;JavaS [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ViewsControllerLayout {
+        internal static string ViewsControllerLayout_Template {
             get {
-                return ResourceManager.GetString("ViewsControllerLayout", resourceCulture);
+                return ResourceManager.GetString("ViewsControllerLayout_Template", resourceCulture);
             }
         }
     }

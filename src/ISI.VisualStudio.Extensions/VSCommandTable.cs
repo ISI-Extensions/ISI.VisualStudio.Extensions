@@ -93,6 +93,7 @@ namespace ISI.VisualStudio.Extensions
         public const int RecipeExtensions_Project_AddStartUpClass_MenuItemId = 0x04C0;
         public const int RecipeExtensions_Project_AddDependencyRegisterClass_MenuItemId = 0x04C1;
         public const int RecipeExtensions_Project_AddServiceRegistrarClass_MenuItemId = 0x04C2;
+        public const int RecipeExtensions_Project_AddT4LocalContent_MenuItemId = 0x04C3;
         public const int CakeExtensionsExecuteDefaultTargetMenuItemId = 0x0520;
         public const int CakeExtensionsExecuteTargetMenuSubgroupId = 0x0521;
         public const int CakeExtensionsExecuteTargetSubMenuId = 0x0522;

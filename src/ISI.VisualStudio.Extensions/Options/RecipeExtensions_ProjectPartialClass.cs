@@ -5,27 +5,27 @@ namespace ISI.VisualStudio.Extensions
 	public partial class RecipeExtensionsOptions
 	{
 		[Category("Project Partial Class Recipes")]
-		[DisplayName("Add Partial Class")]
+		[DisplayName("Partial Class Template")]
 		public string ProjectPartialClass_AddPartialClass { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.ProjectPartialClass_Recipes.AddPartialClass;
 
 		[Category("Project Partial Class Recipes")]
-		[DisplayName("Add Partial Class Method")]
+		[DisplayName("Partial Class Method Template")]
 		public string ProjectPartialClass_AddPartialClassMethod { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.ProjectPartialClass_Recipes.AddPartialClassMethod;
 
 		[Category("Project Partial Class Recipes")]
-		[DisplayName("Add Async Partial Class Method")]
+		[DisplayName("Async Partial Class Method Template")]
 		public string ProjectPartialClass_AddAsyncPartialClassMethod { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.ProjectPartialClass_Recipes.AddAsyncPartialClassMethod;
 
 		[Category("Project Partial Class Recipes")]
-		[DisplayName("Add Partial Class Private Method")]
+		[DisplayName("Partial Class Private Method Template")]
 		public string ProjectPartialClass_AddPartialClassPrivateMethod { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.ProjectPartialClass_Recipes.AddPartialClassPrivateMethod;
 
 		[Category("Project Partial Class Recipes")]
-		[DisplayName("Add Async Partial Class Private Method")]
+		[DisplayName("Async Partial Class Private Method Template")]
 		public string ProjectPartialClass_AddAsyncPartialClassPrivateMethod { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.ProjectPartialClass_Recipes.AddAsyncPartialClassPrivateMethod;
 
 		[Category("Project Partial Class Recipes")]
-		[DisplayName("Add Partial Class SubClass")]
+		[DisplayName("Partial Class SubClass Template")]
 		public string ProjectPartialClass_AddPartialClassSubClass { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.ProjectPartialClass_Recipes.AddPartialClassSubClass;
 	}
 }
