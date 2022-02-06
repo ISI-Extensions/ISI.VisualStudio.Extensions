@@ -76,6 +76,9 @@ namespace ISI.VisualStudio.Extensions
 							var codeExtensionProvider = project.GetCodeExtensionProvider();
 
 							var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
+							var classInjectors = codeExtensionProvider.DefaultClassInjectors.ToList();
+
+
 							if (partialClassName.EndsWith("Api", StringComparison.InvariantCulture))
 							{
 								try
@@ -88,6 +91,17 @@ namespace ISI.VisualStudio.Extensions
 								try
 								{
 									usings.Add(string.Format("using RepositoryDTOs = {0}.DataTransferObjects.{1}Repository;", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")));
+								}
+								catch
+								{
+								}
+								try
+								{
+									classInjectors.Add(new ISI.Extensions.VisualStudio.CodeGenerationClassInjector()
+									{
+										Type = string.Format("{0}.I{1}Repository;", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")),
+										Name = string.Format("{0}Repository;", partialClassName.TrimEnd("Api")),
+									});
 								}
 								catch
 								{
@@ -109,9 +123,9 @@ namespace ISI.VisualStudio.Extensions
 								{"${Usings}", string.Join("\r\n", usings)},
 								{"${Namespace}", @namespace},
 								{"${ClassName}", partialClassName},
-								{"${ClassInjectorProperties}", string.Join(string.Empty, codeExtensionProvider.DefaultClassInjectors.Select(injector => string.Format("\t\tprotected {0} {1} {{ get; }}\r\n", injector.Type, injector.Name)))},
-								{"${ClassInjectors}", string.Join(",", codeExtensionProvider.DefaultClassInjectors.Select(injector => string.Format("\r\n\t\t\t{0} {1}", injector.Type, ISI.Extensions.StringFormat.CamelCase(injector.Name))))},
-								{"${ClassInjectorAssignments}", string.Join("\r\n", codeExtensionProvider.DefaultClassInjectors.Select(injector => string.Format("\t\t\t{0} = {1};", injector.Name, ISI.Extensions.StringFormat.CamelCase(injector.Name))))},
+								{"${ClassInjectorProperties}", string.Join(string.Empty, classInjectors.Select(injector => string.Format("\t\tprotected {0} {1} {{ get; }}\r\n", injector.Type, injector.Name)))},
+								{"${ClassInjectors}", string.Join(",", classInjectors.Select(injector => string.Format("\r\n\t\t\t{0} {1}", injector.Type, ISI.Extensions.StringFormat.CamelCase(injector.Name))))},
+								{"${ClassInjectorAssignments}", string.Join("\r\n", classInjectors.Select(injector => string.Format("\t\t\t{0} = {1};", injector.Name, ISI.Extensions.StringFormat.CamelCase(injector.Name))))},
 							};
 
 							var recipes = new []

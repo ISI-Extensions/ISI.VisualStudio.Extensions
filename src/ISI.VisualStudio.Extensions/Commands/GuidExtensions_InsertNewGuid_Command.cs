@@ -15,12 +15,10 @@ namespace ISI.VisualStudio.Extensions
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{
 			var activeDocumentView = await Community.VisualStudio.Toolkit.VS.Documents.GetActiveDocumentViewAsync();
-			var position = activeDocumentView.TextView?.Selection.Start.Position.Position;
 
-			if (position.HasValue)
-			{
-				activeDocumentView.TextBuffer.Insert(position.Value, string.Format("{0:d}", System.Guid.NewGuid()));
-			}
+			var selection = activeDocumentView.TextView?.Selection.SelectedSpans.FirstOrDefault();
+
+			activeDocumentView?.TextBuffer.Replace(selection.Value, string.Format("{0:d}", System.Guid.NewGuid()));
 		}
 	}
 }

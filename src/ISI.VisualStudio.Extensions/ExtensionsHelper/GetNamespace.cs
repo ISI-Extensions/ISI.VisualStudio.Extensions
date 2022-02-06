@@ -13,7 +13,7 @@ namespace ISI.VisualStudio.Extensions
 
 			var projectDirectory = System.IO.Path.GetDirectoryName(project.FullPath);
 
-			var path = solutionItem.FullPath.TrimStart(projectDirectory).Trim('\\', '/');
+			var path = System.IO.Path.GetDirectoryName(solutionItem.FullPath).TrimStart(projectDirectory).Trim('\\', '/');
 
 			if (!string.IsNullOrWhiteSpace(path))
 			{

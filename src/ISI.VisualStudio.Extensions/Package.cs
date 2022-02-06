@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ISI.Extensions.ConfigurationHelper.Extensions;
 using ISI.Extensions.DependencyInjection.Extensions;
+using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
@@ -27,6 +28,10 @@ namespace ISI.VisualStudio.Extensions
 		public EnvDTE80.DTE2 DTE2 { get; private set; } = null!;
 		public IServiceProvider ServiceProvider { get; private set; } = null!;
 
+		public Microsoft.VisualStudio.Shell.Interop.IVsShell VsShell { get; private set; } = null!;
+		public Microsoft.VisualStudio.Shell.Interop.IVsGetScciProviderInterface VsGetScciProviderInterface { get; private set; } = null!;
+		public Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider VsRegisterScciProvider { get; private set; } = null!;
+
 		private OutputWindowPane OutputWindowPane = null;
 
 		protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
@@ -37,7 +42,7 @@ namespace ISI.VisualStudio.Extensions
 
 			var configurationBuilder = new Microsoft.Extensions.Configuration.ConfigurationBuilder();
 			var configurationRoot = configurationBuilder.Build();
-			
+
 			var services = new ServiceCollection();
 			services
 				.AddOptions()
@@ -84,23 +89,10 @@ namespace ISI.VisualStudio.Extensions
 
 			await OutputWindowPane.ActivateAsync();
 			await OutputWindowPane.WriteLineAsync(string.Format("{0} Loaded", Vsix.Name));
+
+			VsShell = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.SVsShell)) as Microsoft.VisualStudio.Shell.Interop.IVsShell;
+			VsRegisterScciProvider = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider;
+			VsGetScciProviderInterface = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsGetScciProviderInterface;
 		}
 	}
-
-	internal class ToolkitServiceProvider<TPackage> : Community.VisualStudio.Toolkit.DependencyInjection.Core.IToolkitServiceProvider<TPackage>
-		where TPackage : AsyncPackage
-	{
-		private readonly IServiceProvider _serviceProvider;
-
-		public ToolkitServiceProvider(IServiceProvider services)
-		{
-			_serviceProvider = services;
-		}
-
-		public object GetService(Type serviceType)
-		{
-			return _serviceProvider.GetService(serviceType);
-		}
-	}
-
 }

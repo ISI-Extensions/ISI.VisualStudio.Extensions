@@ -106,6 +106,7 @@ namespace ISI.VisualStudio.Extensions
         public const int ClipboardExtensionsContextSubMenuId = 0x0771;
         public const int GuidExtensionsInsertNewGuidMenuItemId = 0x0801;
         public const int SolutionExtensionsAddExistingProjectsMenuItemId = 0x0901;
+        public const int SolutionExtensionsShowSccInformationMenuItemId = 0x0910;
         public const int ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId = 0x0B01;
         public const int ProjectExtensionsProjectUnloadProjectMenuItemId = 0x0B02;
         public const int ProjectExtensionsProjectLoadProjectMenuItemId = 0x0B03;
