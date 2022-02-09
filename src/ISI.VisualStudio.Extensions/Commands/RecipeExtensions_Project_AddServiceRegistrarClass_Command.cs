@@ -38,57 +38,7 @@ namespace ISI.VisualStudio.Extensions
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{
-			try
-			{
-				var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
-
-				await outputWindowPane.ActivateAsync();
-
-				await outputWindowPane.ClearAsync();
-
-				await outputWindowPane.WriteLineAsync("Add ServiceRegistrar Class");
-
-				var solution = await VS.Solutions.GetCurrentSolutionAsync();
-				var project = await VS.Solutions.GetActiveProjectAsync();
-				var solutionItem = await VS.Solutions.GetActiveItemAsync();
-
-				await project?.SaveAsync();
-
-				var solutionDirectory = System.IO.Path.GetDirectoryName(solution.FullPath);
-				var solutionRecipesDirectory = System.IO.Path.Combine(solutionDirectory, ".recipes");
-
-				var projectDirectory = RecipeExtensionsHelper.GetProjectDirectory(project);
-				var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
-
-				var codeExtensionProvider = project.GetCodeExtensionProvider();
-
-				var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
-
-				var contentReplacements = new Dictionary<string, string>
-				{
-					{ "${Usings}", string.Join("\r\n", usings) },
-					{ "${Namespace}", @namespace },
-				};
-
-				var recipes = new[]
-				{
-					new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(projectDirectory, "ServiceRegistrar.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_AddServiceRegistrarClass), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
-				};
-
-
-				await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
-
-				await outputWindowPane.WriteLineAsync("Done\n");
-				await outputWindowPane.ActivateAsync();
-			}
-			catch (Exception exception)
-			{
-				var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
-
-				await outputWindowPane.WriteLineAsync(exception.ErrorMessageFormatted());
-
-				throw;
-			}
+			await RecipeExtensionsHelper.AddServiceRegistrarClassAsync();
 		}
 	}
 }

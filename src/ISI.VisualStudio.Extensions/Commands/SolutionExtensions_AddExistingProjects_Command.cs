@@ -13,8 +13,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.SolutionExtensionsAddExistingProjectsMenuItemId)]
 	public class SolutionExtensions_AddExistingProjects_Command : BaseCommand<SolutionExtensions_AddExistingProjects_Command>
 	{
-		private static SolutionExtensionsHelper _solutionExtensionsHelper = null;
-		protected SolutionExtensionsHelper SolutionExtensionsHelper => _solutionExtensionsHelper ??= Package.GetServiceProvider().GetService<SolutionExtensionsHelper>();
+		private static SolutionExtensions_Helper _solutionExtensionsHelper = null;
+		protected SolutionExtensions_Helper SolutionExtensionsHelper => _solutionExtensionsHelper ??= Package.GetServiceProvider().GetService<SolutionExtensions_Helper>();
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{
@@ -78,7 +78,7 @@ namespace ISI.VisualStudio.Extensions
 						}
 						else if (parent?.Object is EnvDTE.Project project)
 						{
-							if (project.Kind == SolutionExtensionsHelper.vsProjectKindSolutionItems)
+							if (project.Kind == SolutionExtensions_Helper.vsProjectKindSolutionItems)
 							{
 								if (project.Object is EnvDTE80.SolutionFolder solutionFolder)
 								{

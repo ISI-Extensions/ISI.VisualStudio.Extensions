@@ -14,8 +14,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.ProjectExtensionsProjectLoadProjectMenuItemId)]
 	public class ProjectExtensions_LoadProject_Command : BaseCommand<ProjectExtensions_LoadProject_Command>
 	{
-		private static ProjectExtensionsHelper _projectExtensionsHelper = null;
-		protected ProjectExtensionsHelper ProjectExtensionsHelper => _projectExtensionsHelper ??= Package.GetServiceProvider().GetService<ProjectExtensionsHelper>();
+		private static ProjectExtensions_Helper _projectExtensionsHelper = null;
+		protected ProjectExtensions_Helper ProjectExtensionsHelper => _projectExtensionsHelper ??= Package.GetServiceProvider().GetService<ProjectExtensions_Helper>();
 
 		protected override void BeforeQueryStatus(EventArgs eventArgs)
 		{

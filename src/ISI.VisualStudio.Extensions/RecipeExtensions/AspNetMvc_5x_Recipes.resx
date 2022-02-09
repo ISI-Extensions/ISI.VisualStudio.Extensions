@@ -804,33 +804,6 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 	}
 }</value>
   </data>
-  <data name="SoapController_Controller_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-using System.ServiceModel;
-
-namespace ${Namespace.Area}.Controllers
-{
-	[ServiceContract(Name = "${ControllerKey}", Namespace = Namespaces.${ControllerKey}MethodsNamespace)]
-	[ServiceBehavior(Name = "${ControllerKey}", AddressFilterMode = AddressFilterMode.Any)]
-	public partial class ${ControllerKey}Controller
-	{
-		protected ISI.Libraries.Tracing.ITrace Trace { get; }
-		
-		public ${ControllerKey}Controller(ISI.Libraries.Tracing.ITrace trace)
-		{
-			Trace = trace;
-		}
-	}
-}</value>
-  </data>
   <data name="StyleSheetsControllerLayout_Template" xml:space="preserve">
     <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
   </data>

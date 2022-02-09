@@ -454,13 +454,13 @@
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddDataTransferObjectRequestResponse_MenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_AddDataTransferObjectRequestResponse_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="FolderMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
-					<CommandName>RecipeExtensions_Project_AddDataTransferObjectRequestResponse_MenuItemId</CommandName>
+					<CommandName>RecipeExtensions_ProjectPartialClass_AddDataTransferObjectRequestResponse_MenuItemId</CommandName>
 					<ButtonText>Add Request and Response DTOs</ButtonText>
 				</Strings>
 			</Button>
@@ -560,7 +560,7 @@
 		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_SubMenuId" priority="0x0201">
 			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu.AddItemGroup"/>
 		</CommandPlacement>
-		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_AddDataTransferObjectRequestResponse_MenuItemId" priority="0x0201">
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_AddDataTransferObjectRequestResponse_MenuItemId" priority="0x0201">
 			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu.AddItemGroup"/>
 		</CommandPlacement>
 		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_MenuItemId" priority="0x0201">
@@ -641,8 +641,8 @@
 			<IDSymbol name="RecipeExtensions_ProjectPartialClass_AddPartialClassPrivateMethod_MenuItemId" value="0x04A4" />
 			<IDSymbol name="RecipeExtensions_ProjectPartialClass_AddPartialClassSubClass_MenuItemId" value="0x04A5" />
 			<IDSymbol name="RecipeExtensions_ProjectPartialClass_SyncPartialClassUsingStatements_MenuItemId" value="0x04A6" />
+			<IDSymbol name="RecipeExtensions_ProjectPartialClass_AddDataTransferObjectRequestResponse_MenuItemId" value="0x04AA" />
 
-			<IDSymbol name="RecipeExtensions_Project_AddDataTransferObjectRequestResponse_MenuItemId" value="0x04AA" />
 			<IDSymbol name="RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_MenuItemId" value="0x04AB" />
 			<IDSymbol name="RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId" value="0x04B1" />
 			<IDSymbol name="RecipeExtensions_Project_AddStartUpClass_MenuItemId" value="0x04C0" />

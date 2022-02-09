@@ -13,8 +13,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.SolutionExtensionsShowSccInformationMenuItemId)]
 	public class SolutionExtensions_ShowSccInformation_Command : BaseCommand<SolutionExtensions_ShowSccInformation_Command>
 	{
-		private static SolutionExtensionsHelper _solutionExtensionsHelper = null;
-		protected SolutionExtensionsHelper SolutionExtensionsHelper => _solutionExtensionsHelper ??= Package.GetServiceProvider().GetService<SolutionExtensionsHelper>();
+		private static SolutionExtensions_Helper _solutionExtensionsHelper = null;
+		protected SolutionExtensions_Helper SolutionExtensionsHelper => _solutionExtensionsHelper ??= Package.GetServiceProvider().GetService<SolutionExtensions_Helper>();
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{

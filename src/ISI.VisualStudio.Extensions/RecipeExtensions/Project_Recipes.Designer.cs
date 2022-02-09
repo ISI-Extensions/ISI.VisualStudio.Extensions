@@ -120,7 +120,8 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	{
         ///		void ISI.Libraries.IDependencyRegister.Register(ISI.Libraries.IDependencyResolver dependencyResolver)
         ///		{
-        ///			dependencyResolver.Register&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;(ISI.Libraries.DependencyResolverLifetime.Singleton);
+        ///			//dependencyResolver.Register&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;(ISI.Libraries.DependencyResolverLifetime.Singleton);
+        ///			//${ServiceRegistrations}
         ///		}
         ///	}
         ///}.
@@ -147,9 +148,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///&lt;#
         ///		string enumName = Path.Ge [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string EnumTextTemplate_Template {
+        internal static string EnumText_Template {
             get {
-                return ResourceManager.GetString("EnumTextTemplate_Template", resourceCulture);
+                return ResourceManager.GetString("EnumText_Template", resourceCulture);
             }
         }
         
@@ -198,7 +199,8 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	{
         ///		public void ServiceRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection services)
         ///		{
-        ///			services.AddSingleton&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;();
+        ///			//services.AddSingleton&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;();
+        ///			//${ServiceRegistrations}
         ///		}
         ///	}
         ///}.

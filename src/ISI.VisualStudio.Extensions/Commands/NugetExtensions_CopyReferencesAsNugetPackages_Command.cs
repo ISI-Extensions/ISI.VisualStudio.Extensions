@@ -12,8 +12,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId)]
 	public class NugetExtensions_CopyReferencesAsNugetPackages_Command : BaseCommand<NugetExtensions_CopyReferencesAsNugetPackages_Command>
 	{
-		private static NugetExtensionsHelper _nugetExtensionsHelper = null;
-		protected NugetExtensionsHelper NugetExtensionsHelper => _nugetExtensionsHelper ??= Package.GetServiceProvider().GetService<NugetExtensionsHelper>();
+		private static NugetExtensions_Helper _nugetExtensionsHelper = null;
+		protected NugetExtensions_Helper NugetExtensionsHelper => _nugetExtensionsHelper ??= Package.GetServiceProvider().GetService<NugetExtensions_Helper>();
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{

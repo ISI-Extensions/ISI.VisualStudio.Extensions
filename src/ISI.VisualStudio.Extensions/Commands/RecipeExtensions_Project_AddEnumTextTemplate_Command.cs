@@ -77,9 +77,9 @@ namespace ISI.VisualStudio.Extensions
 						{ "${AliasesDelimiter}", addEnumTextTemplateDialog.AliasesDelimiter },
 					};
 
-					var recipes = new ExtensionsHelper.RecipeItem[]
+					var recipes = new Extensions_Helper.RecipeItem[]
 					{
-									new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(directory, string.Format("{0}.tt", addEnumTextTemplateDialog.EnumName)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_AddEnumTextTemplate), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+									new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("{0}.tt", addEnumTextTemplateDialog.EnumName)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_EnumText_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 					};
 
 					await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

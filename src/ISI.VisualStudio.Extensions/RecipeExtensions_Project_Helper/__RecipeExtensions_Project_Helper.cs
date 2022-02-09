@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_Project_Helper : ExtensionsHelper
+	public partial class RecipeExtensions_Project_Helper : Extensions_Helper
 	{
 
 	}

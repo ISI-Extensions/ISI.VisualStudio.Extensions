@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddAsyncPartialClassMethod" xml:space="preserve">
+  <data name="AsyncPartialClassMethod_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
@@ -134,7 +134,7 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
-  <data name="AddAsyncPartialClassPrivateMethod" xml:space="preserve">
+  <data name="AsyncPartialClassPrivateMethod_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
@@ -148,22 +148,18 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
-  <data name="AddPartialClass" xml:space="preserve">
+  <data name="PartialClassInterface_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
 {
-	public partial class ${ClassName} : I${ClassName}
+	public interface ${InterfaceName}
 	{
-${ClassInjectorProperties}
-		public ${ClassName}(${ClassInjectors})
-		{
-${ClassInjectorAssignments}
-		}
+
 	}
 }</value>
   </data>
-  <data name="AddPartialClassMethod" xml:space="preserve">
+  <data name="PartialClassMethod_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
@@ -180,7 +176,7 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
-  <data name="AddPartialClassPrivateMethod" xml:space="preserve">
+  <data name="PartialClassPrivateMethod_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
@@ -194,7 +190,7 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
-  <data name="AddPartialClassSubClass" xml:space="preserve">
+  <data name="PartialClassSubClass_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
@@ -204,6 +200,21 @@ namespace ${Namespace}
 		public partial class ${SubClassName}
 		{
 
+		}
+	}
+}</value>
+  </data>
+  <data name="PartialClass_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassName} : I${ClassName}
+	{
+${ClassInjectorProperties}
+		public ${ClassName}(${ClassInjectors})
+		{
+${ClassInjectorAssignments}
 		}
 	}
 }</value>

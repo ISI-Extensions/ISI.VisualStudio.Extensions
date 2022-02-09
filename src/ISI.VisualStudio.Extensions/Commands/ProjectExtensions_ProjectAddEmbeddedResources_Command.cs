@@ -14,8 +14,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId)]
 	public class ProjectExtensions_ProjectAddEmbeddedResources_Command : BaseCommand<ProjectExtensions_ProjectAddEmbeddedResources_Command>
 	{
-		private static ProjectExtensionsHelper _projectExtensionsHelper = null;
-		protected ProjectExtensionsHelper ProjectExtensionsHelper => _projectExtensionsHelper ??= Package.GetServiceProvider().GetService<ProjectExtensionsHelper>();
+		private static ProjectExtensions_Helper _projectExtensionsHelper = null;
+		protected ProjectExtensions_Helper ProjectExtensionsHelper => _projectExtensionsHelper ??= Package.GetServiceProvider().GetService<ProjectExtensions_Helper>();
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{

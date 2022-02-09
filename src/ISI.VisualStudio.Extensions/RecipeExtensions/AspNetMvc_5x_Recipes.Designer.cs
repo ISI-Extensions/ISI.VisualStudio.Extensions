@@ -379,8 +379,7 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///			result = PartialView(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, model);
         ///
         ///			return result;
-        ///		}
-        /// [rest of string was truncated]&quot;;.
+        ///		}        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AsyncActionWithPartialView_Action_Template {
             get {
@@ -770,30 +769,6 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         internal static string RestMethod_Model_Template {
             get {
                 return ResourceManager.GetString("RestMethod_Model_Template", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to using System;
-        ///using System.Collections.Generic;
-        ///using System.Linq;
-        ///using System.Text;
-        ///using System.Threading.Tasks;
-        ///using System.Web;
-        ///using System.Web.Mvc;
-        ///using ISI.Libraries.Web.Mvc.Extensions;
-        ///using ISI.Libraries.Extensions;
-        ///using System.ServiceModel;
-        ///
-        ///namespace ${Namespace.Area}.Controllers
-        ///{
-        ///	[ServiceContract(Name = &quot;${ControllerKey}&quot;, Namespace = Namespaces.${ControllerKey}MethodsNamespace)]
-        ///	[ServiceBehavior(Name = &quot;${ControllerKey}&quot;, AddressFilterMode = AddressFilterMode.Any)]
-        ///	public [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string SoapController_Controller_Template {
-            get {
-                return ResourceManager.GetString("SoapController_Controller_Template", resourceCulture);
             }
         }
         

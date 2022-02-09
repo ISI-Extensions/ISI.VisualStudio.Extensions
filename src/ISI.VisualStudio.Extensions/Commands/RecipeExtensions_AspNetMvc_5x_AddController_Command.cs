@@ -61,7 +61,7 @@ namespace ISI.VisualStudio.Extensions
 						
 						await project?.SaveAsync();
 
-						var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
+						var @namespace = project.GetRootNamespace();
 						var areaName = RecipeExtensionsHelper.GetAreaName(solutionItem);
 
 						var routePath = System.Text.RegularExpressions.Regex.Replace(controllerKey, @"(?<begin>(\w*?))(?<end>[A-Z]+)", string.Format(@"${{begin}}{0}${{end}}", "-")).Substring(1).Trim().ToLower();
@@ -105,11 +105,11 @@ namespace ISI.VisualStudio.Extensions
 							var routesDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensions_AspNetMvc_5x_Helper.RoutesFolderName);
 							System.IO.Directory.CreateDirectory(routesDirectory);
 
-							var recipes = new ExtensionsHelper.RecipeItem[]
+							var recipes = new Extensions_Helper.RecipeItem[]
 							{
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(controllersDirectory, "__Controller.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_ControllerRoot_Template)), controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("__{0}Controller.cs", controllerKey)), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_Controller_Template)), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelBindersDirectory, "_ModelBinders.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_ModelBindersRoot_Template)), modelBindersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), false,
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllersDirectory, "__Controller.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_Controller_ControllerRoot_Template), controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("__{0}Controller.cs", controllerKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_Controller_Controller_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelBindersDirectory, "_ModelBinders.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_Controller_ModelBindersRoot_Template), modelBindersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), false,
 									(projectItems, fullName, content, replacementValues) =>
 									{
 										RecipeExtensionsHelper.ReplaceFileContent(fullName, new Dictionary<string, string>
@@ -117,10 +117,10 @@ namespace ISI.VisualStudio.Extensions
 											{ "//${ModelBinders}", string.Format("{0}.RegisterModelBinders(binders);\r\n			//${{ModelBinders}}", controllerKey) }
 										});
 									}),
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelBindersControllerDirectory, "_ModelBinders.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_ModelBinders_Template)), modelBindersControllerDirectory, modelBindersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelsDirectory, "_BaseModel.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_BaseModelRoot_Template)), modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, "_BaseModel.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_BaseModel_Template)), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(routesDirectory, "__Routes.cs"), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_RoutesRoot_Template)), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), false,
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelBindersControllerDirectory, "_ModelBinders.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_Controller_ModelBinders_Template), modelBindersControllerDirectory, modelBindersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsDirectory, "_BaseModel.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_Controller_BaseModelRoot_Template), modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, "_BaseModel.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_Controller_BaseModel_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, "__Routes.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_Controller_RoutesRoot_Template), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), false,
 									(projectItems, fullName, content, replacementValues) =>
 									{
 										RecipeExtensionsHelper.ReplaceFileContent(fullName, new Dictionary<string, string>
@@ -128,7 +128,7 @@ namespace ISI.VisualStudio.Extensions
 											{ "//${Routes}", string.Format("{0}.RegisterRoutes(routes);\r\n			//${{Routes}}", controllerKey) }
 										});
 									}),
-								new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), RecipeExtensionsHelper.GetContent(string.Format("AspNetMvc_5x_{0}", nameof(ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_Routes_Template)), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_Controller_Routes_Template), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

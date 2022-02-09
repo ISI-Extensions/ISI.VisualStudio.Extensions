@@ -77,9 +77,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddAsyncPartialClassMethod {
+        internal static string AsyncPartialClassMethod_Template {
             get {
-                return ResourceManager.GetString("AddAsyncPartialClassMethod", resourceCulture);
+                return ResourceManager.GetString("AsyncPartialClassMethod_Template", resourceCulture);
             }
         }
         
@@ -97,9 +97,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddAsyncPartialClassPrivateMethod {
+        internal static string AsyncPartialClassPrivateMethod_Template {
             get {
-                return ResourceManager.GetString("AddAsyncPartialClassPrivateMethod", resourceCulture);
+                return ResourceManager.GetString("AsyncPartialClassPrivateMethod_Template", resourceCulture);
             }
         }
         
@@ -118,9 +118,26 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddPartialClass {
+        internal static string PartialClass_Template {
             get {
-                return ResourceManager.GetString("AddPartialClass", resourceCulture);
+                return ResourceManager.GetString("PartialClass_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	public interface ${InterfaceName}
+        ///	{
+        ///
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string PartialClassInterface_Template {
+            get {
+                return ResourceManager.GetString("PartialClassInterface_Template", resourceCulture);
             }
         }
         
@@ -141,9 +158,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddPartialClassMethod {
+        internal static string PartialClassMethod_Template {
             get {
-                return ResourceManager.GetString("AddPartialClassMethod", resourceCulture);
+                return ResourceManager.GetString("PartialClassMethod_Template", resourceCulture);
             }
         }
         
@@ -161,9 +178,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddPartialClassPrivateMethod {
+        internal static string PartialClassPrivateMethod_Template {
             get {
-                return ResourceManager.GetString("AddPartialClassPrivateMethod", resourceCulture);
+                return ResourceManager.GetString("PartialClassPrivateMethod_Template", resourceCulture);
             }
         }
         
@@ -181,9 +198,9 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         ///	}
         ///}.
         /// </summary>
-        internal static string AddPartialClassSubClass {
+        internal static string PartialClassSubClass_Template {
             get {
-                return ResourceManager.GetString("AddPartialClassSubClass", resourceCulture);
+                return ResourceManager.GetString("PartialClassSubClass_Template", resourceCulture);
             }
         }
     }

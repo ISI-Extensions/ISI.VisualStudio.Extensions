@@ -13,8 +13,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.CakeExtensionsExecuteDefaultTargetMenuItemId)]
 	public class CakeExtensions_ExecuteDefaultTarget_Command : BaseCommand<CakeExtensions_ExecuteDefaultTarget_Command>
 	{
-		private static CakeExtensionsHelper _cakeExtensionsHelper = null;
-		protected CakeExtensionsHelper CakeExtensionsHelper => _cakeExtensionsHelper ??= Package.GetServiceProvider().GetService<CakeExtensionsHelper>();
+		private static CakeExtensions_Helper _cakeExtensionsHelper = null;
+		protected CakeExtensions_Helper CakeExtensionsHelper => _cakeExtensionsHelper ??= Package.GetServiceProvider().GetService<CakeExtensions_Helper>();
 
 		protected override void BeforeQueryStatus(System.EventArgs eventArgs)
 		{

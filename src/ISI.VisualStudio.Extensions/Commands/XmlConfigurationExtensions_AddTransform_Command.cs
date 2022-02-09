@@ -12,8 +12,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.XmlConfigurationExtensionsAddTransformMenuItemId)]
 	public class XmlConfigurationExtensions_AddTransform_Command : BaseCommand<XmlConfigurationExtensions_AddTransform_Command>
 	{
-		private static XmlConfigurationExtensionsHelper _xmlConfigurationExtensionsHelper = null;
-		protected XmlConfigurationExtensionsHelper XmlConfigurationExtensionsHelper => _xmlConfigurationExtensionsHelper ??= Package.GetServiceProvider().GetService<XmlConfigurationExtensionsHelper>();
+		private static XmlConfigurationExtensions_Helper _xmlConfigurationExtensionsHelper = null;
+		protected XmlConfigurationExtensions_Helper XmlConfigurationExtensionsHelper => _xmlConfigurationExtensionsHelper ??= Package.GetServiceProvider().GetService<XmlConfigurationExtensions_Helper>();
 
 		protected override void BeforeQueryStatus(EventArgs eventArgs)
 		{

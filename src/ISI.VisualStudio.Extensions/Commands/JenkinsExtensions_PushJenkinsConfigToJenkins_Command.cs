@@ -12,8 +12,8 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId)]
 	public class JenkinsExtensions_PushJenkinsConfigToJenkins_Command : BaseCommand<JenkinsExtensions_PushJenkinsConfigToJenkins_Command>
 	{
-		private static JenkinsExtensionsHelper _jenkinsExtensionsHelper = null;
-		protected JenkinsExtensionsHelper JenkinsExtensionsHelper => _jenkinsExtensionsHelper ??= Package.GetServiceProvider().GetService<JenkinsExtensionsHelper>();
+		private static JenkinsExtensions_Helper _jenkinsExtensionsHelper = null;
+		protected JenkinsExtensions_Helper JenkinsExtensionsHelper => _jenkinsExtensionsHelper ??= Package.GetServiceProvider().GetService<JenkinsExtensions_Helper>();
 
 		protected override void BeforeQueryStatus(EventArgs eventArgs)
 		{

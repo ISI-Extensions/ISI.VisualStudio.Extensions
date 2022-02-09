@@ -58,7 +58,7 @@ namespace ISI.VisualStudio.Extensions
 				var solutionRecipesDirectory = System.IO.Path.Combine(solutionDirectory, ".recipes");
 
 				var projectDirectory = RecipeExtensionsHelper.GetProjectDirectory(project);
-				var @namespace = RecipeExtensionsHelper.GetRootNamespace(project);
+				var @namespace = project.GetRootNamespace();
 
 				var codeExtensionProvider = project.GetCodeExtensionProvider();
 
@@ -72,7 +72,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var recipes = new[]
 				{
-					new ExtensionsHelper.RecipeItem(System.IO.Path.Combine(projectDirectory, "StartUp.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_AddStartUpClass), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+					new Extensions_Helper.RecipeItem(System.IO.Path.Combine(projectDirectory, "StartUp.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_StartUpClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 				};
 
 

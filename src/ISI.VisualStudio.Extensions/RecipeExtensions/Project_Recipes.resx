@@ -127,12 +127,13 @@ namespace ${Namespace}
 	{
 		void ISI.Libraries.IDependencyRegister.Register(ISI.Libraries.IDependencyResolver dependencyResolver)
 		{
-			dependencyResolver.Register&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;(ISI.Libraries.DependencyResolverLifetime.Singleton);
+			//dependencyResolver.Register&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;(ISI.Libraries.DependencyResolverLifetime.Singleton);
+			//${ServiceRegistrations}
 		}
 	}
 }</value>
   </data>
-  <data name="EnumTextTemplate_Template" xml:space="preserve">
+  <data name="EnumText_Template" xml:space="preserve">
     <value>&lt;#@ template debug="true" hostSpecific="true" #&gt;
 &lt;#@ output extension=".generated.cs" #&gt;
 &lt;#@ template language="C#" #&gt;
@@ -327,7 +328,8 @@ namespace ${Namespace}
 	{
 		public void ServiceRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection services)
 		{
-			services.AddSingleton&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;();
+			//services.AddSingleton&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;();
+			//${ServiceRegistrations}
 		}
 	}
 }</value>
