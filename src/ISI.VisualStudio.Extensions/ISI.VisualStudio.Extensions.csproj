@@ -54,6 +54,9 @@
     <Compile Include="..\ISI.VisualStudio.Extensions.Version.cs">
       <Link>Properties\ISI.VisualStudio.Extensions.Version.cs</Link>
     </Compile>
+    <Compile Include="AddPartialClassMethodDialog.xaml.cs">
+      <DependentUpon>AddPartialClassMethodDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddPartialClassDialog.xaml.cs">
       <DependentUpon>AddPartialClassDialog.xaml</DependentUpon>
     </Compile>
@@ -193,7 +196,9 @@
       <DependentUpon>AspNetMvc_5x_Recipes.resx</DependentUpon>
     </Compile>
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\__RecipeExtensions_AspNetMvc_5x_Helper.cs" />
+    <Compile Include="RecipeExtensions_ProjectPartialClass_Helper\AddDataTransferObjectRequestResponse.cs" />
     <Compile Include="RecipeExtensions_ProjectPartialClass_Helper\AddPartialClassAsync.cs" />
+    <Compile Include="RecipeExtensions_ProjectPartialClass_Helper\AddPartialClassMethodAsync.cs" />
     <Compile Include="RecipeExtensions_ProjectPartialClass_Helper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="RecipeExtensions_ProjectPartialClass_Helper\__RecipeExtensions_ProjectPartialClass_Helper.cs" />
     <Compile Include="RecipeExtensions_Project_Helper\AddServiceRegistrarClassAsync.cs" />
@@ -321,6 +326,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddPartialClassMethodDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddPartialClassDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

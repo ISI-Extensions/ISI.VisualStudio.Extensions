@@ -78,7 +78,15 @@ namespace ISI.VisualStudio.Extensions
 
 					var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-					
+					var rootGenerator = string.Empty;
+					if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider.CodeExtensionProviderUuid)
+					{
+						rootGenerator = "ISI.ExtensionsFileProviders.EmbeddedVolumesFileProvider.GetPathPrefix";
+					}
+else					if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider.CodeExtensionProviderUuid)
+					{
+						rootGenerator = "ISI.Libraries.Configuration.GetUrlRoot";
+					}
 
 
 					var contentReplacements = new Dictionary<string, string>
@@ -90,6 +98,7 @@ namespace ISI.VisualStudio.Extensions
 						{ "${BuildT4Links}", addT4LocalContentDialog.BuildT4Links.TrueFalse(false, BooleanExtensions.TextCase.Lower) },
 						{ "${BuildT4Embedded}", addT4LocalContentDialog.BuildT4Embedded.TrueFalse(false, BooleanExtensions.TextCase.Lower) },
 						{ "${BuildT4Resources}", addT4LocalContentDialog.BuildT4Resources.TrueFalse(false, BooleanExtensions.TextCase.Lower) },
+						{ "${RootGenerator}", rootGenerator },
 					};
 
 					var recipes = new Extensions_Helper.RecipeItem[]

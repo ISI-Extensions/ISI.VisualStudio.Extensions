@@ -13,7 +13,7 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class RecipeExtensions_ProjectPartialClass_Helper
 	{
-		public async System.Threading.Tasks.Task AddPartialClassAsync()
+		public async Task AddPartialClassAsync()
 		{
 			try
 			{
@@ -46,7 +46,7 @@ namespace ISI.VisualStudio.Extensions
 
 				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.NewPartialClassName))
 				{
-					var partialClassName = inputDialog.NewPartialClassName.Replace(" ", string.Empty);
+					var partialClassName = inputDialog.NewPartialClassName;
 
 					if (!string.IsNullOrWhiteSpace(partialClassName))
 					{

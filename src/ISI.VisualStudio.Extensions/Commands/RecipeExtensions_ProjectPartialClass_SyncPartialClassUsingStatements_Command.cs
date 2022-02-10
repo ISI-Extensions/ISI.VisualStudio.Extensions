@@ -53,10 +53,10 @@ namespace ISI.VisualStudio.Extensions
 
 				var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-				var usingStatements = new HashSet<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)), StringComparer.InvariantCultureIgnoreCase);
-				
+				var usingStatements = new HashSet<string>(codeExtensionProvider.DefaultUsingStatements, StringComparer.InvariantCultureIgnoreCase);
+
 				var fileNames = System.IO.Directory.GetFiles(partialClassDirectory, "*.cs");
-				
+
 				foreach (var fileName in fileNames)
 				{
 					if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fileName))
@@ -78,7 +78,7 @@ namespace ISI.VisualStudio.Extensions
 					}
 				}
 
-				sortedUsingStatements.AddRange(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
+				sortedUsingStatements.AddRange(codeExtensionProvider.DefaultUsingStatements);
 
 				removeUsedUsingStatements();
 

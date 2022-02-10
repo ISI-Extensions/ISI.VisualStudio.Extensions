@@ -420,7 +420,7 @@ public static partial class &lt;#= subClassName #&gt;
 	public static string __root = &lt;#= (IsWebRoot ? "\"~/\"" : "null") #&gt;;
 	public static string _root()
 	{
-		return (__root ??= ${ExtensionsRoot}.FileProviders.EmbeddedVolumesFileProvider.GetPathPrefix(typeof(&lt;#= FilesSubClassName #&gt;)));
+		return (__root ??= ${RootGenerator}(typeof(&lt;#= FilesSubClassName #&gt;)));
 	}
 
 &lt;#
@@ -524,7 +524,7 @@ public static partial class &lt;#= subClassName #&gt;
 	public static string __root = &lt;#= (IsWebRoot ? "\"~/\"" : "null") #&gt;;
 	public static string _root()
 	{
-		return (__root ??= ${ExtensionsRoot}.Configuration.GetUrlRoot(typeof(&lt;#= LinksSubClassName #&gt;)));
+		return (__root ??= ${RootGenerator}(typeof(&lt;#= LinksSubClassName #&gt;)));
 	}
 
 &lt;#

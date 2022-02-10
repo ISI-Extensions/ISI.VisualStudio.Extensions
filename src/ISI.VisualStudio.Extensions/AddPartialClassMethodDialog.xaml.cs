@@ -5,24 +5,25 @@ using System.Windows;
 namespace ISI.VisualStudio.Extensions
 {
 	/// <summary>
-	/// Interaction logic for AddPartialClassDialog.xaml
+	/// Interaction logic for AddPartialClassMethodDialog.xaml
 	/// </summary>
 
-	public partial class AddPartialClassDialog
+	public partial class AddPartialClassMethodDialog
 	{
-		public string NewPartialClassName => txtNewPartialClassName.Text.Replace(" ", string.Empty);
+		protected string PartialClassName { get; }
+		public string NewPartialClassMethodName => txtNewPartialClassMethodName.Text.Replace(" ", string.Empty);
 		public string ContractProjectDescription => cboContractProject.SelectedValue as string;
-		public bool AddInterface => chkAddInterface.IsChecked.GetValueOrDefault();
-		public bool AddDTOsFolder => chkAddDTOsFolder.IsChecked.GetValueOrDefault();
-		public bool AddIocRegistry => chkAddIocRegistry.IsChecked.GetValueOrDefault();
+		public bool AddDTOs => chkAddDTOs.IsChecked.GetValueOrDefault();
 
 		protected System.Collections.Generic.IDictionary<string, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> ProjectLookUp { get; }
 
-		public AddPartialClassDialog(System.Collections.Generic.IEnumerable<ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> projectDescriptions, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription contractProject)
+		public AddPartialClassMethodDialog(string partialClassName, System.Collections.Generic.IEnumerable<ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> projectDescriptions, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription contractProject)
 		{
 			InitializeComponent();
 
 			Title = Vsix.Name;
+
+			PartialClassName = partialClassName;
 
 			ProjectLookUp = projectDescriptions.ToDictionary(projectDescription => projectDescription.Description, projectDescription => projectDescription);
 
@@ -36,11 +37,9 @@ namespace ISI.VisualStudio.Extensions
 				}
 			}
 
-			chkAddInterface.IsChecked = true;
-			chkAddDTOsFolder.IsChecked = true;
-			chkAddIocRegistry.IsChecked = true;
+			chkAddDTOs.IsChecked = true;
 
-			txtNewPartialClassName.TextChanged += Update;
+			txtNewPartialClassMethodName.TextChanged += Update;
 			cboContractProject.SelectionChanged += Update;
 		}
 
@@ -50,8 +49,7 @@ namespace ISI.VisualStudio.Extensions
 
 			var contractRootNamespace = projectDescription?.RootNamespace ?? string.Empty;
 			
-			txtInterface.Text = string.Format("{0}.I{1}", contractRootNamespace, NewPartialClassName);
-			txtAddDTOsFolder.Text = string.Format("{0}.DataTransferObjects.{1}", contractRootNamespace, NewPartialClassName);
+			txtAddDTOs.Text = string.Format("{0}.DataTransferObjects.{1}.{2}", contractRootNamespace, PartialClassName, NewPartialClassMethodName);
 		}
 
 		private void btnOk_Click(object sender, System.Windows.RoutedEventArgs e)
