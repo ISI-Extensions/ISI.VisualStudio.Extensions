@@ -9,7 +9,9 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public string GetNamespace(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem, string className = null)
 		{
-			return GetNamespace(project, solutionItem.FullPath, className);
+			var directory = (solutionItem.Type == Community.VisualStudio.Toolkit.SolutionItemType.Project ? System.IO.Path.GetDirectoryName(solutionItem.FullPath) : solutionItem.FullPath);
+
+			return GetNamespace(project, directory, className);
 		}
 
 		public string GetNamespace(Community.VisualStudio.Toolkit.Project project, string directory, string className = null)
