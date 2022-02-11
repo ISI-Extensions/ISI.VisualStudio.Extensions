@@ -286,16 +286,16 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8071.35320</Version>
+      <Version>10.0.8075.24240</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8071.35320</Version>
+      <Version>10.0.8075.24240</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8071.35320</Version>
+      <Version>10.0.8075.24240</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.VisualStudio.Forms">
-      <Version>10.0.8071.35320</Version>
+      <Version>10.0.8075.24240</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.0.0</Version>
@@ -307,13 +307,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8071.35320" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8071.35320" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8071.35320" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8071.35320" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8071.35320" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8071.35320" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8071.35320" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8075.24240" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8075.24240" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8075.24240" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8075.24240" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8075.24240" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8075.24240" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8075.24240" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>6.0.0</Version>
