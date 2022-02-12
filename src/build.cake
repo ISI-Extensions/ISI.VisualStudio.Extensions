@@ -190,6 +190,14 @@ Task("Publish")
 			Environment = "Build",
 			DateTimeStampVersion = string.Format("{0}|{1}", buildDateTimeStamp, assemblyVersions[rootAssemblyVersionKey].AssemblyVersion),
 		});
+
+		var simpleVsixFile = File(string.Format("../Publish/{0}.vsix", artifactName));
+		if(FileExists(simpleVsixFile))
+		{
+			DeleteFile(simpleVsixFile);
+		}
+		CopyFile(buildArtifactVsixFile, simpleVsixFile);
+
 	});
 
 Task("Default")
