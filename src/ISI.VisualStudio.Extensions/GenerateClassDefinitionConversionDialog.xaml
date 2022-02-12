@@ -35,7 +35,7 @@
 					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 				<Label Name="lblMain" Grid.Row="0">Preview:</Label>
-				<Border  Grid.Row="1" Height="200" Margin="0,0,-747,0" BorderBrush="Silver" BorderThickness="5" >
+				<Border  Grid.Row="1" Height="200" Margin="0,0,-747,0" BorderBrush="Silver" BorderThickness="1" >
 					<ScrollViewer>
 						<TextBlock Name="txtPreview" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" />
 					</ScrollViewer>
@@ -65,19 +65,13 @@
 				</Grid.RowDefinitions>
 
 				<Label Grid.Row="0" Grid.Column="0">Target:</Label>
-				<Border  Grid.Row="0" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBlock Margin="0,4,0,0" Padding="3,3,3,3"></TextBlock>
-				</Border>
+				<TextBox  Grid.Row="0" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3"></TextBox>
 
 				<Label Grid.Row="1" Grid.Column="0">Source:</Label>
-				<Border  Grid.Row="1" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBlock Margin="0,4,0,0" Padding="3,3,3,3">source</TextBlock>
-				</Border>
+				<TextBox  Grid.Row="1" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3">source</TextBox>
 
 				<Label Grid.Row="2" Grid.Column="0">Separator:</Label>
-				<Border  Grid.Row="2" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBlock Margin="0,4,0,0" Padding="3,3,3,3">,</TextBlock>
-				</Border>
+				<TextBox  Grid.Row="2" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3">,</TextBox>
 			</Grid>
 		</GroupBox>
 
@@ -94,19 +88,13 @@
 				</Grid.RowDefinitions>
 
 				<Label Grid.Row="0" Grid.Column="0">Target:</Label>
-				<Border  Grid.Row="0" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBlock Margin="0,4,0,0" Padding="3,3,3,3"></TextBlock>
-				</Border>
+				<TextBox Grid.Row="0" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3"></TextBox>
 
 				<Label Grid.Row="1" Grid.Column="0">Source:</Label>
-				<Border  Grid.Row="1" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBlock Margin="0,4,0,0" Padding="3,3,3,3"></TextBlock>
-				</Border>
+				<TextBox Grid.Row="1" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3"></TextBox>
 
 				<Label Grid.Row="2" Grid.Column="0">Separator:</Label>
-				<Border  Grid.Row="2" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBlock Margin="0,4,0,0" Padding="3,3,3,3">,</TextBlock>
-				</Border>
+				<TextBox Grid.Row="2" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3">,</TextBox>
 			</Grid>
 		</GroupBox>
 
@@ -123,19 +111,13 @@
 				</Grid.RowDefinitions>
 
 				<Label Grid.Row="0" Grid.Column="0">Target:</Label>
-				<Border  Grid.Row="0" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBlock Margin="0,4,0,0" Padding="3,3,3,3">target</TextBlock>
-				</Border>
+				<TextBox  Grid.Row="0" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3">target</TextBox>
 
 				<Label Grid.Row="1" Grid.Column="0">Source:</Label>
-				<Border  Grid.Row="1" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBlock Margin="0,4,0,0" Padding="3,3,3,3">source</TextBlock>
-				</Border>
+				<TextBox  Grid.Row="1" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3">source</TextBox>
 
 				<Label Grid.Row="2" Grid.Column="0">Separator:</Label>
-				<Border  Grid.Row="2" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBlock Margin="0,4,0,0" Padding="3,3,3,3">;</TextBlock>
-				</Border>
+				<TextBox Grid.Row="2" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3">;</TextBox>
 			</Grid>
 		</GroupBox>
 
@@ -152,19 +134,13 @@
 				</Grid.RowDefinitions>
 
 				<Label Grid.Row="0" Grid.Column="0">Target:</Label>
-				<Border  Grid.Row="0" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBox Margin="0,4,0,0" Padding="3,3,3,3" IsEnabled="True" Name="txtTargetEntityNameCustom" TextChanged="txtTargetEntityNameCustom_OnTextChanged">Target</TextBox>
-				</Border>
+				<TextBox Grid.Row="0" Grid.Column="1" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3" IsEnabled="True" Name="txtTargetEntityNameCustom" TextChanged="txtTargetEntityNameCustom_OnTextChanged">Target</TextBox>
 
 				<Label Grid.Row="1" Grid.Column="0">Source:</Label>
-				<Border  Grid.Row="1" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBox Margin="0,4,0,0" Padding="3,3,3,3" IsEnabled="True" Name="txtSourceEntityNameCustom" TextChanged="txtSourceEntityNameCustom_OnTextChanged">source</TextBox>
-				</Border>
+				<TextBox  Grid.Row="1" Grid.Column="1" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3" IsEnabled="True" Name="txtSourceEntityNameCustom" TextChanged="txtSourceEntityNameCustom_OnTextChanged">source</TextBox>
 
 				<Label Grid.Row="2" Grid.Column="0">Separator:</Label>
-				<Border  Grid.Row="2" Grid.Column="1" BorderBrush="Silver" BorderThickness="5" >
-					<TextBox Margin="0,4,0,0" Padding="3,3,3,3" IsEnabled="True" Name="txtConversionSeparatorCustom" TextChanged="txtConversionSeparatorCustom_OnTextChanged">;</TextBox>
-				</Border>
+				<TextBox  Grid.Row="2" Grid.Column="1" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3" IsEnabled="True" Name="txtConversionSeparatorCustom" TextChanged="txtConversionSeparatorCustom_OnTextChanged">;</TextBox>
 			</Grid>
 		</GroupBox>
 

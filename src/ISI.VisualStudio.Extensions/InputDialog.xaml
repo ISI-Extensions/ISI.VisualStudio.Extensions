@@ -15,12 +15,10 @@
 											 Width="360" Height="137">
 	<StackPanel Margin="10">
 		<TextBlock Name="lblQuestion">Label:</TextBlock>
-		<Border  BorderBrush="Silver" BorderThickness="1" >
-			<TextBox Name="txtAnswer" Width="Auto" />
-		</Border>
+		<TextBox Name="txtAnswer" BorderThickness="1" Width="Auto" />
 
 		<WrapPanel Margin="0,5,0,0" HorizontalAlignment="Right">
-			<Button IsDefault="True" x:Name="btnOk" Click="btnOk_Click" Width="79" Height="25" Margin="3, 3, 3, 3" Content="_Ok"/>
+			<Button IsDefault="True" x:Name="btnOk" Click="btnOk_Click" Width="79" Height="25" Margin="3, 3, 3, 3" Content="_OK"/>
 			<Button IsCancel="True"  Width="79" Height="25" Margin="3, 3, 3, 3" Content="_Cancel"/>
 		</WrapPanel>
 	</StackPanel>
