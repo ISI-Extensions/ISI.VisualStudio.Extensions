@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionWithPartialView_Action_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Controllers
+{
+	public partial class ${ControllerKey}Controller 
+	{
+		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Get))]
+		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
+		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "")]
+		[ApiExplorerSettings(IgnoreApi = true)]
+		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
+		{
+			var viewModel = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+
+			result = PartialView(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, viewModel);
+
+			return result;
+		}
+	}
+}</value>
+  </data>
+  <data name="ActionWithPartialView_Model_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Models.${ControllerKey}
+{
+	public class ${ControllerActionKey}Model : BaseModel
+	{
+
+	}
+}</value>
+  </data>
+  <data name="ActionWithPartialView_PartialView_Template" xml:space="preserve">
+    <value>@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
+</value>
+  </data>
+  <data name="ActionWithView_Action_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Controllers
+{
+	public partial class ${ControllerKey}Controller 
+	{
+		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Get))]
+		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
+		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "")]
+		[ApiExplorerSettings(IgnoreApi = true)]
+		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
+		{
+			var viewModel = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+
+			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, viewModel);
+
+			return result;
+		}
+
+		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Post))]
+		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
+		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "")]
+		[ApiExplorerSettings(IgnoreApi = true)]
+		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}SaveAsync()
+		{
+			var viewModel = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+
+			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, viewModel);
+
+			return result;
+		}
+	}
+}</value>
+  </data>
+  <data name="ActionWithView_JavaScript_Template" xml:space="preserve">
+    <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.${ControllerActionKey}", function(jQuery) {
+	var model = {};
+	var view = {};
+	var controller = {
+		setup: function (config) {
+			controller.eventBinder();
+		},
+		eventBinder: function () {
+		}
+	};
+
+	return {
+		Setup: controller.setup
+	};
+} (jQuery));
+
+jQuery(document).ready(function (jQuery) {
+	${Namespace.Area}.${ControllerKey}.${ControllerActionKey}.Setup();
+});</value>
+  </data>
+  <data name="ActionWithView_Model_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Models.${ControllerKey}
+{
+	public class ${ControllerActionKey}Model : BaseModel
+	{
+
+	}
+}</value>
+  </data>
+  <data name="ActionWithView_StyleSheet_Template" xml:space="preserve">
+    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
+  </data>
+  <data name="ActionWithView_View_Template" xml:space="preserve">
+    <value>@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
+
+@{
+	Model.SetTitle("${ViewTitle}");
+	Layout = ${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}._Layout_cshtml;
+}
+
+@section StyleSheetIncludes
+{
+	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_csless)
+}
+
+@section JavaScriptIncludes
+{
+	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}.${ControllerActionKey}_csjs)
+}
+
+@section JavaScriptContent
+{
+}</value>
+  </data>
+  <data name="Area_BaseModel_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Models
+{
+	public abstract class BaseModel : ${Namespace}.Models.BaseModel
+	{
+	}
+}</value>
+  </data>
+  <data name="Area_Controller_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}.Areas.${AreaName}.Controllers
+{
+	public abstract partial class Controller : ${Namespace}.Controllers.Controller
+	{
+		protected Controller(
+			Microsoft.Extensions.Logging.ILogger logger)
+			: base(logger)
+		{
+		}
+	}
+}</value>
+  </data>
+  <data name="Area_Routes_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}.Areas.${AreaName}
+{
+	public partial class Routes
+	{
+		internal static readonly string UrlRoot = ${Namespace}.Routes.UrlRoot + "${BaseUrl}/";
+	}
+}</value>
+  </data>
+  <data name="Controller_BaseModelRoot_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}.Models
+{
+	public abstract class BaseModel
+	{
+
+	}
+}</value>
+  </data>
+  <data name="Controller_BaseModel_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Models.${ControllerKey}
+{
+	public abstract class BaseModel : Models.BaseModel
+	{
+	}
+}</value>
+  </data>
+  <data name="Controller_ControllerRoot_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Controllers
+{
+	public abstract partial class Controller : ISI.SCM.Artifacts.WindowsService.Controllers.Controller
+	{
+		protected Controller(
+			Microsoft.Extensions.Logging.ILogger logger)
+			: base(logger)
+		{
+		}
+	}
+}</value>
+  </data>
+  <data name="Controller_Controller_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Controllers
+{
+	public partial class ${ControllerKey}Controller : Controller
+	{
+		public ${ControllerKey}Controller(
+			Microsoft.Extensions.Logging.ILogger logger)
+			: base(logger)
+		{
+		}
+	}
+}</value>
+  </data>
+  <data name="Controller_RoutesRoot_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}
+{
+	public partial class Routes
+	{
+		internal static readonly string UrlRoot = string.Empty;
+	}
+}</value>
+  </data>
+  <data name="Controller_Routes_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}
+{
+	public partial class Routes
+	{
+		public partial class ${ControllerKey} : IHasUrlRoute
+		{
+			string IHasUrlRoute.UrlRoot =&gt; UrlRoot;
+			
+			#pragma warning disable 649
+			public class RouteNames : IRouteNames
+			{
+				//${RouteNames}
+			}
+			#pragma warning restore 649
+
+			internal static readonly string UrlRoot = Routes.UrlRoot + ${RouteUrl};
+		}
+	}
+}</value>
+  </data>
+  <data name="JavaScriptsControllerLayout_Template" xml:space="preserve">
+    <value>jQuery.namespace("${Namespace.Area}.${ControllerKey}.Layout", function(jQuery) {
+	var model = {};
+	var view = {};
+	var controller = {
+		setup: function (config) {
+			controller.eventBinder();
+		},
+		eventBinder: function () {
+		}
+	};
+
+	return {
+		Setup: controller.setup
+	};
+} (jQuery));
+
+jQuery(document).ready(function (jQuery) {
+	${Namespace.Area}.${ControllerKey}.Layout.Setup();
+});</value>
+  </data>
+  <data name="JavaScriptsSharedLayout_Template" xml:space="preserve">
+    <value>jQuery.namespace("${Namespace}.${Areas.AreaName}Layout", function(jQuery) {
+	var model = {};
+	var view = {};
+	var controller = {
+		setup: function (config) {
+			controller.eventBinder();
+		},
+		eventBinder: function () {
+		}
+	};
+
+	return {
+		Setup: controller.setup
+	};
+} (jQuery));
+
+jQuery(document).ready(function (jQuery) {
+	${Namespace}.${Areas.AreaName}Layout.Setup();
+});</value>
+  </data>
+  <data name="RestMethod_Action_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Controllers
+{
+	public partial class ${ControllerKey}Controller 
+	{
+		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Post))]
+		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
+		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "")]
+		[ApiExplorerSettings(IgnoreApi = true)]
+		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
+		{
+			var viewModel = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+
+
+			return result;
+		}
+	}
+}</value>
+  </data>
+  <data name="RestMethod_Model_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace.Area}.Models.${ControllerKey}
+{
+	public class ${ControllerActionKey}Model : BaseModel
+	{
+
+	}
+}</value>
+  </data>
+  <data name="StyleSheetsControllerLayout_Template" xml:space="preserve">
+    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
+  </data>
+  <data name="StyleSheetsSharedLayout_Template" xml:space="preserve">
+    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
+  </data>
+  <data name="ViewsControllerLayout_Template" xml:space="preserve">
+    <value>@model ${Namespace.Area}.Models.${ControllerKey}.BaseModel
+
+@{
+	Layout = ${Namespace}.T4Files.${Areas.AreaName}Views._Shared._Layout_cshtml;
+}
+
+@section StyleSheetIncludes
+{
+	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_csless)
+	@RenderSection("StyleSheetIncludes", false)
+}
+
+@RenderBody()
+
+@section JavaScriptIncludes
+{
+	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}._Layout_csjs)
+	@RenderSection("JavaScriptIncludes", false)
+}
+
+@section JavaScriptContent
+{
+	@RenderSection("JavaScriptContent", false)
+}</value>
+  </data>
+  <data name="ViewsSharedLayout_Template" xml:space="preserve">
+    <value>@model ${Namespace.Area}.Models.BaseModel
+
+@{
+	Layout = ${Namespace}.T4Files.Views._Shared._Layout_cshtml;
+}
+
+@section StyleSheetIncludes
+{
+	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets._Shared._Layout_csless)
+	@RenderSection("StyleSheetIncludes", false)
+}
+
+@RenderBody()
+
+@section JavaScriptIncludes
+{
+	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts._Shared._Layout_csjs)
+	@RenderSection("JavaScriptIncludes", false)
+}
+
+@section JavaScriptContent
+{
+	@RenderSection("JavaScriptContent", false)
+}</value>
+  </data>
+</root>

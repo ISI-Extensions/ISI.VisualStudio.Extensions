@@ -31,7 +31,7 @@ namespace ISI.VisualStudio.Extensions
 			await AddDependencyRegisterClassAsync(solution, project);
 		}
 
-		public async System.Threading.Tasks.Task AddDependencyRegisterClassAsync(Solution solution, Project project, IEnumerable<(string InterfaceName, string ClassName)> serviceRegistrations = null)
+		public async System.Threading.Tasks.Task AddDependencyRegisterClassAsync(Solution solution, Project project, IEnumerable<(string InterfaceName, string ClassName)> dependencyRegistrations = null)
 		{
 			try
 			{
@@ -43,32 +43,37 @@ namespace ISI.VisualStudio.Extensions
 
 				var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-				var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
+				var sortedUsingStatements = GetSortedUsings(codeExtensionProvider.DefaultUsingStatements);
 
 				var contentReplacements = new Dictionary<string, string>
 				{
-					{ "${Usings}", string.Join("\r\n", usings) },
+					{ "${Usings}", sortedUsingStatements.GetFormatted() },
 					{ "${Namespace}", @namespace },
 				};
 
+				var fullName = System.IO.Path.Combine(projectDirectory, "DependencyRegister.cs");
+
 				var recipes = new[]
 				{
-					new Extensions_Helper.RecipeItem(System.IO.Path.Combine(projectDirectory, "DependencyRegister.cs"), GetContent(nameof(RecipeExtensionsOptions.Project_DependencyRegisterClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true,
-						(projectItems, fullName, content, replacementValues) =>
-						{
-							if (serviceRegistrations.NullCheckedAny())
-							{
-								var replacementValue = string.Join("\t\t\t\t", serviceRegistrations.Select(serviceRegistration => string.Format("dependencyResolver.Register<{0}, {1}>(ISI.Libraries.DependencyResolverLifetime.Singleton);\r\n", serviceRegistration.InterfaceName, serviceRegistration.ClassName)));
-
-								ReplaceFileContent(fullName, new Dictionary<string, string>
-								{
-									{ "//${ServiceRegistrations}", string.Format("{0}\t\t\t\t//${{ServiceRegistrations}}", replacementValue) },
-								});
-							}
-						}),
+					new Extensions_Helper.RecipeItem(fullName, GetContent(nameof(RecipeExtensionsOptions.Project_DependencyRegisterClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), false),
 				};
 
 				await AddFromRecipesAsync(project, recipes, contentReplacements);
+
+				var content = System.IO.File.ReadAllText(fullName);
+
+				var regex = new System.Text.RegularExpressions.Regex(@"(?s:(?<start>(?:.*)(?:void)(?:\s+)(?:Register\()(?:.*)(?:\{))(?<end>(?:.*)))");
+
+				var match = regex.Match(content);
+
+				if (match.Success)
+				{
+					var replacementValue = string.Join(string.Empty, dependencyRegistrations.Select(dependencyRegistration => string.Format("{2}\t\t\t\tdependencyResolver.Register<{0}, {1}>(ISI.Libraries.DependencyResolverLifetime.Singleton);", dependencyRegistration.InterfaceName, dependencyRegistration.ClassName, Environment.NewLine)));
+
+					content = string.Format("{0}{1}{2}", match.Groups["start"], replacementValue, match.Groups["end"]);
+				}
+
+				System.IO.File.WriteAllText(fullName, content);
 			}
 			catch (Exception exception)
 			{

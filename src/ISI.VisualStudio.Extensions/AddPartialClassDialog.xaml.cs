@@ -13,7 +13,6 @@ namespace ISI.VisualStudio.Extensions
 		public string NewPartialClassName => txtNewPartialClassName.Text.Replace(" ", string.Empty);
 		public string ContractProjectDescription => cboContractProject.SelectedValue as string;
 		public bool AddInterface => chkAddInterface.IsChecked.GetValueOrDefault();
-		public bool AddDTOsFolder => chkAddDTOsFolder.IsChecked.GetValueOrDefault();
 		public bool AddIocRegistry => chkAddIocRegistry.IsChecked.GetValueOrDefault();
 
 		protected System.Collections.Generic.IDictionary<string, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> ProjectLookUp { get; }
@@ -37,7 +36,6 @@ namespace ISI.VisualStudio.Extensions
 			}
 
 			chkAddInterface.IsChecked = true;
-			chkAddDTOsFolder.IsChecked = true;
 			chkAddIocRegistry.IsChecked = true;
 
 			txtNewPartialClassName.TextChanged += Update;
@@ -53,7 +51,6 @@ namespace ISI.VisualStudio.Extensions
 			var contractRootNamespace = projectDescription?.RootNamespace ?? string.Empty;
 			
 			txtInterface.Text = string.Format("{0}.I{1}", contractRootNamespace, NewPartialClassName);
-			txtAddDTOsFolder.Text = string.Format("{0}.DataTransferObjects.{1}", contractRootNamespace, NewPartialClassName);
 		}
 
 		private void btnOk_Click(object sender, System.Windows.RoutedEventArgs e)

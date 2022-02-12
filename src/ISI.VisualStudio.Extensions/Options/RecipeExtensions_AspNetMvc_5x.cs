@@ -6,142 +6,118 @@ namespace ISI.VisualStudio.Extensions
 	{
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Area Controller Template")]
-		public string AspNetMvc_5x_Area_Controller_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Area_Controller_Template;
+		public string AspNetMvc_5x_Area_Controller_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Area_Controller_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Area BaseModel Template")]
-		public string AspNetMvc_5x_Area_BaseModel_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Area_BaseModel_Template;
-
-		[Category("AspNetMvc 5.x Recipes")]
-		[DisplayName("Area ModelBinders Template")]
-		public string AspNetMvc_5x_Area_ModelBinders_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Area_ModelBinders_Template;
+		public string AspNetMvc_5x_Area_BaseModel_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Area_BaseModel_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Area Routes Template")]
-		public string AspNetMvc_5x_Area_Routes_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Area_Routes_Template;
+		public string AspNetMvc_5x_Area_Routes_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Area_Routes_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Area AreaRegistration Template")]
-		public string AspNetMvc_5x_Area_AreaRegistration_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Area_AreaRegistration_Template;
+		public string AspNetMvc_5x_Area_AreaRegistration_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Area_AreaRegistration_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Controller BaseModel Template")]
-		public string AspNetMvc_5x_Controller_BaseModel_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_BaseModel_Template;
+		public string AspNetMvc_5x_Controller_BaseModel_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Controller_BaseModel_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Controller BaseModelRoot Template")]
-		public string AspNetMvc_5x_Controller_BaseModelRoot_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_BaseModelRoot_Template;
+		public string AspNetMvc_5x_Controller_BaseModelRoot_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Controller_BaseModelRoot_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Controller Controller Template")]
-		public string AspNetMvc_5x_Controller_Controller_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_Controller_Template;
+		public string AspNetMvc_5x_Controller_Controller_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Controller_Controller_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Controller ControllerRoot Template")]
-		public string AspNetMvc_5x_Controller_ControllerRoot_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_ControllerRoot_Template;
-
-		[Category("AspNetMvc 5.x Recipes")]
-		[DisplayName("Controller ModelBinders Template")]
-		public string AspNetMvc_5x_Controller_ModelBinders_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_ModelBinders_Template;
-
-		[Category("AspNetMvc 5.x Recipes")]
-		[DisplayName("Controller ModelBindersRoot Template")]
-		public string AspNetMvc_5x_Controller_ModelBindersRoot_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_ModelBindersRoot_Template;
+		public string AspNetMvc_5x_Controller_ControllerRoot_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Controller_ControllerRoot_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Controller Routes Template")]
-		public string AspNetMvc_5x_Controller_Routes_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_Routes_Template;
+		public string AspNetMvc_5x_Controller_Routes_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Controller_Routes_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Controller RoutesRoot Template")]
-		public string AspNetMvc_5x_Controller_RoutesRoot_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.Controller_RoutesRoot_Template;
-
-		[Category("AspNetMvc 5.x Recipes")]
-		[DisplayName("Async Action with View Action Template")]
-		public string AspNetMvc_5x_AsyncActionWithView_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AsyncActionWithView_Action_Template;
+		public string AspNetMvc_5x_Controller_RoutesRoot_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.Controller_RoutesRoot_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Action with View Action Template")]
-		public string AspNetMvc_5x_ActionWithView_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ActionWithView_Action_Template;
+		public string AspNetMvc_5x_ActionWithView_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ActionWithView_Action_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Action with View JavaScript Template")]
-		public string AspNetMvc_5x_ActionWithView_JavaScript_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ActionWithView_JavaScript_Template;
+		public string AspNetMvc_5x_ActionWithView_JavaScript_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ActionWithView_JavaScript_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Action with View Model Template")]
-		public string AspNetMvc_5x_ActionWithView_Model_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ActionWithView_Model_Template;
+		public string AspNetMvc_5x_ActionWithView_Model_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ActionWithView_Model_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Action with View StyleSheet Template")]
-		public string AspNetMvc_5x_ActionWithView_StyleSheet_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ActionWithView_StyleSheet_Template;
+		public string AspNetMvc_5x_ActionWithView_StyleSheet_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ActionWithView_StyleSheet_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Action with View View Template")]
-		public string AspNetMvc_5x_ActionWithView_View_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ActionWithView_View_Template;
+		public string AspNetMvc_5x_ActionWithView_View_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ActionWithView_View_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Action with Partial View Action Template")]
-		public string AspNetMvc_5x_ActionWithPartialView_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ActionWithPartialView_Action_Template;
-
-		[Category("AspNetMvc 5.x Recipes")]
-		[DisplayName("Async Action with Partial View Action Template")]
-		public string AspNetMvc_5x_AsyncActionWithPartialView_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AsyncActionWithPartialView_Action_Template;
+		public string AspNetMvc_5x_ActionWithPartialView_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ActionWithPartialView_Action_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Action with Partial View Model Template")]
-		public string AspNetMvc_5x_ActionWithPartialView_Model_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ActionWithPartialView_Model_Template;
+		public string AspNetMvc_5x_ActionWithPartialView_Model_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ActionWithPartialView_Model_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Action with Partial View PartialView Template")]
-		public string AspNetMvc_5x_ActionWithPartialView_PartialView_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ActionWithPartialView_PartialView_Template;
+		public string AspNetMvc_5x_ActionWithPartialView_PartialView_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ActionWithPartialView_PartialView_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("JavaScriptsSharedLayout Template")]
-		public string AspNetMvc_5x_JavaScriptsSharedLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.JavaScriptsSharedLayout_Template;
+		public string AspNetMvc_5x_JavaScriptsSharedLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.JavaScriptsSharedLayout_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("JavaScriptsControllerLayout Template")]
-		public string AspNetMvc_5x_JavaScriptsControllerLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.JavaScriptsControllerLayout_Template;
+		public string AspNetMvc_5x_JavaScriptsControllerLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.JavaScriptsControllerLayout_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("JavaScriptsWebConfig Template")]
-		public string AspNetMvc_5x_JavaScriptsWebConfig_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.JavaScriptsWebConfig_Template;
+		public string AspNetMvc_5x_JavaScriptsWebConfig_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.JavaScriptsWebConfig_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("StyleSheetsSharedLayout Template")]
-		public string AspNetMvc_5x_StyleSheetsSharedLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.StyleSheetsSharedLayout_Template;
+		public string AspNetMvc_5x_StyleSheetsSharedLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.StyleSheetsSharedLayout_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("StyleSheetsControllerLayout Template")]
-		public string AspNetMvc_5x_StyleSheetsControllerLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.StyleSheetsControllerLayout_Template;
+		public string AspNetMvc_5x_StyleSheetsControllerLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.StyleSheetsControllerLayout_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("StyleSheetsWebConfig Template")]
-		public string AspNetMvc_5x_StyleSheetsWebConfig_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.StyleSheetsWebConfig_Template;
+		public string AspNetMvc_5x_StyleSheetsWebConfig_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.StyleSheetsWebConfig_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("ViewsSharedLayout Template")]
-		public string AspNetMvc_5x_ViewsSharedLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ViewsSharedLayout_Template;
+		public string AspNetMvc_5x_ViewsSharedLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ViewsSharedLayout_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("ViewsControllerLayout Template")]
-		public string AspNetMvc_5x_ViewsControllerLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ViewsControllerLayout_Template;
+		public string AspNetMvc_5x_ViewsControllerLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ViewsControllerLayout_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("ViewsWebConfig Template")]
-		public string AspNetMvc_5x_ViewsWebConfig_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.ViewsWebConfig_Template;
+		public string AspNetMvc_5x_ViewsWebConfig_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.ViewsWebConfig_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Rest Method Action Template")]
-		public string AspNetMvc_5x_RestMethod_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.RestMethod_Action_Template;
-
-		[Category("AspNetMvc 5.x Recipes")]
-		[DisplayName("Async Rest Method Action Template")]
-		public string AspNetMvc_5x_AsyncRestMethod_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.AsyncRestMethod_Action_Template;
+		public string AspNetMvc_5x_RestMethod_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.RestMethod_Action_Template;
 
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Rest Method Model Template")]
-		public string AspNetMvc_5x_RestMethod_Model_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeExtensions.AspNetMvc_5x_Recipes.RestMethod_Model_Template;
+		public string AspNetMvc_5x_RestMethod_Model_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_5x_Recipes.RestMethod_Model_Template;
 	}
 }

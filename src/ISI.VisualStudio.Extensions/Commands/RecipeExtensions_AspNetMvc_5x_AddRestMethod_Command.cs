@@ -45,12 +45,6 @@ namespace ISI.VisualStudio.Extensions
 				{
 					var controllerActionKey = inputDialog.Value.Replace(" ", string.Empty);
 
-					var isAsync = controllerActionKey.EndsWith("Async", StringComparison.InvariantCulture);
-					if (isAsync)
-					{
-						controllerActionKey = controllerActionKey.Substring(0, controllerActionKey.Length - "Async".Length);
-					}
-
 					if (!string.IsNullOrWhiteSpace(controllerActionKey))
 					{
 						var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
@@ -64,7 +58,7 @@ namespace ISI.VisualStudio.Extensions
 						var solutionItem = await VS.Solutions.GetActiveItemAsync();
 						var solution = await VS.Solutions.GetCurrentSolutionAsync();
 						var project = await VS.Solutions.GetActiveProjectAsync();
-						
+
 						await project?.SaveAsync();
 
 						var @namespace = project.GetRootNamespace();
@@ -84,29 +78,20 @@ namespace ISI.VisualStudio.Extensions
 						var controllersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensions_AspNetMvc_5x_Helper.ControllersFolderName);
 						var controllerDirectory = System.IO.Path.Combine(controllersDirectory, controllerKey);
 
-						var usings = @"using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-";
+						var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-						{
-							var fileName = System.IO.Directory.GetFiles(controllerDirectory).OrderBy(controllerFileName => controllerFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
+						var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements);
+						usings.Add("System.Web");
+						usings.Add("System.Web.Mvc");
+						usings.Add("ISI.Libraries.Extensions");
+						usings.Add("ISI.Libraries.Web.Mvc.Extensions");
 
-							if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fileName))
-							{
-								usings = string.Join("\r\n", System.IO.File.ReadAllLines(fileName).Where(line => line.StartsWith("using ", StringComparison.InvariantCulture)));
-							}
-						}
+						var controllerFileName = System.IO.Directory.GetFiles(controllerDirectory).OrderBy(controllerFileName => controllerFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
+						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(usings, new []{controllerFileName});
 
 						var contentReplacements = new Dictionary<string, string>
 						{
-							{ "${Usings}", usings },
+							{ "${Usings}", sortedUsingStatements.GetFormatted() },
 							{ "${Namespace}", @namespace },
 							{ "${Namespace.Area}", string.Format("{0}{1}", @namespace, (string.IsNullOrWhiteSpace(areaName) ? string.Empty : string.Format(".Areas.{0}", areaName))) },
 							{ "${AreaName}", areaName },
@@ -125,7 +110,7 @@ using ISI.Libraries.Extensions;
 
 						var recipes = new[]
 						{
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}{1}.cs", controllerActionKey, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent( (isAsync ? nameof(RecipeExtensionsOptions.AspNetMvc_5x_AsyncRestMethod_Action_Template) : nameof(RecipeExtensionsOptions.AspNetMvc_5x_RestMethod_Action_Template)), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_RestMethod_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_RestMethod_Model_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 

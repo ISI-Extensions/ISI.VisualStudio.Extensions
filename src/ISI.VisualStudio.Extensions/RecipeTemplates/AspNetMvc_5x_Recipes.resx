@@ -139,16 +139,7 @@ namespace ${Namespace.Area}.Controllers
 }</value>
   </data>
   <data name="ActionWithPartialView_Model_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-
+    <value>${Usings}
 
 namespace ${Namespace.Area}.Models.${ControllerKey}
 {
@@ -256,15 +247,7 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 }</value>
   </data>
   <data name="Area_AreaRegistration_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
+    <value>${Usings}
 
 namespace ${Namespace}.Areas.${AreaName}
 {
@@ -284,16 +267,7 @@ namespace ${Namespace}.Areas.${AreaName}
 }</value>
   </data>
   <data name="Area_BaseModel_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-
+    <value>${Usings}
 namespace ${Namespace.Area}.Models
 {
 	public abstract class BaseModel : ${Namespace}.Models.BaseModel
@@ -302,15 +276,7 @@ namespace ${Namespace.Area}.Models
 }</value>
   </data>
   <data name="Area_Controller_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
+    <value>${Usings}
 
 namespace ${Namespace}.Areas.${AreaName}.Controllers
 {
@@ -324,40 +290,8 @@ namespace ${Namespace}.Areas.${AreaName}.Controllers
 	}
 }</value>
   </data>
-  <data name="Area_ModelBinders_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-
-namespace ${Namespace}.Areas.${AreaName}
-{
-	public partial class ModelBinders
-	{
-		public static void RegisterModelBinders(System.Web.Mvc.ModelBinderDictionary binders)
-		{
-			//${ModelBinders}
-		}
-	}
-}</value>
-  </data>
   <data name="Area_Routes_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-using System.Web.Routing;
-using ISI.Libraries.Web.Routes;
+    <value>${Usings}
 
 namespace ${Namespace}.Areas.${AreaName}
 {
@@ -372,89 +306,8 @@ namespace ${Namespace}.Areas.${AreaName}
 	}
 }</value>
   </data>
-  <data name="AsyncActionWithPartialView_Action_Template" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace.Area}.Controllers
-{
-	public partial class ${ControllerKey}Controller 
-	{
-		[AcceptVerbs(HttpVerbs.Post)]
-		public virtual async Taskk&lt;ActionResult&gt; ${ControllerActionKey}Async()
-		{
-			ActionResult result = null;
-
-			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
-
-			result = PartialView(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, model);
-
-			return result;
-		}
-	}
-}</value>
-  </data>
-  <data name="AsyncActionWithView_Action_Template" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace.Area}.Controllers
-{
-	public partial class ${ControllerKey}Controller 
-	{
-		[AcceptVerbs(HttpVerbs.Get)]
-		public async virtual Task&lt;ActionResult&gt; ${ControllerActionKey}Async()
-		{
-			ActionResult result = null;
-
-			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
-
-			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
-
-			return result;
-		}
-
-		[AcceptVerbs(HttpVerbs.Post), ActionName(nameof(${ControllerActionKey}))]
-		public async virtual Task&lt;ActionResult&gt; ${ControllerActionKey}SaveAsync()
-		{
-			ActionResult result = null;
-
-			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
-
-			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
-
-			return result;
-		}
-	}
-}</value>
-  </data>
-  <data name="AsyncRestMethod_Action_Template" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace.Area}.Controllers
-{
-	public partial class ${ControllerKey}Controller 
-	{
-		[AcceptVerbs(HttpVerbs.Post)]
-		public async virtual Task&lt;ActionResult&gt; ${ControllerActionKey}Async()
-		{
-			ActionResult result = null;
-
-			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
-
-			return result;
-		}
-	}
-}</value>
-  </data>
   <data name="Controller_BaseModelRoot_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
+    <value>${Usings}
 
 namespace ${Namespace}.Models
 {
@@ -465,15 +318,7 @@ namespace ${Namespace}.Models
 }</value>
   </data>
   <data name="Controller_BaseModel_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
+    <value>${Usings}
 
 namespace ${Namespace.Area}.Models.${ControllerKey}
 {
@@ -483,15 +328,7 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 }</value>
   </data>
   <data name="Controller_ControllerRoot_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
+    <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
 {
@@ -507,15 +344,7 @@ namespace ${Namespace.Area}.Controllers
 }</value>
   </data>
   <data name="Controller_Controller_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
+    <value>${Usings}
 
 namespace ${Namespace.Area}.Controllers
 {
@@ -529,67 +358,8 @@ namespace ${Namespace.Area}.Controllers
 	}
 }</value>
   </data>
-  <data name="Controller_ModelBindersRoot_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-
-namespace ${Namespace.Area}
-{
-	public partial class ModelBinders
-	{
-		public static void RegisterModelBinders(System.Web.Mvc.ModelBinderDictionary binders)
-		{
-			System.Web.Mvc.ModelBinders.Binders.DefaultBinder = new ISI.Libraries.Web.Mvc.ModelBinders.ModelBinder();
-
-			//${ModelBinders}
-		}
-	}
-}</value>
-  </data>
-  <data name="Controller_ModelBinders_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-
-namespace ${Namespace.Area}
-{
-	public partial class ModelBinders
-	{
-		public partial class ${ControllerKey}
-		{
-			public static void RegisterModelBinders(System.Web.Mvc.ModelBinderDictionary binders)
-			{
-				//binders.Add(typeof(Models.XXXXX.Entities.YYYYY), System.Web.Mvc.DependencyResolver.Current.GetService&amp;lt;YYYYY&amp;gt;());
-			}
-		}
-	}
-}</value>
-  </data>
   <data name="Controller_RoutesRoot_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-using System.Web.Routing;
-using ISI.Libraries.Web.Routes;
+    <value>${Usings}
 
 namespace ${Namespace.Area}
 {
@@ -608,17 +378,7 @@ namespace ${Namespace.Area}
 }</value>
   </data>
   <data name="Controller_Routes_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
-using System.Web.Routing;
-using ISI.Libraries.Web.Routes;
+    <value>${Usings}
 
 namespace ${Namespace.Area}
 {
@@ -786,15 +546,7 @@ namespace ${Namespace.Area}.Controllers
 }</value>
   </data>
   <data name="RestMethod_Model_Template" xml:space="preserve">
-    <value>using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using ISI.Libraries.Web.Mvc.Extensions;
-using ISI.Libraries.Extensions;
+    <value>${Usings}
 
 namespace ${Namespace.Area}.Models.${ControllerKey}
 {

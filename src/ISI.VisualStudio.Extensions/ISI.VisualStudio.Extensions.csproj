@@ -76,6 +76,11 @@
     <Compile Include="Commands\ProjectExtensions_LoadProject_Command.cs" />
     <Compile Include="Commands\ProjectExtensions_UnloadProject_Command.cs" />
     <Compile Include="Commands\ProjectExtensions_ProjectAddEmbeddedResources_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddActionWithPartialView_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddActionWithView_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddArea_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddController_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddRestMethod_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddT4LocalContent_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_ShowSccInformation_Command.cs" />
@@ -135,6 +140,7 @@
     <Compile Include="NugetExtensions_Helper\GetPackageKeysFromClipboard.cs" />
     <Compile Include="NugetExtensions_Helper\IsReferencesFolder.cs" />
     <Compile Include="NugetExtensions_Helper\__NugetExtensions_Helper.cs" />
+    <Compile Include="Options\RecipeExtensions_AspNetMvc_6x.cs" />
     <Compile Include="Options\RecipeExtensions_ProjectPartialClass.cs" />
     <Compile Include="Options\RecipeExtensions_Project.cs" />
     <Compile Include="Options\RecipeExtensions_AspNetWebApi_5x.cs" />
@@ -146,13 +152,23 @@
     <Compile Include="GenerateClassDefinitionDialog.xaml.cs">
       <DependentUpon>GenerateClassDefinitionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProjectExtensions_Helper\GetSortedUsings.cs" />
     <Compile Include="ProjectExtensions_Helper\GetFilteredFileNameSearchPatterns.cs" />
     <Compile Include="ProjectExtensions_Helper\GetEmbeddedFileNameSearchPatterns.cs" />
     <Compile Include="ProjectExtensions_Helper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="ProjectExtensions_Helper\__ProjectExtensions_Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />
-    <Compile Include="RecipeExtensions\ProjectPartialClass_Recipes.Designer.cs">
+    <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\GetOutputWindowPaneAsync.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\IsAspNetMvc_6x_Project.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\__RecipeExtensions_AspNetMvc_6x_Helper.cs" />
+    <Compile Include="RecipeExtensions_AspNet_Helper\__RecipeExtensions_AspNet_Helper.cs" />
+    <Compile Include="RecipeTemplates\AspNetMvc_6x_Recipes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AspNetMvc_6x_Recipes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeTemplates\ProjectPartialClass_Recipes.Designer.cs">
       <DependentUpon>ProjectPartialClass_Recipes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,34 +179,34 @@
     <Compile Include="Extensions_Helper\IsProjectUsingBootstrapExtensions.cs" />
     <Compile Include="Extensions_Helper\IsProjectUsingCmsExtensions.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\FilterWebConfig.cs" />
-    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetControllerName.cs" />
+    <Compile Include="RecipeExtensions_AspNet_Helper\GetControllerName.cs" />
     <Compile Include="Extensions_Helper\GetProjectDirectory.cs" />
-    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreasDirectory.cs" />
-    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreaDirectory.cs" />
-    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetAreaName.cs" />
-    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsControllerFolder.cs" />
+    <Compile Include="RecipeExtensions_AspNet_Helper\GetAreasDirectory.cs" />
+    <Compile Include="RecipeExtensions_AspNet_Helper\GetAreaDirectory.cs" />
+    <Compile Include="RecipeExtensions_AspNet_Helper\GetAreaName.cs" />
+    <Compile Include="RecipeExtensions_AspNet_Helper\IsControllerFolder.cs" />
     <Compile Include="Extensions_Helper\ReplaceFileContent.cs" />
     <Compile Include="Extensions_Helper\GetContent.cs" />
     <Compile Include="Extensions_Helper\AddFromRecipeAsync.cs" />
-    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsControllersFolder.cs" />
+    <Compile Include="RecipeExtensions_AspNet_Helper\IsControllersFolder.cs" />
     <Compile Include="Extensions_Helper\_contentFileExtensions.cs" />
     <Compile Include="Extensions_Helper\_RecipeItem.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\GetOutputWindowPaneAsync.cs" />
-    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsAreasFolder.cs" />
+    <Compile Include="RecipeExtensions_AspNet_Helper\IsAreasFolder.cs" />
     <Compile Include="Extensions_Helper\IsProjectRoot.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsAspNetMvc_5x_Project.cs" />
     <Compile Include="Extensions_Helper\__Extensions_Helper.cs" />
-    <Compile Include="RecipeExtensions\Project_Recipes.Designer.cs">
+    <Compile Include="RecipeTemplates\Project_Recipes.Designer.cs">
       <DependentUpon>Project_Recipes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RecipeExtensions\AspNetWebApi_5x_Recipes.Designer.cs">
+    <Compile Include="RecipeTemplates\AspNetWebApi_5x_Recipes.Designer.cs">
       <DependentUpon>AspNetWebApi_5x_Recipes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RecipeExtensions\AspNetMvc_5x_Recipes.Designer.cs">
+    <Compile Include="RecipeTemplates\AspNetMvc_5x_Recipes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AspNetMvc_5x_Recipes.resx</DependentUpon>
@@ -235,21 +251,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="RecipeExtensions\ProjectPartialClass_Recipes.resx">
+    <EmbeddedResource Include="RecipeTemplates\AspNetMvc_6x_Recipes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AspNetMvc_6x_Recipes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecipeTemplates\ProjectPartialClass_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ProjectPartialClass_Recipes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecipeExtensions\Project_Recipes.resx">
+    <EmbeddedResource Include="RecipeTemplates\Project_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Project_Recipes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecipeExtensions\AspNetWebApi_5x_Recipes.resx">
+    <EmbeddedResource Include="RecipeTemplates\AspNetWebApi_5x_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AspNetWebApi_5x_Recipes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RecipeExtensions\AspNetMvc_5x_Recipes.resx">
+    <EmbeddedResource Include="RecipeTemplates\AspNetMvc_5x_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AspNetMvc_5x_Recipes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>

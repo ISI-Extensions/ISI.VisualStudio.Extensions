@@ -80,19 +80,14 @@ namespace ISI.VisualStudio.Extensions
 						{
 							var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-							var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
-							{
-								var fileName = System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
+							var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements);
 
-								if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fileName))
-								{
-									usings = new List<string>(System.IO.File.ReadAllLines(fileName).Where(line => line.StartsWith("using ", StringComparison.InvariantCulture)));
-								}
-							}
+							var controllerFileName = System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
+							var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(usings, new []{controllerFileName});
 
 							var contentReplacements = new Dictionary<string, string>
 							{
-								{"${Usings}", string.Join("\r\n", usings)},
+								{ "${Usings}", sortedUsingStatements.GetFormatted() },
 								{"${Namespace}", @namespace},
 								{"${ClassName}", partialClassName},
 								{"${MethodName}", methodName},

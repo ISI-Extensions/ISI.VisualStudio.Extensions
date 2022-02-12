@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ISI.VisualStudio.Extensions.RecipeExtensions {
+namespace ISI.VisualStudio.Extensions.RecipeTemplates {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ISI.VisualStudio.Extensions.RecipeExtensions {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ISI.VisualStudio.Extensions.RecipeExtensions.ProjectPartialClass_Recipes", typeof(ProjectPartialClass_Recipes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ISI.VisualStudio.Extensions.RecipeTemplates.ProjectPartialClass_Recipes", typeof(ProjectPartialClass_Recipes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

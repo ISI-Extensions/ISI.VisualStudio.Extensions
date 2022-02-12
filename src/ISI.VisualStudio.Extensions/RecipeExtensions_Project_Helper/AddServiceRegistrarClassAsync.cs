@@ -43,32 +43,37 @@ namespace ISI.VisualStudio.Extensions
 
 				var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-				var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
+				var sortedUsingStatements = GetSortedUsings(codeExtensionProvider.DefaultUsingStatements);
 
 				var contentReplacements = new Dictionary<string, string>
 				{
-					{ "${Usings}", string.Join("\r\n", usings) },
+					{ "${Usings}", sortedUsingStatements.GetFormatted() },
 					{ "${Namespace}", @namespace },
 				};
 
+				var fullName = System.IO.Path.Combine(projectDirectory, "ServiceRegistrar.cs");
+
 				var recipes = new[]
 				{
-					new Extensions_Helper.RecipeItem(System.IO.Path.Combine(projectDirectory, "ServiceRegistrar.cs"), GetContent(nameof(RecipeExtensionsOptions.Project_ServiceRegistrarClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true,
-						(projectItems, fullName, content, replacementValues) =>
-						{
-							if (serviceRegistrations.NullCheckedAny())
-							{
-								var replacementValue = string.Join("\t\t\t\t", serviceRegistrations.Select(serviceRegistration => string.Format("services.AddSingleton<{0}, {1}>();\r\n", serviceRegistration.InterfaceName, serviceRegistration.ClassName)));
-
-								ReplaceFileContent(fullName, new Dictionary<string, string>
-								{
-									{ "//${ServiceRegistrations}", string.Format("{0}\t\t\t\t//${{ServiceRegistrations}}", replacementValue) },
-								});
-							}
-						}),
+					new Extensions_Helper.RecipeItem(fullName, GetContent(nameof(RecipeExtensionsOptions.Project_ServiceRegistrarClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), false),
 				};
 
 				await AddFromRecipesAsync(project, recipes, contentReplacements);
+
+				var content = System.IO.File.ReadAllText(fullName);
+
+				var regex = new System.Text.RegularExpressions.Regex(@"(?s:(?<start>(?:.*)(?:void)(?:\s+)(?:ServiceRegister\()(?:.*)(?:\{))(?<end>(?:.*)))");
+
+				var match = regex.Match(content);
+
+				if (match.Success)
+				{
+					var replacementValue = string.Join(string.Empty, serviceRegistrations.Select(serviceRegistration => string.Format("{2}\t\t\tservices.AddSingleton<{0}, {1}>();", serviceRegistration.InterfaceName, serviceRegistration.ClassName, Environment.NewLine)));
+
+					content = string.Format("{0}{1}{2}", match.Groups["start"], replacementValue, match.Groups["end"]);
+				}
+
+				System.IO.File.WriteAllText(fullName, content);
 			}
 			catch (Exception exception)
 			{

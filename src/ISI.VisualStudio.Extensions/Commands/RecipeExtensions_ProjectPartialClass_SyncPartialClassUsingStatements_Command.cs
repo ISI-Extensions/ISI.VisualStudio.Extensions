@@ -53,65 +53,9 @@ namespace ISI.VisualStudio.Extensions
 
 				var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-				var usingStatements = new HashSet<string>(codeExtensionProvider.DefaultUsingStatements, StringComparer.InvariantCultureIgnoreCase);
-
 				var fileNames = System.IO.Directory.GetFiles(partialClassDirectory, "*.cs");
 
-				foreach (var fileName in fileNames)
-				{
-					if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fileName))
-					{
-						foreach (var @using in System.IO.File.ReadAllLines(fileName).Where(line => line.StartsWith("using ", StringComparison.InvariantCulture)))
-						{
-							usingStatements.Add(@using.Replace('\t', ' ').Replace(';', ' ').Trim(' ').Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries)[1]);
-						}
-					}
-				}
-
-				var sortedUsingStatements = new List<string>();
-
-				void removeUsedUsingStatements()
-				{
-					foreach (var usingStatement in sortedUsingStatements)
-					{
-						usingStatements.Remove(usingStatement);
-					}
-				}
-
-				sortedUsingStatements.AddRange(codeExtensionProvider.DefaultUsingStatements);
-
-				removeUsedUsingStatements();
-
-				foreach (var usingStatement in usingStatements.Where(usingStatement => usingStatement.StartsWith("System.")).OrderBy(usingStatement => usingStatement))
-				{
-					sortedUsingStatements.Add(usingStatement);
-				}
-
-				removeUsedUsingStatements();
-
-				foreach (var usingStatement in usingStatements.Where(usingStatement => usingStatement.EndsWith(".Extensions")).OrderBy(usingStatement => usingStatement))
-				{
-					sortedUsingStatements.Add(usingStatement);
-				}
-
-				removeUsedUsingStatements();
-
-				foreach (var usingStatement in usingStatements.Where(usingStatement => usingStatement.IndexOf("=") >= 0).OrderBy(usingStatement => usingStatement))
-				{
-					sortedUsingStatements.Add(usingStatement);
-				}
-
-				removeUsedUsingStatements();
-
-				foreach (var usingStatement in usingStatements.OrderBy(usingStatement => usingStatement))
-				{
-					sortedUsingStatements.Add(usingStatement);
-				}
-
-				foreach (var sortedUsingStatement in sortedUsingStatements)
-				{
-					await outputWindowPane.WriteLineAsync(string.Format("using {0};\n", sortedUsingStatement));
-				}
+				var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider.DefaultUsingStatements, fileNames);
 
 				foreach (var fileName in fileNames)
 				{

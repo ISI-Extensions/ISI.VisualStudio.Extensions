@@ -83,6 +83,14 @@
 				<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
+					<CommandName>AspNet Mvc 5x Recipes</CommandName>
+					<ButtonText>AspNet Mvc 5x Recipes</ButtonText>
+				</Strings>
+			</Menu>
+			<Menu guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_SubMenuId" priority="0x0100" type="Menu">
+				<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
 					<CommandName>AspNet Mvc 6x Recipes</CommandName>
 					<ButtonText>AspNet Mvc 6x Recipes</ButtonText>
 				</Strings>
@@ -378,6 +386,73 @@
 				</Strings>
 			</Button>
 
+			<!--   AspNet Core 6.x -->
+			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_CreateTemplates_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_AspNetMvc_6x_CreateTemplates_MenuItemId</CommandName>
+					<ButtonText>Create AspNet Mvc 5.x Templates</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_AddArea_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_AspNetMvc_6x_AddArea_MenuItemId</CommandName>
+					<ButtonText>Add Area</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_AddController_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_AspNetMvc_6x_AddController_MenuItemId</CommandName>
+					<ButtonText>Add Controller</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_AddActionWithView_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_AspNetMvc_6x_AddActionWithView_MenuItemId</CommandName>
+					<ButtonText>Add Action With View</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_AddActionWithPartialView_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_AspNetMvc_6x_AddActionWithPartialView_MenuItemId</CommandName>
+					<ButtonText>Add Action With Partial View</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_AddRestMethod_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_MenuSubgroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_AspNetMvc_6x_AddRestMethod_MenuItemId</CommandName>
+					<ButtonText>Add Rest Method</ButtonText>
+				</Strings>
+			</Button>
+
 			<!--   Project -->
 			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="FolderMenuGroupId" />
@@ -523,6 +598,16 @@
 			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu"/>
 		</CommandPlacement>
 
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_SubMenuId" priority="0x0600">
+			<Parent guid="PackageUuid" id="FolderMenuGroupId" />
+		</CommandPlacement>
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_SubMenuId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ItemMenuGroupId" />
+		</CommandPlacement>
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_AspNetMvc_6x_SubMenuId" priority="0x0600">
+			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu"/>
+		</CommandPlacement>
+
 		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_SubMenuId" priority="0x0600">
 			<Parent guid="PackageUuid" id="FolderMenuGroupId" />
 		</CommandPlacement>
@@ -612,6 +697,16 @@
 			<IDSymbol name="RecipeExtensions_AspNetMvc_5x_AddRestMethod_MenuItemId" value="0x0418" />
 
 
+			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_MenuSubgroupId" value="0x0420" />
+			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_SubMenuId" value="0x0421" />
+			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_CreateTemplates_MenuItemId" value="0x0422" />
+			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddArea_MenuItemId" value="0x0423" />
+			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddController_MenuItemId" value="0x0424" />
+			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddActionWithView_MenuItemId" value="0x0426" />
+			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddActionWithPartialView_MenuItemId" value="0x0427" />
+			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddRestMethod_MenuItemId" value="0x0428" />
+
+
 			<IDSymbol name="RecipeExtensions_AspNetWebApi_5x_MenuSubgroupId" value="0x0430" />
 			<IDSymbol name="RecipeExtensions_AspNetWebApi_5x_SubMenuId" value="0x0431" />
 			<IDSymbol name="RecipeExtensions_AspNetWebApi_5x_CreateTemplates_MenuItemId" value="0x0432" />
@@ -620,16 +715,6 @@
 			<IDSymbol name="RecipeExtensions_AspNetWebApi_5x_AddActionWithView_MenuItemId" value="0x0435" />
 			<IDSymbol name="RecipeExtensions_AspNetWebApi_5x_AddActionWithPartialView_MenuItemId" value="0x0436" />
 			<IDSymbol name="RecipeExtensions_AspNetWebApi_5x_AddRestMethod_MenuItemId" value="0x0437" />
-
-
-			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_MenuSubgroupId" value="0x0440" />
-			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_SubMenuId" value="0x0441" />
-			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_CreateTemplates_MenuItemId" value="0x0442" />
-			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddArea_MenuItemId" value="0x0443" />
-			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddController_MenuItemId" value="0x0444" />
-			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddActionWithView_MenuItemId" value="0x0446" />
-			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddActionWithPartialView_MenuItemId" value="0x0447" />
-			<IDSymbol name="RecipeExtensions_AspNetMvc_6x_AddRestMethod_MenuItemId" value="0x0448" />
 
 
 

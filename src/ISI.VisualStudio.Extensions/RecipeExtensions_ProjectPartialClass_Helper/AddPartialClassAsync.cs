@@ -51,10 +51,10 @@ namespace ISI.VisualStudio.Extensions
 					if (!string.IsNullOrWhiteSpace(partialClassName))
 					{
 						contractProjectDescription = projectDescriptions.FirstOrDefault(projectDescription => string.Equals(projectDescription.Description, inputDialog.ContractProjectDescription, StringComparison.InvariantCultureIgnoreCase));
-						
+
 						await contractProjectDescription.Project?.SaveAsync();
 
-						await AddPartialClassAsync(solution, project, solutionItem, partialClassName, contractProjectDescription.Project, inputDialog.AddInterface, inputDialog.AddDTOsFolder, inputDialog.AddIocRegistry);
+						await AddPartialClassAsync(solution, project, solutionItem, partialClassName, contractProjectDescription.Project, inputDialog.AddInterface, inputDialog.AddIocRegistry);
 					}
 				}
 			}
@@ -68,7 +68,7 @@ namespace ISI.VisualStudio.Extensions
 			}
 		}
 
-		public async System.Threading.Tasks.Task AddPartialClassAsync(Solution solution, Project project, SolutionItem solutionItem, string partialClassName, Project contractProject, bool addInterface, bool addDTOsFolder, bool addIocRegistry)
+		public async System.Threading.Tasks.Task AddPartialClassAsync(Solution solution, Project project, SolutionItem solutionItem, string partialClassName, Project contractProject, bool addInterface, bool addIocRegistry)
 		{
 			try
 			{
@@ -123,8 +123,8 @@ namespace ISI.VisualStudio.Extensions
 							{
 								classInjectors.Add(new ISI.Extensions.VisualStudio.CodeGenerationClassInjector()
 								{
-									Type = string.Format("{0}.I{1}Repository;", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")),
-									Name = string.Format("{0}Repository;", partialClassName.TrimEnd("Api")),
+									Type = string.Format("{0}.I{1}Repository", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")),
+									Name = string.Format("{0}Repository", partialClassName.TrimEnd("Api")),
 								});
 							}
 							catch
@@ -202,25 +202,6 @@ namespace ISI.VisualStudio.Extensions
 						};
 
 						await AddFromRecipesAsync(contractProject, recipes, contentReplacements);
-					}
-
-					if (addDTOsFolder)
-					{
-						var dtosDirectory = System.IO.Path.Combine(contractProjectDirectory, "DataTransferObjects");
-						if (!System.IO.Directory.Exists(dtosDirectory))
-						{
-							System.IO.Directory.CreateDirectory(dtosDirectory);
-
-							//await contractProject.AddExistingFilesAsync(dtosDirectory);
-						}
-
-						dtosDirectory = System.IO.Path.Combine(dtosDirectory, partialClassName);
-						if (!System.IO.Directory.Exists(dtosDirectory))
-						{
-							System.IO.Directory.CreateDirectory(dtosDirectory);
-
-							//await contractProject.AddExistingFilesAsync(dtosDirectory);
-						}
 					}
 
 					if (addIocRegistry)
