@@ -43,7 +43,7 @@ namespace ISI.VisualStudio.Extensions
 				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.Value))
 				{
 					var classNamePrefix = inputDialog.Value.Replace(" ", string.Empty);
-					
+
 					if (!string.IsNullOrWhiteSpace(classNamePrefix))
 					{
 						var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
@@ -67,35 +67,29 @@ namespace ISI.VisualStudio.Extensions
 						var @namespace = RecipeExtensionsHelper.GetNamespace(project, solutionItem);
 
 						var directory = solutionItem.FullPath;
-						var partialClassDirectory = System.IO.Path.Combine(directory, classNamePrefix);
 
-						if (!System.IO.Directory.Exists(partialClassDirectory))
-						{
-							System.IO.Directory.CreateDirectory(partialClassDirectory);
+						var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-							var codeExtensionProvider = project.GetCodeExtensionProvider();
+						var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
+						usings.Add("using System.Runtime.Serialization;");
 
-							var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
-							usings.Add("using System.Runtime.Serialization;");
-
-							var contentReplacements = new Dictionary<string, string>
+						var contentReplacements = new Dictionary<string, string>
 							{
 								{"${Usings}", string.Join("\r\n", usings)},
 								{"${Namespace}", @namespace},
 								{"${ClassNamePrefix}", classNamePrefix},
 							};
 
-							var recipes = new []
-							{
+						var recipes = new[]
+						{
 								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("{0}Request.cs", classNamePrefix)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_SerializableDataTransferObjectRequest_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("{0}Response.cs", classNamePrefix)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_SerializableDataTransferObjectResponse_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 							};
 
-							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
+						await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
 
-							await outputWindowPane.WriteLineAsync("Done\n");
-							await outputWindowPane.ActivateAsync();
-						}
+						await outputWindowPane.WriteLineAsync("Done\n");
+						await outputWindowPane.ActivateAsync();
 					}
 				}
 			}

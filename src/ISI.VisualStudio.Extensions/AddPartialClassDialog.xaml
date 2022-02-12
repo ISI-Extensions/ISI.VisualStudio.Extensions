@@ -13,12 +13,12 @@
 											 mc:Ignorable="d"
 											 WindowStartupLocation="CenterScreen"
 											 Width="654" Height="284">
-	<StackPanel Margin="10">
+	<StackPanel Margin="2">
 		<Grid Margin="5">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="140" />
 				<ColumnDefinition Width="40" />
-				<ColumnDefinition Width="360" />
+				<ColumnDefinition Width="460" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="30" />
@@ -29,27 +29,25 @@
 			</Grid.RowDefinitions>
 
 			<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="5">New Partial Class Name:</TextBlock>
-			<Border Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BorderBrush="Silver" BorderThickness="1" Margin="2,2,-74,2" >
-				<TextBox Name="txtNewPartialClassName" Margin="0,2,9,1"/>
-			</Border>
+			<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="txtNewPartialClassName" Margin="-40,0,18,2" Padding="0,4,0,0" Width="440" BorderThickness="1" />
 
 			<TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Add Ioc Registry:</TextBlock>
 			<CheckBox Grid.Row="1" Grid.Column="1" Name="chkAddIocRegistry" Margin="5,5,5,5"/>
 
 			<TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Contract Project:</TextBlock>
-			<ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="cboContractProject" Margin="2,2,-74,2" />
+			<ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="cboContractProject" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1"/>
 
 			<TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Add Interface:</TextBlock>
 			<CheckBox Grid.Row="3" Grid.Column="1" Name="chkAddInterface" Margin="5,5,5,5"/>
-			<TextBlock Grid.Row="3" Grid.Column="2" Name="txtInterface" Margin="2,3,-74,2" />
+			<TextBlock Grid.Row="3" Grid.Column="2" Name="txtInterface" Margin="2,6,2,2"/>
 
 			<TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Add DTOs Folder:</TextBlock>
 			<CheckBox Grid.Row="4" Grid.Column="1" Name="chkAddDTOsFolder" Margin="5,5,5,5"/>
-			<TextBlock Grid.Row="4" Grid.Column="2" Name="txtAddDTOsFolder" Margin="2,3,-74,2" />
+			<TextBlock Grid.Row="4" Grid.Column="2" Name="txtAddDTOsFolder" Margin="2,6,2,2"/>
 		</Grid>
 
 		<WrapPanel Margin="0,5,0,0" HorizontalAlignment="Right">
-			<Button IsDefault="True" x:Name="btnOk" Click="btnOk_Click" Width="79" Height="25" Margin="3, 3, 3, 3" Content="_Ok"/>
+			<Button IsDefault="True" x:Name="btnOk" Click="btnOk_Click" Width="79" Height="25" Margin="3, 3, 3, 3" Content="_OK"/>
 			<Button IsCancel="True"  Width="79" Height="25" Margin="3, 3, 3, 3" Content="_Cancel"/>
 		</WrapPanel>
 	</StackPanel>

@@ -62,7 +62,7 @@ namespace ISI.VisualStudio.Extensions
 
 								ReplaceFileContent(fullName, new Dictionary<string, string>
 								{
-									{ "//${ServiceRegistrations}", string.Format("{0}//${{ServiceRegistrations}}", replacementValue) },
+									{ "//${ServiceRegistrations}", string.Format("{0}\t\t\t\t//${{ServiceRegistrations}}", replacementValue) },
 								});
 							}
 						}),

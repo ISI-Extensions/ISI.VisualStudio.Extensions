@@ -42,6 +42,8 @@ namespace ISI.VisualStudio.Extensions
 
 			txtNewPartialClassName.TextChanged += Update;
 			cboContractProject.SelectionChanged += Update;
+
+			txtNewPartialClassName.Focus();
 		}
 
 		private void Update(object sender, object args)
