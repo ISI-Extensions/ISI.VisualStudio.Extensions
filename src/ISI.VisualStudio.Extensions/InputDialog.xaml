@@ -17,7 +17,7 @@
 		<TextBlock Name="lblQuestion">Label:</TextBlock>
 		<TextBox Name="txtAnswer" BorderThickness="1" Width="Auto" />
 
-		<WrapPanel Margin="0,5,0,0" HorizontalAlignment="Right">
+		<WrapPanel Margin="0,5,-3,0" HorizontalAlignment="Right">
 			<Button IsDefault="True" x:Name="btnOk" Click="btnOk_Click" Width="79" Height="25" Margin="3, 3, 3, 3" Content="_OK"/>
 			<Button IsCancel="True"  Width="79" Height="25" Margin="3, 3, 3, 3" Content="_Cancel"/>
 		</WrapPanel>

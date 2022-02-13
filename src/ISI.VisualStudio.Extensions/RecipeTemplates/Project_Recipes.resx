@@ -1099,4 +1099,18 @@ public static partial class &lt;#= projectFolderSlug #&gt;
 &lt;#@ Include File="T4LocalContent.settings.t4" #&gt;
 &lt;#@ Include File="T4LocalContent.Generator.t4" #&gt;</value>
   </data>
+  <data name="AssemblyInfo" xml:space="preserve">
+    <value>using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("${Namespace}")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyProduct("${Namespace}")]
+[assembly: AssemblyCulture("")]</value>
+  </data>
 </root>

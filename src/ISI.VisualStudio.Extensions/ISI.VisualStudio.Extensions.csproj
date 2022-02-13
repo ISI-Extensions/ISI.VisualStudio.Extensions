@@ -54,6 +54,9 @@
     <Compile Include="..\ISI.VisualStudio.Extensions.Version.cs">
       <Link>Properties\ISI.VisualStudio.Extensions.Version.cs</Link>
     </Compile>
+    <Compile Include="AddProjectPropertiesDialog.xaml.cs">
+      <DependentUpon>AddProjectPropertiesDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddPartialClassMethodDialog.xaml.cs">
       <DependentUpon>AddPartialClassMethodDialog.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,7 @@
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddArea_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddController_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddRestMethod_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddProjectProperties_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddT4LocalContent_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_ShowSccInformation_Command.cs" />
@@ -306,16 +310,16 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8077.31880</Version>
+      <Version>10.0.8079.7794</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8077.31880</Version>
+      <Version>10.0.8079.7794</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8077.31880</Version>
+      <Version>10.0.8079.7794</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.VisualStudio.Forms">
-      <Version>10.0.8077.31880</Version>
+      <Version>10.0.8079.7794</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.0.0</Version>
@@ -327,13 +331,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8077.31880" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8077.31880" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8077.31880" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8077.31880" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8077.31880" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8077.31880" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8077.31880" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8079.7794" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8079.7794" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8079.7794" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8079.7794" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8079.7794" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8079.7794" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8079.7794" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>6.0.0</Version>
@@ -346,6 +350,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddProjectPropertiesDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddPartialClassMethodDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -61,6 +61,26 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to using System.Reflection;
+        ///using System.Runtime.CompilerServices;
+        ///using System.Runtime.InteropServices;
+        ///
+        ///// General Information about an assembly is controlled through the following 
+        ///// set of attributes. Change these attribute values to modify the information
+        ///// associated with an assembly.
+        ///[assembly: AssemblyTitle(&quot;${Namespace}&quot;)]
+        ///[assembly: AssemblyDescription(&quot;&quot;)]
+        ///[assembly: AssemblyConfiguration(&quot;&quot;)]
+        ///[assembly: AssemblyProduct(&quot;${Namespace}&quot;)]
+        ///[assembly: AssemblyCulture(&quot;&quot;)].
+        /// </summary>
+        internal static string AssemblyInfo {
+            get {
+                return ResourceManager.GetString("AssemblyInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ${Usings}
         ///
         ///namespace ${Namespace}

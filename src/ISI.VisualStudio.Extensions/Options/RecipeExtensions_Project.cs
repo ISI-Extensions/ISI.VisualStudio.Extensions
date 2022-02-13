@@ -19,6 +19,10 @@ namespace ISI.VisualStudio.Extensions
 		[Category("Project Recipes")]
 		[DisplayName("ServiceRegistrar Class Template")]
 		public string Project_ServiceRegistrarClass_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ServiceRegistrarClass_Template;
+		
+		[Category("Project Recipes")]
+		[DisplayName("AssemblyInfo Template")]
+		public string Project_AssemblyInfo_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.AssemblyInfo;
 
 		[Category("Project Partial Class Recipes")]
 		[DisplayName("DataTransferObject Request Template")]

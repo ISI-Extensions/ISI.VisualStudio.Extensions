@@ -1,0 +1,83 @@
+﻿<platformUi:DialogWindow x:Class="ISI.VisualStudio.Extensions.AddProjectPropertiesDialog"
+											 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+											 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+											 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+											 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+											 xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
+											 xmlns:theming="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Imaging"
+											 xmlns:util="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Utilities"
+											 xmlns:catalog="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
+											 xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
+											 xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+											 toolkit:Themes.UseVsTheme="True"
+											 mc:Ignorable="d"
+											 WindowStartupLocation="CenterScreen"
+											 Width="654" Height="374">
+	<StackPanel Margin="2">
+		<Grid Margin="5">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="150" />
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition Width="450" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="30" />
+				<RowDefinition Height="30" />
+				<RowDefinition Height="30" />
+				<RowDefinition Height="24" />
+				<RowDefinition Height="24" />
+				<RowDefinition Height="24" />
+				<RowDefinition Height="30" />
+				<RowDefinition Height="30" />
+				<RowDefinition Height="30" />
+				<RowDefinition Height="30" />
+			</Grid.RowDefinitions>
+
+			<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Deterministic:</TextBlock>
+			<ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="cboDeterministic" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1">
+				<ComboBoxItem>Remove</ComboBoxItem>
+				<ComboBoxItem>true</ComboBoxItem>
+				<ComboBoxItem>false</ComboBoxItem>
+			</ComboBox>
+
+			<TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="5">LangVersion:</TextBlock>
+			<ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Name="cboLangVersion" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1">
+				<ComboBoxItem></ComboBoxItem>
+				<ComboBoxItem>Remove</ComboBoxItem>
+				<ComboBoxItem>Latest</ComboBoxItem>
+			</ComboBox>
+
+			<TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Generate AssemblyInfo:</TextBlock>
+			<ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="cboGenerateAssemblyInfo" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1">
+				<ComboBoxItem>Remove</ComboBoxItem>
+				<ComboBoxItem>true</ComboBoxItem>
+				<ComboBoxItem>false</ComboBoxItem>
+			</ComboBox>
+
+			<TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Runtime Identifiers:</TextBlock>
+			<CheckBox Grid.Row="3" Grid.Column="1" Name="chkRuntimeIdentifiers_win" Margin="5,5,5,5"/>
+			<TextBlock Grid.Row="3" Grid.Column="2" Text="win" Margin="-8,2,2,2"/>
+			<CheckBox Grid.Row="4" Grid.Column="1" Name="chkRuntimeIdentifiers_win_x86" Margin="5,5,5,5"/>
+			<TextBlock Grid.Row="4" Grid.Column="2" Text="win-x86" Margin="-8,2,2,2"/>
+			<CheckBox Grid.Row="5" Grid.Column="1" Name="chkRuntimeIdentifiers_win_x64" Margin="5,5,5,5"/>
+			<TextBlock Grid.Row="5" Grid.Column="2" Text="win-x64" Margin="-8,2,2,2"/>
+
+			<TextBlock Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Use Shared AssemblyInfo:</TextBlock>
+			<ComboBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Name="cboUseSharedAssemblyInfo" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1" />
+
+			<TextBlock Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Use Shared Version:</TextBlock>
+			<ComboBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Name="cboUseSharedVersion" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1" />
+
+			<TextBlock Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Add AssemblyInfo:</TextBlock>
+			<CheckBox Grid.Row="8" Grid.Column="1" Name="chkAddAssemblyInfo" Margin="5,5,5,5"/>
+
+			<TextBlock Grid.Row="9" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Use licenseheader:</TextBlock>
+			<ComboBox Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Name="cboUseSharedLicenseHeader" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1" />
+		</Grid>
+
+		<WrapPanel Margin="0,5,40,0" HorizontalAlignment="Right">
+			<Button IsDefault="True" x:Name="btnOk" Click="btnOk_Click" Width="79" Height="25" Margin="3, 3, 3, 3" Content="_OK"/>
+			<Button IsCancel="True"  Width="79" Height="25" Margin="3, 3, 3, 3" Content="_Cancel"/>
+		</WrapPanel>
+	</StackPanel>
+</platformUi:DialogWindow>

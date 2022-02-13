@@ -37,7 +37,7 @@
 			<TextBlock Grid.Row="2" Grid.Column="2" Name="txtAddDTOs" Margin="2,6,2,2"/>
 		</Grid>
 
-		<WrapPanel Margin="0,5,0,0" HorizontalAlignment="Right">
+		<WrapPanel Margin="0,5,60,0" HorizontalAlignment="Right">
 			<Button IsDefault="True" x:Name="btnOk" Click="btnOk_Click" Width="79" Height="25" Margin="3, 3, 3, 3" Content="_OK"/>
 			<Button IsCancel="True"  Width="79" Height="25" Margin="3, 3, 3, 3" Content="_Cancel"/>
 		</WrapPanel>
