@@ -52,8 +52,20 @@ namespace ISI.VisualStudio.Extensions
 
 			Title = Vsix.Name;
 
+			cboDeterministic.Items.Add("Remove");
+			cboDeterministic.Items.Add("true");
+			cboDeterministic.Items.Add("false");
 			cboDeterministic.SelectedValue = (deterministic.HasValue ? deterministic.Value.TrueFalse(false, BooleanExtensions.TextCase.Lower) : "Remove");
+
+
+			cboLangVersion.Items.Add(string.Empty);
+			cboLangVersion.Items.Add("Remove");
+			cboLangVersion.Items.Add("Latest");
 			cboLangVersion.SelectedValue = (langVersionLatest.HasValue ? (langVersionLatest.Value ? "Latest" : "Remove") : string.Empty);
+
+			cboGenerateAssemblyInfo.Items.Add("Remove");
+			cboGenerateAssemblyInfo.Items.Add("true");
+			cboGenerateAssemblyInfo.Items.Add("false");
 			cboGenerateAssemblyInfo.SelectedValue = (generateAssemblyInfo.HasValue ? generateAssemblyInfo.Value.TrueFalse(false, BooleanExtensions.TextCase.Lower) : "Remove");
 
 			var hasRuntimeIdentifiers = new HashSet<string>((runtimeIdentifiers ?? string.Empty).Split(new[] { ';', ' ' }, StringSplitOptions.RemoveEmptyEntries), StringComparer.InvariantCultureIgnoreCase);

@@ -8,6 +8,10 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class ProjectExtensions_Helper : Extensions_Helper
 	{
+		public ProjectExtensions_Helper(ISI.Extensions.Nuget.NugetApi nugetApi)
+			: base(nugetApi)
+		{
 
+		}
 	}
 }

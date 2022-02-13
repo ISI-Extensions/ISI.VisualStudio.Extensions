@@ -8,6 +8,10 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class RecipeExtensions_ProjectPartialClass_Helper : RecipeExtensions_Project_Helper
 	{
+		public RecipeExtensions_ProjectPartialClass_Helper(ISI.Extensions.Nuget.NugetApi nugetApi)
+			: base(nugetApi)
+		{
 
+		}
 	}
 }

@@ -34,25 +34,17 @@
 			</Grid.RowDefinitions>
 
 			<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Deterministic:</TextBlock>
-			<ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="cboDeterministic" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1">
-				<ComboBoxItem>Remove</ComboBoxItem>
-				<ComboBoxItem>true</ComboBoxItem>
-				<ComboBoxItem>false</ComboBoxItem>
-			</ComboBox>
+			<ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="cboDeterministic" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1" />
 
 			<TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="5">LangVersion:</TextBlock>
 			<ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Name="cboLangVersion" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1">
 				<ComboBoxItem></ComboBoxItem>
-				<ComboBoxItem>Remove</ComboBoxItem>
-				<ComboBoxItem>Latest</ComboBoxItem>
+				<ComboBoxItem></ComboBoxItem>
+				<ComboBoxItem></ComboBoxItem>
 			</ComboBox>
 
 			<TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Generate AssemblyInfo:</TextBlock>
-			<ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="cboGenerateAssemblyInfo" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1">
-				<ComboBoxItem>Remove</ComboBoxItem>
-				<ComboBoxItem>true</ComboBoxItem>
-				<ComboBoxItem>false</ComboBoxItem>
-			</ComboBox>
+			<ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="cboGenerateAssemblyInfo" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1" />
 
 			<TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Runtime Identifiers:</TextBlock>
 			<CheckBox Grid.Row="3" Grid.Column="1" Name="chkRuntimeIdentifiers_win" Margin="5,5,5,5"/>

@@ -10,7 +10,10 @@ namespace ISI.VisualStudio.Extensions
 	{
 		protected ISI.Extensions.Jenkins.JenkinsApi JenkinsApi { get; }
 
-		public JenkinsExtensions_Helper(ISI.Extensions.Jenkins.JenkinsApi jenkinsApi)
+		public JenkinsExtensions_Helper(
+			ISI.Extensions.Nuget.NugetApi nugetApi,
+			ISI.Extensions.Jenkins.JenkinsApi jenkinsApi)
+			: base(nugetApi)
 		{
 			JenkinsApi = jenkinsApi;
 		}

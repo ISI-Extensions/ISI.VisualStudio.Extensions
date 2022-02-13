@@ -10,7 +10,10 @@ namespace ISI.VisualStudio.Extensions
 	{
 		protected ISI.Extensions.Cake.CakeApi CakeApi { get; }
 
-		public CakeExtensions_Helper(ISI.Extensions.Cake.CakeApi cakeApi)
+		public CakeExtensions_Helper(
+			ISI.Extensions.Nuget.NugetApi nugetApi,
+			ISI.Extensions.Cake.CakeApi cakeApi)
+			: base(nugetApi)
 		{
 			CakeApi = cakeApi;
 		}

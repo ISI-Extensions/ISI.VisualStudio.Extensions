@@ -8,6 +8,10 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class RecipeExtensions_AspNetMvc_5x_Helper : RecipeExtensions_AspNet_Helper
 	{
+		public RecipeExtensions_AspNetMvc_5x_Helper(ISI.Extensions.Nuget.NugetApi nugetApi)
+			: base(nugetApi)
+		{
 
+		}
 	}
 }

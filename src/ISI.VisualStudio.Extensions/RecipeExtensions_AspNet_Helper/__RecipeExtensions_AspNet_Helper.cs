@@ -17,5 +17,11 @@ namespace ISI.VisualStudio.Extensions
 		public const string RoutesFolderName = "Routes";
 		public const string StyleSheetsFolderName = "StyleSheets";
 		public const string ViewsFolderName = "Views";
+
+		public RecipeExtensions_AspNet_Helper(ISI.Extensions.Nuget.NugetApi nugetApi)
+			: base(nugetApi)
+		{
+
+		}
 	}
 }

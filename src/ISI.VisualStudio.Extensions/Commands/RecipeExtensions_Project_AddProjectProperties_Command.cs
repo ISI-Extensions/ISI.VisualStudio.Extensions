@@ -119,7 +119,7 @@ namespace ISI.VisualStudio.Extensions
 
 					var neededIncludes = new List<(string ElementName, string Include, string Link)>();
 
-					if (TrySetInclude(csProjXml, "Compile", useSharedAssemblyInfo, inputDialog.UseSharedAssemblyInfo))
+					if (!TrySetInclude(csProjXml, "Compile", useSharedAssemblyInfo, inputDialog.UseSharedAssemblyInfo))
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedAssemblyInfo))
 						{
@@ -127,7 +127,7 @@ namespace ISI.VisualStudio.Extensions
 						}
 					}
 
-					if (TrySetInclude(csProjXml, "Compile", useSharedVersion, inputDialog.UseSharedVersion))
+					if (!TrySetInclude(csProjXml, "Compile", useSharedVersion, inputDialog.UseSharedVersion))
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedVersion))
 						{
@@ -139,7 +139,7 @@ namespace ISI.VisualStudio.Extensions
 					{
 						var assemblyInfoFullName = GetAssemblyInfoFullName(project);
 
-						var propertiesDirectory = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(assemblyInfoFullName), "Properties");
+						var propertiesDirectory = System.IO.Path.GetDirectoryName(assemblyInfoFullName);
 						System.IO.Directory.CreateDirectory(propertiesDirectory);
 
 						if (!System.IO.File.Exists(assemblyInfoFullName))
@@ -156,11 +156,14 @@ namespace ISI.VisualStudio.Extensions
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
 
-							neededIncludes.Add((ElementName: "Compile", Include: "Properties\\AssemblyInfo.cs", Link: string.Empty));
+							if (!sdkAttribute.StartsWith("Microsoft.NET", StringComparison.InvariantCultureIgnoreCase))
+							{
+								neededIncludes.Add((ElementName: "Compile", Include: "Properties\\AssemblyInfo.cs", Link: string.Empty));
+							}
 						}
 					}
 
-					if (TrySetInclude(csProjXml, "None", useSharedLicenseHeader, inputDialog.UseSharedLicenseHeader))
+					if (!TrySetInclude(csProjXml, "None", useSharedLicenseHeader, inputDialog.UseSharedLicenseHeader))
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedLicenseHeader))
 						{

@@ -11,9 +11,21 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public bool IsAspNetMvc_6x_Project(Community.VisualStudio.Toolkit.Project project)
 		{
+			var package = "ISI.Extensions.AspNetCore";
+
 			var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
 
-			return referenceNames.Contains("ISI.Extensions.AspNetCore");
+			if (referenceNames.Contains(package))
+			{
+				return true;
+			}
+
+			var packages = new HashSet<string>(NugetApi.ExtractProjectNugetPackageDependenciesFromCsProj(new ISI.Extensions.Nuget.DataTransferObjects.NugetApi.ExtractProjectNugetPackageDependenciesFromCsProjRequest()
+			{
+				CsProjFullName = project.FullPath,
+			}).NugetPackageKeys.NullCheckedSelect(nugetPackageKey => nugetPackageKey.Package, NullCheckCollectionResult.Empty), StringComparer.InvariantCultureIgnoreCase);
+
+			return packages.Contains(package);
 		}
 	}
 }
