@@ -55,7 +55,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var fileNames = System.IO.Directory.GetFiles(partialClassDirectory, "*.cs");
 
-				var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider.DefaultUsingStatements, fileNames);
+				var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, fileNames);
 
 				foreach (var fileName in fileNames)
 				{

@@ -43,7 +43,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-				var sortedUsingStatements = GetSortedUsings(codeExtensionProvider.DefaultUsingStatements);
+				var sortedUsingStatements = GetSortedUsings(codeExtensionProvider);
 
 				var contentReplacements = new Dictionary<string, string>
 				{
@@ -55,7 +55,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var recipes = new[]
 				{
-					new Extensions_Helper.RecipeItem(fullName, GetContent(nameof(RecipeExtensionsOptions.Project_DependencyRegisterClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), false),
+					new Extensions_Helper.RecipeItem(fullName, GetContent(nameof(Options.Project_DependencyRegisterClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), false),
 				};
 
 				await AddFromRecipesAsync(project, recipes, contentReplacements);

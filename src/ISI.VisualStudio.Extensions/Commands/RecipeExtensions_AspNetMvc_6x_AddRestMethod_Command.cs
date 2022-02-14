@@ -80,13 +80,13 @@ namespace ISI.VisualStudio.Extensions
 
 						var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-						var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements);
+						var usings = new List<string>();
 						usings.Add("Microsoft.AspNetCore.Mvc");
 						usings.Add("Microsoft.Extensions.DependencyInjection");
 						usings.Add("ISI.Extensions.Extensions");
 
 						var controllerFileName = System.IO.Directory.GetFiles(controllerDirectory).OrderBy(controllerFileName => controllerFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
-						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(usings, new []{controllerFileName});
+						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, new []{controllerFileName});
 
 						var contentReplacements = new Dictionary<string, string>
 						{
@@ -109,9 +109,9 @@ namespace ISI.VisualStudio.Extensions
 
 						var recipes = new[]
 						{
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent( nameof(RecipeExtensionsOptions.AspNetMvc_6x_RestMethod_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent( nameof(Options.AspNetMvc_6x_RestMethod_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_6x_RestMethod_Model_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(Options.AspNetMvc_6x_RestMethod_Model_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
 								(projectItems, fullName, content, replacementValues) =>

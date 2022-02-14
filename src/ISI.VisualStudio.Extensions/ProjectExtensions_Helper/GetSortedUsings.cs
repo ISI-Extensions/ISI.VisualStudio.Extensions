@@ -24,7 +24,7 @@ namespace ISI.VisualStudio.Extensions
 			public string GetFormatted() => string.Join(Environment.NewLine, this.Select(@using => string.Format("using {0};", @using)));
 		}
 
-		public Usings GetSortedUsings(IEnumerable<string> usings, IEnumerable<string> sourceFullNames = null)
+		public Usings GetSortedUsings(ISI.Extensions.VisualStudio.ICodeExtensionProvider codeExtensionProvider, IEnumerable<string> usings = null, IEnumerable<string> sourceFullNames = null)
 		{
 			var usingStatements = new HashSet<string>((usings ?? Array.Empty<string>()).Select(@using => @using.Replace('\t', ' ').Trim(' ').TrimStart("using ").Replace(';', ' ').Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).First()), StringComparer.InvariantCultureIgnoreCase);
 
@@ -49,6 +49,14 @@ namespace ISI.VisualStudio.Extensions
 				foreach (var usingStatement in sortedUsingStatements)
 				{
 					usingStatements.Remove(usingStatement);
+				}
+			}
+
+			if (!(codeExtensionProvider?.DefaultUsingStatements).NullCheckedAny())
+			{
+				foreach (var usingStatement in codeExtensionProvider.DefaultUsingStatements)
+				{
+					sortedUsingStatements.Add(usingStatement);
 				}
 			}
 

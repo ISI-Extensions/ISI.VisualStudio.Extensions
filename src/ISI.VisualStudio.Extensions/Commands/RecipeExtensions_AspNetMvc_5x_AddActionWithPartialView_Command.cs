@@ -81,14 +81,14 @@ namespace ISI.VisualStudio.Extensions
 
 						var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-						var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements);
+						var usings = new List<string>();
 						usings.Add("System.Web");
 						usings.Add("System.Web.Mvc");
 						usings.Add("ISI.Libraries.Extensions");
 						usings.Add("ISI.Libraries.Web.Mvc.Extensions");
 
 						var controllerFileName = System.IO.Directory.GetFiles(controllerDirectory).OrderBy(controllerFileName => controllerFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
-						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(usings, new []{controllerFileName});
+						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, new[] { controllerFileName });
 
 						var contentReplacements = new Dictionary<string, string>
 						{
@@ -119,12 +119,12 @@ namespace ISI.VisualStudio.Extensions
 
 						var recipes = new[]
 						{
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_ActionWithPartialView_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(Options.AspNetMvc_5x_ActionWithPartialView_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_ActionWithPartialView_Model_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(Options.AspNetMvc_5x_ActionWithPartialView_Model_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(viewsDirectory, "web.config"), RecipeExtensionsHelper.FilterWebConfig(project, RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_ViewsWebConfig_Template), viewsControllerDirectory, viewsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory))),
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(partialViewsControllerDirectory, string.Format("{0}.cshtml", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.AspNetMvc_5x_ActionWithPartialView_PartialView_Template), partialViewsControllerDirectory, viewsControllerDirectory, viewsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(viewsDirectory, "web.config"), RecipeExtensionsHelper.FilterWebConfig(project, RecipeExtensionsHelper.GetContent(nameof(Options.AspNetMvc_5x_ViewsWebConfig_Template), viewsControllerDirectory, viewsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory))),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(partialViewsControllerDirectory, string.Format("{0}.cshtml", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(Options.AspNetMvc_5x_ActionWithPartialView_PartialView_Template), partialViewsControllerDirectory, viewsControllerDirectory, viewsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
 								(projectItems, fullName, content, replacementValues) =>

@@ -72,7 +72,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var recipes = new[]
 				{
-					new Extensions_Helper.RecipeItem(System.IO.Path.Combine(projectDirectory, "StartUp.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_StartUpClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+					new Extensions_Helper.RecipeItem(System.IO.Path.Combine(projectDirectory, "StartUp.cs"), RecipeExtensionsHelper.GetContent(nameof(Options.Project_StartUpClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 				};
 
 

@@ -103,9 +103,9 @@ else					if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.V
 
 					var recipes = new Extensions_Helper.RecipeItem[]
 					{
-						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, "T4LocalContent.settings.t4"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_T4LocalContent_Settings_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
-						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, "T4LocalContent.Generator.t4"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_T4LocalContent_Generator_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
-						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, "T4LocalContent.tt"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_T4LocalContent_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, "T4LocalContent.settings.t4"), RecipeExtensionsHelper.GetContent(nameof(Options.Project_T4LocalContent_Settings_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, "T4LocalContent.Generator.t4"), RecipeExtensionsHelper.GetContent(nameof(Options.Project_T4LocalContent_Generator_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, "T4LocalContent.tt"), RecipeExtensionsHelper.GetContent(nameof(Options.Project_T4LocalContent_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 					};
 
 					await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

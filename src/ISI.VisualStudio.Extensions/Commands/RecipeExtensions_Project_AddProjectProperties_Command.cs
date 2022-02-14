@@ -151,7 +151,7 @@ namespace ISI.VisualStudio.Extensions
 
 							var recipes = new Extensions_Helper.RecipeItem[]
 							{
-								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(propertiesDirectory, "AssemblyInfo.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeExtensionsOptions.Project_AssemblyInfo_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(propertiesDirectory, "AssemblyInfo.cs"), RecipeExtensionsHelper.GetContent(nameof(Options.Project_AssemblyInfo_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

@@ -14,9 +14,9 @@ namespace ISI.VisualStudio.Extensions
 		{
 			var optionValueRetrievers = new Dictionary<string, Func<string>>(StringComparer.InvariantCultureIgnoreCase);
 
-			var recipeExtensionsOptions = RecipeExtensionsOptions.GetLiveInstanceAsync().GetAwaiter().GetResult();
+			var recipeExtensionsOptions = Options.GetLiveInstanceAsync().GetAwaiter().GetResult();
 
-			foreach (var propertyInfo in typeof(RecipeExtensionsOptions).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.GetProperty | System.Reflection.BindingFlags.Instance))
+			foreach (var propertyInfo in typeof(Options).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.GetProperty | System.Reflection.BindingFlags.Instance))
 			{
 				optionValueRetrievers.Add(propertyInfo.Name, () => propertyInfo.GetValue(recipeExtensionsOptions) as string);
 			}

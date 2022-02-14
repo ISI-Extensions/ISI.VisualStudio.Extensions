@@ -2,7 +2,7 @@
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensionsOptions
+	public partial class Options
 	{
 		[Category("Project Partial Class Recipes")]
 		[DisplayName("Partial Class Template")]

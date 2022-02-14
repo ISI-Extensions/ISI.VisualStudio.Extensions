@@ -2,7 +2,7 @@
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensionsOptions
+	public partial class Options
 	{
 		[Category("AspNetMvc 5.x Recipes")]
 		[DisplayName("Area Controller Template")]

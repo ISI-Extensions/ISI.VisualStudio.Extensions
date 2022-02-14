@@ -80,10 +80,8 @@ namespace ISI.VisualStudio.Extensions
 						{
 							var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-							var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements);
-
 							var controllerFileName = System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
-							var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(usings, new []{controllerFileName});
+							var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, new []{controllerFileName});
 
 							var contentReplacements = new Dictionary<string, string>
 							{
@@ -95,7 +93,7 @@ namespace ISI.VisualStudio.Extensions
 
 							var recipes = new[]
 							{
-								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(partialClassDirectory, string.Format("{0}{1}.cs", methodName, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent((isAsync ? nameof(RecipeExtensionsOptions.ProjectPartialClass_AsyncPartialClassPrivateMethod_Template) : nameof(RecipeExtensionsOptions.ProjectPartialClass_PartialClassPrivateMethod_Template)), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(partialClassDirectory, string.Format("{0}{1}.cs", methodName, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent((isAsync ? nameof(Options.ProjectPartialClass_AsyncPartialClassPrivateMethod_Template) : nameof(Options.ProjectPartialClass_PartialClassPrivateMethod_Template)), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

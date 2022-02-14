@@ -144,12 +144,13 @@
     <Compile Include="NugetExtensions_Helper\GetPackageKeysFromClipboard.cs" />
     <Compile Include="NugetExtensions_Helper\IsReferencesFolder.cs" />
     <Compile Include="NugetExtensions_Helper\__NugetExtensions_Helper.cs" />
-    <Compile Include="Options\RecipeExtensions_AspNetMvc_6x.cs" />
-    <Compile Include="Options\RecipeExtensions_ProjectPartialClass.cs" />
-    <Compile Include="Options\RecipeExtensions_Project.cs" />
-    <Compile Include="Options\RecipeExtensions_AspNetWebApi_5x.cs" />
-    <Compile Include="Options\RecipeExtensions_AspNetMvc_5x.cs" />
-    <Compile Include="Options\RecipeExtensions.cs" />
+    <Compile Include="Options\AspNetMvc_6x.cs" />
+    <Compile Include="Options\Editor.cs" />
+    <Compile Include="Options\ProjectPartialClass.cs" />
+    <Compile Include="Options\Project.cs" />
+    <Compile Include="Options\AspNetWebApi_5x.cs" />
+    <Compile Include="Options\AspNetMvc_5x.cs" />
+    <Compile Include="Options\__Options.cs" />
     <Compile Include="PasteAsDialog.xaml.cs">
       <DependentUpon>PasteAsDialog.xaml</DependentUpon>
     </Compile>
@@ -238,6 +239,7 @@
     <Compile Include="SourceControlProviderAttribute.cs" />
     <Compile Include="SourceControlProviders\VisualSvnSourceControlProvider.cs" />
     <Compile Include="SourceControlProviders\GitSourceControlProvider.cs" />
+    <Compile Include="WpfTextViewCreationListener.cs" />
     <Compile Include="XmlConfigurationExtensions_Helper\GetOutputWindowPaneAsync.cs" />
     <Compile Include="XmlConfigurationExtensions_Helper\IsXmlConfiguration.cs" />
     <Compile Include="XmlConfigurationExtensions_Helper\__XmlConfigurationExtensions_Helper.cs" />

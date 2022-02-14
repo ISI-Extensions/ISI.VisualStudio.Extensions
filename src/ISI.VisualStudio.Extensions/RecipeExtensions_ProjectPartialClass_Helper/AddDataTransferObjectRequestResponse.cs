@@ -87,8 +87,8 @@ namespace ISI.VisualStudio.Extensions
 
 				var recipes = new[]
 				{
-						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(dtosDirectory, string.Format("{0}Request.cs", methodName)), GetContent((isAsync ? nameof(RecipeExtensionsOptions.Project_AsyncDataTransferObjectRequest_Template) : nameof(RecipeExtensionsOptions.Project_DataTransferObjectRequest_Template)), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
-						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(dtosDirectory, string.Format("{0}Response.cs", methodName)), GetContent(nameof(RecipeExtensionsOptions.Project_DataTransferObjectResponse_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(dtosDirectory, string.Format("{0}Request.cs", methodName)), GetContent((isAsync ? nameof(Options.Project_AsyncDataTransferObjectRequest_Template) : nameof(Options.Project_DataTransferObjectRequest_Template)), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(dtosDirectory, string.Format("{0}Response.cs", methodName)), GetContent(nameof(Options.Project_DataTransferObjectResponse_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 					};
 
 				await AddFromRecipesAsync(project, recipes, contentReplacements);

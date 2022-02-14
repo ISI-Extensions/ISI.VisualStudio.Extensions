@@ -21,8 +21,8 @@ namespace ISI.VisualStudio.Extensions
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionHasMultipleProjects_string, PackageAutoLoadFlags.BackgroundLoad)]
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionHasSingleProject_string, PackageAutoLoadFlags.BackgroundLoad)]
-	[ProvideOptionPage(typeof(OptionsProvider.RecipeExtensionsOptionsPage), Vsix.Name, "RecipeExtensions_Options", 0, 0, true)]
-	[ProvideProfile(typeof(OptionsProvider.RecipeExtensionsOptionsPage), Vsix.Name, "RecipeExtensions_Options", 0, 0, true)]
+	[ProvideOptionPage(typeof(OptionsProvider.OptionsPage), Vsix.Name, "RecipeExtensions_Options", 0, 0, true)]
+	[ProvideProfile(typeof(OptionsProvider.OptionsPage), Vsix.Name, "RecipeExtensions_Options", 0, 0, true)]
 	public sealed class Package : ToolkitPackage
 	{
 		public EnvDTE80.DTE2 DTE2 { get; private set; } = null!;
@@ -65,9 +65,13 @@ namespace ISI.VisualStudio.Extensions
 
 				.AddSingleton<SolutionExtensions_Helper>()
 				.AddSingleton<ProjectExtensions_Helper>()
+				.AddSingleton<Extensions_Helper>()
 				.AddSingleton<CakeExtensions_Helper>()
 				.AddSingleton<JenkinsExtensions_Helper>()
+				.AddSingleton<NugetExtensions_Helper>()
+				.AddSingleton<RecipeExtensions_AspNet_Helper>()
 				.AddSingleton<RecipeExtensions_AspNetMvc_5x_Helper>()
+				.AddSingleton<RecipeExtensions_AspNetMvc_6x_Helper>()
 				.AddSingleton<RecipeExtensions_Project_Helper>()
 				.AddSingleton<RecipeExtensions_ProjectPartialClass_Helper>()
 				.AddSingleton<XmlConfigurationExtensions_Helper>()
