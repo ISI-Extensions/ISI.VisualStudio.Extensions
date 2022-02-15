@@ -93,7 +93,7 @@ namespace ISI.VisualStudio.Extensions
 
 							var recipes = new[]
 							{
-								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(partialClassDirectory, string.Format("{0}{1}.cs", methodName, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent((isAsync ? nameof(Options.ProjectPartialClass_AsyncPartialClassPrivateMethod_Template) : nameof(Options.ProjectPartialClass_PartialClassPrivateMethod_Template)), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(partialClassDirectory, string.Format("{0}{1}.cs", methodName, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent((isAsync ? nameof(RecipeOptions.ProjectPartialClass_AsyncPartialClassPrivateMethod_Template) : nameof(RecipeOptions.ProjectPartialClass_PartialClassPrivateMethod_Template)), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

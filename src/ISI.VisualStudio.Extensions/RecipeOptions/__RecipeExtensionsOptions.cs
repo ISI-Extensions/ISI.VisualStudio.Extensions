@@ -6,10 +6,10 @@ namespace ISI.VisualStudio.Extensions
 	{
 		// Register the options with these attributes on your package class:
 		[ComVisible(true)]
-		public class OptionsPage : Community.VisualStudio.Toolkit.BaseOptionPage<Options> { }
+		public class RecipeOptionsPage : Community.VisualStudio.Toolkit.BaseOptionPage<RecipeOptions> { }
 	}
 
-	public partial class Options : Community.VisualStudio.Toolkit.BaseOptionModel<Options>
+	public partial class RecipeOptions : Community.VisualStudio.Toolkit.BaseOptionModel<RecipeOptions>
 	{
 
 	}

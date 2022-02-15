@@ -55,7 +55,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var recipes = new[]
 				{
-					new Extensions_Helper.RecipeItem(fullName, GetContent(nameof(Options.Project_DependencyRegisterClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), false),
+					new Extensions_Helper.RecipeItem(fullName, GetContent(nameof(RecipeOptions.Project_DependencyRegisterClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), false),
 				};
 
 				await AddFromRecipesAsync(project, recipes, contentReplacements);

@@ -11,7 +11,7 @@ namespace ISI.VisualStudio.Extensions
         public const string Name = "ISI.VisualStudio.Extensions";
         public const string Description = @"ISI.VisualStudio.Extensions";
         public const string Language = "en-US";
-        public const string Version = "2022.1";
+        public const string Version = "2022.2";
         public const string Author = "ISI";
         public const string Tags = "";
     }

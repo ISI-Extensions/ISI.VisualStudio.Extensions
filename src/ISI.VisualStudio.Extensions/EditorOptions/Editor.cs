@@ -2,9 +2,11 @@
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class Options
+	public partial class EditorOptions
 	{
-		[Category("Editor Recipes")]
+		public const string Editor_Category = "Editor Recipes";
+
+		[Category(Editor_Category)]
 		[DisplayName("Lock Zoom")]
 		public bool Editor_Zoom_Lock { get; set; } = true;
 	}

@@ -12,17 +12,20 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
+	[Guid(PackageGuids.PackageUuidString)]
 	[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
 	[InstalledProductRegistration(Vsix.Name, Vsix.Description, Vsix.Version)]
 	[ProvideMenuResource("Menus.ctmenu", 1)]
-	[Guid(PackageGuids.PackageUuidString)]
-	//[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
+
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionOpening_string, PackageAutoLoadFlags.BackgroundLoad)]
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionHasMultipleProjects_string, PackageAutoLoadFlags.BackgroundLoad)]
 	[ProvideAutoLoad(Microsoft.VisualStudio.VSConstants.UICONTEXT.SolutionHasSingleProject_string, PackageAutoLoadFlags.BackgroundLoad)]
-	[ProvideOptionPage(typeof(OptionsProvider.OptionsPage), Vsix.Name, "RecipeExtensions_Options", 0, 0, true)]
-	[ProvideProfile(typeof(OptionsProvider.OptionsPage), Vsix.Name, "RecipeExtensions_Options", 0, 0, true)]
+
+	[ProvideOptionPage(typeof(OptionsProvider.RecipeOptionsPage), Vsix.Name, "Recipes", 0, 0, true)]
+	[ProvideProfile(typeof(OptionsProvider.RecipeOptionsPage), Vsix.Name, "Recipes", 0, 0, true)]
+	[ProvideOptionPage(typeof(OptionsProvider.EditorOptionsPage), Vsix.Name, "Editor", 0, 0, true)]
+	[ProvideProfile(typeof(OptionsProvider.EditorOptionsPage), Vsix.Name, "Editor", 0, 0, true)]
 	public sealed class Package : ToolkitPackage
 	{
 		public EnvDTE80.DTE2 DTE2 { get; private set; } = null!;

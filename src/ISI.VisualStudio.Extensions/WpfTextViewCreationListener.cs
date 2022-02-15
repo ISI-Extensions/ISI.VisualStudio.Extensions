@@ -13,7 +13,7 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public void TextViewCreated(Microsoft.VisualStudio.Text.Editor.IWpfTextView textView)
 		{
-			textView.Options.SetOptionValue(Microsoft.VisualStudio.Text.Editor.DefaultWpfViewOptions.EnableMouseWheelZoomId, Options.Instance.Editor_Zoom_Lock);
+			textView.Options.SetOptionValue(Microsoft.VisualStudio.Text.Editor.DefaultWpfViewOptions.EnableMouseWheelZoomId, RecipeOptions.Instance.Editor_Zoom_Lock);
 		}
 	}
 }
