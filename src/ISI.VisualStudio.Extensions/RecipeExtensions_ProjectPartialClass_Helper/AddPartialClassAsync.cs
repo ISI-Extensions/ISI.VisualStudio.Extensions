@@ -98,14 +98,14 @@ namespace ISI.VisualStudio.Extensions
 					var codeExtensionProvider = project.GetCodeExtensionProvider();
 
 					{
-						var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
 						var classInjectors = codeExtensionProvider.DefaultClassInjectors.ToList();
 
+						var usings = new List<string>();
 						if (partialClassName.EndsWith("Api", StringComparison.InvariantCulture))
 						{
 							try
 							{
-								usings.Add(string.Format("using DTOs = {0}.DataTransferObjects.{1};", @namespace.TrimEnd(".Api"), partialClassName));
+								usings.Add(string.Format("DTOs = {0}.DataTransferObjects.{1}", @namespace.TrimEnd(".Api"), partialClassName));
 							}
 							catch
 							{
@@ -113,7 +113,7 @@ namespace ISI.VisualStudio.Extensions
 
 							try
 							{
-								usings.Add(string.Format("using RepositoryDTOs = {0}.DataTransferObjects.{1}Repository;", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")));
+								usings.Add(string.Format("RepositoryDTOs = {0}.DataTransferObjects.{1}Repository", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")));
 							}
 							catch
 							{
@@ -136,16 +136,18 @@ namespace ISI.VisualStudio.Extensions
 						{
 							try
 							{
-								usings.Add(string.Format("using DTOs = {0}.DataTransferObjects.{1};", @namespace.TrimEnd(".Repository"), partialClassName));
+								usings.Add(string.Format("DTOs = {0}.DataTransferObjects.{1}", @namespace.TrimEnd(".Repository"), partialClassName));
 							}
 							catch
 							{
 							}
 						}
 
+						var sortedUsingStatements = GetSortedUsings(codeExtensionProvider, usings, null);
+
 						var contentReplacements = new Dictionary<string, string>
 						{
-							{ "${Usings}", string.Join("\r\n", usings) },
+							{"${Usings}", string.Join("\r\n", sortedUsingStatements.GetFormatted())},
 							{ "${Namespace}", @namespace },
 							{ "${ClassName}", partialClassName },
 							{ "${ClassInjectorProperties}", string.Join(string.Empty, classInjectors.Select(injector => string.Format("\t\tprotected {0} {1} {{ get; }}\r\n", injector.Type, injector.Name))) },
@@ -163,13 +165,13 @@ namespace ISI.VisualStudio.Extensions
 
 					if (addInterface)
 					{
-						var usings = new List<string>(codeExtensionProvider.DefaultUsingStatements.Select(@using => string.Format("using {0};", @using)));
+						var usings = new List<string>();
 
 						if (partialClassName.EndsWith("Api", StringComparison.InvariantCulture))
 						{
 							try
 							{
-								usings.Add(string.Format("using DTOs = {0}.DataTransferObjects.{1};", @namespace.TrimEnd(".Api"), partialClassName));
+								usings.Add(string.Format("DTOs = {0}.DataTransferObjects.{1}", @namespace.TrimEnd(".Api"), partialClassName));
 							}
 							catch
 							{
@@ -180,7 +182,7 @@ namespace ISI.VisualStudio.Extensions
 						{
 							try
 							{
-								usings.Add(string.Format("using DTOs = {0}.DataTransferObjects.{1};", @namespace.TrimEnd(".Repository"), partialClassName));
+								usings.Add(string.Format("DTOs = {0}.DataTransferObjects.{1}", @namespace.TrimEnd(".Repository"), partialClassName));
 							}
 							catch
 							{
@@ -189,9 +191,11 @@ namespace ISI.VisualStudio.Extensions
 
 						var interfaceName = string.Format("I{0}", partialClassName);
 
+						var sortedUsingStatements = GetSortedUsings(codeExtensionProvider, usings, null);
+
 						var contentReplacements = new Dictionary<string, string>
 						{
-							{ "${Usings}", string.Join("\r\n", usings) },
+							{"${Usings}", string.Join("\r\n", sortedUsingStatements.GetFormatted())},
 							{ "${Namespace}", @namespace },
 							{ "${InterfaceName}", interfaceName },
 						};

@@ -350,7 +350,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///			}
         ///			#pragma warning restore 649
         ///
-        ///			internal static readonly string UrlRoot = Routes.UrlRoot + &quot;${BaseUrl}/&quot;;
+        ///			internal static readonly string UrlRoot = Routes.UrlRoot${RouteUrl};
         ///		}
         ///	}
         ///}.

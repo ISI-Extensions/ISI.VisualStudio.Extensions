@@ -26,7 +26,7 @@ namespace ISI.VisualStudio.Extensions
 
 		public Usings GetSortedUsings(ISI.Extensions.VisualStudio.ICodeExtensionProvider codeExtensionProvider, IEnumerable<string> usings = null, IEnumerable<string> sourceFullNames = null)
 		{
-			var usingStatements = new HashSet<string>((usings ?? Array.Empty<string>()).Select(@using => @using.Replace('\t', ' ').Trim(' ').TrimStart("using ").Replace(';', ' ').Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).First()), StringComparer.InvariantCultureIgnoreCase);
+			var usingStatements = new HashSet<string>((usings ?? Array.Empty<string>()).Select(@using => @using.Replace('\t', ' ').Trim(' ').TrimStart("using ").Replace(';', ' ').Trim()), StringComparer.InvariantCultureIgnoreCase);
 
 			if (sourceFullNames.NullCheckedAny())
 			{

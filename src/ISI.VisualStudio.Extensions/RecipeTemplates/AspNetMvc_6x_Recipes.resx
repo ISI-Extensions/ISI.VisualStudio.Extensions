@@ -370,7 +370,7 @@ namespace ${Namespace.Area}
 			}
 			#pragma warning restore 649
 
-			internal static readonly string UrlRoot = Routes.UrlRoot + "${BaseUrl}/";
+			internal static readonly string UrlRoot = Routes.UrlRoot${RouteUrl};
 		}
 	}
 }</value>
