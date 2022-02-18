@@ -11,7 +11,6 @@ namespace ISI.VisualStudio.Extensions
 		{
 			var pathDirectoryNames = new Stack<string>(solutionItem.FullPath.Split(new [] { "\\" }, StringSplitOptions.RemoveEmptyEntries));
 			pathDirectoryNames.Pop();
-			pathDirectoryNames.Pop();
 
 			var areaName = pathDirectoryNames.Pop();
 			

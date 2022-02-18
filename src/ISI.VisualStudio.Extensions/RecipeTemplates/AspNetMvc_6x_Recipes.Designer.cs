@@ -442,8 +442,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Post))]
         ///		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
         ///		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), &quot;${RouteUrl}&quot;)]
-        ///		[Microsoft.AspNetCore.Mvc.ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
-        /// [rest of string was truncated]&quot;;.
+        ///		[Microsoft.AspNetCore.Mvc.ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK, Ty [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string RestMethod_Action_Template {
             get {

@@ -78,7 +78,7 @@ namespace ISI.VisualStudio.Extensions
 
 							var contentReplacements = new Dictionary<string, string>
 							{
-								{"${Usings}", string.Join("\r\n", sortedUsingStatements.GetFormatted())},
+								{"${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted())},
 								{"${Namespace}", @namespace},
 								{"${ClassName}", partialClassName},
 								{"${SubClassName}", subClassName},

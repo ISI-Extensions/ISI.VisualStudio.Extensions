@@ -31,7 +31,7 @@ namespace ISI.VisualStudio.Extensions
 
 			if (nugetPackageKeys.Any())
 			{
-				System.Windows.Forms.Clipboard.SetText(string.Join("\r\n", nugetPackageKeys.Select(nugetPackageKey => nugetPackageKey.GetClipboardToken())));
+				System.Windows.Forms.Clipboard.SetText(string.Join(Environment.NewLine, nugetPackageKeys.Select(nugetPackageKey => nugetPackageKey.GetClipboardToken())));
 			}
 		}
 	}

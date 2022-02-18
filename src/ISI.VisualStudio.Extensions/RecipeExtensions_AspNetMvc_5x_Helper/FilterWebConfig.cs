@@ -26,7 +26,7 @@ namespace ISI.VisualStudio.Extensions
 				contentLines.RemoveAll(line => (line.IndexOf(".Libraries.Bootstrap.Web.Mvc", StringComparison.InvariantCultureIgnoreCase) >= 0));
 			}
 
-			return string.Join("\r\n", contentLines);
+			return string.Join(Environment.NewLine, contentLines);
 		}
 	}
 }

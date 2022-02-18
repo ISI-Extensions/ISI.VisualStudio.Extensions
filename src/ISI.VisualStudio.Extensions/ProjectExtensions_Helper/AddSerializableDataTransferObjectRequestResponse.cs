@@ -73,11 +73,11 @@ namespace ISI.VisualStudio.Extensions
 				var usings = new List<string>();
 				usings.Add("using System.Runtime.Serialization;");
 
-				var sortedUsingStatements = GetSortedUsings(codeExtensionProvider, null, null);
+				var sortedUsingStatements = GetSortedUsings(codeExtensionProvider, usings, null);
 
 				var contentReplacements = new Dictionary<string, string>
 				{
-					{ "${Usings}", string.Join("\r\n", sortedUsingStatements.GetFormatted()) },
+					{ "${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted()) },
 					{ "${Namespace}", @namespace },
 					{ "${ClassNamePrefix}", methodName },
 				};

@@ -147,12 +147,12 @@ namespace ISI.VisualStudio.Extensions
 
 						var contentReplacements = new Dictionary<string, string>
 						{
-							{"${Usings}", string.Join("\r\n", sortedUsingStatements.GetFormatted())},
+							{"${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted())},
 							{ "${Namespace}", @namespace },
 							{ "${ClassName}", partialClassName },
 							{ "${ClassInjectorProperties}", string.Join(string.Empty, classInjectors.Select(injector => string.Format("\t\tprotected {0} {1} {{ get; }}\r\n", injector.Type, injector.Name))) },
 							{ "${ClassInjectors}", string.Join(",", classInjectors.Select(injector => string.Format("\r\n\t\t\t{0} {1}", injector.Type, ISI.Extensions.StringFormat.CamelCase(injector.Name)))) },
-							{ "${ClassInjectorAssignments}", string.Join("\r\n", classInjectors.Select(injector => string.Format("\t\t\t{0} = {1};", injector.Name, ISI.Extensions.StringFormat.CamelCase(injector.Name)))) },
+							{ "${ClassInjectorAssignments}", string.Join(Environment.NewLine, classInjectors.Select(injector => string.Format("\t\t\t{0} = {1};", injector.Name, ISI.Extensions.StringFormat.CamelCase(injector.Name)))) },
 						};
 
 						var recipes = new[]
@@ -195,7 +195,7 @@ namespace ISI.VisualStudio.Extensions
 
 						var contentReplacements = new Dictionary<string, string>
 						{
-							{"${Usings}", string.Join("\r\n", sortedUsingStatements.GetFormatted())},
+							{"${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted())},
 							{ "${Namespace}", @namespace },
 							{ "${InterfaceName}", interfaceName },
 						};

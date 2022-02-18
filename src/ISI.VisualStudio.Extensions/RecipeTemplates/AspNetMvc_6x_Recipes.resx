@@ -427,8 +427,8 @@ namespace ${Namespace.Area}.Controllers
 		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Post))]
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
 		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "${RouteUrl}")]
-		[Microsoft.AspNetCore.Mvc.ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
-		public async Task&lt;Microsoft.AspNetCore.Mvc.ActionResult&lt;DTOs.${ControllerActionKey}Response&gt;&gt; ${ControllerActionKey}Async([Microsoft.AspNetCore.Mvc.FromBody] DTOs.${ControllerActionKey}Request request)
+		[Microsoft.AspNetCore.Mvc.ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK, Type = typeof(DTOs.${ControllerActionKey}Response))]
+		public async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async([Microsoft.AspNetCore.Mvc.FromBody] DTOs.${ControllerActionKey}Request request)
 		{
 			var response = new DTOs.${ControllerActionKey}Response();
 
