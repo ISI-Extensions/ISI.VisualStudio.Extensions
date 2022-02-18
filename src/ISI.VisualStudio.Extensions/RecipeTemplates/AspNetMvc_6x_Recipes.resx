@@ -126,7 +126,7 @@ namespace ${Namespace.Area}.Controllers
 	{
 		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Get))]
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
-		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "")]
+		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "${RouteUrl}")]
 		[ApiExplorerSettings(IgnoreApi = true)]
 		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
 		{
@@ -165,7 +165,7 @@ namespace ${Namespace.Area}.Controllers
 	{
 		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Get))]
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
-		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "")]
+		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "${RouteUrl}")]
 		[ApiExplorerSettings(IgnoreApi = true)]
 		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
 		{
@@ -180,7 +180,7 @@ namespace ${Namespace.Area}.Controllers
 
 		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Post))]
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
-		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "")]
+		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "${RouteUrl}")]
 		[ApiExplorerSettings(IgnoreApi = true)]
 		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}SaveAsync()
 		{
@@ -426,7 +426,7 @@ namespace ${Namespace.Area}.Controllers
 	{
 		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Post))]
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
-		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "")]
+		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "${RouteUrl}")]
 		[Microsoft.AspNetCore.Mvc.ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
 		public async Task&lt;Microsoft.AspNetCore.Mvc.ActionResult&lt;DTOs.${ControllerActionKey}Response&gt;&gt; ${ControllerActionKey}Async([Microsoft.AspNetCore.Mvc.FromBody] DTOs.${ControllerActionKey}Request request)
 		{

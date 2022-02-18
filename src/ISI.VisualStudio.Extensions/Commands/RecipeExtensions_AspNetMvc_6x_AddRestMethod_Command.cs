@@ -79,6 +79,10 @@ namespace ISI.VisualStudio.Extensions
 						var controllersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensions_AspNetMvc_6x_Helper.ControllersFolderName);
 						var controllerDirectory = System.IO.Path.Combine(controllersDirectory, controllerKey);
 
+						var routePath = System.Text.RegularExpressions.Regex.Replace(controllerActionKey, @"(?<begin>(\w*?))(?<end>[A-Z]+)", string.Format(@"${{begin}}{0}${{end}}", "-")).Substring(1).Trim().ToLower();
+
+						var routeUrl = (string.Equals(controllerActionKey, "Index", StringComparison.InvariantCultureIgnoreCase) ? string.Empty : routePath);
+
 						var codeExtensionProvider = project.GetCodeExtensionProvider();
 
 						var usings = new List<string>();
@@ -100,6 +104,7 @@ namespace ISI.VisualStudio.Extensions
 							{ "${ControllerKey}", controllerKey },
 							{ "${ControllerActionKey}", controllerActionKey },
 							{ "${ControllerActionKey.pascalCase}", string.Format("{0}{1}", controllerActionKey.Substring(0, 1).ToLower(), controllerActionKey.Substring(1)) },
+							{ "${RouteUrl}", routeUrl },
 							{ "${ViewTitle}", viewTitle },
 						};
 

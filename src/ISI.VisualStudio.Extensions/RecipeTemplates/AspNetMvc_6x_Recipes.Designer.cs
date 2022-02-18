@@ -69,9 +69,9 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	{
         ///		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Get))]
         ///		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
-        ///		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), &quot;&quot;)]
+        ///		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), &quot;${RouteUrl}&quot;)]
         ///		[ApiExplorerSettings(IgnoreApi = true)]
-        ///		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${C [rest of string was truncated]&quot;;.
+        ///		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IAction [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ActionWithPartialView_Action_Template {
             get {
@@ -115,9 +115,9 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	{
         ///		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Get))]
         ///		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
-        ///		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), &quot;&quot;)]
+        ///		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), &quot;${RouteUrl}&quot;)]
         ///		[ApiExplorerSettings(IgnoreApi = true)]
-        ///		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${C [rest of string was truncated]&quot;;.
+        ///		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IAction [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ActionWithView_Action_Template {
             get {
@@ -441,9 +441,9 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	{
         ///		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Post))]
         ///		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
-        ///		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), &quot;&quot;)]
+        ///		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), &quot;${RouteUrl}&quot;)]
         ///		[Microsoft.AspNetCore.Mvc.ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
-        ///		public as [rest of string was truncated]&quot;;.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string RestMethod_Action_Template {
             get {
