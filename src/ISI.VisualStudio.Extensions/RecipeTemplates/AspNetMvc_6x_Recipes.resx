@@ -130,6 +130,8 @@ namespace ${Namespace.Area}.Controllers
 		[ApiExplorerSettings(IgnoreApi = true)]
 		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
 		{
+			Microsoft.AspNetCore.Mvc.IActionResult result = null;
+
 			var viewModel = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
 
 			result = PartialView(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, viewModel);
@@ -167,9 +169,11 @@ namespace ${Namespace.Area}.Controllers
 		[ApiExplorerSettings(IgnoreApi = true)]
 		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
 		{
+			Microsoft.AspNetCore.Mvc.IActionResult result = null;
+
 			var viewModel = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
 
-			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, viewModel);
+			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, viewModel);
 
 			return result;
 		}
@@ -180,9 +184,11 @@ namespace ${Namespace.Area}.Controllers
 		[ApiExplorerSettings(IgnoreApi = true)]
 		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}SaveAsync()
 		{
+			Microsoft.AspNetCore.Mvc.IActionResult result = null;
+
 			var viewModel = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
 
-			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, viewModel);
+			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, viewModel);
 
 			return result;
 		}
@@ -364,7 +370,7 @@ namespace ${Namespace.Area}
 			}
 			#pragma warning restore 649
 
-			internal static readonly string UrlRoot = Routes.UrlRoot + ${BaseUrl};
+			internal static readonly string UrlRoot = Routes.UrlRoot + "${BaseUrl}/";
 		}
 	}
 }</value>
@@ -421,25 +427,14 @@ namespace ${Namespace.Area}.Controllers
 		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Post))]
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
 		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "")]
-		[ApiExplorerSettings(IgnoreApi = true)]
-		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
+		[Microsoft.AspNetCore.Mvc.ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
+		public async Task&lt;Microsoft.AspNetCore.Mvc.ActionResult&lt;DTOs.${ControllerActionKey}Response&gt;&gt; ${ControllerActionKey}Async([Microsoft.AspNetCore.Mvc.FromBody] DTOs.${ControllerActionKey}Request request)
 		{
-			var viewModel = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
+			var response = new DTOs.${ControllerActionKey}Response();
 
 
-			return result;
+			return Ok(response);
 		}
-	}
-}</value>
-  </data>
-  <data name="RestMethod_Model_Template" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace.Area}.Models.${ControllerKey}
-{
-	public class ${ControllerActionKey}Model : BaseModel
-	{
-
 	}
 }</value>
   </data>

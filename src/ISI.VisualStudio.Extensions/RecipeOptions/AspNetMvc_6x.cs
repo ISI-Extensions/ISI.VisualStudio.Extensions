@@ -101,9 +101,5 @@ namespace ISI.VisualStudio.Extensions
 		[Category(AspNetMvc_6x_Category)]
 		[DisplayName("Rest Method Action Template")]
 		public string AspNetMvc_6x_RestMethod_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_6x_Recipes.RestMethod_Action_Template;
-
-		[Category(AspNetMvc_6x_Category)]
-		[DisplayName("Rest Method Model Template")]
-		public string AspNetMvc_6x_RestMethod_Model_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_6x_Recipes.RestMethod_Model_Template;
 	}
 }

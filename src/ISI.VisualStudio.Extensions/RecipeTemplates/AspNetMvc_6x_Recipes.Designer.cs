@@ -350,7 +350,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///			}
         ///			#pragma warning restore 649
         ///
-        ///			internal static readonly string UrlRoot = Routes.UrlRoot + ${BaseUrl};
+        ///			internal static readonly string UrlRoot = Routes.UrlRoot + &quot;${BaseUrl}/&quot;;
         ///		}
         ///	}
         ///}.
@@ -442,29 +442,12 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///		[Microsoft.AspNetCore.Mvc.AcceptVerbs(nameof(Microsoft.AspNetCore.Http.HttpMethods.Post))]
         ///		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
         ///		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), &quot;&quot;)]
-        ///		[ApiExplorerSettings(IgnoreApi = true)]
-        ///		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ [rest of string was truncated]&quot;;.
+        ///		[Microsoft.AspNetCore.Mvc.ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK)]
+        ///		public as [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string RestMethod_Action_Template {
             get {
                 return ResourceManager.GetString("RestMethod_Action_Template", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ${Usings}
-        ///
-        ///namespace ${Namespace.Area}.Models.${ControllerKey}
-        ///{
-        ///	public class ${ControllerActionKey}Model : BaseModel
-        ///	{
-        ///
-        ///	}
-        ///}.
-        /// </summary>
-        internal static string RestMethod_Model_Template {
-            get {
-                return ResourceManager.GetString("RestMethod_Model_Template", resourceCulture);
             }
         }
         

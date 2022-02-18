@@ -146,6 +146,7 @@
     <Compile Include="NugetExtensions_Helper\GetPackageKeysFromClipboard.cs" />
     <Compile Include="NugetExtensions_Helper\IsReferencesFolder.cs" />
     <Compile Include="NugetExtensions_Helper\__NugetExtensions_Helper.cs" />
+    <Compile Include="ProjectExtensions_Helper\AddSerializableDataTransferObjectRequestResponse.cs" />
     <Compile Include="RecipeOptions\AspNetMvc_6x.cs" />
     <Compile Include="EditorOptions\Editor.cs" />
     <Compile Include="RecipeOptions\T4LocalContent.cs" />

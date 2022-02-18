@@ -63,6 +63,7 @@ namespace ISI.VisualStudio.Extensions
 
 						var @namespace = project.GetRootNamespace();
 						var areaName = RecipeExtensionsHelper.GetAreaName(solutionItem);
+						var areaNamespace = string.Format("{0}{1}", @namespace, (string.IsNullOrWhiteSpace(areaName) ? string.Empty : string.Format(".Areas.{0}", areaName)));
 						var controllerKey = RecipeExtensionsHelper.GetControllerName(solutionItem);
 
 						var viewTitle = System.Text.RegularExpressions.Regex.Replace((string.Equals(controllerActionKey, "Index", StringComparison.InvariantCultureIgnoreCase) ? controllerKey : controllerActionKey), @"(?<begin>(\w*?))(?<end>[A-Z]+)", string.Format(@"${{begin}}{0}${{end}}", " ")).Trim();
@@ -84,6 +85,7 @@ namespace ISI.VisualStudio.Extensions
 						usings.Add("Microsoft.AspNetCore.Mvc");
 						usings.Add("Microsoft.Extensions.DependencyInjection");
 						usings.Add("ISI.Extensions.Extensions");
+						usings.Add(string.Format("DTOs = {0}.Models.{1}.SerializableModels", areaNamespace, controllerKey));
 
 						var controllerFileName = System.IO.Directory.GetFiles(controllerDirectory).OrderBy(controllerFileName => controllerFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
 						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, new []{controllerFileName});
@@ -92,7 +94,7 @@ namespace ISI.VisualStudio.Extensions
 						{
 							{ "${Usings}", sortedUsingStatements.GetFormatted() },
 							{ "${Namespace}", @namespace },
-							{ "${Namespace.Area}", string.Format("{0}{1}", @namespace, (string.IsNullOrWhiteSpace(areaName) ? string.Empty : string.Format(".Areas.{0}", areaName))) },
+							{ "${Namespace.Area}", areaNamespace },
 							{ "${AreaName}", areaName },
 							{ "${Areas.AreaName}", (string.IsNullOrWhiteSpace(areaName) ? string.Empty : string.Format("Areas.{0}.", areaName)) },
 							{ "${ControllerKey}", controllerKey },
@@ -105,13 +107,13 @@ namespace ISI.VisualStudio.Extensions
 						System.IO.Directory.CreateDirectory(modelsDirectory);
 						var modelsControllerDirectory = System.IO.Path.Combine(modelsDirectory, controllerKey);
 						System.IO.Directory.CreateDirectory(modelsControllerDirectory);
+						var serializableModelsControllerDirectory = System.IO.Path.Combine(modelsControllerDirectory, "SerializableModels");
+						System.IO.Directory.CreateDirectory(serializableModelsControllerDirectory);
 						var routesDirectory = System.IO.Path.Combine(areaDirectory, "Routes");
 
 						var recipes = new[]
 						{
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent( nameof(RecipeOptions.AspNetMvc_6x_RestMethod_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
-
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_RestMethod_Model_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
 								(projectItems, fullName, content, replacementValues) =>
@@ -124,6 +126,8 @@ namespace ISI.VisualStudio.Extensions
 						};
 
 						await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
+
+						await RecipeExtensionsHelper.AddSerializableDataTransferObjectRequestResponseAsync(solution, project, serializableModelsControllerDirectory, string.Format("{0}.Models.{1}.SerializableModels", areaNamespace, controllerKey), controllerActionKey);
 
 						await outputWindowPane.WriteLineAsync("Done\n");
 						await outputWindowPane.ActivateAsync();
