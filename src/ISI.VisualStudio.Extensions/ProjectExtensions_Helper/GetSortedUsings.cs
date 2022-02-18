@@ -52,7 +52,7 @@ namespace ISI.VisualStudio.Extensions
 				}
 			}
 
-			if (!(codeExtensionProvider?.DefaultUsingStatements).NullCheckedAny())
+			if ((codeExtensionProvider?.DefaultUsingStatements).NullCheckedAny())
 			{
 				foreach (var usingStatement in codeExtensionProvider.DefaultUsingStatements)
 				{

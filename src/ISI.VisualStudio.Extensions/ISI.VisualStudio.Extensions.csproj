@@ -54,8 +54,9 @@
     <Compile Include="..\ISI.VisualStudio.Extensions.Version.cs">
       <Link>Properties\ISI.VisualStudio.Extensions.Version.cs</Link>
     </Compile>
-    <Compile Include="AddProjectPropertiesDialog.xaml.cs">
-      <DependentUpon>AddProjectPropertiesDialog.xaml</DependentUpon>
+    <Compile Include="ProjectProperties.cs" />
+    <Compile Include="ProjectPropertiesDialog.xaml.cs">
+      <DependentUpon>ProjectPropertiesDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddPartialClassMethodDialog.xaml.cs">
       <DependentUpon>AddPartialClassMethodDialog.xaml</DependentUpon>
@@ -84,7 +85,7 @@
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddArea_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddController_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_AspNetMvc_6x_AddRestMethod_Command.cs" />
-    <Compile Include="Commands\RecipeExtensions_Project_AddProjectProperties_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_ProjectProperties_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddT4LocalContent_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_ShowSccInformation_Command.cs" />
@@ -262,6 +263,7 @@
     <EmbeddedResource Include="RecipeTemplates\AspNetMvc_6x_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AspNetMvc_6x_Recipes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="RecipeTemplates\ProjectPartialClass_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -354,7 +356,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="AddProjectPropertiesDialog.xaml">
+    <Page Include="ProjectPropertiesDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

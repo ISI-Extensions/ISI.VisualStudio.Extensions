@@ -314,12 +314,14 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace.Area}.Controllers
         ///{
-        ///	public abstract partial class Controller : ISI.SCM.Artifacts.WindowsService.Controllers.Controller
+        ///	public abstract partial class Controller : Microsoft.AspNetCore.Mvc.Controller
         ///	{
+        ///		protected Microsoft.Extensions.Logging.ILogger Logger { get; }
+        ///
         ///		protected Controller(
         ///			Microsoft.Extensions.Logging.ILogger logger)
-        ///			: base(logger)
         ///		{
+        ///			Logger = logger;
         ///		}
         ///	}
         ///}.
@@ -348,7 +350,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///			}
         ///			#pragma warning restore 649
         ///
-        ///			internal static readonly string UrlRoot = Routes.UrlRoot + ${RouteUrl};
+        ///			internal static readonly string UrlRoot = Routes.UrlRoot + ${BaseUrl};
         ///		}
         ///	}
         ///}.

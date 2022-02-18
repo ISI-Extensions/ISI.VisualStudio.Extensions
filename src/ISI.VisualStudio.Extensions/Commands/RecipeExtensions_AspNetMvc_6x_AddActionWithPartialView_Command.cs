@@ -133,14 +133,9 @@ namespace ISI.VisualStudio.Extensions
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
 								(projectItems, fullName, content, replacementValues) =>
 								{
-									var routePath = System.Text.RegularExpressions.Regex.Replace(controllerActionKey, @"(?<begin>(\w*?))(?<end>[A-Z]+)", string.Format(@"${{begin}}{0}${{end}}", "-")).Substring(1).Trim().ToLower();
-
-									var routeUrl = (string.Equals(controllerActionKey, "Index", StringComparison.InvariantCultureIgnoreCase) ? string.Empty : string.Format(" + \"{0}\"", routePath));
-
 									RecipeExtensionsHelper.ReplaceFileContent(fullName, new Dictionary<string, string>
 									{
-										{ "//${RouteNames}", string.Format("[RouteName] public static readonly string {0};\r\n\t\t\t\t//${{RouteNames}}", controllerActionKey) },
-										{ "//${Routes}", string.Format("//${{Routes}}\r\n\t\t\t\troutes.MapRoute<Controllers.{0}Controller>(RouteNames.{1}, UrlRoot{2}, controller => controller.{1}());", controllerKey, controllerActionKey, routeUrl) }
+										{ "//${RouteNames}", string.Format("[RouteName] public const string {0} = \"{0}-{1}\";\r\n\t\t\t\t//${{RouteNames}}", controllerActionKey, Guid.NewGuid().Formatted(GuidExtensions.GuidFormat.WithHyphens)) },
 									});
 								}),
 						};

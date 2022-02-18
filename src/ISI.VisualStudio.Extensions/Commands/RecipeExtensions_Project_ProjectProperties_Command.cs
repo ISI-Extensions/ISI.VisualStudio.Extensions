@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.RecipeExtensions_Project_AddProjectProperties_MenuItemId)]
-	public class RecipeExtensions_Project_AddProjectProperties_Command : BaseCommand<RecipeExtensions_Project_AddProjectProperties_Command>
+	[Command(PackageIds.RecipeExtensions_Project_ProjectProperties_MenuItemId)]
+	public class RecipeExtensions_Project_ProjectProperties_Command : BaseCommand<RecipeExtensions_Project_ProjectProperties_Command>
 	{
 		private static RecipeExtensions_Project_Helper _recipeExtensionsHelper = null;
 		protected RecipeExtensions_Project_Helper RecipeExtensionsHelper => _recipeExtensionsHelper ??= Package.GetServiceProvider().GetService<RecipeExtensions_Project_Helper>();
@@ -46,25 +46,43 @@ namespace ISI.VisualStudio.Extensions
 
 				var csProjXml = System.Xml.Linq.XElement.Parse(csProj);
 
-				var sdkAttribute = csProjXml.GetAttributeByLocalName("Sdk")?.Value ?? string.Empty;
-
-				var deterministic = csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("Deterministic")?.Value?.ToBooleanNullable();
-				var langVersionLatest = ToLangVersionNullable(csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("LangVersion")?.Value);
-				var generateAssemblyInfo = csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("GenerateAssemblyInfo")?.Value?.ToBooleanNullable();
-				var runtimeIdentifiers = csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("RuntimeIdentifiers")?.Value;
+				var isSdkProject = (csProjXml.GetAttributeByLocalName("Sdk")?.Value ?? string.Empty).StartsWith("Microsoft.NET", StringComparison.InvariantCultureIgnoreCase);
 
 				var sharedAssemblyInfos = GetSharedFullNames(solution, project, "*.AssemblyInfo.cs");
-				var useSharedAssemblyInfo = GetDefaultValue(csProj, sharedAssemblyInfos);
 
 				var sharedVersions = GetSharedFullNames(solution, project, "*.Version.cs");
-				var useSharedVersion = GetDefaultValue(csProj, sharedVersions);
-
-				var addAssemblyInfo = System.IO.File.Exists(GetAssemblyInfoFullName(project));
 
 				var sharedLicenseHeaders = GetSharedFullNames(solution, project, "*.licenseheader");
-				var useSharedLicenseHeader = GetDefaultValue(csProj, sharedLicenseHeaders);
 
-				var inputDialog = new AddProjectPropertiesDialog(deterministic, langVersionLatest, generateAssemblyInfo, runtimeIdentifiers, sharedAssemblyInfos, useSharedAssemblyInfo, sharedVersions, useSharedVersion, addAssemblyInfo, sharedLicenseHeaders, useSharedLicenseHeader);
+				var currentProjectProperties = new ProjectProperties()
+				{
+					Deterministic = csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("Deterministic")?.Value?.ToBooleanNullable(),
+					LangVersionLatest = ToLangVersionNullable(csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("LangVersion")?.Value),
+					GenerateAssemblyInfo = csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("GenerateAssemblyInfo")?.Value?.ToBooleanNullable(),
+					Nullable = ToEnableNullable(csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("Nullable")?.Value),
+					ImplicitUsings = ToEnableNullable(csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("ImplicitUsings")?.Value),
+					RuntimeIdentifiers = csProjXml.GetElementByLocalName("PropertyGroup")?.GetElementByLocalName("RuntimeIdentifiers")?.Value,
+					UseSharedAssemblyInfo = GetDefaultValue(csProj, sharedAssemblyInfos),
+					UseSharedVersion = GetDefaultValue(csProj, sharedVersions),
+					AddAssemblyInfo = System.IO.File.Exists(GetAssemblyInfoFullName(project)),
+					UseSharedLicenseHeader = GetDefaultValue(csProj, sharedLicenseHeaders),
+				};
+
+				var defaultProjectProperties = new ProjectProperties()
+				{
+					Deterministic = (isSdkProject ? false : null),
+					LangVersionLatest = true,
+					GenerateAssemblyInfo = (isSdkProject ? false : null),
+					Nullable = null,
+					ImplicitUsings = null,
+					RuntimeIdentifiers = (isSdkProject ? null : "win;win-x64"),
+					UseSharedAssemblyInfo = GetDefaultValue(csProj, sharedAssemblyInfos),
+					UseSharedVersion = GetDefaultValue(csProj, sharedVersions),
+					AddAssemblyInfo = System.IO.File.Exists(GetAssemblyInfoFullName(project)),
+					UseSharedLicenseHeader = GetDefaultValue(csProj, sharedLicenseHeaders),
+				};
+
+				var inputDialog = new ProjectPropertiesDialog(sharedAssemblyInfos, sharedVersions, sharedLicenseHeaders, currentProjectProperties, defaultProjectProperties);
 
 				var inputDialogResult = await inputDialog.ShowDialogAsync();
 
@@ -119,7 +137,7 @@ namespace ISI.VisualStudio.Extensions
 
 					var neededIncludes = new List<(string ElementName, string Include, string Link)>();
 
-					if (!TrySetInclude(csProjXml, "Compile", useSharedAssemblyInfo, inputDialog.UseSharedAssemblyInfo))
+					if (!TrySetInclude(csProjXml, "Compile", currentProjectProperties.UseSharedAssemblyInfo, inputDialog.UseSharedAssemblyInfo))
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedAssemblyInfo))
 						{
@@ -127,7 +145,7 @@ namespace ISI.VisualStudio.Extensions
 						}
 					}
 
-					if (!TrySetInclude(csProjXml, "Compile", useSharedVersion, inputDialog.UseSharedVersion))
+					if (!TrySetInclude(csProjXml, "Compile", currentProjectProperties.UseSharedVersion, inputDialog.UseSharedVersion))
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedVersion))
 						{
@@ -156,14 +174,14 @@ namespace ISI.VisualStudio.Extensions
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
 
-							if (!sdkAttribute.StartsWith("Microsoft.NET", StringComparison.InvariantCultureIgnoreCase))
+							if (!isSdkProject)
 							{
 								neededIncludes.Add((ElementName: "Compile", Include: "Properties\\AssemblyInfo.cs", Link: string.Empty));
 							}
 						}
 					}
 
-					if (!TrySetInclude(csProjXml, "None", useSharedLicenseHeader, inputDialog.UseSharedLicenseHeader))
+					if (!TrySetInclude(csProjXml, "None", currentProjectProperties.UseSharedLicenseHeader, inputDialog.UseSharedLicenseHeader))
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedLicenseHeader))
 						{
@@ -173,7 +191,7 @@ namespace ISI.VisualStudio.Extensions
 
 					if (neededIncludes.Any())
 					{
-						if (sdkAttribute.StartsWith("Microsoft.NET"))
+						if (isSdkProject)
 						{
 							var itemGroupElement = new System.Xml.Linq.XElement("ItemGroup");
 							foreach (var neededInclude in neededIncludes)
@@ -182,7 +200,7 @@ namespace ISI.VisualStudio.Extensions
 								element.Add(new System.Xml.Linq.XAttribute("Include", neededInclude.Include));
 								if (!string.IsNullOrWhiteSpace(neededInclude.Link))
 								{
-									element.Add(new System.Xml.Linq.XAttribute("Link",neededInclude.Link));
+									element.Add(new System.Xml.Linq.XAttribute("Link", neededInclude.Link));
 								}
 
 								itemGroupElement.Add(element);
@@ -207,7 +225,7 @@ namespace ISI.VisualStudio.Extensions
 								element.Add(new System.Xml.Linq.XAttribute("Include", neededInclude.Include));
 								if (!string.IsNullOrWhiteSpace(neededInclude.Link))
 								{
-									element.Add(new System.Xml.Linq.XElement("Link",neededInclude.Link));
+									element.Add(new System.Xml.Linq.XElement("Link", neededInclude.Link));
 								}
 
 								itemGroupElement.Add(element);
@@ -227,7 +245,7 @@ namespace ISI.VisualStudio.Extensions
 
 					csProj = csProjXml.ToString();
 
-					if (!sdkAttribute.StartsWith("Microsoft.NET", StringComparison.InvariantCultureIgnoreCase))
+					if (!isSdkProject)
 					{
 						csProj = string.Format("<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n{0}", csProj);
 					}
@@ -253,6 +271,22 @@ namespace ISI.VisualStudio.Extensions
 			}
 
 			if (string.Equals(value, "latest", StringComparison.InvariantCultureIgnoreCase))
+			{
+				return true;
+			}
+
+			return false;
+		}
+
+
+		public bool? ToEnableNullable(string value)
+		{
+			if (value == null)
+			{
+				return null;
+			}
+
+			if (string.Equals(value, "enable", StringComparison.InvariantCultureIgnoreCase))
 			{
 				return true;
 			}

@@ -308,12 +308,14 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 
 namespace ${Namespace.Area}.Controllers
 {
-	public abstract partial class Controller : ISI.SCM.Artifacts.WindowsService.Controllers.Controller
+	public abstract partial class Controller : Microsoft.AspNetCore.Mvc.Controller
 	{
+		protected Microsoft.Extensions.Logging.ILogger Logger { get; }
+
 		protected Controller(
 			Microsoft.Extensions.Logging.ILogger logger)
-			: base(logger)
 		{
+			Logger = logger;
 		}
 	}
 }</value>
@@ -362,7 +364,7 @@ namespace ${Namespace.Area}
 			}
 			#pragma warning restore 649
 
-			internal static readonly string UrlRoot = Routes.UrlRoot + ${RouteUrl};
+			internal static readonly string UrlRoot = Routes.UrlRoot + ${BaseUrl};
 		}
 	}
 }</value>

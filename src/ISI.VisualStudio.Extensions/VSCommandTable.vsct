@@ -584,14 +584,14 @@
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddProjectProperties_MenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="RecipeExtensions_Project_ProjectProperties_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ProjectMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
-					<CommandName>RecipeExtensions_Project_AddProjectProperties_MenuItemId</CommandName>
-					<ButtonText>Add Properties Class</ButtonText>
+					<CommandName>RecipeExtensions_Project_ProjectProperties_MenuItemId</CommandName>
+					<ButtonText>Properties Class</ButtonText>
 				</Strings>
 			</Button>
 
@@ -746,7 +746,7 @@
 			<IDSymbol name="RecipeExtensions_Project_AddDependencyRegisterClass_MenuItemId" value="0x04C1" />
 			<IDSymbol name="RecipeExtensions_Project_AddServiceRegistrarClass_MenuItemId" value="0x04C2" />
 			<IDSymbol name="RecipeExtensions_Project_AddT4LocalContent_MenuItemId" value="0x04C3" />
-			<IDSymbol name="RecipeExtensions_Project_AddProjectProperties_MenuItemId" value="0x04C4" />
+			<IDSymbol name="RecipeExtensions_Project_ProjectProperties_MenuItemId" value="0x04C4" />
 
 
 			<IDSymbol name="CakeExtensionsExecuteDefaultTargetMenuItemId" value="0x0520" />
