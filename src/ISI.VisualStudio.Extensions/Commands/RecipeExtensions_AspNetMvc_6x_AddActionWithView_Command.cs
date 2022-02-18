@@ -63,6 +63,7 @@ namespace ISI.VisualStudio.Extensions
 
 						var @namespace = project.GetRootNamespace();
 						var areaName = RecipeExtensionsHelper.GetAreaName(solutionItem);
+						var areaNamespace = string.Format("{0}{1}", @namespace, (string.IsNullOrWhiteSpace(areaName) ? string.Empty : string.Format(".Areas.{0}", areaName)));
 						var controllerKey = RecipeExtensionsHelper.GetControllerName(solutionItem);
 
 						var viewTitle = System.Text.RegularExpressions.Regex.Replace((string.Equals(controllerActionKey, "Index", StringComparison.InvariantCultureIgnoreCase) ? controllerKey : controllerActionKey), @"(?<begin>(\w*?))(?<end>[A-Z]+)", string.Format(@"${{begin}}{0}${{end}}", " ")).Trim();
@@ -96,7 +97,7 @@ namespace ISI.VisualStudio.Extensions
 						{
 							{ "${Usings}", sortedUsingStatements.GetFormatted() },
 							{ "${Namespace}", @namespace },
-							{ "${Namespace.Area}", string.Format("{0}{1}", @namespace, (string.IsNullOrWhiteSpace(areaName) ? string.Empty : string.Format(".Areas.{0}", areaName))) },
+							{ "${Namespace.Area}", areaNamespace },
 							{ "${AreaName}", areaName },
 							{ "${Areas.AreaName}", (string.IsNullOrWhiteSpace(areaName) ? string.Empty : string.Format("Areas.{0}.", areaName)) },
 							{ "${ControllerKey}", controllerKey },

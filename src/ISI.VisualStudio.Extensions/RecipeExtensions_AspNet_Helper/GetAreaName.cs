@@ -9,17 +9,21 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public string GetAreaName(Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
-			var pathDirectoryNames = new Stack<string>(solutionItem.FullPath.Split(new [] { "\\" }, StringSplitOptions.RemoveEmptyEntries));
-			pathDirectoryNames.Pop();
+			var pathDirectoryNames = new Stack<string>(solutionItem.FullPath.Split(new[] { "\\" }, StringSplitOptions.RemoveEmptyEntries));
 
-			var areaName = pathDirectoryNames.Pop();
-			
-			if (!string.Equals(AreasFolderName, pathDirectoryNames.Pop(), StringComparison.InvariantCultureIgnoreCase))
+			var areaName = string.Empty;
+
+			while (pathDirectoryNames.Any())
 			{
-				areaName = string.Empty;
+				if (string.Equals(AreasFolderName, pathDirectoryNames.Peek(), StringComparison.InvariantCultureIgnoreCase))
+				{
+					return areaName;
+				}
+
+				areaName = pathDirectoryNames.Pop();
 			}
 
-			return areaName;
+			return string.Empty;
 		}
 	}
 }

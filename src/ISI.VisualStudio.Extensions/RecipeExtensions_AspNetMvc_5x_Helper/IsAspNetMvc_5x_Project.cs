@@ -11,6 +11,11 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public bool IsAspNetMvc_5x_Project(Community.VisualStudio.Toolkit.Project project)
 		{
+			if (project == null)
+			{
+				return false;
+			}
+
 			var package = "ISI.Libraries.Web.Mvc";
 
 			var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);

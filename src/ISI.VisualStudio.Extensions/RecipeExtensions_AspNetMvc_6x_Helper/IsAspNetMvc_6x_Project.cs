@@ -11,6 +11,11 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public bool IsAspNetMvc_6x_Project(Community.VisualStudio.Toolkit.Project project)
 		{
+			if (project == null)
+			{
+				return false;
+			}
+
 			var package = "ISI.Extensions.AspNetCore";
 
 			var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
