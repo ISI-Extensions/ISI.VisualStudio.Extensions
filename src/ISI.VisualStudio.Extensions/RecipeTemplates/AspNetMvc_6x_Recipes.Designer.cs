@@ -97,7 +97,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
+        ///   Looks up a localized string similar to @using ISI.Extensions.AspNetCore.Extensions
+        ///@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
         ///.
         /// </summary>
         internal static string ActionWithPartialView_PartialView_Template {
@@ -170,7 +171,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless).
+        ///   Looks up a localized string similar to .
         /// </summary>
         internal static string ActionWithView_StyleSheet_Template {
             get {
@@ -179,7 +180,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
+        ///   Looks up a localized string similar to @using ISI.Extensions.AspNetCore.Extensions
+        ///@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
         ///
         ///@{
         ///	Model.SetTitle(&quot;${ViewTitle}&quot;);
@@ -188,12 +190,12 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section StyleSheetIncludes
         ///{
-        ///	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_csless)
+        ///	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_css)
         ///}
         ///
         ///@section JavaScriptIncludes
         ///{
-        ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}.${ControllerActionKey}_c [rest of string was truncated]&quot;;.
+        ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ActionWithView_View_Template {
             get {
@@ -451,7 +453,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless).
+        ///   Looks up a localized string similar to .
         /// </summary>
         internal static string StyleSheetsControllerLayout_Template {
             get {
@@ -460,7 +462,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless).
+        ///   Looks up a localized string similar to .
         /// </summary>
         internal static string StyleSheetsSharedLayout_Template {
             get {
@@ -469,7 +471,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @model ${Namespace.Area}.Models.${ControllerKey}.BaseModel
+        ///   Looks up a localized string similar to @using ISI.Extensions.AspNetCore.Extensions
+        ///@model ${Namespace.Area}.Models.${ControllerKey}.BaseModel
         ///
         ///@{
         ///	Layout = ${Namespace}.T4Files.${Areas.AreaName}Views._Shared._Layout_cshtml;
@@ -477,7 +480,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section StyleSheetIncludes
         ///{
-        ///	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_csless)
+        ///	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_css)
         ///	@RenderSection(&quot;StyleSheetIncludes&quot;, false)
         ///}
         ///
@@ -485,8 +488,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section JavaScriptIncludes
         ///{
-        ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}._Layout_csjs)
-        ///	@RenderSection(&quot;JavaS [rest of string was truncated]&quot;;.
+        ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${Controller [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ViewsControllerLayout_Template {
             get {
@@ -495,7 +497,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @model ${Namespace.Area}.Models.BaseModel
+        ///   Looks up a localized string similar to @using ISI.Extensions.AspNetCore.Extensions
+        ///@model ${Namespace.Area}.Models.BaseModel
         ///
         ///@{
         ///	Layout = ${Namespace}.T4Files.Views._Shared._Layout_cshtml;
@@ -503,7 +506,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section StyleSheetIncludes
         ///{
-        ///	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets._Shared._Layout_csless)
+        ///	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets._Shared._Layout_css)
         ///	@RenderSection(&quot;StyleSheetIncludes&quot;, false)
         ///}
         ///
@@ -511,11 +514,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section JavaScriptIncludes
         ///{
-        ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts._Shared._Layout_csjs)
-        ///	@RenderSection(&quot;JavaScriptIncludes&quot;, false)
-        ///}
-        ///
-        ///@section JavaScriptCont [rest of string was truncated]&quot;;.
+        ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts._Shared._Layout_js)
+        ///	@RenderSection(&quot;JavaScriptInclude [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ViewsSharedLayout_Template {
             get {

@@ -153,7 +153,8 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 }</value>
   </data>
   <data name="ActionWithPartialView_PartialView_Template" xml:space="preserve">
-    <value>@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
+    <value>@using ISI.Extensions.AspNetCore.Extensions
+@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
 </value>
   </data>
   <data name="ActionWithView_Action_Template" xml:space="preserve">
@@ -228,10 +229,11 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 }</value>
   </data>
   <data name="ActionWithView_StyleSheet_Template" xml:space="preserve">
-    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
+    <value />
   </data>
   <data name="ActionWithView_View_Template" xml:space="preserve">
-    <value>@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
+    <value>@using ISI.Extensions.AspNetCore.Extensions
+@model ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model
 
 @{
 	Model.SetTitle("${ViewTitle}");
@@ -240,12 +242,12 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 
 @section StyleSheetIncludes
 {
-	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_csless)
+	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_css)
 }
 
 @section JavaScriptIncludes
 {
-	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}.${ControllerActionKey}_csjs)
+	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}.${ControllerActionKey}_js)
 }
 
 @section JavaScriptContent
@@ -439,13 +441,14 @@ namespace ${Namespace.Area}.Controllers
 }</value>
   </data>
   <data name="StyleSheetsControllerLayout_Template" xml:space="preserve">
-    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
+    <value />
   </data>
   <data name="StyleSheetsSharedLayout_Template" xml:space="preserve">
-    <value>@Html.ImportStyleSheet(${Namespace}.T4Links.StyleSheets._Shared._Definitions_csless)</value>
+    <value />
   </data>
   <data name="ViewsControllerLayout_Template" xml:space="preserve">
-    <value>@model ${Namespace.Area}.Models.${ControllerKey}.BaseModel
+    <value>@using ISI.Extensions.AspNetCore.Extensions
+@model ${Namespace.Area}.Models.${ControllerKey}.BaseModel
 
 @{
 	Layout = ${Namespace}.T4Files.${Areas.AreaName}Views._Shared._Layout_cshtml;
@@ -453,7 +456,7 @@ namespace ${Namespace.Area}.Controllers
 
 @section StyleSheetIncludes
 {
-	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_csless)
+	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_css)
 	@RenderSection("StyleSheetIncludes", false)
 }
 
@@ -461,7 +464,7 @@ namespace ${Namespace.Area}.Controllers
 
 @section JavaScriptIncludes
 {
-	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}._Layout_csjs)
+	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}._Layout_js)
 	@RenderSection("JavaScriptIncludes", false)
 }
 
@@ -471,7 +474,8 @@ namespace ${Namespace.Area}.Controllers
 }</value>
   </data>
   <data name="ViewsSharedLayout_Template" xml:space="preserve">
-    <value>@model ${Namespace.Area}.Models.BaseModel
+    <value>@using ISI.Extensions.AspNetCore.Extensions
+@model ${Namespace.Area}.Models.BaseModel
 
 @{
 	Layout = ${Namespace}.T4Files.Views._Shared._Layout_cshtml;
@@ -479,7 +483,7 @@ namespace ${Namespace.Area}.Controllers
 
 @section StyleSheetIncludes
 {
-	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets._Shared._Layout_csless)
+	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets._Shared._Layout_css)
 	@RenderSection("StyleSheetIncludes", false)
 }
 
@@ -487,7 +491,7 @@ namespace ${Namespace.Area}.Controllers
 
 @section JavaScriptIncludes
 {
-	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts._Shared._Layout_csjs)
+	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts._Shared._Layout_js)
 	@RenderSection("JavaScriptIncludes", false)
 }
 
