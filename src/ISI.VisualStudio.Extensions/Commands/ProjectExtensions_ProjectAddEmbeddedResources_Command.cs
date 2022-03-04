@@ -114,50 +114,54 @@ namespace ISI.VisualStudio.Extensions
 				}
 			}
 
-			using (var form = new ISI.Extensions.VisualStudio.Forms.EmbeddedFileNamesForm(fileNames))
+			var embeddedFileNames = fileNames.ToNullCheckedArray(fileName => new EmbeddedFileName()
 			{
-				if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+				FileName = fileName.Key,
+				Active = fileName.Value
+			}, NullCheckCollectionResult.Empty);
+
+			var embeddedFileNamesDialog = new EmbeddedFileNamesDialog(embeddedFileNames);
+
+			var embeddedFileNamesDialogResult = await embeddedFileNamesDialog.ShowDialogAsync();
+
+			if (embeddedFileNamesDialogResult.GetValueOrDefault())
+			{
+				var projectRoot = buildProject.Xml;
+
+				var embeddedTarget = projectRoot.Targets.FirstOrDefault(t => string.Equals(t.Name, "BeforeBuild", StringComparison.InvariantCulture));
+
+				Microsoft.Build.Construction.ProjectItemGroupElement embeddedTargetGroup = null;
+
+				if (embeddedTarget == null)
 				{
-					var projectRoot = buildProject.Xml;
-
-					var embeddedTarget = projectRoot.Targets.FirstOrDefault(t => string.Equals(t.Name, "BeforeBuild", StringComparison.InvariantCulture));
-
-					Microsoft.Build.Construction.ProjectItemGroupElement embeddedTargetGroup = null;
-
-					if (embeddedTarget == null)
+					embeddedTarget = projectRoot.AddTarget("BeforeBuild");
+				}
+				else
+				{
+					foreach (var itemGroup in embeddedTarget.ItemGroups)
 					{
-						embeddedTarget = projectRoot.AddTarget("BeforeBuild");
-					}
-					else
-					{
-						foreach (var itemGroup in embeddedTarget.ItemGroups)
+						var items = itemGroup.Items.Where(ig => string.Equals(ig.ItemType, "EmbeddedResource", StringComparison.InvariantCulture)).ToArray();
+
+						if (items.Any())
 						{
-							var items = itemGroup.Items.Where(ig => string.Equals(ig.ItemType, "EmbeddedResource", StringComparison.InvariantCulture)).ToArray();
+							embeddedTargetGroup = itemGroup;
 
-							if (items.Any())
+							foreach (var item in items)
 							{
-								embeddedTargetGroup = itemGroup;
-
-								foreach (var item in items)
-								{
-									itemGroup.RemoveChild(item);
-								}
+								itemGroup.RemoveChild(item);
 							}
 						}
 					}
-
-					if (embeddedTargetGroup == null)
-					{
-						embeddedTargetGroup = embeddedTarget.AddItemGroup();
-					}
-
-					foreach (var fileName in fileNames.Where(f => f.Value))
-					{
-						embeddedTargetGroup.AddItem("EmbeddedResource", fileName.Key);
-					}
-
-					buildProject.Save();
 				}
+
+				embeddedTargetGroup ??= embeddedTarget.AddItemGroup();
+
+				foreach (var fileName in embeddedFileNames.Where(f => f.Active))
+				{
+					embeddedTargetGroup.AddItem("EmbeddedResource", fileName.FileName);
+				}
+
+				buildProject.Save();
 			}
 		}
 	}

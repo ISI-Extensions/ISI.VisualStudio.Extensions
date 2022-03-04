@@ -54,6 +54,9 @@
     <Compile Include="..\ISI.VisualStudio.Extensions.Version.cs">
       <Link>Properties\ISI.VisualStudio.Extensions.Version.cs</Link>
     </Compile>
+    <Compile Include="EmbeddedFileNamesDialog.xaml.cs">
+      <DependentUpon>EmbeddedFileNamesDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProjectProperties.cs" />
     <Compile Include="ProjectPropertiesDialog.xaml.cs">
       <DependentUpon>ProjectPropertiesDialog.xaml</DependentUpon>
@@ -317,16 +320,13 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8096.33929</Version>
+      <Version>10.0.8098.34933</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8096.33929</Version>
+      <Version>10.0.8098.34933</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8096.33929</Version>
-    </PackageReference>
-    <PackageReference Include="ISI.Extensions.VisualStudio.Forms">
-      <Version>10.0.8096.33929</Version>
+      <Version>10.0.8098.34933</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.0.0</Version>
@@ -338,13 +338,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8096.33929" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8096.33929" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8096.33929" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8096.33929" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8096.33929" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8096.33929" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8096.33929" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8098.34933" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8098.34933" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8098.34933" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8098.34933" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8098.34933" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8098.34933" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8098.34933" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>17.1.0</Version>
@@ -357,6 +357,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="EmbeddedFileNamesDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ProjectPropertiesDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
