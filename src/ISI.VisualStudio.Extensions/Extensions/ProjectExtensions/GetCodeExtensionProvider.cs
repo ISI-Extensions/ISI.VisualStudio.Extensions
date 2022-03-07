@@ -20,7 +20,11 @@ namespace ISI.VisualStudio.Extensions
 
 			foreach (var codeExtensionProvider in ISI.Extensions.VisualStudio.CodeExtensionProviders.GetCodeExtensionProviders())
 			{
-				if (content.IndexOf(string.Format("\"{0}\"", codeExtensionProvider.Namespace)) >= 0)
+				if (content.IndexOf(string.Format("\"{0}", codeExtensionProvider.Namespace)) >= 0)
+				{
+					return codeExtensionProvider;
+				}
+				if (content.IndexOf(string.Format("\\{0}", codeExtensionProvider.Namespace)) >= 0)
 				{
 					return codeExtensionProvider;
 				}
