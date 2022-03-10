@@ -53,13 +53,15 @@ namespace ISI.VisualStudio.Extensions
 
 			services.AddAllConfigurations(configurationRoot)
 
-				//.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.Abstractions.NullLoggerFactory>()
-				.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.LoggerFactory>()
+				.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.Abstractions.NullLoggerFactory>()
+				//.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.LoggerFactory>()
 				//.AddLogging(builder => builder
 				//		//.AddConsole()
 				//	//.AddFilter(level => level >= Microsoft.Extensions.Logging.LogLevel.Information)
 				//)
-				.AddSingleton<Microsoft.Extensions.Logging.ILogger>(_ => new ISI.Extensions.NullLogger())
+				//.AddSingleton<Microsoft.Extensions.Logging.ILogger>(_ => new ISI.Extensions.NullLogger())
+				//.AddSingleton<Microsoft.Extensions.Logging.ILogger, ISI.Extensions.NullLogger>()
+				.UseNullLogger()
 
 				.AddSingleton<ISI.Extensions.DateTimeStamper.IDateTimeStamper, ISI.Extensions.DateTimeStamper.LocalMachineDateTimeStamper>()
 

@@ -8,7 +8,7 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public bool IsJenkinsConfigFile(Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
-			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFolder)
+			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFile)
 			{
 				return JenkinsApi.IsJenkinsConfigFile(new ISI.Extensions.Jenkins.DataTransferObjects.JenkinsApi.IsJenkinsConfigFileRequest()
 				{
