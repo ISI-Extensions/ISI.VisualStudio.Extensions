@@ -73,6 +73,8 @@ namespace ISI.VisualStudio.Extensions
 						var usings = new List<string>();
 						usings.Add("System.Web");
 						usings.Add("System.Web.Mvc");
+						usings.Add("System.Web.Routing");
+						usings.Add("ISI.Libraries.Web.Routes");
 						usings.Add("ISI.Libraries.Extensions");
 						usings.Add("ISI.Libraries.Web.Mvc.Extensions");
 

@@ -1,0 +1,100 @@
+﻿[$RootKey$\ShellFileAssociations\.cscss]
+"DefaultIconMoniker"="61e68107-edd2-434e-8e9d-3bc4f9fac6d6:0"
+
+[$RootKey$\ShellFileAssociations\.csjs]
+"DefaultIconMoniker"="61e68107-edd2-434e-8e9d-3bc4f9fac6d6:1"
+
+[$RootKey$\ShellFileAssociations\.csless]
+"DefaultIconMoniker"="61e68107-edd2-434e-8e9d-3bc4f9fac6d6:2"
+
+[$RootKey$\ShellFileAssociations\.build]
+"DefaultIconMoniker"="61e68107-edd2-434e-8e9d-3bc4f9fac6d6:3"
+
+[$RootKey$\ShellFileAssociations\.jenkinsConfig]
+"DefaultIconMoniker"="61e68107-edd2-434e-8e9d-3bc4f9fac6d6:4"
+
+[$RootKey$\ShellFileAssociations\.vsext]
+"DefaultIconMoniker"="61e68107-edd2-434e-8e9d-3bc4f9fac6d6:5"
+
+[$RootKey$\ShellFileAssociations\.cake]
+"DefaultIconMoniker"="61e68107-edd2-434e-8e9d-3bc4f9fac6d6:6"
+
+
+
+
+
+
+
+
+; Register the .cscss extension
+[$RootKey$\Languages\File Extensions\.cscss]
+@="{A764E898-518D-11d2-9A89-00C04F79EFC3}"
+"Name"="Dynamic Cascading Style Sheet Language"
+
+; Register the .vbcss extension
+[$RootKey$\Languages\File Extensions\.vbcss]
+@="{A764E898-518D-11d2-9A89-00C04F79EFC3}"
+"Name"="Dynamic Cascading Style Sheet Language"
+
+; Register the .csless extension
+[$RootKey$\Languages\File Extensions\.csless]
+@="{28c69eda-edf9-4ca8-9ebe-443348b6d916}"
+"Name"="Dynamic .less Cascading Style Sheet Language"
+
+; Register the .vbless extension
+[$RootKey$\Languages\File Extensions\.vbless]
+@="{28c69eda-edf9-4ca8-9ebe-443348b6d916}"
+"Name"="Dynamic .less Cascading Style Sheet Language"
+
+; Register the .csjs extension
+[$RootKey$\Languages\File Extensions\.csjs]
+@="{71d61d27-9011-4b17-9469-d20f798fb5c0}"
+"Name"="Dynamic Javascript Language"
+
+; Register the .vbjs extension
+[$RootKey$\Languages\File Extensions\.vbjs]
+@="{71d61d27-9011-4b17-9469-d20f798fb5c0}"
+"Name"="Dynamic Javascript Language"
+
+; Set the default editor to the Stylesheet editor
+[$RootKey$\Editors\{A764E89A-518D-11d2-9A89-00C04F79EFC3}\Extensions]
+"cscss"=dword:00000028
+"vbcss"=dword:00000028
+
+; Set the default editor to the Less editor
+[$RootKey$\Editors\{28c69eda-edf9-4ca8-9ebe-443348b6d916}\Extensions]
+"csless"=dword:00000032
+"vbless"=dword:00000032
+
+; Set the default editor to the Javascript editor
+[$RootKey$\Editors\{A52A054C-5228-4819-B568-E5B8040801B5}\Extensions]
+"csjs"=dword:00000028
+"vbjs"=dword:00000028
+
+[$RootKey$\Editors\{0f2454b1-a556-402d-a7d0-1fde7f99dee0}\Extensions]
+"csjs"=dword:00000050
+"vbjs"=dword:00000050
+
+; Set the default build action for .cscss file to Content for C# projects
+[$RootKey$\Projects\{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}\FileExtensions\.cscss]
+"DefaultBuildAction"="Content"
+
+; Set the default build action for .csless file to Content for C# projects
+[$RootKey$\Projects\{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}\FileExtensions\.csless]
+"DefaultBuildAction"="Content"
+
+; Set the default build action for .csjs file to Content for C# projects
+[$RootKey$\Projects\{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}\FileExtensions\.csjs]
+"DefaultBuildAction"="Content"
+
+; Set the default build action for .vbcss file to Content for VB projects
+[$RootKey$\Projects\{F184B08F-C81C-45F6-A57F-5ABD9991F28F}\FileExtensions\.vbcss]
+"DefaultBuildAction"="Content"
+
+; Set the default build action for .vbless file to Content for VB projects
+[$RootKey$\Projects\{F184B08F-C81C-45F6-A57F-5ABD9991F28F}\FileExtensions\.vbless]
+"DefaultBuildAction"="Content"
+
+; Set the default build action for .vbjs file to Content for VB projects
+[$RootKey$\Projects\{F184B08F-C81C-45F6-A57F-5ABD9991F28F}\FileExtensions\.vbjs]
+"DefaultBuildAction"="Content"

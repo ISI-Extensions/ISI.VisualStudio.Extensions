@@ -131,9 +131,7 @@ namespace ${Namespace.Area}.Controllers
 
 			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
 
-			result = Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}Partials.${ControllerActionKey}_cshtml, model);
-
-			return result;
+			return result ??Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}Partials.${ControllerActionKey}_cshtml, model);
 		}
 	}
 }</value>
@@ -170,9 +168,7 @@ namespace ${Namespace.Area}.Controllers
 
 			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
 
-			result = Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
-
-			return result;
+			return result ?? Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
 		}
 
 		[System.Web.Http.AcceptVerbs(System.Net.WebRequestMethods.Http.Post), System.Web.Http.ActionName(nameof(${ControllerActionKey}))]
@@ -182,9 +178,7 @@ namespace ${Namespace.Area}.Controllers
 
 			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
 
-			result = Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
-
-			return result;
+			return result ?? Request.CreateViewResponse(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
 		}
 	}
 }</value>

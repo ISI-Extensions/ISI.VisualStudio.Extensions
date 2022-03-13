@@ -131,9 +131,7 @@ namespace ${Namespace.Area}.Controllers
 
 			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
 
-			result = PartialView(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, model);
-
-			return result;
+			return result ?? PartialView(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, model);
 		}
 	}
 }</value>
@@ -167,9 +165,7 @@ namespace ${Namespace.Area}.Controllers
 
 			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
 
-			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
-
-			return result;
+			return result ?? View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
 		}
 
 		[AcceptVerbs(HttpVerbs.Post), ActionName(nameof(${ControllerActionKey}))]
@@ -179,9 +175,7 @@ namespace ${Namespace.Area}.Controllers
 
 			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
 
-			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
-
-			return result;
+			return result ?? View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
 		}
 	}
 }</value>

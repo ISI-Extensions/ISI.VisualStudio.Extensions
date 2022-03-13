@@ -293,6 +293,7 @@
     <None Include="..\ISI.VisualStudio.Extensions.licenseheader">
       <Link>ISI.VisualStudio.Extensions.licenseheader</Link>
     </None>
+    <None Include="Monikers.imagemanifest" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>
@@ -354,6 +355,25 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Cake-16x16.png" />
+    <EmbeddedResource Include="Resources\Cake.ico" />
+    <EmbeddedResource Include="Resources\cscss-16x16.png" />
+    <EmbeddedResource Include="Resources\cscss-32x32.png" />
+    <EmbeddedResource Include="Resources\cscss.ico" />
+    <EmbeddedResource Include="Resources\csjs-16x16.png" />
+    <EmbeddedResource Include="Resources\csjs-32x32.png" />
+    <EmbeddedResource Include="Resources\csjs.ico" />
+    <EmbeddedResource Include="Resources\csless-16x16.png" />
+    <EmbeddedResource Include="Resources\csless-32x32.png" />
+    <EmbeddedResource Include="Resources\csless.ico" />
+    <EmbeddedResource Include="Resources\Jenkins.ico" />
+    <EmbeddedResource Include="Resources\jenkinsConfig-16x16.png" />
+    <EmbeddedResource Include="Resources\jenkinsConfig-32x32.png" />
+    <EmbeddedResource Include="Resources\JenkinsOverlay.ico" />
+    <EmbeddedResource Include="Resources\Preview.png" />
+    <EmbeddedResource Include="Resources\vsext-16x16.png" />
+    <Content Include="ExtensionsGallery.pkgdef" />
+    <Content Include="icons.pkgdef" />
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>

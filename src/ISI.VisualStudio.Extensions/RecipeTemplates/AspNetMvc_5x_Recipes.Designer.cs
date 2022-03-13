@@ -74,9 +74,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
         ///
-        ///			result = PartialView(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, model);
-        ///
-        ///			return result;
+        ///			return result ?? PartialView(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.Partials.${ControllerActionKey}_cshtml, model);
         ///		}
         ///	}
         ///}.
@@ -128,12 +126,10 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///			var model = new ${Namespace.Area}.Models.${ControllerKey}.${ControllerActionKey}Model();
         ///
-        ///			result = View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
-        ///
-        ///			return result;
+        ///			return result ?? View(${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}.${ControllerActionKey}_cshtml, model);
         ///		}
         ///
-        ///		[AcceptVerbs(HttpVerbs.Post),  [rest of string was truncated]&quot;;.
+        ///		[AcceptVerbs(HttpVerbs.Post), ActionName(na [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ActionWithView_Action_Template {
             get {
