@@ -243,7 +243,7 @@ namespace ISI.VisualStudio.Extensions
 						}
 					}
 
-					csProj = csProjXml.ToString();
+					csProj = csProjXml.ToString().Replace(" xmlns=\"\"", string.Empty);
 
 					if (!isSdkProject)
 					{
