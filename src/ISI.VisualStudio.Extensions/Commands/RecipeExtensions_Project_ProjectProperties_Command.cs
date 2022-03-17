@@ -181,6 +181,69 @@ namespace ISI.VisualStudio.Extensions
 						}
 					}
 
+					{
+						var assemblyInfoFullName = GetAssemblyInfoFullName(project);
+						if (System.IO.File.Exists(assemblyInfoFullName))
+						{
+							var regex = new System.Text.RegularExpressions.Regex(@"(?<FullLine>(?:\[)(?:.*)(?:assembly:)(?:\s*)(?<AssemblyType>(?:Assembly)(?:.*))(?:\()(?:\s*)(?:"")(?:.*)(?:\]))");
+
+							var assemblyTypes = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
+							foreach (var assemblyFileName in new[] { GetDefaultValue(csProj, sharedAssemblyInfos), GetDefaultValue(csProj, sharedVersions) })
+							{
+								if (!string.IsNullOrWhiteSpace(assemblyFileName))
+								{
+									var assemblyFullName = System.IO.Path.Combine(projectDirectory, assemblyFileName);
+
+									if (System.IO.File.Exists(assemblyFullName))
+									{
+										var assemblyFileContent = System.IO.File.ReadAllText(assemblyFullName);
+										var matches = regex.Matches(assemblyFileContent);
+
+										foreach (System.Text.RegularExpressions.Match match in matches)
+										{
+											assemblyTypes.Add(match.Groups["AssemblyType"].Value);
+										}
+									}
+								}
+							}
+
+							if(assemblyTypes.Any())
+							{
+								if (assemblyTypes.Contains("AssemblyVersion"))
+								{
+									assemblyTypes.Add("AssemblyFileVersion");
+								}
+
+								var assemblyFileContent = System.IO.File.ReadAllText(assemblyInfoFullName);
+								var matches = regex.Matches(assemblyFileContent);
+
+								var fullLines = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
+
+								foreach (System.Text.RegularExpressions.Match match in matches)
+								{
+									if (assemblyTypes.Contains(match.Groups["AssemblyType"].Value))
+									{
+										fullLines.Add(match.Groups["FullLine"].Value);
+									}
+								}
+
+								if (fullLines.Any())
+								{
+									var assemblyFileLines = System.IO.File.ReadAllLines(assemblyInfoFullName).ToList();
+
+									foreach (var fullLine in fullLines)
+									{
+										assemblyFileLines.RemoveAll(assemblyFileLine => string.Equals(assemblyFileLine, fullLine, StringComparison.InvariantCulture));
+									}
+
+									System.IO.File.WriteAllLines(assemblyInfoFullName, assemblyFileLines);
+								}
+							}
+						}
+					}
+
+
+
 					if (!TrySetInclude(csProjXml, "None", currentProjectProperties.UseSharedLicenseHeader, inputDialog.UseSharedLicenseHeader))
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedLicenseHeader))

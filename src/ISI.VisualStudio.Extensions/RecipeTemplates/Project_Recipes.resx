@@ -501,17 +501,17 @@ namespace &lt;#= Namespace #&gt;
 [&lt;#= 		GeneratedCode #&gt;, DebuggerNonUserCode]
 public static partial class &lt;#= subClassName #&gt;
 {
-	private static Func&lt;string, bool, global::${ExtensionsRoot}.Web.IContentUrl&gt; _getContentUrl = null;
-	public static Func&lt;string, bool, global::${ExtensionsRoot}.Web.IContentUrl&gt; GetContentUrl 
+	private static Func&lt;string, bool, global::${IContentRoot}.IContentUrl&gt; _getContentUrl = null;
+	public static Func&lt;string, bool, global::${IContentRoot}.IContentUrl&gt; GetContentUrl 
 	{
-		get =&gt; _getContentUrl ??= (url, isOriginalUrl) =&gt; new global::${ExtensionsRoot}.Web.ContentUrl(url, isOriginalUrl);
+		get =&gt; _getContentUrl ??= (url, isOriginalUrl) =&gt; new global::${IContentRoot}.ContentUrl(url, isOriginalUrl);
 		set =&gt; _getContentUrl = value;
 	}
 
-	[${ExtensionsRoot}.Web.ContentUrlGeneratorSetter]
-	public class ContentUrlGeneratorSetter : global::${ExtensionsRoot}.Web.IContentUrlGeneratorSetter
+	[${IContentRoot}.ContentUrlGeneratorSetter]
+	public class ContentUrlGeneratorSetter : global::${IContentRoot}.IContentUrlGeneratorSetter
 	{
-		public void SetContentUrlGenerator(Func&lt;string, bool, global::${ExtensionsRoot}.Web.IContentUrl&gt; setter)
+		public void SetContentUrlGenerator(Func&lt;string, bool, global::${IContentRoot}.IContentUrl&gt; setter)
 		{
 			GetContentUrl = setter;
 		}
@@ -538,14 +538,14 @@ public static partial class &lt;#= subClassName #&gt;
 					if (!hasRootItem)
 					{
 #&gt;
-	private static global::${ExtensionsRoot}.Web.IContentUrl _directory = null;
-	public static global::${ExtensionsRoot}.Web.IContentUrl _Directory =&gt; _directory ??= GetContentUrl(_root(), true);
+	private static global::${IContentRoot}.IContentUrl _directory = null;
+	public static global::${IContentRoot}.IContentUrl _Directory =&gt; _directory ??= GetContentUrl(_root(), true);
 &lt;#
 						hasRootItem = true;
 					}
 #&gt;
-	private static global::${ExtensionsRoot}.Web.IContentUrl _&lt;#= CreateSlug(projectItem.Name) #&gt; = null;
-	public static global::${ExtensionsRoot}.Web.IContentUrl &lt;#= CreateSlug(projectItem.Name) #&gt; =&gt; _&lt;#= CreateSlug(projectItem.Name) #&gt; ??= GetContentUrl(_root() + "&lt;#= projectItem.Name #&gt;", true);
+	private static global::${IContentRoot}.IContentUrl _&lt;#= CreateSlug(projectItem.Name) #&gt; = null;
+	public static global::${IContentRoot}.IContentUrl &lt;#= CreateSlug(projectItem.Name) #&gt; =&gt; _&lt;#= CreateSlug(projectItem.Name) #&gt; ??= GetContentUrl(_root() + "&lt;#= projectItem.Name #&gt;", true);
 &lt;#
 				}
 			}
@@ -921,8 +921,8 @@ public static partial class &lt;#= projectFolderSlug #&gt;
 		return string.Format("{0}&lt;#= projectFolder.Name #&gt;/", &lt;#= classNamespace #&gt;._root());
 	}
 
-	private static global::${ExtensionsRoot}.Web.IContentUrl _directory = null;
-	public static global::${ExtensionsRoot}.Web.IContentUrl _Directory =&gt; _directory ??= GetContentUrl(&lt;#= classNamespace #&gt;._root() + "&lt;#= projectFolder.Name #&gt;", true);
+	private static global::${IContentRoot}.IContentUrl _directory = null;
+	public static global::${IContentRoot}.IContentUrl _Directory =&gt; _directory ??= GetContentUrl(&lt;#= classNamespace #&gt;._root() + "&lt;#= projectFolder.Name #&gt;", true);
 
 &lt;#+
 			var usedNames = new List&lt;string&gt;();
@@ -943,8 +943,8 @@ public static partial class &lt;#= projectFolderSlug #&gt;
 						if (!usedNames.Contains(fileName))
 						{
 #&gt;
-	private static global::${ExtensionsRoot}.Web.IContentUrl _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; = null;
-	public static global::${ExtensionsRoot}.Web.IContentUrl &lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; =&gt; _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; ??= GetContentUrl(_root() + "&lt;#= projectItem.Name #&gt;", true);
+	private static global::${IContentRoot}.IContentUrl _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; = null;
+	public static global::${IContentRoot}.IContentUrl &lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; =&gt; _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; ??= GetContentUrl(_root() + "&lt;#= projectItem.Name #&gt;", true);
 &lt;#+
 							usedNames.Add(fileName);
 						}

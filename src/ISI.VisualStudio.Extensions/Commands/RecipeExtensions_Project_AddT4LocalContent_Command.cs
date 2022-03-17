@@ -57,7 +57,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
 
-				var isWebRoot = referenceNames.Contains("ISI.Libraries.Web.Mvc") ||  referenceNames.Contains("ISI.Extensions.AspNetCore");
+				var isWebRoot = referenceNames.Contains("ISI.Libraries.Web.Mvc") || referenceNames.Contains("ISI.Extensions.AspNetCore");
 				var buildT4Links = referenceNames.Contains("ISI.Libraries.Web.Mvc");
 
 				var addT4LocalContentDialog = new AddT4LocalContentDialog(isWebRoot, true, buildT4Links, false, false);
@@ -79,13 +79,16 @@ namespace ISI.VisualStudio.Extensions
 					var codeExtensionProvider = project.GetCodeExtensionProvider();
 
 					var rootGenerator = string.Empty;
+					var iContentRoot = string.Empty;
 					if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider.CodeExtensionProviderUuid)
 					{
-						rootGenerator = "ISI.ExtensionsFileProviders.EmbeddedVolumesFileProvider.GetPathPrefix";
+						rootGenerator = "ISI.Extensions.VirtualFileVolumesFileProvider.GetPathPrefix";
+						iContentRoot = "ISI.Extensions.AspNetCore";
 					}
-else					if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider.CodeExtensionProviderUuid)
+					else if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider.CodeExtensionProviderUuid)
 					{
 						rootGenerator = "ISI.Libraries.Configuration.GetUrlRoot";
+						iContentRoot = "ISI.Libraries.Web";
 					}
 
 
@@ -93,6 +96,7 @@ else					if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.V
 					{
 						{ "${Namespace}", @namespace },
 						{ "${ExtensionsRoot}", codeExtensionProvider.Namespace },
+						{ "${IContentRoot}", iContentRoot },
 						{ "${IsWebRoot}", addT4LocalContentDialog.IsWebRoot.TrueFalse(false, BooleanExtensions.TextCase.Lower) },
 						{ "${BuildT4Files}", addT4LocalContentDialog.BuildT4Files.TrueFalse(false, BooleanExtensions.TextCase.Lower) },
 						{ "${BuildT4Links}", addT4LocalContentDialog.BuildT4Links.TrueFalse(false, BooleanExtensions.TextCase.Lower) },
