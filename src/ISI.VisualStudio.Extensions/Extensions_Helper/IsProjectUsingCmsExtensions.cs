@@ -9,9 +9,7 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public bool IsProjectUsingCmsExtensions(Community.VisualStudio.Toolkit.Project project)
 		{
-			var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
-
-			return referenceNames.Contains("ISI.Cms.Web.Mvc");
+			return project.UsesISICmsWebMvc();
 		}
 	}
 }

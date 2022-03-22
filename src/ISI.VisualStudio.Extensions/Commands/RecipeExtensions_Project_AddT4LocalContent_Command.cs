@@ -55,10 +55,8 @@ namespace ISI.VisualStudio.Extensions
 
 				var @namespace = RecipeExtensionsHelper.GetNamespace(project, solutionItem);
 
-				var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
-
-				var isWebRoot = referenceNames.Contains("ISI.Libraries.Web.Mvc") || referenceNames.Contains("ISI.Extensions.AspNetCore");
-				var buildT4Links = referenceNames.Contains("ISI.Libraries.Web.Mvc");
+				var isWebRoot = project.UsesNugetPackage("ISI.Libraries.Web.Mvc") || project.UsesNugetPackage("ISI.Extensions.AspNetCore");
+				var buildT4Links = project.UsesNugetPackage("ISI.Libraries.Web.Mvc");
 
 				var addT4LocalContentDialog = new AddT4LocalContentDialog(isWebRoot, true, buildT4Links, false, false);
 

@@ -20,9 +20,7 @@ namespace ISI.VisualStudio.Extensions
 			{
 				var project = VS.Solutions.GetActiveProjectAsync().GetAwaiter().GetResult();
 
-				var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
-
-				showCommand = referenceNames.Contains("ISI.Libraries.DB");
+				showCommand = project.UsesNugetPackage("ISI.Libraries.DB");
 			}
 
 			Command.Visible = showCommand;

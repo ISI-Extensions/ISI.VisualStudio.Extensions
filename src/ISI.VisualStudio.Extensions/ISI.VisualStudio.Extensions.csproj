@@ -57,6 +57,7 @@
     <Compile Include="EmbeddedFileNamesDialog.xaml.cs">
       <DependentUpon>EmbeddedFileNamesDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\ProjectExtensions\UsesNugetPackage.cs" />
     <Compile Include="ProjectProperties.cs" />
     <Compile Include="ProjectPropertiesDialog.xaml.cs">
       <DependentUpon>ProjectPropertiesDialog.xaml</DependentUpon>
@@ -150,6 +151,7 @@
     <Compile Include="NugetExtensions_Helper\IsReferencesFolder.cs" />
     <Compile Include="NugetExtensions_Helper\__NugetExtensions_Helper.cs" />
     <Compile Include="ProjectExtensions_Helper\AddSerializableDataTransferObjectRequestResponse.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\IsAspNetMvc_6x_Project.cs" />
     <Compile Include="RecipeOptions\AspNetMvc_6x.cs" />
     <Compile Include="EditorOptions\Editor.cs" />
     <Compile Include="RecipeOptions\T4LocalContent.cs" />
@@ -172,7 +174,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\GetOutputWindowPaneAsync.cs" />
-    <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\IsAspNetMvc_6x_Project.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\__RecipeExtensions_AspNetMvc_6x_Helper.cs" />
     <Compile Include="RecipeExtensions_AspNet_Helper\__RecipeExtensions_AspNet_Helper.cs" />
     <Compile Include="RecipeTemplates\AspNetMvc_6x_Recipes.Designer.cs">
@@ -321,13 +322,13 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8106.35204</Version>
+      <Version>10.0.8112.27845</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8106.35204</Version>
+      <Version>10.0.8112.27845</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8106.35204</Version>
+      <Version>10.0.8112.27845</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.1.0</Version>
@@ -342,13 +343,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8106.35204" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8106.35204" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8106.35204" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8106.35204" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8106.35204" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8106.35204" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8106.35204" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8112.27845" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8112.27845" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8112.27845" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8112.27845" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8112.27845" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8112.27845" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8112.27845" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>17.1.0</Version>
