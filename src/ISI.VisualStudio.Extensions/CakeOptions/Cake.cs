@@ -13,22 +13,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 #endregion
  
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ISI.Extensions.Extensions;
 using System.ComponentModel;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class EditorOptions
+	public partial class CakeOptions
 	{
-		public const string Options_Category = "Options";
+		public const string Execute_Options_Category = "Execute Options";
 
-		[Category(Options_Category)]
-		[DisplayName("Lock Zoom")]
-		public bool Editor_Zoom_Lock { get; set; } = true;
+		[Category(Execute_Options_Category)]
+		[DisplayName("Use Shell")]
+		public bool Execute_Options_Use_Shell { get; set; } = true;
 	}
 }

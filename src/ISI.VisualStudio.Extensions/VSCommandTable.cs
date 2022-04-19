@@ -102,7 +102,7 @@ namespace ISI.VisualStudio.Extensions
         public const int JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId = 0x05A0;
         public const int JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId = 0x05A1;
         public const int ClipboardExtensionsPasteAsMenuItemId = 0x0700;
-        public const int ClipboardExtensionsPasteAsCmdAppendMenuItemId = 0x0701;
+        public const int ClipboardExtensionsPasteAsCmdAppendMenuItemId = 0x0703;
         public const int ClipboardExtensionsPasteAsConversionMenuItemId = 0x0750;
         public const int ClipboardExtensionsContextMenuSubgroupId = 0x0770;
         public const int ClipboardExtensionsContextSubMenuId = 0x0771;

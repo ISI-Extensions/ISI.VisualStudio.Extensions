@@ -222,6 +222,17 @@
 				</Strings>
 			</Button>
 
+			<Button guid="PackageUuid" id="ClipboardExtensionsPasteAsCmdAppendMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="VSMainMenu" id="Edit.PasteGroup" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>Paste as Cmd.Append</CommandName>
+					<ButtonText>Paste as Cmd.Append</ButtonText>
+				</Strings>
+			</Button>
+
 
 			<!-- Transformation Extensions -->
 			<Button guid="PackageUuid" id="XmlConfigurationExtensionsAddTransformMenuItemId" priority="0x0100" type="Button">
@@ -639,6 +650,9 @@
 		<CommandPlacement guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" priority="0x0600">
 			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
 		</CommandPlacement>
+		<CommandPlacement guid="PackageUuid" id="ClipboardExtensionsPasteAsCmdAppendMenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
+		</CommandPlacement>
 
 		<CommandPlacement guid="PackageUuid" id="ClipboardExtensionsPasteAsCmdAppendMenuItemId" priority="0x0600">
 			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
@@ -759,7 +773,7 @@
 
 
 			<IDSymbol name="ClipboardExtensionsPasteAsMenuItemId" value="0x0700" />
-			<IDSymbol name="ClipboardExtensionsPasteAsCmdAppendMenuItemId" value="0x0701" />
+			<IDSymbol name="ClipboardExtensionsPasteAsCmdAppendMenuItemId" value="0x0703" />
 			<IDSymbol name="ClipboardExtensionsPasteAsConversionMenuItemId" value="0x0750" />
 
 			<IDSymbol name="ClipboardExtensionsContextMenuSubgroupId" value="0x0770" />

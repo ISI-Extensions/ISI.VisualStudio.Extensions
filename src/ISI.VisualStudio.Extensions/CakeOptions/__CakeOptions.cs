@@ -1,4 +1,4 @@
-﻿#region Copyright & License
+#region Copyright & License
 /*
 Copyright (c) 2022, Integrated Solutions, Inc.
 All rights reserved.
@@ -19,16 +19,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ISI.Extensions.Extensions;
-using System.ComponentModel;
+using System.Runtime.InteropServices;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class EditorOptions
+	internal partial class OptionsProvider
 	{
-		public const string Options_Category = "Options";
+		// Register the options with these attributes on your package class:
+		[ComVisible(true)]
+		public class CakeOptionsPage : Community.VisualStudio.Toolkit.BaseOptionPage<CakeOptions> { }
+	}
 
-		[Category(Options_Category)]
-		[DisplayName("Lock Zoom")]
-		public bool Editor_Zoom_Lock { get; set; } = true;
+	public partial class CakeOptions : Community.VisualStudio.Toolkit.BaseOptionModel<CakeOptions>
+	{
+
 	}
 }

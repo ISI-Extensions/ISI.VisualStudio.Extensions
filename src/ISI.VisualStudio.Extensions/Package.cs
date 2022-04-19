@@ -26,6 +26,8 @@ namespace ISI.VisualStudio.Extensions
 	[ProvideProfile(typeof(OptionsProvider.RecipeOptionsPage), Vsix.Name, "Recipes", 0, 0, true)]
 	[ProvideOptionPage(typeof(OptionsProvider.EditorOptionsPage), Vsix.Name, "Editor", 0, 0, true)]
 	[ProvideProfile(typeof(OptionsProvider.EditorOptionsPage), Vsix.Name, "Editor", 0, 0, true)]
+	[ProvideOptionPage(typeof(OptionsProvider.CakeOptionsPage), Vsix.Name, "Cake", 0, 0, true)]
+	[ProvideProfile(typeof(OptionsProvider.CakeOptionsPage), Vsix.Name, "Cake", 0, 0, true)]
 	public sealed class Package : ToolkitPackage
 	{
 		public EnvDTE80.DTE2 DTE2 { get; private set; } = null!;
