@@ -16,8 +16,8 @@ var solution = ParseSolution(solutionFile);
 var rootProjectFile = File("./ISI.VisualStudio.Extensions/ISI.VisualStudio.Extensions.csproj");
 var rootAssemblyVersionKey = "ISI.VisualStudio.Extensions";
 var artifactName = "ISI.VisualStudio.Extensions";
-//var artifactFileStoreUuid = new System.Guid("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-//var artifactVersionFileStoreUuid = new System.Guid("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+var artifactFileStoreUuid = new System.Guid("e9533a8c-0577-4883-a955-16f988cff620");
+var artifactVersionFileStoreUuid = new System.Guid("25c1e176-6862-4f2d-acfa-28f247870039");
 
 var buildDateTime = DateTime.UtcNow;
 var buildDateTimeStamp = GetDateTimeStamp(buildDateTime);
@@ -198,6 +198,79 @@ Task("Publish")
 		}
 		CopyFile(buildArtifactVsixFile, simpleVsixFile);
 
+	});
+
+Task("Production-Deploy")
+	.Does(() => 
+	{
+		var authenticationToken = GetAuthenticationToken(new ISI.Cake.Addin.Scm.GetAuthenticationTokenRequest()
+		{
+			ScmManagementUrl = settings.Scm.WebServiceUrl,
+			UserName = settings.ActiveDirectory.UserName,
+			Password = settings.ActiveDirectory.Password,
+		}).AuthenticationToken;
+
+		var dateTimeStampVersion = GetBuildArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.GetBuildArtifactEnvironmentDateTimeStampVersionRequest()
+		{
+			BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
+			AuthenticationToken = authenticationToken,
+			ArtifactName = artifactName,
+			Environment = "Build",
+		}).DateTimeStampVersion;
+
+		Information(string.Format("SoftwareVersion => {0}", dateTimeStampVersion.Version.ToString()));
+
+		using(var tempDirectory = GetNewTempDirectory())
+		{
+			var artifactFileName = string.Format("{0}.{1}.vsix", artifactName, buildDateTimeStamp);
+			var artifactFullName = System.IO.Path.Combine(tempDirectory.FullName, artifactFileName);
+
+			DownloadArtifact(new ISI.Cake.Addin.BuildArtifacts.DownloadArtifactRequest()
+			{
+				BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
+				AuthenticationToken = authenticationToken,
+				ArtifactName = artifactName,
+				DateTimeStamp = dateTimeStampVersion.DateTimeStamp,
+				TargetFileName = artifactFullName,
+			});
+
+			var artifactVersionFullName = System.IO.Path.Combine(tempDirectory.FullName, string.Format("{0}.Current.DateTimeStamp.Version.txt", artifactName));
+			FileWriteText(artifactVersionFullName, dateTimeStampVersion.Formatted());
+
+			Information("Uploading Artifact");
+
+			UploadFile(new ISI.Cake.Addin.FileStore.UploadFileRequest()
+			{
+				FileStoreUrl = settings.FileStore.Url,
+				UserName = settings.FileStore.UserName,
+				Password = settings.FileStore.Password,
+				Version = buildDateTimeStamp,
+				FileStoreUuid = artifactFileStoreUuid,
+				FileName = artifactFullName,
+			});
+
+			UploadFile(new ISI.Cake.Addin.FileStore.UploadFileRequest()
+			{
+				FileStoreUrl = settings.FileStore.Url,
+				UserName = settings.FileStore.UserName,
+				Password = settings.FileStore.Password,
+				Version = buildDateTimeStamp,
+				FileStoreUuid = artifactVersionFileStoreUuid,
+				FileName = artifactVersionFullName,
+			});
+		
+			Information(string.Format("curl https://www.isi-net.com/file-store/download/{0:D}/{1}.Current.DateTimeStamp.Version.txt --output {1}.Current.DateTimeStamp.Version.txt", artifactVersionFileStoreUuid, artifactName));
+			Information(string.Format("curl https://www.isi-net.com/file-store/download/{0:D}/{1}.vsix --output {1}.vsix", artifactFileStoreUuid, artifactName));
+
+			SetArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.SetArtifactEnvironmentDateTimeStampVersionRequest()
+			{
+				BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
+				AuthenticationToken = authenticationToken,
+				ArtifactName = artifactName,
+				Environment = "Production",
+				DateTimeStampVersion = dateTimeStampVersion.Value,
+			});
+		}
 	});
 
 Task("Default")
