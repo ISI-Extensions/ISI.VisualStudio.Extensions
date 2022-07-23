@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -320,17 +320,17 @@
       <Version>17.0.13</Version>
     </PackageReference>
     <PackageReference Include="Community.VisualStudio.VSCT" Version="16.0.29.6" PrivateAssets="all" />
-    <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.445" ExcludeAssets="Runtime">
+    <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.451" ExcludeAssets="Runtime">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8221.30188</Version>
+      <Version>10.0.8236.34098</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8221.30188</Version>
+      <Version>10.0.8236.34098</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8221.30188</Version>
+      <Version>10.0.8236.34098</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.2.0</Version>
@@ -341,17 +341,17 @@
     <PackageReference Include="Microsoft.VisualStudio.Imaging">
       <Version>17.2.32505.113</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.3.2088">
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.2.2195">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8221.30188" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8221.30188" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8221.30188" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8221.30188" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8221.30188" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8221.30188" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8221.30188" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8236.34098" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8236.34098" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8236.34098" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8236.34098" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8236.34098" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8236.34098" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8236.34098" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>17.2.1</Version>
