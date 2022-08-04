@@ -196,7 +196,7 @@ namespace ISI.VisualStudio.Extensions
 						var contentReplacements = new Dictionary<string, string>
 						{
 							{"${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted())},
-							{ "${Namespace}", @namespace },
+							{ "${Namespace}", @namespace.TrimEnd(".Repository").TrimEnd("Api") },
 							{ "${InterfaceName}", interfaceName },
 						};
 
@@ -215,11 +215,11 @@ namespace ISI.VisualStudio.Extensions
 
 						if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider.CodeExtensionProviderUuid)
 						{
-							await AddServiceRegistrarClassAsync(solution, contractProject, serviceRegistrations);
+							await AddServiceRegistrarClassAsync(solution, project, serviceRegistrations);
 						}
 						else if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider.CodeExtensionProviderUuid)
 						{
-							await AddDependencyRegisterClassAsync(solution, contractProject, serviceRegistrations);
+							await AddDependencyRegisterClassAsync(solution, project, serviceRegistrations);
 						}
 					}
 
