@@ -200,7 +200,7 @@ Task("Publish")
 
 	});
 
-Task("Production-Deploy")
+Task("Production-Publish")
 	.Does(() => 
 	{
 		var authenticationToken = GetAuthenticationToken(new ISI.Cake.Addin.Scm.GetAuthenticationTokenRequest()
