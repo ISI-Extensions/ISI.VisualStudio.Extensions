@@ -29,8 +29,15 @@ namespace ISI.VisualStudio.Extensions
 					return codeExtensionProvider;
 				}
 			}
+
+			var providerUuid = ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider.CodeExtensionProviderUuid;
+
+			if(content.IndexOf("<TargetFrameworkVersion>v4.", System.StringComparison.InvariantCultureIgnoreCase) >= 0)
+			{
+				providerUuid = ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider.CodeExtensionProviderUuid;
+			}
 			
-			ISI.Extensions.VisualStudio.CodeExtensionProviders.TryGetCodeExtensionProvider(ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider.CodeExtensionProviderUuid, out var isiExtensionsCodeExtensionProvider);
+			ISI.Extensions.VisualStudio.CodeExtensionProviders.TryGetCodeExtensionProvider(providerUuid, out var isiExtensionsCodeExtensionProvider);
 
 			return isiExtensionsCodeExtensionProvider;
 		}
