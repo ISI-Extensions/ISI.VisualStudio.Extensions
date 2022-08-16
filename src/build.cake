@@ -117,21 +117,10 @@ Task("Sign")
 
 				var signableFiles = GetFiles(tempDirectory.FullName + "/**/ISI.VisualStudio.Extensions.dll");
 
-				SignAssemblies(new ISI.Cake.Addin.CodeSigning.SignAssembliesRequest()
+				SignAssemblies(new ISI.Cake.Addin.CodeSigning.SignAssembliesUsingSettingsRequest()
 				{
 					AssemblyPaths = signableFiles,
-					RemoteCodeSigningServiceUri = GetNullableUri(settings.CodeSigning.RemoteCodeSigningServiceUrl),
-					RemoteCodeSigningServicePassword = settings.CodeSigning.RemoteCodeSigningServicePassword,
-					CodeSigningCertificateTokenCertificateFileName = settings.CodeSigning.Token.CertificateFileName,
-					CodeSigningCertificateTokenCryptographicProvider = settings.CodeSigning.Token.CryptographicProvider,
-					CodeSigningCertificateTokenContainerName = settings.CodeSigning.Token.ContainerName,
-					CodeSigningCertificateTokenPassword = settings.CodeSigning.Token.Password,
-					TimeStampUri = GetNullableUri(settings.CodeSigning.TimeStampUrl),
-					TimeStampDigestAlgorithm = SignToolDigestAlgorithm.Sha256,
-					CertificatePath = GetNullableFile(settings.CodeSigning.CertificateFileName),
-					CertificatePassword = settings.CodeSigning.CertificatePassword,
-					CertificateFingerprint = settings.CodeSigning.CertificateFingerprint,
-					DigestAlgorithm = SignToolDigestAlgorithm.Sha256,
+						Settings = settings,
 				});
 
 				SevenZip(m => m
@@ -142,21 +131,10 @@ Task("Sign")
 
 				DeleteFile(buildArtifactZipFile);
 
-				SignVsixes(new ISI.Cake.Addin.CodeSigning.SignVsixesRequest()
+				SignVsixes(new ISI.Cake.Addin.CodeSigning.SignVsixesUsingSettingsRequest()
 				{
 					VsixPaths = new FilePathCollection(new [] { buildArtifactVsixFile.Path }),
-					RemoteCodeSigningServiceUri = GetNullableUri(settings.CodeSigning.RemoteCodeSigningServiceUrl),
-					RemoteCodeSigningServicePassword = settings.CodeSigning.RemoteCodeSigningServicePassword,
-					CodeSigningCertificateTokenCertificateFileName = settings.CodeSigning.Token.CertificateFileName,
-					CodeSigningCertificateTokenCryptographicProvider = settings.CodeSigning.Token.CryptographicProvider,
-					CodeSigningCertificateTokenContainerName = settings.CodeSigning.Token.ContainerName,
-					CodeSigningCertificateTokenPassword = settings.CodeSigning.Token.Password,
-					TimeStampUri = GetNullableUri(settings.CodeSigning.TimeStampUrl),
-					TimeStampDigestAlgorithm = SignToolDigestAlgorithm.Sha256,
-					CertificatePath = GetNullableFile(settings.CodeSigning.CertificateFileName),
-					CertificatePassword = settings.CodeSigning.CertificatePassword,
-					CertificateFingerprint = settings.CodeSigning.CertificateFingerprint,
-					DigestAlgorithm = SignToolDigestAlgorithm.Sha256,
+						Settings = settings,
 				});
 			}
 		}
