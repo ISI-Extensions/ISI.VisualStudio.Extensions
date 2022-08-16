@@ -62,7 +62,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var content = System.IO.File.ReadAllText(fullName);
 
-				var regex = new System.Text.RegularExpressions.Regex(@"(?s:(?<start>(?:.*)(?:void)(?:\s+)(?:Register\()(?:.*)(?:\{))(?<end>(?:.*)))");
+				var regex = new System.Text.RegularExpressions.Regex(@"(?s:(?<start>(?:.*)(?:void)(?:\s+)(?:.+)(?:Register\()(?:.*)(?:\{))(?<end>(?:.*)))");
 
 				var match = regex.Match(content);
 

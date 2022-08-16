@@ -40,7 +40,11 @@ namespace ISI.VisualStudio.Extensions
 
 					if (nugetPackageKeys.Any())
 					{
-						var threadedWaitDialogFactory = await VS.Services.GetThreadedWaitDialogAsync() as Microsoft.VisualStudio.Shell.Interop.IVsThreadedWaitDialogFactory;
+						await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+						var getThreadedWaitDialogResponse = await VS.Services.GetThreadedWaitDialogAsync();
+
+						var threadedWaitDialogFactory = getThreadedWaitDialogResponse as Microsoft.VisualStudio.Shell.Interop.IVsThreadedWaitDialogFactory;
 
 						var threadedWaitDialog = threadedWaitDialogFactory.CreateInstance();
 
@@ -55,7 +59,10 @@ namespace ISI.VisualStudio.Extensions
 						}
 						finally
 						{
-							(threadedWaitDialog as IDisposable).Dispose();
+							threadedWaitDialog?.EndWaitDialog(out _);
+							(threadedWaitDialog as IDisposable)?.Dispose();
+
+							(threadedWaitDialogFactory as IDisposable)?.Dispose();
 						}
 					}
 				}
