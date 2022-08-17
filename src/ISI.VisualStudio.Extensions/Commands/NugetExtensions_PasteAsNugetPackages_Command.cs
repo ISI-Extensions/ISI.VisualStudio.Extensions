@@ -12,6 +12,9 @@ namespace ISI.VisualStudio.Extensions
 	[Command(PackageIds.NugetExtensionsPasteAsNugetPackagesMenuItemId)]
 	public class NugetExtensions_PasteAsNugetPackages_Command : BaseCommand<NugetExtensions_PasteAsNugetPackages_Command>
 	{
+		private static ProjectExtensions_Helper _projectExtensionsHelper = null;
+		protected ProjectExtensions_Helper ProjectExtensionsHelper => _projectExtensionsHelper ??= Package.GetServiceProvider().GetService<ProjectExtensions_Helper>();
+
 		private static NugetExtensions_Helper _nugetExtensionsHelper = null;
 		protected NugetExtensions_Helper NugetExtensionsHelper => _nugetExtensionsHelper ??= Package.GetServiceProvider().GetService<NugetExtensions_Helper>();
 
@@ -19,9 +22,14 @@ namespace ISI.VisualStudio.Extensions
 		{
 			var showCommand = false;
 
-			var solutionItem = VS.Solutions.GetActiveItemAsync().GetAwaiter().GetResult();
+			var nugetPackageKeys = NugetExtensionsHelper.GetPackageKeysFromClipboard();
 
-			showCommand = NugetExtensionsHelper.IsReferencesFolder(solutionItem);
+			if (nugetPackageKeys.NullCheckedAny())
+			{
+				var solutionItem = VS.Solutions.GetActiveItemAsync().GetAwaiter().GetResult();
+
+				showCommand = ProjectExtensionsHelper.IsReferencesFolder(solutionItem);
+			}
 
 			Command.Visible = showCommand;
 

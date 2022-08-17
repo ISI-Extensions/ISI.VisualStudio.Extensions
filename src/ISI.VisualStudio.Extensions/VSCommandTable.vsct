@@ -307,10 +307,35 @@
 			</Button>
 
 
+			<!-- Reference Extensions -->
+			<Button guid="PackageUuid" id="ReferenceExtensionsCopyReferencesAsProjectReferencesMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectReferenceMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<Strings>
+					<CommandName>Copy References As Project References</CommandName>
+					<ButtonText>Copy References As Project References</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="ReferenceExtensionsPasteAsProjectReferencesMenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectReferencesMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<Strings>
+					<CommandName>Paste as Project References</CommandName>
+					<ButtonText>Paste as Project References</ButtonText>
+				</Strings>
+			</Button>
+
 			<!-- Nuget Extensions -->
 			<Button guid="PackageUuid" id="NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ProjectReferenceMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
 				<Strings>
 					<CommandName>Copy References As Nuget Packages</CommandName>
 					<ButtonText>Copy References As Nuget Packages</ButtonText>
@@ -787,6 +812,9 @@
 			<IDSymbol name="ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId" value="0x0B01" />
 			<IDSymbol name="ProjectExtensionsProjectUnloadProjectMenuItemId" value="0x0B02" />
 			<IDSymbol name="ProjectExtensionsProjectLoadProjectMenuItemId" value="0x0B03" />
+
+			<IDSymbol name="ReferenceExtensionsCopyReferencesAsProjectReferencesMenuItemId" value="0x0C80" />
+			<IDSymbol name="ReferenceExtensionsPasteAsProjectReferencesMenuItemId" value="0x0C81" />
 
 			<IDSymbol name="NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId" value="0x0C00" />
 			<IDSymbol name="NugetExtensionsPasteAsNugetPackagesMenuItemId" value="0x0C01" />

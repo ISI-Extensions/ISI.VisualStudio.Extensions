@@ -56,10 +56,14 @@
     </Compile>
     <Compile Include="CakeOptions\Cake.cs" />
     <Compile Include="CakeOptions\__CakeOptions.cs" />
+    <Compile Include="Commands\ReferenceExtensions_PasteAsProjectReferences_Command.cs" />
+    <Compile Include="Commands\ReferenceExtensions_CopyReferencesAsProjectReferences_Command.cs" />
     <Compile Include="EmbeddedFileNamesDialog.xaml.cs">
       <DependentUpon>EmbeddedFileNamesDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ProjectExtensions\UsesNugetPackage.cs" />
+    <Compile Include="ProjectExtensions_Helper\GetPackageKeysFromClipboard.cs" />
+    <Compile Include="ProjectExtensions_Helper\GetProjectReferences.cs" />
     <Compile Include="ProjectProperties.cs" />
     <Compile Include="ProjectPropertiesDialog.xaml.cs">
       <DependentUpon>ProjectPropertiesDialog.xaml</DependentUpon>
@@ -150,7 +154,7 @@
     <Compile Include="NugetExtensions_Helper\ParseNugetPackageKeyClipped.cs" />
     <Compile Include="NugetExtensions_Helper\ParsePackageConfig.cs" />
     <Compile Include="NugetExtensions_Helper\GetPackageKeysFromClipboard.cs" />
-    <Compile Include="NugetExtensions_Helper\IsReferencesFolder.cs" />
+    <Compile Include="ProjectExtensions_Helper\IsReferencesFolder.cs" />
     <Compile Include="NugetExtensions_Helper\__NugetExtensions_Helper.cs" />
     <Compile Include="ProjectExtensions_Helper\AddSerializableDataTransferObjectRequestResponse.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\IsAspNetMvc_6x_Project.cs" />
@@ -324,13 +328,13 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8263.25541</Version>
+      <Version>10.0.8264.28500</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8263.25541</Version>
+      <Version>10.0.8264.28500</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8263.25541</Version>
+      <Version>10.0.8264.28500</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.2.0</Version>
@@ -345,13 +349,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8263.25541" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8263.25541" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8263.25541" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8263.25541" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8263.25541" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8263.25541" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8263.25541" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8264.28500" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8264.28500" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8264.28500" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8264.28500" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8264.28500" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8264.28500" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8264.28500" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>17.3.0</Version>

@@ -18,8 +18,10 @@ namespace ISI.VisualStudio.Extensions
 		public const string StyleSheetsFolderName = "StyleSheets";
 		public const string ViewsFolderName = "Views";
 
-		public RecipeExtensions_AspNet_Helper(ISI.Extensions.Nuget.NugetApi nugetApi)
-			: base(nugetApi)
+		public RecipeExtensions_AspNet_Helper(
+			ISI.Extensions.VisualStudio.ProjectApi projectApi,
+			ISI.Extensions.Nuget.NugetApi nugetApi)
+			: base(projectApi, nugetApi)
 		{
 
 		}

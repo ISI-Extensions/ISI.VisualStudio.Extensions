@@ -112,6 +112,8 @@ namespace ISI.VisualStudio.Extensions
         public const int ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId = 0x0B01;
         public const int ProjectExtensionsProjectUnloadProjectMenuItemId = 0x0B02;
         public const int ProjectExtensionsProjectLoadProjectMenuItemId = 0x0B03;
+        public const int ReferenceExtensionsCopyReferencesAsProjectReferencesMenuItemId = 0x0C80;
+        public const int ReferenceExtensionsPasteAsProjectReferencesMenuItemId = 0x0C81;
         public const int NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId = 0x0C00;
         public const int NugetExtensionsPasteAsNugetPackagesMenuItemId = 0x0C01;
         public const int PasteAsXmlMenuItemId = 0x0300;

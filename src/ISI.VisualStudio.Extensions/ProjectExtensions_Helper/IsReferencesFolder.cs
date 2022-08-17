@@ -4,7 +4,7 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class NugetExtensions_Helper
+	public partial class ProjectExtensions_Helper
 	{
 		public bool IsReferencesFolder(Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{

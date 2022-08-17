@@ -14,6 +14,30 @@ namespace ISI.VisualStudio.Extensions
 	{
 		private static NugetExtensions_Helper _nugetExtensionsHelper = null;
 		protected NugetExtensions_Helper NugetExtensionsHelper => _nugetExtensionsHelper ??= Package.GetServiceProvider().GetService<NugetExtensions_Helper>();
+		
+		protected override void BeforeQueryStatus(EventArgs eventArgs)
+		{
+			var showCommand = false;
+
+			var project = VS.Solutions.GetActiveProjectAsync().GetAwaiter();
+
+			var solutionItems =  VS.Solutions.GetActiveItemsAsync().GetAwaiter().GetResult();
+
+			if (solutionItems.NullCheckedAny())
+			{
+				var packageNames = solutionItems
+					.ToNullCheckedArray(solutionItem => solutionItem.Text, NullCheckCollectionResult.Empty)
+					.ToHashSet(StringComparer.InvariantCultureIgnoreCase);
+
+				var nugetPackageKeys = new ISI.Extensions.Nuget.NugetPackageKeyDictionary(NugetExtensionsHelper.GetNugetPackageKeysFromProject(project.GetResult()).Where(nugetPackageKey => packageNames.Contains(nugetPackageKey.Package)));
+
+				showCommand = nugetPackageKeys.NullCheckedAny();
+			}
+
+			Command.Visible = showCommand;
+
+			base.BeforeQueryStatus(eventArgs);
+		}
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{
