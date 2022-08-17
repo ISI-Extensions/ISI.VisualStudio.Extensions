@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.SolutionExtensionsShowSccInformationMenuItemId)]
+	[Command(PackageIds.SolutionExtensions_ShowSccInformation_MenuItemId)]
 	public class SolutionExtensions_ShowSccInformation_Command : BaseCommand<SolutionExtensions_ShowSccInformation_Command>
 	{
 		private static SolutionExtensions_Helper _solutionExtensionsHelper = null;

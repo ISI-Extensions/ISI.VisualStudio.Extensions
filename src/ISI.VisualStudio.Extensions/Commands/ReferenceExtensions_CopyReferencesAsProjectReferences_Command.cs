@@ -25,7 +25,7 @@ using ISI.Extensions.VisualStudio;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.ReferenceExtensionsCopyReferencesAsProjectReferencesMenuItemId)]
+	[Command(PackageIds.ReferenceExtensions_CopyReferencesAsProjectReferences_MenuItemId)]
 	public class ReferenceExtensions_CopyReferencesAsProjectReferences_Command : BaseCommand<ReferenceExtensions_CopyReferencesAsProjectReferences_Command>
 	{
 		private static ProjectExtensions_Helper _projectExtensionsHelper = null;
@@ -41,11 +41,21 @@ namespace ISI.VisualStudio.Extensions
 
 			if (solutionItems.NullCheckedAny())
 			{
+				var projectReferences = solutionItems
+					.NullCheckedWhere(solutionItem => (solutionItem is Project))
+					.ToNullCheckedArray(solutionItem => new ISI.Extensions.VisualStudio.ProjectReference()
+					{
+						Name = solutionItem.Text,
+						Path = (solutionItem as Project).FullPath,
+					}, NullCheckCollectionResult.Empty)
+					.ToList();
+
 				var projectReferenceNames = solutionItems
+					.NullCheckedWhere(solutionItem => !(solutionItem is Project))
 					.ToNullCheckedArray(solutionItem => solutionItem.Text, NullCheckCollectionResult.Empty)
 					.ToHashSet(StringComparer.InvariantCultureIgnoreCase);
 
-				var projectReferences = ProjectExtensionsHelper.GetProjectReferences(project.GetResult()).Where(projectReference => projectReferenceNames.Contains(projectReference.Name));
+				projectReferences.AddRange(ProjectExtensionsHelper.GetProjectReferences(project.GetResult()).Where(projectReference => projectReferenceNames.Contains(projectReference.Name)));
 
 				showCommand = projectReferences.NullCheckedAny();
 			}
@@ -63,11 +73,21 @@ namespace ISI.VisualStudio.Extensions
 
 			var solutionItems = await VS.Solutions.GetActiveItemsAsync();
 
+			var projectReferences = solutionItems
+				.NullCheckedWhere(solutionItem => (solutionItem is Project))
+				.ToNullCheckedArray(solutionItem => new ISI.Extensions.VisualStudio.ProjectReference()
+				{
+					Name = solutionItem.Text,
+					Path = (solutionItem as Project).FullPath,
+				}, NullCheckCollectionResult.Empty)
+				.ToList();
+
 			var projectReferenceNames = solutionItems
+				.NullCheckedWhere(solutionItem => !(solutionItem is Project))
 				.ToNullCheckedArray(solutionItem => solutionItem.Text, NullCheckCollectionResult.Empty)
 				.ToHashSet(StringComparer.InvariantCultureIgnoreCase);
 
-			var projectReferences = ProjectExtensionsHelper.GetProjectReferences(project).Where(projectReference => projectReferenceNames.Contains(projectReference.Name));
+			projectReferences.AddRange(ProjectExtensionsHelper.GetProjectReferences(project).Where(projectReference => projectReferenceNames.Contains(projectReference.Name)));
 
 			if (projectReferences.Any())
 			{

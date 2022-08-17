@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.SolutionExtensionsAddExistingProjectsMenuItemId)]
+	[Command(PackageIds.SolutionExtensions_AddExistingProjects_MenuItemId)]
 	public class SolutionExtensions_AddExistingProjects_Command : BaseCommand<SolutionExtensions_AddExistingProjects_Command>
 	{
 		private static SolutionExtensions_Helper _solutionExtensionsHelper = null;

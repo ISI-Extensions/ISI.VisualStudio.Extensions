@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId)]
+	[Command(PackageIds.NugetExtensions_CopyReferencesAsNugetPackages_MenuItemId)]
 	public class NugetExtensions_CopyReferencesAsNugetPackages_Command : BaseCommand<NugetExtensions_CopyReferencesAsNugetPackages_Command>
 	{
 		private static NugetExtensions_Helper _nugetExtensionsHelper = null;

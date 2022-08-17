@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.ReferenceExtensionsPasteAsProjectReferencesMenuItemId)]
+	[Command(PackageIds.ReferenceExtensions_PasteAsProjectReferences_MenuItemId)]
 	public class ReferenceExtensions_PasteAsProjectReferences_Command : BaseCommand<ReferenceExtensions_PasteAsProjectReferences_Command>
 	{
 		private static ProjectExtensions_Helper _projectExtensionsHelper = null;

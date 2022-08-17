@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.ClipboardExtensionsPasteAsCmdAppendMenuItemId)]
+	[Command(PackageIds.ClipboardExtensions_PasteAsCmdAppend_MenuItemId)]
 	public class ClipboardExtensions_PasteAsCmdAppend_Command : BaseCommand<ClipboardExtensions_PasteAsCmdAppend_Command>
 	{
 		protected override void BeforeQueryStatus(System.EventArgs eventArgs)

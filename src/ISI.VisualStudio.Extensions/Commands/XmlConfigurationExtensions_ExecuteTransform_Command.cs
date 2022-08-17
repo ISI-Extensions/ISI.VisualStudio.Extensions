@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.XmlConfigurationExtensionsExecuteMenuItemId)]
+	[Command(PackageIds.XmlConfigurationExtensions_Execute_MenuItemId)]
 	public class XmlConfigurationExtensions_ExecuteTransform_Command : BaseDynamicCommand<XmlConfigurationExtensions_ExecuteTransform_Command, string>
 	{
 		private static XmlConfigurationExtensions_Helper _xmlConfigurationExtensionsHelper = null;

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId)]
+	[Command(PackageIds.JenkinsExtensions_PullJenkinsConfigFromJenkins_MenuItemId)]
 	public class JenkinsExtensions_PullJenkinsConfigFromJenkins_Command : BaseCommand<JenkinsExtensions_PullJenkinsConfigFromJenkins_Command>
 	{
 		private static JenkinsExtensions_Helper _jenkinsExtensionsHelper = null;

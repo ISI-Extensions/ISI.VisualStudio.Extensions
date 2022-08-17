@@ -11,7 +11,7 @@ using ISI.VisualStudio.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.ProjectExtensionsProjectUnloadProjectMenuItemId)]
+	[Command(PackageIds.ProjectExtensions_ProjectUnloadProject_MenuItemId)]
 	public class ProjectExtensions_UnloadProject_Command : BaseCommand<ProjectExtensions_UnloadProject_Command>
 	{
 		private static ProjectExtensions_Helper _projectExtensionsHelper = null;

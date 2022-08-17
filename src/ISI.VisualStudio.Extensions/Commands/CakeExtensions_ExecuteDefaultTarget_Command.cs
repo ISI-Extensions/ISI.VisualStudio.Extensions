@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.CakeExtensionsExecuteDefaultTargetMenuItemId)]
+	[Command(PackageIds.CakeExtensions_ExecuteDefaultTarget_MenuItemId)]
 	public class CakeExtensions_ExecuteDefaultTarget_Command : BaseCommand<CakeExtensions_ExecuteDefaultTarget_Command>
 	{
 		private static CakeExtensions_Helper _cakeExtensionsHelper = null;

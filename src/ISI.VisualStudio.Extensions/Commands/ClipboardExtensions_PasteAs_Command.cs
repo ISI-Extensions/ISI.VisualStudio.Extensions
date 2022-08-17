@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.ClipboardExtensionsPasteAsMenuItemId)]
+	[Command(PackageIds.ClipboardExtensions_PasteAs_MenuItemId)]
 	public class ClipboardExtensions_PasteAs_Command : BaseCommand<ClipboardExtensions_PasteAs_Command>
 	{
 		private static ISI.Extensions.VisualStudio.CodeGenerationApi _codeGenerationApi = null;

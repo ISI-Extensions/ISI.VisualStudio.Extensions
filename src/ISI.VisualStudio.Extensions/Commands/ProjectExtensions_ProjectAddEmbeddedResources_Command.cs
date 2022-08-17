@@ -11,7 +11,7 @@ using ISI.VisualStudio.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	[Command(PackageIds.ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId)]
+	[Command(PackageIds.ProjectExtensions_ProjectAddEmbeddedResources_MenuItemId)]
 	public class ProjectExtensions_ProjectAddEmbeddedResources_Command : BaseCommand<ProjectExtensions_ProjectAddEmbeddedResources_Command>
 	{
 		private static ProjectExtensions_Helper _projectExtensionsHelper = null;

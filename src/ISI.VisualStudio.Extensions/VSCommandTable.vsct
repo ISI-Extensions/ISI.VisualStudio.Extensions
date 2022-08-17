@@ -59,14 +59,14 @@
 				<Parent guid="PackageUuid" id="RecipeExtensions_Project_SubMenuId"/>
 			</Group>
 
-			<Group guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" priority="0x0100">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformSubMenuId"/>
+			<Group guid="PackageUuid" id="XmlConfigurationExtensions_ExecuteTransform_MenuSubgroupId" priority="0x0100">
+				<Parent guid="PackageUuid" id="XmlConfigurationExtensions_ExecuteTransform_SubMenuId"/>
 			</Group>
-			<Group guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" priority="0x0100">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetSubMenuId"/>
+			<Group guid="PackageUuid" id="CakeExtensions_ExecuteTarget_MenuSubgroupId" priority="0x0100">
+				<Parent guid="PackageUuid" id="CakeExtensions_ExecuteTarget_SubMenuId"/>
 			</Group>
-			<Group guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" priority="0x0100">
-				<Parent guid="PackageUuid" id="ClipboardExtensionsContextSubMenuId"/>
+			<Group guid="PackageUuid" id="ClipboardExtensions_Context_MenuSubgroupId" priority="0x0100">
+				<Parent guid="PackageUuid" id="ClipboardExtensions_Context_SubMenuId"/>
 			</Group>
 		</Groups>
 
@@ -111,21 +111,21 @@
 					<ButtonText>Partial Class Recipes</ButtonText>
 				</Strings>
 			</Menu>
-			<Menu guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformSubMenuId" priority="0x0100" type="Menu">
+			<Menu guid="PackageUuid" id="XmlConfigurationExtensions_ExecuteTransform_SubMenuId" priority="0x0100" type="Menu">
 				<Parent guid="PackageUuid" id="ItemMenuGroupId"/>
 				<Strings>
 					<CommandName>Execute Transformation</CommandName>
 					<ButtonText>Execute Transformation</ButtonText>
 				</Strings>
 			</Menu>
-			<Menu guid="PackageUuid" id="CakeExtensionsExecuteTargetSubMenuId" priority="0x0100" type="Menu">
+			<Menu guid="PackageUuid" id="CakeExtensions_ExecuteTarget_SubMenuId" priority="0x0100" type="Menu">
 				<Parent guid="PackageUuid" id="ItemMenuGroupId"/>
 				<Strings>
 					<CommandName>Execute Target</CommandName>
 					<ButtonText>Execute Target</ButtonText>
 				</Strings>
 			</Menu>
-			<Menu guid="PackageUuid" id="ClipboardExtensionsContextSubMenuId" priority="0x0100" type="Menu">
+			<Menu guid="PackageUuid" id="ClipboardExtensions_Context_SubMenuId" priority="0x0100" type="Menu">
 				<Parent guid="PackageUuid" id="EditorContextMenuGroupId"/>
 				<Strings>
 					<CommandName>Paste Special</CommandName>
@@ -150,7 +150,7 @@
 
 
 			<!-- Solution Extensions -->
-			<Button guid="PackageUuid" id="SolutionExtensionsShowSccInformationMenuItemId" priority="0x0201" type="Button">
+			<Button guid="PackageUuid" id="SolutionExtensions_ShowSccInformation_MenuItemId" priority="0x0201" type="Button">
 				<Parent guid="PackageUuid" id="SolutionMenuGroupId"/>
 				<Strings>
 					<CommandName>Show Scc Information</CommandName>
@@ -158,7 +158,7 @@
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="SolutionExtensionsAddExistingProjectsMenuItemId" priority="0x0201" type="Button">
+			<Button guid="PackageUuid" id="SolutionExtensions_AddExistingProjects_MenuItemId" priority="0x0201" type="Button">
 				<Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_SOLUTION_ADD_PROJ"/>
 				<Strings>
 					<CommandName>Add Existing Projects</CommandName>
@@ -168,7 +168,7 @@
 
 
 			<!-- Project Extensions -->
-			<Button guid="PackageUuid" id="ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId" priority="0x0201" type="Button">
+			<Button guid="PackageUuid" id="ProjectExtensions_ProjectAddEmbeddedResources_MenuItemId" priority="0x0201" type="Button">
 				<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
 				<Strings>
 					<CommandName>Add Embedded Resources</CommandName>
@@ -176,7 +176,7 @@
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="ProjectExtensionsProjectUnloadProjectMenuItemId" priority="0x0201" type="Button">
+			<Button guid="PackageUuid" id="ProjectExtensions_ProjectUnloadProject_MenuItemId" priority="0x0201" type="Button">
 				<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
@@ -187,7 +187,7 @@
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="ProjectExtensionsProjectLoadProjectMenuItemId" priority="0x0201" type="Button">
+			<Button guid="PackageUuid" id="ProjectExtensions_ProjectLoadProject_MenuItemId" priority="0x0201" type="Button">
 				<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
@@ -200,7 +200,7 @@
 
 
 			<!-- Guid Extensions -->
-			<Button guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" priority="0x0600" type="Button">
+			<Button guid="PackageUuid" id="GuidExtensions_InsertNewGuid_MenuItemId" priority="0x0600" type="Button">
 				<Parent guid="VSMainMenu" id="CodeWindow.TextEditGroup"/>
 				<Strings>
 					<CommandName>Insert New Guid</CommandName>
@@ -211,7 +211,7 @@
 
 
 			<!-- Clipboard Extensions -->
-			<Button guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="ClipboardExtensions_PasteAs_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="VSMainMenu" id="Edit.PasteGroup" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
@@ -222,7 +222,7 @@
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="ClipboardExtensionsPasteAsCmdAppendMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="ClipboardExtensions_PasteAsCmdAppend_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="VSMainMenu" id="Edit.PasteGroup" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
@@ -235,19 +235,19 @@
 
 
 			<!-- Transformation Extensions -->
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsAddTransformMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="XmlConfigurationExtensions_AddTransform_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
-					<CommandName>XmlConfigurationExtensionsAddTransformMenuItemId</CommandName>
+					<CommandName>XmlConfigurationExtensions_AddTransform_MenuItemId</CommandName>
 					<ButtonText>Add Transformation</ButtonText>
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="XmlConfigurationExtensionsExecuteMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" />
+			<Button guid="PackageUuid" id="XmlConfigurationExtensions_Execute_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="XmlConfigurationExtensions_ExecuteTransform_MenuSubgroupId" />
 				<CommandFlag>DynamicItemStart</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>DefaultInvisible</CommandFlag>
@@ -259,19 +259,19 @@
 
 
 			<!-- Cake Extensions -->
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteDefaultTargetMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="CakeExtensions_ExecuteDefaultTarget_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
-					<CommandName>CakeExtensionsExecuteDefaultTargetMenuItemId</CommandName>
+					<CommandName>CakeExtensions_ExecuteDefaultTarget_MenuItemId</CommandName>
 					<ButtonText>Execute default Cake Target</ButtonText>
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuItemId" priority="0x0100" type="Button">
-				<Parent guid="PackageUuid" id="CakeExtensionsExecuteTargetMenuSubgroupId" />
+			<Button guid="PackageUuid" id="CakeExtensions_ExecuteTarget_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="CakeExtensions_ExecuteTarget_MenuSubgroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DynamicItemStart</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
@@ -284,31 +284,31 @@
 
 
 			<!-- Jenkins Extensions -->
-			<Button guid="PackageUuid" id="JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="JenkinsExtensions_PushJenkinsConfigToJenkins_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
-					<CommandName>JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId</CommandName>
+					<CommandName>JenkinsExtensions_PushJenkinsConfigToJenkins_MenuItemId</CommandName>
 					<ButtonText>Push to Jenkins</ButtonText>
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="JenkinsExtensions_PullJenkinsConfigFromJenkins_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DefaultInvisible</CommandFlag>
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<Strings>
-					<CommandName>JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId</CommandName>
+					<CommandName>JenkinsExtensions_PullJenkinsConfigFromJenkins_MenuItemId</CommandName>
 					<ButtonText>Pull From Jenkins</ButtonText>
 				</Strings>
 			</Button>
 
 
 			<!-- Reference Extensions -->
-			<Button guid="PackageUuid" id="ReferenceExtensionsCopyReferencesAsProjectReferencesMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="ReferenceExtensions_CopyReferencesAsProjectReferences_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ProjectReferenceMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DynamicVisibility</CommandFlag>
@@ -319,7 +319,7 @@
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="ReferenceExtensionsPasteAsProjectReferencesMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="ReferenceExtensions_PasteAsProjectReferences_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ProjectReferencesMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DynamicVisibility</CommandFlag>
@@ -331,8 +331,10 @@
 			</Button>
 
 			<!-- Nuget Extensions -->
-			<Button guid="PackageUuid" id="NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="NugetExtensions_CopyReferencesAsNugetPackages_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ProjectReferenceMenuGroupId" />
+				<!--<Parent guid="PackageUuid" id="ItemMenuGroupId" />-->
+								<!--<Parent guid="VSMainMenu" id="ItemNode"/>-->
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>DefaultInvisible</CommandFlag>
@@ -342,7 +344,7 @@
 				</Strings>
 			</Button>
 
-			<Button guid="PackageUuid" id="NugetExtensionsPasteAsNugetPackagesMenuItemId" priority="0x0100" type="Button">
+			<Button guid="PackageUuid" id="NugetExtensions_PasteAsNugetPackages_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ProjectReferencesMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DynamicVisibility</CommandFlag>
@@ -667,49 +669,54 @@
 		</CommandPlacement>
 
 		<CommandPlacement guid="PackagePasteAsXmlCommandSetUuid" id="PasteAsXmlMenuItemId" priority="0x0600">
-			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
+			<Parent guid="PackageUuid" id="ClipboardExtensions_Context_MenuSubgroupId" />
 		</CommandPlacement>
 		<CommandPlacement guid="PackagePasteAsJsonCommandSetUuid" id="PasteAsJsonMenuItemId" priority="0x0600">
-			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
+			<Parent guid="PackageUuid" id="ClipboardExtensions_Context_MenuSubgroupId" />
 		</CommandPlacement>
-		<CommandPlacement guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" priority="0x0600">
-			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
+		<CommandPlacement guid="PackageUuid" id="ClipboardExtensions_PasteAs_MenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ClipboardExtensions_Context_MenuSubgroupId" />
 		</CommandPlacement>
-		<CommandPlacement guid="PackageUuid" id="ClipboardExtensionsPasteAsCmdAppendMenuItemId" priority="0x0600">
-			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
-		</CommandPlacement>
-
-		<CommandPlacement guid="PackageUuid" id="ClipboardExtensionsPasteAsCmdAppendMenuItemId" priority="0x0600">
-			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
-		</CommandPlacement>
-		<CommandPlacement guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" priority="0x0600">
-			<Parent guid="PackageUuid" id="ClipboardExtensionsContextMenuSubgroupId" />
+		<CommandPlacement guid="PackageUuid" id="ClipboardExtensions_PasteAsCmdAppend_MenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ClipboardExtensions_Context_MenuSubgroupId" />
 		</CommandPlacement>
 
+		<CommandPlacement guid="PackageUuid" id="ClipboardExtensions_PasteAsCmdAppend_MenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ClipboardExtensions_Context_MenuSubgroupId" />
+		</CommandPlacement>
+		<CommandPlacement guid="PackageUuid" id="ClipboardExtensions_PasteAs_MenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ClipboardExtensions_Context_MenuSubgroupId" />
+		</CommandPlacement>
 
-		<CommandPlacement guid="PackageUuid" id="SolutionExtensionsAddExistingProjectsMenuItemId" priority="0x0201">
+
+		<CommandPlacement guid="PackageUuid" id="ReferenceExtensions_CopyReferencesAsProjectReferences_MenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ProjectMenuGroupId" />
+		</CommandPlacement>
+
+
+		<CommandPlacement guid="PackageUuid" id="SolutionExtensions_AddExistingProjects_MenuItemId" priority="0x0600">
 			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu.AddProjectGroup"/>
 		</CommandPlacement>
 
 
-		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_SubMenuId" priority="0x0201">
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_SubMenuId" priority="0x0600">
 			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu.AddItemGroup"/>
 		</CommandPlacement>
-		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_AddDataTransferObjectRequestResponse_MenuItemId" priority="0x0201">
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_ProjectPartialClass_AddDataTransferObjectRequestResponse_MenuItemId" priority="0x0600">
 			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu.AddItemGroup"/>
 		</CommandPlacement>
-		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_MenuItemId" priority="0x0201">
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_MenuItemId" priority="0x0600">
 			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu.AddItemGroup"/>
 		</CommandPlacement>
 
-		<CommandPlacement guid="PackageUuid" id="XmlConfigurationExtensionsAddTransformMenuItemId" priority="0x0201">
+		<CommandPlacement guid="PackageUuid" id="XmlConfigurationExtensions_AddTransform_MenuItemId" priority="0x0600">
 			<Parent guid="VSMainMenu" id="Project.AddMiscGroup"/>
 		</CommandPlacement>
 	</CommandPlacements>
 
 	<KeyBindings>
-		<KeyBinding guid="PackageUuid" id="GuidExtensionsInsertNewGuidMenuItemId" editor="PackageTextEditorCommandSetUuid" key1="G" mod1="Control Shift" />
-		<KeyBinding guid="PackageUuid" id="ClipboardExtensionsPasteAsMenuItemId" editor="PackageTextEditorCommandSetUuid" key1="V" mod1="Shift Alt" />
+		<KeyBinding guid="PackageUuid" id="GuidExtensions_InsertNewGuid_MenuItemId" editor="PackageTextEditorCommandSetUuid" key1="G" mod1="Control Shift" />
+		<KeyBinding guid="PackageUuid" id="ClipboardExtensions_PasteAs_MenuItemId" editor="PackageTextEditorCommandSetUuid" key1="V" mod1="Shift Alt" />
 	</KeyBindings>
 
 	<Symbols>
@@ -732,10 +739,10 @@
 			<IDSymbol name="AboutMenuItemId" value="0x0105" />
 
 
-			<IDSymbol name="XmlConfigurationExtensionsAddTransformMenuItemId" value="0x0300" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteTransformMenuSubgroupId" value="0x0301" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteTransformSubMenuId" value="0x0302" />
-			<IDSymbol name="XmlConfigurationExtensionsExecuteMenuItemId" value="0x0303" />
+			<IDSymbol name="XmlConfigurationExtensions_AddTransform_MenuItemId" value="0x0300" />
+			<IDSymbol name="XmlConfigurationExtensions_ExecuteTransform_MenuSubgroupId" value="0x0301" />
+			<IDSymbol name="XmlConfigurationExtensions_ExecuteTransform_SubMenuId" value="0x0302" />
+			<IDSymbol name="XmlConfigurationExtensions_Execute_MenuItemId" value="0x0303" />
 
 
 			<IDSymbol name="RecipeExtensions_AspNetMvc_5x_MenuSubgroupId" value="0x0410" />
@@ -788,36 +795,36 @@
 			<IDSymbol name="RecipeExtensions_Project_ProjectProperties_MenuItemId" value="0x04C4" />
 
 
-			<IDSymbol name="CakeExtensionsExecuteDefaultTargetMenuItemId" value="0x0520" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuSubgroupId" value="0x0521" />
-			<IDSymbol name="CakeExtensionsExecuteTargetSubMenuId" value="0x0522" />
-			<IDSymbol name="CakeExtensionsExecuteTargetMenuItemId" value="0x0523" />
+			<IDSymbol name="CakeExtensions_ExecuteDefaultTarget_MenuItemId" value="0x0520" />
+			<IDSymbol name="CakeExtensions_ExecuteTarget_MenuSubgroupId" value="0x0521" />
+			<IDSymbol name="CakeExtensions_ExecuteTarget_SubMenuId" value="0x0522" />
+			<IDSymbol name="CakeExtensions_ExecuteTarget_MenuItemId" value="0x0523" />
 
-			<IDSymbol name="JenkinsExtensionsPushJenkinsConfigToJenkinsMenuItemId" value="0x05A0" />
-			<IDSymbol name="JenkinsExtensionsPullJenkinsConfigFromJenkinsMenuItemId" value="0x05A1" />
+			<IDSymbol name="JenkinsExtensions_PushJenkinsConfigToJenkins_MenuItemId" value="0x05A0" />
+			<IDSymbol name="JenkinsExtensions_PullJenkinsConfigFromJenkins_MenuItemId" value="0x05A1" />
 
 
-			<IDSymbol name="ClipboardExtensionsPasteAsMenuItemId" value="0x0700" />
-			<IDSymbol name="ClipboardExtensionsPasteAsCmdAppendMenuItemId" value="0x0703" />
-			<IDSymbol name="ClipboardExtensionsPasteAsConversionMenuItemId" value="0x0750" />
+			<IDSymbol name="ClipboardExtensions_PasteAs_MenuItemId" value="0x0700" />
+			<IDSymbol name="ClipboardExtensions_PasteAsCmdAppend_MenuItemId" value="0x0703" />
+			<IDSymbol name="ClipboardExtensions_PasteAsConversion_MenuItemId" value="0x0750" />
 
-			<IDSymbol name="ClipboardExtensionsContextMenuSubgroupId" value="0x0770" />
-			<IDSymbol name="ClipboardExtensionsContextSubMenuId" value="0x0771" />
+			<IDSymbol name="ClipboardExtensions_Context_MenuSubgroupId" value="0x0770" />
+			<IDSymbol name="ClipboardExtensions_Context_SubMenuId" value="0x0771" />
 
-			<IDSymbol name="GuidExtensionsInsertNewGuidMenuItemId" value="0x0801" />
+			<IDSymbol name="GuidExtensions_InsertNewGuid_MenuItemId" value="0x0801" />
 
-			<IDSymbol name="SolutionExtensionsAddExistingProjectsMenuItemId" value="0x0901" />
-			<IDSymbol name="SolutionExtensionsShowSccInformationMenuItemId" value="0x0910" />
+			<IDSymbol name="SolutionExtensions_AddExistingProjects_MenuItemId" value="0x0901" />
+			<IDSymbol name="SolutionExtensions_ShowSccInformation_MenuItemId" value="0x0910" />
 
-			<IDSymbol name="ProjectExtensionsProjectAddEmbeddedResourcesMenuItemId" value="0x0B01" />
-			<IDSymbol name="ProjectExtensionsProjectUnloadProjectMenuItemId" value="0x0B02" />
-			<IDSymbol name="ProjectExtensionsProjectLoadProjectMenuItemId" value="0x0B03" />
+			<IDSymbol name="ProjectExtensions_ProjectAddEmbeddedResources_MenuItemId" value="0x0B01" />
+			<IDSymbol name="ProjectExtensions_ProjectUnloadProject_MenuItemId" value="0x0B02" />
+			<IDSymbol name="ProjectExtensions_ProjectLoadProject_MenuItemId" value="0x0B03" />
 
-			<IDSymbol name="ReferenceExtensionsCopyReferencesAsProjectReferencesMenuItemId" value="0x0C80" />
-			<IDSymbol name="ReferenceExtensionsPasteAsProjectReferencesMenuItemId" value="0x0C81" />
+			<IDSymbol name="ReferenceExtensions_CopyReferencesAsProjectReferences_MenuItemId" value="0x0C80" />
+			<IDSymbol name="ReferenceExtensions_PasteAsProjectReferences_MenuItemId" value="0x0C81" />
 
-			<IDSymbol name="NugetExtensionsCopyReferencesAsNugetPackagesMenuItemId" value="0x0C00" />
-			<IDSymbol name="NugetExtensionsPasteAsNugetPackagesMenuItemId" value="0x0C01" />
+			<IDSymbol name="NugetExtensions_CopyReferencesAsNugetPackages_MenuItemId" value="0x0C00" />
+			<IDSymbol name="NugetExtensions_PasteAsNugetPackages_MenuItemId" value="0x0C01" />
 		</GuidSymbol>
 
 		<GuidSymbol name="PackagePasteAsXmlCommandSetUuid" value="{EAD526CA-8A42-440D-968B-39444312D652}" >

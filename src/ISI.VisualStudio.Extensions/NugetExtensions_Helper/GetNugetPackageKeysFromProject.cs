@@ -11,23 +11,26 @@ namespace ISI.VisualStudio.Extensions
 		{
 			var nugetPackageKeys = new ISI.Extensions.Nuget.NugetPackageKeyDictionary();
 
-			foreach (var nugetPackageKey in NugetApi.ExtractProjectNugetPackageDependenciesFromCsProj(new ISI.Extensions.Nuget.DataTransferObjects.NugetApi.ExtractProjectNugetPackageDependenciesFromCsProjRequest()
-			         {
-								 CsProjFullName = project.FullPath,
-			         }).NugetPackageKeys)
+			if (project != null)
 			{
-				nugetPackageKeys.TryAdd(nugetPackageKey);
-			}
-
-			var packagesConfigFullName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(project.FullPath), "packages.config");
-			if (System.IO.File.Exists(packagesConfigFullName))
-			{
-				foreach (var nugetPackageKey in NugetApi.ExtractProjectNugetPackageDependenciesFromPackagesConfig(new ISI.Extensions.Nuget.DataTransferObjects.NugetApi.ExtractProjectNugetPackageDependenciesFromPackagesConfigRequest()
+				foreach (var nugetPackageKey in NugetApi.ExtractProjectNugetPackageDependenciesFromCsProj(new ISI.Extensions.Nuget.DataTransferObjects.NugetApi.ExtractProjectNugetPackageDependenciesFromCsProjRequest()
 				         {
-					         PackagesConfigFullName = packagesConfigFullName,
+					         CsProjFullName = project.FullPath,
 				         }).NugetPackageKeys)
 				{
 					nugetPackageKeys.TryAdd(nugetPackageKey);
+				}
+
+				var packagesConfigFullName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(project.FullPath), "packages.config");
+				if (System.IO.File.Exists(packagesConfigFullName))
+				{
+					foreach (var nugetPackageKey in NugetApi.ExtractProjectNugetPackageDependenciesFromPackagesConfig(new ISI.Extensions.Nuget.DataTransferObjects.NugetApi.ExtractProjectNugetPackageDependenciesFromPackagesConfigRequest()
+					         {
+						         PackagesConfigFullName = packagesConfigFullName,
+					         }).NugetPackageKeys)
+					{
+						nugetPackageKeys.TryAdd(nugetPackageKey);
+					}
 				}
 			}
 
