@@ -21,6 +21,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Threading.Tasks;
+using ISI.Extensions.VisualStudio;
 
 namespace ISI.VisualStudio.Extensions
 {
@@ -50,17 +51,56 @@ namespace ISI.VisualStudio.Extensions
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{
+			await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
 			var projectReferences = ProjectExtensionsHelper.GetProjectReferencesFromClipboard();
 
 			if (projectReferences.Any())
 			{
-				var project = await VS.Solutions.GetActiveProjectAsync();
+				var solutionProjects = new System.Collections.Generic.Dictionary<string, EnvDTE.Project>(StringComparer.InvariantCultureIgnoreCase);
 
-				var projects = projectReferences.NullCheckedSelect(reference => VS.Solutions.FindProjectsAsync(reference.Name).GetAwaiter().GetResult() as Project, NullCheckCollectionResult.Empty).Where(reference => reference != null).ToArray();
+				void addSolutionProjects(System.Collections.Generic.IEnumerable<EnvDTE.Project> projects)
+				{
+					if (projects != null)
+					{
+						foreach (var project in projects)
+						{
+							if (project.Object is VSLangProj.VSProject)
+							{
+								solutionProjects.Add(project.Name, project);
+							}
+							else if (project is EnvDTE.Project solutionProject)
+							{
+								addSolutionProjects(solutionProject.ProjectItems.Cast<EnvDTE.ProjectItem>().Select(x => x.SubProject).OfType<EnvDTE.Project>());
+							}
+						}
+					}
+				}
+
+				addSolutionProjects(Package.GetDTE2().Solution.Projects.Cast<EnvDTE.Project>());
+
+				var projects = projectReferences.Select(projectReference =>
+					{
+						if (solutionProjects.TryGetValue(projectReference.Name, out var project))
+						{
+							return project;
+						}
+
+						return null;
+					}).Where(project => project != null)
+					.ToArray();
 
 				if (projects.Any())
 				{
-					await project.References.AddAsync(projects);
+					var selectedProject = ((Package.GetDTE2().ActiveSolutionProjects as Array).GetValue(0) as EnvDTE.Project)?.Object as VSLangProj.VSProject;
+
+					if (selectedProject != null)
+					{
+						foreach (var project in projects)
+						{
+							selectedProject.References.AddProject(project);
+						}
+					}
 				}
 			}
 		}

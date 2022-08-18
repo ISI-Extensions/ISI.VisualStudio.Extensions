@@ -51,20 +51,13 @@ namespace ISI.VisualStudio.Extensions
 					await stream.WriteLineAsync("</configuration>");
 				}
 
-				await project.AddExistingFilesAsync(fullName);
+				var addExistingFilesResponse = await project.AddExistingFilesAsync(fullName);
 
-				//await VS.Documents.OpenViaProjectAsync(fullName);
-
-				//var addedPhysicalFiles = await project.AddExistingFilesAsync(fullName);
-
-				////await project.SaveAsync();
-
-				//foreach (var addedPhysicalFile in addedPhysicalFiles)
-				//{
-				//	//await parentPhysicalFile.AddNestedFileAsync(addedPhysicalFile);
-
-				//	await addedPhysicalFile.OpenAsync();
-				//}
+				var transformFile = addExistingFilesResponse.NullCheckedFirstOrDefault();
+				if (transformFile != null)
+				{
+					await parentPhysicalFile.AddNestedFileAsync(transformFile);
+				}
 			}
 		}
 	}
