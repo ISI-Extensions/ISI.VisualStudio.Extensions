@@ -11,9 +11,9 @@ namespace ISI.VisualStudio.Extensions
 	public partial class AddPartialClassDialog
 	{
 		public string NewPartialClassName => txtNewPartialClassName.Text.Replace(" ", string.Empty);
+		public bool AddIocRegistry => chkAddIocRegistry.IsChecked.GetValueOrDefault();
 		public string ContractProjectDescription => cboContractProject.SelectedValue as string;
 		public bool AddInterface => chkAddInterface.IsChecked.GetValueOrDefault();
-		public bool AddIocRegistry => chkAddIocRegistry.IsChecked.GetValueOrDefault();
 
 		protected System.Collections.Generic.IDictionary<string, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> ProjectLookUp { get; }
 

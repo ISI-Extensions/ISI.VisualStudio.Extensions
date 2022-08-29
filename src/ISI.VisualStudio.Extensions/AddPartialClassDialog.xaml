@@ -31,7 +31,7 @@
 			<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="txtNewPartialClassName" Margin="-40,0,18,2" Padding="0,4,0,0" Width="440" BorderThickness="1" />
 
 			<TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Add Ioc Registry:</TextBlock>
-			<CheckBox Grid.Row="1" Grid.Column="1" Name="chkAddIocRegistry" Margin="5,5,5,5"/>
+			<CheckBox Grid.Row="1" Grid.Column="1" Name="chkAddIocRegistry" Margin="5"/>
 
 			<TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Contract Project:</TextBlock>
 			<ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="cboContractProject" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1"/>

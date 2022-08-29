@@ -26,8 +26,10 @@ namespace ISI.VisualStudio.Extensions
 
 	public partial class AddRecordManagerDialog
 	{
-		public string NewRecordManagerName => txtNewRecordManagerName.Text.Replace(" ", string.Empty);
+		public string RecordManagerName => txtRecordManagerName.Text.Replace(" ", string.Empty);
+		public bool AddIocRegistry => chkAddIocRegistry.IsChecked.GetValueOrDefault();
 		public string ContractProjectDescription => cboContractProject.SelectedValue as string;
+		public bool AddInterface => chkAddInterface.IsChecked.GetValueOrDefault();
 		public string PrimaryKeyType => cboPrimaryKeyType.SelectedValue as string;
 		public bool HasArchive => !string.IsNullOrWhiteSpace(PrimaryKeyType) && chkHasArchive.IsChecked.GetValueOrDefault();
 
@@ -56,15 +58,22 @@ namespace ISI.VisualStudio.Extensions
 			cboPrimaryKeyType.Items.Add("int");
 			cboPrimaryKeyType.Items.Add("string");
 
+			txtRecordManagerName.TextChanged += Update;
 			cboPrimaryKeyType.SelectionChanged += Update;
 
 			Update(null, null);
 
-			txtNewRecordManagerName.Focus();
+			txtRecordManagerName.Focus();
 		}
 		
 		private void Update(object sender, object args)
 		{
+			ProjectLookUp.TryGetValue(cboContractProject.SelectedValue as string ?? string.Empty, out var projectDescription);
+
+			var contractRootNamespace = projectDescription?.RootNamespace ?? string.Empty;
+			
+			txtInterface.Text = string.Format("{0}.I{1}", contractRootNamespace, RecordManagerName);
+
 			chkHasArchive.IsEnabled = !string.IsNullOrWhiteSpace(PrimaryKeyType);
 		}
 

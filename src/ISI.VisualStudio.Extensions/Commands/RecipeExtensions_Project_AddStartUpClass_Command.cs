@@ -61,15 +61,13 @@ namespace ISI.VisualStudio.Extensions
 				var codeExtensionProvider = project.GetCodeExtensionProvider();
 
 				var recipeName = string.Empty;
-				switch (codeExtensionProvider)
+				if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider.CodeExtensionProviderUuid)
 				{
-					case ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider isiExtensionsCodeExtensionProvider:
-						recipeName = nameof(RecipeOptions.Project_ISI_Extensions_StartUpClass_Template);
-						break;
-
-					case ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider isiLibrariesCodeExtensionProvider:
-						recipeName = nameof(RecipeOptions.Project_ISI_Libraries_StartUpClass_Template);
-						break;
+					recipeName = nameof(RecipeOptions.Project_ISI_Extensions_StartUpClass_Template);
+				}
+				else if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider.CodeExtensionProviderUuid)
+				{
+					recipeName = nameof(RecipeOptions.Project_ISI_Libraries_StartUpClass_Template);
 				}
 
 				if (!string.IsNullOrWhiteSpace(recipeName))
