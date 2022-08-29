@@ -24,11 +24,9 @@ namespace ISI.VisualStudio.Extensions
 
 			if (RecipeExtensionsHelper.IsProjectRoot(solutionItem))
 			{
-				var project = VS.Solutions.GetActiveProjectAsync().GetAwaiter().GetResult();
+				var project = solutionItem as Project;
 
-				var codeExtensionProvider = project.GetCodeExtensionProvider();
-
-				showCommand = (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider.CodeExtensionProviderUuid);
+				showCommand = !project.HasStartup_cs();
 			}
 
 			Command.Visible = showCommand;
@@ -62,21 +60,35 @@ namespace ISI.VisualStudio.Extensions
 
 				var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-				var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, null);
-
-				var contentReplacements = new Dictionary<string, string>
+				var recipeName = string.Empty;
+				switch (codeExtensionProvider)
 				{
-					{"${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted())},
-					{ "${Namespace}", @namespace },
-				};
+					case ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider isiExtensionsCodeExtensionProvider:
+						recipeName = nameof(RecipeOptions.Project_ISI_Extensions_StartUpClass_Template);
+						break;
 
-				var recipes = new[]
+					case ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider isiLibrariesCodeExtensionProvider:
+						recipeName = nameof(RecipeOptions.Project_ISI_Libraries_StartUpClass_Template);
+						break;
+				}
+
+				if (!string.IsNullOrWhiteSpace(recipeName))
 				{
-					new Extensions_Helper.RecipeItem(System.IO.Path.Combine(projectDirectory, "StartUp.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.Project_StartUpClass_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
-				};
+					var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, null);
 
+					var contentReplacements = new Dictionary<string, string>
+					{
+						{ "${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted()) },
+						{ "${Namespace}", @namespace },
+					};
 
-				await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
+					var recipes = new[]
+					{
+						new Extensions_Helper.RecipeItem(System.IO.Path.Combine(projectDirectory, "StartUp.cs"), RecipeExtensionsHelper.GetContent(recipeName, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+					};
+
+					await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
+				}
 
 				await outputWindowPane.WriteLineAsync("Done\n");
 				await outputWindowPane.ActivateAsync();

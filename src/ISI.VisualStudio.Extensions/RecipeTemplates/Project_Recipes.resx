@@ -264,7 +264,7 @@ namespace &lt;#= @namespace #&gt;
 #&gt;  }
 }</value>
   </data>
-  <data name="StartUpClass_Template" xml:space="preserve">
+  <data name="ISI_Libraries_StartUpClass_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
@@ -1112,5 +1112,26 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("${Namespace}")]
 [assembly: AssemblyCulture("")]</value>
+  </data>
+  <data name="ISI_Extensions_StartUpClass_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	[ISI.Extensions.StartUp]
+	public class StartUp : ISI.Extensions.IStartUp
+	{
+		private static bool _isInitialized = false;
+		public void Start()
+		{
+			if (!_isInitialized)
+			{
+				_isInitialized = true;
+
+				ISI.Extensions.VirtualFileVolumesFileProvider.RegisterEmbeddedVolume(typeof(StartUp));
+			}
+		}
+	}
+}</value>
   </data>
 </root>

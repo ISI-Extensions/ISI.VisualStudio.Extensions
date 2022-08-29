@@ -11,8 +11,12 @@ namespace ISI.VisualStudio.Extensions
 		public string Project_EnumText_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.EnumText_Template;
 
 		[Category(Project_Category)]
-		[DisplayName("StartUp Class Template")]
-		public string Project_StartUpClass_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.StartUpClass_Template;
+		[DisplayName("ISI Extensions StartUp Class Template")]
+		public string Project_ISI_Extensions_StartUpClass_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Extensions_StartUpClass_Template;
+
+		[Category(Project_Category)]
+		[DisplayName("ISI Libraries StartUp Class Template")]
+		public string Project_ISI_Libraries_StartUpClass_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Libraries_StartUpClass_Template;
 
 		[Category(Project_Category)]
 		[DisplayName("DependencyRegister Class Template")]

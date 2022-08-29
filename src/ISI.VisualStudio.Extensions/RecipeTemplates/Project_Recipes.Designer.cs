@@ -179,6 +179,60 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
+        ///	[ISI.Extensions.StartUp]
+        ///	public class StartUp : ISI.Extensions.IStartUp
+        ///	{
+        ///		private static bool _isInitialized = false;
+        ///		public void Start()
+        ///		{
+        ///			if (!_isInitialized)
+        ///			{
+        ///				_isInitialized = true;
+        ///
+        ///				ISI.Extensions.VirtualFileVolumesFileProvider.RegisterEmbeddedVolume(typeof(StartUp));
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string ISI_Extensions_StartUpClass_Template {
+            get {
+                return ResourceManager.GetString("ISI_Extensions_StartUpClass_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	[ISI.Libraries.StartUp]
+        ///	public class StartUp : ISI.Libraries.IStartUp
+        ///	{
+        ///		private static bool _isInitialized = false;
+        ///		public void Start()
+        ///		{
+        ///			if (!_isInitialized)
+        ///			{
+        ///				_isInitialized = true;
+        ///
+        ///				ISI.Libraries.VirtualFileRepositories.Register(typeof(StartUp));
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string ISI_Libraries_StartUpClass_Template {
+            get {
+                return ResourceManager.GetString("ISI_Libraries_StartUpClass_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
         ///	[DataContract]
         ///	public partial class ${ClassNamePrefix}Request
         ///	{
@@ -228,33 +282,6 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         internal static string ServiceRegistrarClass_Template {
             get {
                 return ResourceManager.GetString("ServiceRegistrarClass_Template", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ${Usings}
-        ///
-        ///namespace ${Namespace}
-        ///{
-        ///	[ISI.Libraries.StartUp]
-        ///	public class StartUp : ISI.Libraries.IStartUp
-        ///	{
-        ///		private static bool _isInitialized = false;
-        ///		public void Start()
-        ///		{
-        ///			if (!_isInitialized)
-        ///			{
-        ///				_isInitialized = true;
-        ///
-        ///				ISI.Libraries.VirtualFileRepositories.Register(typeof(StartUp));
-        ///			}
-        ///		}
-        ///	}
-        ///}.
-        /// </summary>
-        internal static string StartUpClass_Template {
-            get {
-                return ResourceManager.GetString("StartUpClass_Template", resourceCulture);
             }
         }
         

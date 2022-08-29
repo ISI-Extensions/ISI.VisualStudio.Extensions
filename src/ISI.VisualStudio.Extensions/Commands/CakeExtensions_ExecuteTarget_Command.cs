@@ -41,6 +41,7 @@ namespace ISI.VisualStudio.Extensions
 		{
 			menuItem.Text = item;
 			menuItem.Visible = true;
+			menuItem.Enabled = true;
 		}
 
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs, string target)
