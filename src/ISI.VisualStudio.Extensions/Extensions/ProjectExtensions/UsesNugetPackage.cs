@@ -21,6 +21,8 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public static bool UsesISIExtensionsAspNetCore(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Extensions.AspNetCore");
 
+		public static bool UsesISIExtensionsRepositorySqlServer(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Extensions.Repository.SqlServer");
+
 		public static bool UsesISILibrariesWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Web.Mvc");
 
 		public static bool UsesISILibrariesJQueryWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.JQuery.Web.Mvc");
@@ -29,6 +31,8 @@ namespace ISI.VisualStudio.Extensions
 
 		public static bool UsesISILibrariesBootstrapWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Bootstrap.Web.Mvc");
 
+		public static bool UsesISILibrariesRepositorySqlServer(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Repository.SqlServer");
+		
 		public static bool UsesNugetPackage(this Community.VisualStudio.Toolkit.Project project, string packageName)
 		{
 			if (project != null)

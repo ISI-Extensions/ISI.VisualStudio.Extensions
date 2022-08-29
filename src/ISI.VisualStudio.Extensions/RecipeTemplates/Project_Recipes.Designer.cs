@@ -179,6 +179,27 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
+        ///	public partial class ${RecordName}Manager : ISI.Extensions.Repository.SqlServer.${RecordManager}, I${RecordName}Manager
+        ///	{
+        ///		public ${RecordName}Manager(
+        ///			Microsoft.Extensions.Configuration.IConfiguration configuration,
+        ///			ISI.Extensions.Repository.SqlServer.Configuration sqlServerConfiguration,
+        ///			Configuration recordMangerConfiguration,
+        ///			Microsoft.Extensions.Logging.ILogger logger,
+        ///			ISI.Extensions.DateTimeStamper.IDateTimeStamper dateTimeStamper,
+        ///			I [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ISI_Extensions_SqlServer_RecordManager_Template {
+            get {
+                return ResourceManager.GetString("ISI_Extensions_SqlServer_RecordManager_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
         ///	[ISI.Extensions.StartUp]
         ///	public class StartUp : ISI.Extensions.IStartUp
         ///	{
@@ -206,6 +227,29 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
+        ///	public partial class ${RecordName}Manager : ISI.Libraries.Repository.SqlServer.${RecordManager}, I${RecordName}Manager
+        ///	{
+        ///		public ${RecordName}Manager(
+        ///			ISI.Libraries.Tracing.ITrace trace,
+        ///			ISI.Libraries.IDateTimeStamper dateTimeStamper,
+        ///			ISI.Libraries.IJsonSerializer serializer)
+        ///			: base(trace, dateTimeStamper, serializer, Configuration.Current.ConnectionString)
+        ///		{
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string ISI_Libraries_SqlServer_RecordManager_Template {
+            get {
+                return ResourceManager.GetString("ISI_Libraries_SqlServer_RecordManager_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
         ///	[ISI.Libraries.StartUp]
         ///	public class StartUp : ISI.Libraries.IStartUp
         ///	{
@@ -225,6 +269,22 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         internal static string ISI_Libraries_StartUpClass_Template {
             get {
                 return ResourceManager.GetString("ISI_Libraries_StartUpClass_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	public interface I${RecordName}Manager
+        ///	{
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string RecordManagerInterface_Template {
+            get {
+                return ResourceManager.GetString("RecordManagerInterface_Template", resourceCulture);
             }
         }
         

@@ -54,8 +54,12 @@
     <Compile Include="..\ISI.VisualStudio.Extensions.Version.cs">
       <Link>Properties\ISI.VisualStudio.Extensions.Version.cs</Link>
     </Compile>
+    <Compile Include="AddRecordManagerDialog.xaml.cs">
+      <DependentUpon>AddRecordManagerDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CakeOptions\Cake.cs" />
     <Compile Include="CakeOptions\__CakeOptions.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddRecordManager_Command.cs" />
     <Compile Include="Commands\ReferenceExtensions_PasteAsProjectReferences_Command.cs" />
     <Compile Include="Commands\ReferenceExtensions_CopyReferencesAsProjectReferences_Command.cs" />
     <Compile Include="EmbeddedFileNamesDialog.xaml.cs">
@@ -388,6 +392,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddRecordManagerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EmbeddedFileNamesDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
