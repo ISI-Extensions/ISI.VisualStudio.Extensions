@@ -141,7 +141,6 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///		void ISI.Libraries.IDependencyRegister.Register(ISI.Libraries.IDependencyResolver dependencyResolver)
         ///		{
         ///			//dependencyResolver.Register&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;(ISI.Libraries.DependencyResolverLifetime.Singleton);
-        ///			//${ServiceRegistrations}
         ///		}
         ///	}
         ///}.
@@ -334,7 +333,6 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///		public void ServiceRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection services)
         ///		{
         ///			//services.AddSingleton&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;();
-        ///			//${ServiceRegistrations}
         ///		}
         ///	}
         ///}.
