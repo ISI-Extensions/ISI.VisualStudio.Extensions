@@ -679,6 +679,10 @@
 			<Parent guid="PackageUuid" id="ProjectMenuGroupId" />
 		</CommandPlacement>
 
+		<CommandPlacement guid="PackageUuid" id="ReferenceExtensions_CopyReferencesAsProjectReferences_MenuItemId" priority="0x0600">
+			<Parent guid="VSMainMenu" id="ProjectNode" />
+		</CommandPlacement>
+
 		<CommandPlacement guid="PackagePasteAsXmlCommandSetUuid" id="PasteAsXmlMenuItemId" priority="0x0600">
 			<Parent guid="PackageUuid" id="ClipboardExtensions_Context_MenuSubgroupId" />
 		</CommandPlacement>

@@ -134,7 +134,7 @@ Task("Sign")
 				SignVsixes(new ISI.Cake.Addin.CodeSigning.SignVsixesUsingSettingsRequest()
 				{
 					VsixPaths = new FilePathCollection(new [] { buildArtifactVsixFile.Path }),
-						Settings = settings,
+					Settings = settings,
 				});
 			}
 		}
