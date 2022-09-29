@@ -350,6 +350,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Imaging">
       <Version>17.3.32804.24</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Threading">
+      <Version>17.3.44</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.4.1111">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
