@@ -127,7 +127,6 @@ namespace ${Namespace}
 	{
 		void ISI.Libraries.IDependencyRegister.Register(ISI.Libraries.IDependencyResolver dependencyResolver)
 		{
-			//dependencyResolver.Register&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;(ISI.Libraries.DependencyResolverLifetime.Singleton);
 		}
 	}
 }</value>
@@ -289,7 +288,7 @@ namespace ${Namespace}
 
 namespace ${Namespace}
 {
-	public partial class ${ClassNamePrefix}Request
+	public class ${ClassNamePrefix}Request
 	{
 	}
 }</value>
@@ -299,7 +298,7 @@ namespace ${Namespace}
 
 namespace ${Namespace}
 {
-	public partial class ${ClassNamePrefix}Response
+	public class ${ClassNamePrefix}Response
 	{
 	}
 }</value>
@@ -327,7 +326,6 @@ namespace ${Namespace}
 	{
 		public void ServiceRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection services)
 		{
-			//services.AddSingleton&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;();
 		}
 	}
 }</value>
@@ -338,7 +336,7 @@ namespace ${Namespace}
 namespace ${Namespace}
 {
 	[DataContract]
-	public partial class ${ClassNamePrefix}Request
+	public class ${ClassNamePrefix}Request
 	{
 	}
 }</value>
@@ -349,7 +347,7 @@ namespace ${Namespace}
 namespace ${Namespace}
 {
 	[DataContract]
-	public partial class ${ClassNamePrefix}Response
+	public class ${ClassNamePrefix}Response
 	{
 	}
 }</value>

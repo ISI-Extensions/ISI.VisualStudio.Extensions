@@ -103,7 +103,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
-        ///	public partial class ${ClassNamePrefix}Request
+        ///	public class ${ClassNamePrefix}Request
         ///	{
         ///	}
         ///}.
@@ -119,7 +119,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
-        ///	public partial class ${ClassNamePrefix}Response
+        ///	public class ${ClassNamePrefix}Response
         ///	{
         ///	}
         ///}.
@@ -140,7 +140,6 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	{
         ///		void ISI.Libraries.IDependencyRegister.Register(ISI.Libraries.IDependencyResolver dependencyResolver)
         ///		{
-        ///			//dependencyResolver.Register&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;(ISI.Libraries.DependencyResolverLifetime.Singleton);
         ///		}
         ///	}
         ///}.
@@ -293,7 +292,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///namespace ${Namespace}
         ///{
         ///	[DataContract]
-        ///	public partial class ${ClassNamePrefix}Request
+        ///	public class ${ClassNamePrefix}Request
         ///	{
         ///	}
         ///}.
@@ -310,7 +309,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///namespace ${Namespace}
         ///{
         ///	[DataContract]
-        ///	public partial class ${ClassNamePrefix}Response
+        ///	public class ${ClassNamePrefix}Response
         ///	{
         ///	}
         ///}.
@@ -332,7 +331,6 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	{
         ///		public void ServiceRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection services)
         ///		{
-        ///			//services.AddSingleton&lt;IXXXXXXXXXXXXXXXXXXXXXXXXXXXX, XXXXXXXXXXXXXXXXXXXXXXXXXXXX&gt;();
         ///		}
         ///	}
         ///}.

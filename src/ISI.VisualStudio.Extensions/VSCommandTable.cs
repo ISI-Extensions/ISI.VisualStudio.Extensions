@@ -110,6 +110,8 @@ namespace ISI.VisualStudio.Extensions
         public const int GuidExtensions_InsertNewGuid_MenuItemId = 0x0801;
         public const int SolutionExtensions_AddExistingProjects_MenuItemId = 0x0901;
         public const int SolutionExtensions_ShowSccInformation_MenuItemId = 0x0910;
+        public const int SolutionExtensions_UseLocalSourcePackages_MenuItemId = 0x0920;
+        public const int SolutionExtensions_AddMissingLocalSourcePackages_MenuItemId = 0x0921;
         public const int ProjectExtensions_ProjectAddEmbeddedResources_MenuItemId = 0x0B01;
         public const int ProjectExtensions_ProjectUnloadProject_MenuItemId = 0x0B02;
         public const int ProjectExtensions_ProjectLoadProject_MenuItemId = 0x0B03;

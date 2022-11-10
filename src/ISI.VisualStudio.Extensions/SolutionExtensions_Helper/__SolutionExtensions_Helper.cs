@@ -10,10 +10,15 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public const string vsProjectKindSolutionItems = "{66A26720-8FB5-11D2-AA7E-00C04F688DDE}";
 
-		public SolutionExtensions_Helper(ISI.Extensions.Nuget.NugetApi nugetApi)
-			: base(nugetApi)
-		{
+		protected ISI.Extensions.VisualStudio.SolutionApi SolutionApi { get; }
+		protected ISI.Extensions.VisualStudio.ProjectApi ProjectApi { get; }
 
+		public SolutionExtensions_Helper(
+			ISI.Extensions.VisualStudio.SolutionApi solutionApi,
+			ISI.Extensions.VisualStudio.ProjectApi projectApi)
+		{
+			SolutionApi = solutionApi;
+			ProjectApi = projectApi;
 		}
 	}
 }

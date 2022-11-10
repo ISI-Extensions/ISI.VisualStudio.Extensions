@@ -8,13 +8,14 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class ProjectExtensions_Helper : Extensions_Helper
 	{
+		protected ISI.Extensions.VisualStudio.SolutionApi SolutionApi { get; }
 		protected ISI.Extensions.VisualStudio.ProjectApi ProjectApi { get; }
 
 		public ProjectExtensions_Helper(
-			ISI.Extensions.VisualStudio.ProjectApi projectApi,
-			ISI.Extensions.Nuget.NugetApi nugetApi)
-			: base(nugetApi)
+			ISI.Extensions.VisualStudio.SolutionApi solutionApi,
+			ISI.Extensions.VisualStudio.ProjectApi projectApi)
 		{
+			SolutionApi = solutionApi;
 			ProjectApi = projectApi;
 		}
 	}

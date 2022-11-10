@@ -166,6 +166,24 @@
 				</Strings>
 			</Button>
 
+			<Button guid="PackageUuid" id="SolutionExtensions_UseLocalSourcePackages_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="SolutionMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<Strings>
+					<CommandName>Use Local Source Packages</CommandName>
+					<ButtonText>Use Local Source Packages</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="PackageUuid" id="SolutionExtensions_AddMissingLocalSourcePackages_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="SolutionMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<Strings>
+					<CommandName>Add Missing Local Source Packages</CommandName>
+					<ButtonText>Add Missing Local Source Packages</ButtonText>
+				</Strings>
+			</Button>
+
 
 			<!-- Project Extensions -->
 			<Button guid="PackageUuid" id="ProjectExtensions_ProjectAddEmbeddedResources_MenuItemId" priority="0x0201" type="Button">
@@ -334,7 +352,7 @@
 			<Button guid="PackageUuid" id="NugetExtensions_CopyReferencesAsNugetPackages_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="ProjectReferenceMenuGroupId" />
 				<!--<Parent guid="PackageUuid" id="ItemMenuGroupId" />-->
-								<!--<Parent guid="VSMainMenu" id="ItemNode"/>-->
+				<!--<Parent guid="VSMainMenu" id="ItemNode"/>-->
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
 				<CommandFlag>DynamicVisibility</CommandFlag>
 				<CommandFlag>DefaultInvisible</CommandFlag>
@@ -642,12 +660,19 @@
 					<CommandName>RecipeExtensions_Project_AddRecordManager_MenuItemId</CommandName>
 					<ButtonText>Add RecordManager</ButtonText>
 				</Strings>
-			</Button> 
+			</Button>
 
 		</Buttons>
 	</Commands>
 
 	<CommandPlacements>
+		<CommandPlacement guid="PackageUuid" id="SolutionExtensions_UseLocalSourcePackages_MenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
+		</CommandPlacement>
+		<CommandPlacement guid="PackageUuid" id="SolutionExtensions_AddMissingLocalSourcePackages_MenuItemId" priority="0x0600">
+			<Parent guid="PackageUuid" id="ProjectMenuGroupId"/>
+		</CommandPlacement>
+
 		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_AspNetMvc_5x_SubMenuId" priority="0x0600">
 			<Parent guid="PackageUuid" id="FolderMenuGroupId" />
 		</CommandPlacement>
@@ -831,6 +856,8 @@
 
 			<IDSymbol name="SolutionExtensions_AddExistingProjects_MenuItemId" value="0x0901" />
 			<IDSymbol name="SolutionExtensions_ShowSccInformation_MenuItemId" value="0x0910" />
+			<IDSymbol name="SolutionExtensions_UseLocalSourcePackages_MenuItemId" value="0x0920" />
+			<IDSymbol name="SolutionExtensions_AddMissingLocalSourcePackages_MenuItemId" value="0x0921" />
 
 			<IDSymbol name="ProjectExtensions_ProjectAddEmbeddedResources_MenuItemId" value="0x0B01" />
 			<IDSymbol name="ProjectExtensions_ProjectUnloadProject_MenuItemId" value="0x0B02" />

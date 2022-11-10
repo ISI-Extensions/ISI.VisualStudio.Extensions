@@ -11,9 +11,7 @@ namespace ISI.VisualStudio.Extensions
 		protected ISI.Extensions.VisualStudio.XmlTransformApi XmlTransformApi { get; }
 
 		public XmlConfigurationExtensions_Helper(
-			ISI.Extensions.Nuget.NugetApi nugetApi,
 			ISI.Extensions.VisualStudio.XmlTransformApi xmlTransformApi)
-			: base(nugetApi)
 		{
 			XmlTransformApi = xmlTransformApi;
 		}

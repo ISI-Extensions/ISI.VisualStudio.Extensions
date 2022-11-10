@@ -19,9 +19,9 @@ namespace ISI.VisualStudio.Extensions
 		public const string ViewsFolderName = "Views";
 
 		public RecipeExtensions_AspNet_Helper(
-			ISI.Extensions.VisualStudio.ProjectApi projectApi,
-			ISI.Extensions.Nuget.NugetApi nugetApi)
-			: base(projectApi, nugetApi)
+			ISI.Extensions.VisualStudio.SolutionApi solutionApi,
+			ISI.Extensions.VisualStudio.ProjectApi projectApi)
+			: base(solutionApi, projectApi)
 		{
 
 		}

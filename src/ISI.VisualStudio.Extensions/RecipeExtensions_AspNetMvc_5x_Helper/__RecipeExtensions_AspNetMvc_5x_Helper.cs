@@ -9,9 +9,9 @@ namespace ISI.VisualStudio.Extensions
 	public partial class RecipeExtensions_AspNetMvc_5x_Helper : RecipeExtensions_AspNet_Helper
 	{
 		public RecipeExtensions_AspNetMvc_5x_Helper(
-			ISI.Extensions.VisualStudio.ProjectApi projectApi,
-			ISI.Extensions.Nuget.NugetApi nugetApi)
-			: base(projectApi, nugetApi)
+			ISI.Extensions.VisualStudio.SolutionApi solutionApi,
+			ISI.Extensions.VisualStudio.ProjectApi projectApi)
+			: base(solutionApi, projectApi)
 		{
 
 		}
