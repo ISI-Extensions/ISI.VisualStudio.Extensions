@@ -12,7 +12,7 @@
 											 toolkit:Themes.UseVsTheme="True"
 											 mc:Ignorable="d"
 											 WindowStartupLocation="CenterScreen"
-											 Width="654" Height="221">
+											 Width="654" Height="273">
 	<StackPanel Margin="2">
 		<Grid Margin="5">
 			<Grid.ColumnDefinitions>

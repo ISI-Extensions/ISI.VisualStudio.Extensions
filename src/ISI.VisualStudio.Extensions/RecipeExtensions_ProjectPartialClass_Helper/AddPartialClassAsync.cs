@@ -113,7 +113,7 @@ namespace ISI.VisualStudio.Extensions
 
 							try
 							{
-								usings.Add(string.Format("RepositoryDTOs = {0}.DataTransferObjects.{1}Repository", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")));
+								usings.Add(string.Format("RepositoryDTOs = {0}.DataTransferObjects.{1}Repository", @namespace.TrimEnd(".Api"), partialClassName.TrimEnd("Api")));
 							}
 							catch
 							{
@@ -123,7 +123,7 @@ namespace ISI.VisualStudio.Extensions
 							{
 								classInjectors.Add(new ISI.Extensions.VisualStudio.CodeGenerationClassInjector()
 								{
-									Type = string.Format("{0}.I{1}Repository", @namespace.TrimEnd(".Repository"), partialClassName.TrimEnd("Api")),
+									Type = string.Format("{0}.I{1}Repository", @namespace.TrimEnd(".Api"), partialClassName.TrimEnd("Api")),
 									Name = string.Format("{0}Repository", partialClassName.TrimEnd("Api")),
 								});
 							}
