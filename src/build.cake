@@ -120,7 +120,7 @@ Task("Sign")
 				SignAssemblies(new ISI.Cake.Addin.CodeSigning.SignAssembliesUsingSettingsRequest()
 				{
 					AssemblyPaths = signableFiles,
-						Settings = settings,
+					Settings = settings,
 				});
 
 				SevenZip(m => m
