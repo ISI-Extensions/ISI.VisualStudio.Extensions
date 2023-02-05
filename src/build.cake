@@ -208,12 +208,12 @@ Task("Production-Publish")
 				BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
 				AuthenticationToken = authenticationToken,
 				ArtifactName = artifactName,
-				DateTimeStamp = dateTimeStampVersion.DateTimeStamp,
+				DateTimeStamp = dateTimeStampVersion.DateTimeStamp?.ToString(),
 				TargetFileName = artifactFullName,
 			});
 
 			var artifactVersionFullName = System.IO.Path.Combine(tempDirectory.FullName, string.Format("{0}.Current.DateTimeStamp.Version.txt", artifactName));
-			FileWriteText(artifactVersionFullName, dateTimeStampVersion.Formatted());
+			FileWriteText(artifactVersionFullName, dateTimeStampVersion.ToString());
 
 			Information("Uploading Artifact");
 
