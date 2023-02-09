@@ -22,23 +22,27 @@ var artifactVersionFileStoreUuid = new System.Guid("25c1e176-6862-4f2d-acfa-28f2
 var buildDateTime = DateTime.UtcNow;
 var buildDateTimeStamp = GetDateTimeStamp(buildDateTime);
 var buildRevision = GetBuildRevision(buildDateTime);
-Information("BuildRevision: {0}", buildRevision);
 
-var assemblyVersions = GetAssemblyVersionFiles(solution, rootAssemblyVersionKey, buildRevision);
+var assemblyVersions = GetAssemblyVersionFiles(rootAssemblyVersionKey, buildRevision);
+var assemblyVersion = assemblyVersions[rootAssemblyVersionKey].AssemblyVersion;
 
-var buildArtifactVsixFile = File(string.Format("../Publish/{0}.{1}.vsix", artifactName, buildDateTimeStamp));
+var buildDateTimeStampVersion = new ISI.Extensions.Scm.DateTimeStampVersion(buildDateTimeStamp, assemblyVersions[rootAssemblyVersionKey].AssemblyVersion);
+
+Information("BuildDateTimeStampVersion: {0}", buildDateTimeStampVersion);
+
+var nugetPackOutputDirectory = Argument("NugetPackOutputDirectory", "../Nuget");
 
 Task("Clean")
 	.Does(() =>
 	{
-		foreach(var projectPath in solution.Projects.Select(p => p.Path.GetDirectory()))
+		Information("Cleaning Projects ...");
+
+		foreach(var projectPath in new HashSet<string>(solution.Projects.Select(p => p.Path.GetDirectory().ToString())))
 		{
 			Information("Cleaning {0}", projectPath);
 			CleanDirectories(projectPath + "/**/bin/" + configuration);
 			CleanDirectories(projectPath + "/**/obj/" + configuration);
 		}
-
-		Information("Cleaning Projects ...");
 	});
 
 Task("NugetPackageRestore")
@@ -157,7 +161,7 @@ Task("Publish")
 			AuthenticationToken = authenticationToken,
 			SourceFileName = buildArtifactVsixFile.Path.FullPath,
 			ArtifactName = artifactName,
-			DateTimeStamp = buildDateTimeStamp,
+			DateTimeStampVersion = buildDateTimeStampVersion,
 		});
 
 		SetArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.SetArtifactEnvironmentDateTimeStampVersionRequest()
@@ -166,7 +170,7 @@ Task("Publish")
 			AuthenticationToken = authenticationToken,
 			ArtifactName = artifactName,
 			Environment = "Build",
-			DateTimeStampVersion = string.Format("{0}|{1}", buildDateTimeStamp, assemblyVersions[rootAssemblyVersionKey].AssemblyVersion),
+			DateTimeStampVersion = buildDateTimeStampVersion,
 		});
 
 		var simpleVsixFile = File(string.Format("../Publish/{0}.vsix", artifactName));
