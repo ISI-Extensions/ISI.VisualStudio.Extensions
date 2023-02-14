@@ -306,8 +306,12 @@
       <LastGenOutput>AspNetMvc_5x_Recipes.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Lantern.ico" />
-    <EmbeddedResource Include="Resources\Lantern.png" />
+    <EmbeddedResource Include="Resources\Lantern.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Lantern.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="..\ISI.VisualStudio.Extensions.licenseheader">
       <Link>ISI.VisualStudio.Extensions.licenseheader</Link>
     </None>
@@ -339,16 +343,16 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8439.8174</Version>
+      <Version>10.0.8445.123</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8439.8174</Version>
+      <Version>10.0.8445.123</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.JsonSerialization.Newtonsoft">
-      <Version>10.0.8439.8174</Version>
+      <Version>10.0.8445.123</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8439.8174</Version>
+      <Version>10.0.8445.123</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.4.0</Version>
@@ -366,36 +370,75 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8439.8174" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8439.8174" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8439.8174" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8439.8174" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8439.8174" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8439.8174" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8439.8174" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8445.123" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8445.123" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8445.123" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8445.123" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8445.123" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8445.123" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8445.123" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>17.4.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Cake-16x16.png" />
-    <EmbeddedResource Include="Resources\Cake.ico" />
-    <EmbeddedResource Include="Resources\cscss-16x16.png" />
-    <EmbeddedResource Include="Resources\cscss-32x32.png" />
-    <EmbeddedResource Include="Resources\cscss.ico" />
-    <EmbeddedResource Include="Resources\csjs-16x16.png" />
-    <EmbeddedResource Include="Resources\csjs-32x32.png" />
-    <EmbeddedResource Include="Resources\csjs.ico" />
-    <EmbeddedResource Include="Resources\csless-16x16.png" />
-    <EmbeddedResource Include="Resources\csless-32x32.png" />
-    <EmbeddedResource Include="Resources\csless.ico" />
-    <EmbeddedResource Include="Resources\Jenkins.ico" />
-    <EmbeddedResource Include="Resources\jenkinsConfig-16x16.png" />
-    <EmbeddedResource Include="Resources\jenkinsConfig-32x32.png" />
-    <EmbeddedResource Include="Resources\JenkinsOverlay.ico" />
-    <EmbeddedResource Include="Resources\Preview.png" />
-    <EmbeddedResource Include="Resources\vsext-16x16.png" />
+    <Content Include="Resources\*.*">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Cake-16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Cake.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cscss-16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cscss-32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cscss.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\csjs-16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\csjs-32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\csjs.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\csless-16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\csless-32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\csless.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Jenkins.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\jenkinsConfig-16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\jenkinsConfig-32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\JenkinsOverlay.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Preview.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\vsext-16x16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="ExtensionsGallery.pkgdef" />
     <Content Include="icons.pkgdef" />
     <Content Include="LICENSE.txt">

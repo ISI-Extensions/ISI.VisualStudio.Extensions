@@ -46,11 +46,7 @@ namespace ISI.VisualStudio.Extensions
 				{
 					var controllerActionKey = inputDialog.Value.Replace(" ", string.Empty);
 
-					var isAsync = controllerActionKey.EndsWith("Async", StringComparison.InvariantCulture);
-					if (isAsync)
-					{
-						controllerActionKey = controllerActionKey.Substring(0, controllerActionKey.Length - "Async".Length);
-					}
+					controllerActionKey = controllerActionKey.TrimEnd("Async");
 
 					if (!string.IsNullOrWhiteSpace(controllerActionKey))
 					{
@@ -130,7 +126,7 @@ namespace ISI.VisualStudio.Extensions
 
 						var recipes = new[]
 						{
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithPartialView_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}Async.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithPartialView_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithPartialView_Model_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 

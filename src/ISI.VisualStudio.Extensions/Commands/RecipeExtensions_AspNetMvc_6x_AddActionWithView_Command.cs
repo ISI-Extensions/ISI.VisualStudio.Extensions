@@ -45,6 +45,8 @@ namespace ISI.VisualStudio.Extensions
 				{
 					var controllerActionKey = inputDialog.Value.Replace(" ", string.Empty);
 
+					controllerActionKey = controllerActionKey.TrimEnd("Async");
+
 					if (!string.IsNullOrWhiteSpace(controllerActionKey))
 					{
 						var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
@@ -133,7 +135,7 @@ namespace ISI.VisualStudio.Extensions
 
 						var recipes = new[]
 						{
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithView_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}Async.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithView_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithView_Model_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 

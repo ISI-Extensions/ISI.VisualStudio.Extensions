@@ -2,6 +2,7 @@
 #addin nuget:?package=Cake.FileHelpers
 #tool nuget:?package=7-Zip.CommandLine
 #addin nuget:?package=Cake.7zip
+#addin nuget:?package=System.Security.Cryptography.Pkcs&Version=6.0.0
 #addin nuget:?package=ISI.Cake.AddIn&loaddependencies=true
 
 //mklink /D Secrets S:\
@@ -29,6 +30,8 @@ var assemblyVersion = assemblyVersions[rootAssemblyVersionKey].AssemblyVersion;
 var buildDateTimeStampVersion = new ISI.Extensions.Scm.DateTimeStampVersion(buildDateTimeStamp, assemblyVersions[rootAssemblyVersionKey].AssemblyVersion);
 
 Information("BuildDateTimeStampVersion: {0}", buildDateTimeStampVersion);
+
+var buildArtifactVsixFile = File(string.Format("../Publish/{0}.{1}.vsix", artifactName, buildDateTimeStamp));
 
 var nugetPackOutputDirectory = Argument("NugetPackOutputDirectory", "../Nuget");
 
@@ -107,6 +110,11 @@ Task("Sign")
 	{
 		if (settings.CodeSigning.DoCodeSigning && configuration.Equals("Release"))
 		{
+			if(settings.TryGetValue("LocalTestCodeSigningRemoteCodeSigningServiceUrl", out var codeSigningRemoteCodeSigningServiceUrl))
+			{
+				settings.CodeSigning.RemoteCodeSigningServiceUrl = codeSigningRemoteCodeSigningServiceUrl;
+			}
+
 			using(var tempDirectory = GetNewTempDirectory())
 			{
 				var buildArtifactZipFile = File(string.Format("{0}/{1}.{2}.zip", tempDirectory.FullName, artifactName, buildDateTimeStamp));
@@ -148,31 +156,6 @@ Task("Publish")
 	.IsDependentOn("Sign")
 	.Does(() =>
 	{
-		var authenticationToken = GetAuthenticationToken(new ISI.Cake.Addin.Scm.GetAuthenticationTokenRequest()
-		{
-			ScmManagementUrl = settings.Scm.WebServiceUrl,
-			UserName = settings.ActiveDirectory.UserName,
-			Password = settings.ActiveDirectory.Password,
-		}).AuthenticationToken;
-
-		UploadArtifact(new ISI.Cake.Addin.BuildArtifacts.UploadArtifactRequest()
-		{
-			BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
-			AuthenticationToken = authenticationToken,
-			SourceFileName = buildArtifactVsixFile.Path.FullPath,
-			ArtifactName = artifactName,
-			DateTimeStampVersion = buildDateTimeStampVersion,
-		});
-
-		SetArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.SetArtifactEnvironmentDateTimeStampVersionRequest()
-		{
-			BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
-			AuthenticationToken = authenticationToken,
-			ArtifactName = artifactName,
-			Environment = "Build",
-			DateTimeStampVersion = buildDateTimeStampVersion,
-		});
-
 		var simpleVsixFile = File(string.Format("../Publish/{0}.vsix", artifactName));
 		if(FileExists(simpleVsixFile))
 		{
@@ -180,79 +163,19 @@ Task("Publish")
 		}
 		CopyFile(buildArtifactVsixFile, simpleVsixFile);
 
-	});
-
-Task("Production-Publish")
-	.Does(() => 
-	{
-		var authenticationToken = GetAuthenticationToken(new ISI.Cake.Addin.Scm.GetAuthenticationTokenRequest()
+		var authenticationToken = GetVsExtensionsAuthenticationToken(new ISI.Cake.Addin.VsExtensions.GetVsExtensionsAuthenticationTokenRequest()
 		{
-			ScmManagementUrl = settings.Scm.WebServiceUrl,
-			UserName = settings.ActiveDirectory.UserName,
+			VsExtensionsApiUri = GetNullableUri(settings.VsExtensions.ApiUrl),
+			UserName = settings.ActiveDirectory.GetDomainUserName(),
 			Password = settings.ActiveDirectory.Password,
 		}).AuthenticationToken;
 
-		var dateTimeStampVersion = GetBuildArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.GetBuildArtifactEnvironmentDateTimeStampVersionRequest()
+		UploadVsExtension(new ISI.Cake.Addin.VsExtensions.UploadVsExtensionRequest()
 		{
-			BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
-			AuthenticationToken = authenticationToken,
-			ArtifactName = artifactName,
-			Environment = "Build",
-		}).DateTimeStampVersion;
-
-		Information(string.Format("SoftwareVersion => {0}", dateTimeStampVersion.Version.ToString()));
-
-		using(var tempDirectory = GetNewTempDirectory())
-		{
-			var artifactFileName = string.Format("{0}.{1}.vsix", artifactName, buildDateTimeStamp);
-			var artifactFullName = System.IO.Path.Combine(tempDirectory.FullName, artifactFileName);
-
-			DownloadArtifact(new ISI.Cake.Addin.BuildArtifacts.DownloadArtifactRequest()
-			{
-				BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
-				AuthenticationToken = authenticationToken,
-				ArtifactName = artifactName,
-				DateTimeStamp = dateTimeStampVersion.DateTimeStamp?.ToString(),
-				TargetFileName = artifactFullName,
-			});
-
-			var artifactVersionFullName = System.IO.Path.Combine(tempDirectory.FullName, string.Format("{0}.Current.DateTimeStamp.Version.txt", artifactName));
-			FileWriteText(artifactVersionFullName, dateTimeStampVersion.ToString());
-
-			Information("Uploading Artifact");
-
-			UploadFile(new ISI.Cake.Addin.FileStore.UploadFileRequest()
-			{
-				FileStoreUrl = settings.FileStore.Url,
-				UserName = settings.FileStore.UserName,
-				Password = settings.FileStore.Password,
-				Version = buildDateTimeStamp,
-				FileStoreUuid = artifactFileStoreUuid,
-				FileName = artifactFullName,
-			});
-
-			UploadFile(new ISI.Cake.Addin.FileStore.UploadFileRequest()
-			{
-				FileStoreUrl = settings.FileStore.Url,
-				UserName = settings.FileStore.UserName,
-				Password = settings.FileStore.Password,
-				Version = buildDateTimeStamp,
-				FileStoreUuid = artifactVersionFileStoreUuid,
-				FileName = artifactVersionFullName,
-			});
-		
-			Information(string.Format("curl https://www.isi-net.com/file-store/download/{0:D}/{1}.Current.DateTimeStamp.Version.txt --output {1}.Current.DateTimeStamp.Version.txt", artifactVersionFileStoreUuid, artifactName));
-			Information(string.Format("curl https://www.isi-net.com/file-store/download/{0:D}/{1}.vsix --output {1}.vsix", artifactFileStoreUuid, artifactName));
-
-			SetArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.SetArtifactEnvironmentDateTimeStampVersionRequest()
-			{
-				BuildArtifactManagementUrl = settings.Scm.WebServiceUrl,
-				AuthenticationToken = authenticationToken,
-				ArtifactName = artifactName,
-				Environment = "Production",
-				DateTimeStampVersion = dateTimeStampVersion.Value,
-			});
-		}
+			VsExtensionsApiUri = GetNullableUri(settings.VsExtensions.ApiUrl),
+			VsExtensionsApiKey = authenticationToken,
+			VsExtensionPath = simpleVsixFile,
+		});
 	});
 
 Task("Default")

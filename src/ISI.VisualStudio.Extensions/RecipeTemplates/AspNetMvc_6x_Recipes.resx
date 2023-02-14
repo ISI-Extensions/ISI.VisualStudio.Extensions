@@ -128,7 +128,7 @@ namespace ${Namespace.Area}.Controllers
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
 		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "${RouteUrl}")]
 		[ApiExplorerSettings(IgnoreApi = true)]
-		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
+		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async(System.Threading.CancellationToken cancellationToken = default)
 		{
 			Microsoft.AspNetCore.Mvc.IActionResult result = null;
 
@@ -166,7 +166,7 @@ namespace ${Namespace.Area}.Controllers
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
 		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "${RouteUrl}")]
 		[ApiExplorerSettings(IgnoreApi = true)]
-		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async()
+		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async(System.Threading.CancellationToken cancellationToken = default)
 		{
 			Microsoft.AspNetCore.Mvc.IActionResult result = null;
 
@@ -179,7 +179,7 @@ namespace ${Namespace.Area}.Controllers
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
 		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "${RouteUrl}")]
 		[ApiExplorerSettings(IgnoreApi = true)]
-		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}SaveAsync()
+		public virtual async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}SaveAsync(System.Threading.CancellationToken cancellationToken = default)
 		{
 			Microsoft.AspNetCore.Mvc.IActionResult result = null;
 
@@ -424,7 +424,7 @@ namespace ${Namespace.Area}.Controllers
 		[Microsoft.AspNetCore.Authorization.AllowAnonymous]
 		[ISI.Extensions.AspNetCore.NamedRoute(Routes.${ControllerKey}.RouteNames.${ControllerActionKey}, typeof(Routes.${ControllerKey}), "${RouteUrl}")]
 		[Microsoft.AspNetCore.Mvc.ProducesResponseType(Microsoft.AspNetCore.Http.StatusCodes.Status200OK, Type = typeof(DTOs.${ControllerActionKey}Response))]
-		public async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async([Microsoft.AspNetCore.Mvc.FromBody] DTOs.${ControllerActionKey}Request request)
+		public async Task&lt;Microsoft.AspNetCore.Mvc.IActionResult&gt; ${ControllerActionKey}Async([Microsoft.AspNetCore.Mvc.FromBody] DTOs.${ControllerActionKey}Request request, System.Threading.CancellationToken cancellationToken = default)
 		{
 			var response = new DTOs.${ControllerActionKey}Response();
 
