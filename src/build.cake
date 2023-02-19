@@ -110,10 +110,10 @@ Task("Sign")
 	{
 		if (settings.CodeSigning.DoCodeSigning && configuration.Equals("Release"))
 		{
-			if(settings.TryGetValue("LocalTestCodeSigningRemoteCodeSigningServiceUrl", out var codeSigningRemoteCodeSigningServiceUrl))
-			{
-				settings.CodeSigning.RemoteCodeSigningServiceUrl = codeSigningRemoteCodeSigningServiceUrl;
-			}
+			//if(settings.TryGetValue("LocalTestCodeSigningRemoteCodeSigningServiceUrl", out var codeSigningRemoteCodeSigningServiceUrl))
+			//{
+			//	settings.CodeSigning.RemoteCodeSigningServiceUrl = codeSigningRemoteCodeSigningServiceUrl;
+			//}
 
 			using(var tempDirectory = GetNewTempDirectory())
 			{
@@ -166,7 +166,7 @@ Task("Publish")
 		var authenticationToken = GetVsExtensionsAuthenticationToken(new ISI.Cake.Addin.VsExtensions.GetVsExtensionsAuthenticationTokenRequest()
 		{
 			VsExtensionsApiUri = GetNullableUri(settings.VsExtensions.ApiUrl),
-			UserName = settings.ActiveDirectory.GetDomainUserName(),
+			UserName = settings.ActiveDirectory.GetDomainUserName,
 			Password = settings.ActiveDirectory.Password,
 		}).AuthenticationToken;
 
