@@ -30,6 +30,7 @@ namespace ISI.VisualStudio.Extensions
 		public bool AddIocRegistry => chkAddIocRegistry.IsChecked.GetValueOrDefault();
 		public string ContractProjectDescription => cboContractProject.SelectedValue as string;
 		public bool AddInterface => chkAddInterface.IsChecked.GetValueOrDefault();
+		public bool AddRecord => chkAddRecord.IsChecked.GetValueOrDefault();
 		public string PrimaryKeyType => cboPrimaryKeyType.SelectedValue as string;
 		public bool HasArchive => !string.IsNullOrWhiteSpace(PrimaryKeyType) && chkHasArchive.IsChecked.GetValueOrDefault();
 
@@ -73,6 +74,8 @@ namespace ISI.VisualStudio.Extensions
 			var contractRootNamespace = projectDescription?.RootNamespace ?? string.Empty;
 			
 			txtInterface.Text = string.Format("{0}.I{1}", contractRootNamespace, RecordManagerName);
+			
+			txtRecord.Text = string.Format("{0}.{1}", contractRootNamespace, RecordManagerName);
 
 			chkHasArchive.IsEnabled = !string.IsNullOrWhiteSpace(PrimaryKeyType);
 		}

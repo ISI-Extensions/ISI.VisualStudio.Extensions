@@ -1177,4 +1177,79 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
+  <data name="Project_RecordManagerRecord_PrimaryKeyWithArchive_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${RecordName}s")]
+	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;, ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecordWithArchiveDateTime, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
+	{
+
+		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
+		string ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;.PrimaryKey =&gt; XXXXXX;
+
+		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
+		DateTime ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecordWithArchiveDateTime.ArchiveDateTime =&gt; ModifyDateTimeUtc;
+
+		${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt; ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;.GetRecordIndexes()
+		{
+			return new ${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt;()
+			{
+				new ${codeExtensionProvider.Namespace}.Repository.RecordIndexColumnCollection&lt;${RecordName}&gt;()
+				{
+					{ record =&gt; record.XXXXXXXXXXXXXXXX },
+				},
+			};
+		}
+	}
+}</value>
+  </data>
+  <data name="Project_RecordManagerRecord_PrimaryKey_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${RecordName}s")]
+	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;, ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecord, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
+	{
+
+		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
+		string ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;.PrimaryKey =&gt; XXXXXXXXXX;
+
+		${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt; ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;.GetRecordIndexes()
+		{
+			return new ${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt;()
+			{
+				new ${codeExtensionProvider.Namespace}.Repository.RecordIndexColumnCollection&lt;${RecordName}&gt;()
+				{
+					{ record =&gt; record.XXXXXXXXXXXXXXXX },
+				},
+			};
+		}
+	}
+}</value>
+  </data>
+  <data name="Project_RecordManagerRecord_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${RecordName}s")]
+	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecord, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
+	{
+
+		${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt; ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;.GetRecordIndexes()
+		{
+			return new ${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt;()
+			{
+				new ${codeExtensionProvider.Namespace}.Repository.RecordIndexColumnCollection&lt;${RecordName}&gt;()
+				{
+					{ record =&gt; record.XXXXXXXXXXXXXXXX },
+				},
+			};
+		}
+	}
+}</value>
+  </data>
 </root>

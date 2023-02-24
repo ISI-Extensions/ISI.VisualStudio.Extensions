@@ -92,6 +92,12 @@ namespace ISI.VisualStudio.Extensions
 
 				if (addRecordManagerDialogResult.GetValueOrDefault())
 				{
+					var recordManagerName = addRecordManagerDialog.RecordManagerName;
+					if (recordManagerName.EndsWith("RecordManager", StringComparison.InvariantCultureIgnoreCase))
+					{
+						recordManagerName = recordManagerName.TrimEnd("Manager", StringComparison.InvariantCultureIgnoreCase);
+					}
+
 					var solutionDirectory = System.IO.Path.GetDirectoryName(solution.FullPath);
 					var solutionRecipesDirectory = System.IO.Path.Combine(solutionDirectory, ".recipes");
 
@@ -124,23 +130,23 @@ namespace ISI.VisualStudio.Extensions
 							directory = System.IO.Path.GetDirectoryName(directory);
 						}
 
-						directory = System.IO.Path.Combine(directory, string.Format("{0}Manager", addRecordManagerDialog.RecordManagerName));
+						directory = System.IO.Path.Combine(directory, string.Format("{0}Manager", recordManagerName));
 
-						if (addRecordManagerDialog.AddInterface)
+						if (addRecordManagerDialog.AddInterface || addRecordManagerDialog.AddRecord)
 						{
 							System.IO.Directory.CreateDirectory(directory);
 						}
 
-						var recordManager = string.Format("RecordManager<{0}>", addRecordManagerDialog.RecordManagerName);
+						var recordManager = string.Format("RecordManager<{0}>", recordManagerName);
 						if (!string.IsNullOrWhiteSpace(addRecordManagerDialog.PrimaryKeyType))
 						{
 							if (addRecordManagerDialog.HasArchive)
 							{
-								recordManager = string.Format("RecordManagerPrimaryKey<{0}, {1}>", addRecordManagerDialog.RecordManagerName, addRecordManagerDialog.PrimaryKeyType);
+								recordManager = string.Format("RecordManagerPrimaryKey<{0}, {1}>", recordManagerName, addRecordManagerDialog.PrimaryKeyType);
 							}
 							else
 							{
-								recordManager = string.Format("RecordManagerPrimaryKeyWithArchive<{0}, {1}>", addRecordManagerDialog.RecordManagerName, addRecordManagerDialog.PrimaryKeyType);
+								recordManager = string.Format("RecordManagerPrimaryKeyWithArchive<{0}, {1}>", recordManagerName, addRecordManagerDialog.PrimaryKeyType);
 							}
 						}
 
@@ -149,23 +155,45 @@ namespace ISI.VisualStudio.Extensions
 						var contentReplacements = new Dictionary<string, string>
 						{
 							{ "${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted()) },
+							{ "${codeExtensionProvider.Namespace}", codeExtensionProvider.Namespace },
 							{ "${Namespace}", @namespace },
-							{ "${RecordName}", addRecordManagerDialog.RecordManagerName },
+							{ "${RecordName}", recordManagerName },
 							{ "${RecordManager}", recordManager },
+							{ "${PrimaryKeyType}", addRecordManagerDialog.PrimaryKeyType },
 						};
 
-						await RecipeExtensionsHelper.AddFromRecipesAsync(project, new[] { new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("__{0}Manager.cs", addRecordManagerDialog.RecordManagerName)), RecipeExtensionsHelper.GetContent(recipeName, projectDirectory, solutionRecipesDirectory, solutionDirectory), true) }, contentReplacements);
+						await RecipeExtensionsHelper.AddFromRecipesAsync(project, new[] { new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("__{0}Manager.cs", recordManagerName)), RecipeExtensionsHelper.GetContent(recipeName, projectDirectory, solutionRecipesDirectory, solutionDirectory), true) }, contentReplacements);
 
 						if (addRecordManagerDialog.AddInterface)
 						{
 							contentReplacements["${Namespace}"] = contractProjectDescription.RootNamespace;
-							await RecipeExtensionsHelper.AddFromRecipesAsync(contractProjectDescription.Project, new[] { new Extensions_Helper.RecipeItem(System.IO.Path.Combine(contractProjectDirectory, string.Format("I{0}Manager.cs", addRecordManagerDialog.RecordManagerName)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.Project_RecordManagerInterface_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true) }, contentReplacements);
+							await RecipeExtensionsHelper.AddFromRecipesAsync(contractProjectDescription.Project, new[] { new Extensions_Helper.RecipeItem(System.IO.Path.Combine(contractProjectDirectory, string.Format("I{0}Manager.cs", recordManagerName)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.Project_RecordManagerInterface_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true) }, contentReplacements);
+						}
+
+						if (addRecordManagerDialog.AddRecord)
+						{
+							contentReplacements["${Namespace}"] = contractProjectDescription.RootNamespace;
+
+							var recordRecipeName = nameof(RecipeOptions.Project_RecordManagerRecord_Template);
+							if (!string.IsNullOrWhiteSpace(addRecordManagerDialog.PrimaryKeyType))
+							{
+								if (addRecordManagerDialog.HasArchive)
+								{
+									recordRecipeName = nameof(RecipeOptions.Project_RecordManagerRecord_PrimaryKeyWithArchive_Template);
+								}
+								else
+								{
+									recordRecipeName = nameof(RecipeOptions.Project_RecordManagerRecord_PrimaryKey_Template);
+								}
+							}
+
+							await RecipeExtensionsHelper.AddFromRecipesAsync(contractProjectDescription.Project, new[] { new Extensions_Helper.RecipeItem(System.IO.Path.Combine(contractProjectDirectory, string.Format("{0}.cs", recordManagerName)), RecipeExtensionsHelper.GetContent(recordRecipeName, projectDirectory, solutionRecipesDirectory, solutionDirectory), true) }, contentReplacements);
 						}
 
 						if (addRecordManagerDialog.AddIocRegistry)
 						{
 							var serviceRegistrations = new List<(string InterfaceName, string ClassName)>();
-							serviceRegistrations.Add((InterfaceName: string.Format("I{0}Manager", addRecordManagerDialog.RecordManagerName), ClassName: string.Format("{0}Manager", addRecordManagerDialog.RecordManagerName)));
+							serviceRegistrations.Add((InterfaceName: string.Format("I{0}Manager", recordManagerName), ClassName: string.Format("{0}Manager", recordManagerName)));
 
 							if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider.CodeExtensionProviderUuid)
 							{

@@ -52,6 +52,11 @@ namespace ISI.VisualStudio.Extensions
 			var contractRootNamespace = projectDescription?.RootNamespace ?? string.Empty;
 			
 			txtAddDTOs.Text = string.Format("{0}.DataTransferObjects.{1}.{2}", contractRootNamespace, PartialClassName, NewPartialClassMethodName);
+
+			if (AddDTOs && NewPartialClassMethodName.EndsWith("RecordManager", StringComparison.InvariantCultureIgnoreCase))
+			{
+				chkAddDTOs.IsChecked = false;
+			}
 		}
 
 		private void btnOk_Click(object sender, System.Windows.RoutedEventArgs e)

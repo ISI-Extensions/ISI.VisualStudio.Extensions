@@ -78,7 +78,7 @@ namespace ISI.VisualStudio.Extensions
 					RuntimeIdentifiers = (isSdkProject ? null : "win;win-x64"),
 					UseSharedAssemblyInfo = GetDefaultValue(csProj, sharedAssemblyInfos),
 					UseSharedVersion = GetDefaultValue(csProj, sharedVersions),
-					AddAssemblyInfo = System.IO.File.Exists(GetAssemblyInfoFullName(project)),
+					AddAssemblyInfo = !System.IO.File.Exists(GetAssemblyInfoFullName(project)),
 					UseSharedLicenseHeader = GetDefaultValue(csProj, sharedLicenseHeaders),
 				};
 

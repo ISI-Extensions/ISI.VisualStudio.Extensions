@@ -35,6 +35,18 @@ namespace ISI.VisualStudio.Extensions
 		public string Project_RecordManagerInterface_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.RecordManagerInterface_Template;
 		
 		[Category(Project_Category)]
+		[DisplayName("RecordManager Record Template")]
+		public string Project_RecordManagerRecord_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.Project_RecordManagerRecord_Template;
+		
+		[Category(Project_Category)]
+		[DisplayName("RecordManager Record with PrimaryKey Template")]
+		public string Project_RecordManagerRecord_PrimaryKey_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.Project_RecordManagerRecord_PrimaryKey_Template;
+		
+		[Category(Project_Category)]
+		[DisplayName("RecordManager Record with PrimaryKey and Archive Template")]
+		public string Project_RecordManagerRecord_PrimaryKeyWithArchive_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.Project_RecordManagerRecord_PrimaryKeyWithArchive_Template;
+		
+		[Category(Project_Category)]
 		[DisplayName("ISI Extensions SqlServer RecordManager Template")]
 		public string Project_ISI_Extensions_SqlServer_RecordManager_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Extensions_SqlServer_RecordManager_Template;
 
