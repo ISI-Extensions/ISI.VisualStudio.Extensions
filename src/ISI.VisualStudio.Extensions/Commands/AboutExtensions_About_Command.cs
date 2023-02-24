@@ -14,14 +14,30 @@ namespace ISI.VisualStudio.Extensions
 	{
 		protected override async Task ExecuteAsync(OleMenuCmdEventArgs oleMenuCmdEventArgs)
 		{
-			var vsVersion = await VS.Shell.GetVsVersionAsync();
-
 			var version = ISI.Extensions.SystemInformation.GetAssemblyVersion(this.GetType().Assembly);
 
 			var message = string.Format("{0}, Version: {1}", Vsix.Name, version);
-			message += string.Format("\nVisualStudio, Version: {0}", vsVersion);
 
-			await VS.MessageBox.ShowAsync(Vsix.Name, message, Microsoft.VisualStudio.Shell.Interop.OLEMSGICON.OLEMSGICON_INFO, Microsoft.VisualStudio.Shell.Interop.OLEMSGBUTTON.OLEMSGBUTTON_OK);
+			void clearOptions()
+			{
+				var recipeExtensionsOptions = RecipeOptions.GetLiveInstanceAsync().GetAwaiter().GetResult();
+
+				var recipeOptions = new RecipeOptions();
+
+				foreach (var propertyInfo in typeof(RecipeOptions).GetProperties())
+				{
+					if (propertyInfo.PropertyType == typeof(string))
+					{
+						propertyInfo.SetValue(recipeExtensionsOptions, propertyInfo.GetValue(recipeOptions));
+					}
+				}
+
+				recipeExtensionsOptions.Save();
+			}
+
+			var inputDialog = new AboutDialog(message, clearOptions);
+
+			var inputDialogResult = await inputDialog.ShowDialogAsync();
 		}
 	}
 }

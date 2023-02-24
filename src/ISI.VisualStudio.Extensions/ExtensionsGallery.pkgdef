@@ -1,5 +1,5 @@
 ﻿[$RootPath$\ExtensionManager\Repositories\{bf994047-ed7a-48a7-9a5a-bdb4bba3db27}]  
-@="https://vsextensions.isi-net.com/gallery"
+@="https://vsextensions.isi-net.com/gallery/feed.xml"
 "Priority"=dword:00000064
 "Protocol"="Atom Feed"
 "DisplayName"="ISI"

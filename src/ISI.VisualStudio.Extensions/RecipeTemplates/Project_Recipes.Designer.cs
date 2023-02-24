@@ -181,11 +181,11 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	{
         ///		public ${RecordName}Manager(
         ///			Microsoft.Extensions.Configuration.IConfiguration configuration,
-        ///			ISI.Extensions.Repository.SqlServer.Configuration sqlServerConfiguration,
         ///			Configuration recordMangerConfiguration,
         ///			Microsoft.Extensions.Logging.ILogger logger,
         ///			ISI.Extensions.DateTimeStamper.IDateTimeStamper dateTimeStamper,
-        ///			I [rest of string was truncated]&quot;;.
+        ///			ISI.Extensions.JsonSerialization.IJsonSerializer serializer)
+        ///			: base(configu [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ISI_Extensions_SqlServer_RecordManager_Template {
             get {
