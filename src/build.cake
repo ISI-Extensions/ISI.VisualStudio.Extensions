@@ -166,7 +166,7 @@ Task("Publish")
 		var authenticationToken = GetVsExtensionsAuthenticationToken(new ISI.Cake.Addin.VsExtensions.GetVsExtensionsAuthenticationTokenRequest()
 		{
 			VsExtensionsApiUri = GetNullableUri(settings.VsExtensions.ApiUrl),
-			UserName = settings.ActiveDirectory.GetDomainUserName,
+			UserName = settings.ActiveDirectory.GetDomainUserName(),
 			Password = settings.ActiveDirectory.Password,
 		}).AuthenticationToken;
 
