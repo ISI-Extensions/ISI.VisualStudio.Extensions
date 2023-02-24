@@ -17,6 +17,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using Microsoft.VisualStudio.RpcContracts.Commands;
+using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
@@ -26,7 +27,7 @@ namespace ISI.VisualStudio.Extensions
 
 	public partial class AddRecordManagerDialog
 	{
-		public string RecordManagerName => txtRecordManagerName.Text.Replace(" ", string.Empty);
+		public string RecordManagerName => txtRecordManagerName.Text.Replace(" ", string.Empty).TrimEnd("Manager", StringComparison.InvariantCultureIgnoreCase);
 		public bool AddIocRegistry => chkAddIocRegistry.IsChecked.GetValueOrDefault();
 		public string ContractProjectDescription => cboContractProject.SelectedValue as string;
 		public bool AddInterface => chkAddInterface.IsChecked.GetValueOrDefault();
@@ -41,6 +42,8 @@ namespace ISI.VisualStudio.Extensions
 			InitializeComponent();
 
 			Title = Vsix.Name;
+
+			txtRecordManagerName.CaretIndex = 0;
 			
 			ProjectLookUp = projectDescriptions.ToDictionary(projectDescription => projectDescription.Description, projectDescription => projectDescription);
 
@@ -73,7 +76,7 @@ namespace ISI.VisualStudio.Extensions
 
 			var contractRootNamespace = projectDescription?.RootNamespace ?? string.Empty;
 			
-			txtInterface.Text = string.Format("{0}.I{1}", contractRootNamespace, RecordManagerName);
+			txtInterface.Text = string.Format("{0}.I{1}Manager", contractRootNamespace, RecordManagerName);
 			
 			txtRecord.Text = string.Format("{0}.{1}", contractRootNamespace, RecordManagerName);
 

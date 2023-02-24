@@ -31,7 +31,7 @@
 			</Grid.RowDefinitions>
 
 			<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Record Manager Name:</TextBlock>
-			<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="txtRecordManagerName" Margin="-40,0,18,2" Padding="0,4,0,0" Width="440" BorderThickness="1" />
+			<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="txtRecordManagerName" Margin="-40,0,18,2" Padding="0,4,0,0" Width="440" BorderThickness="1" Text="RecordManager" />
 
 			<TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Add Ioc Registry:</TextBlock>
 			<CheckBox Grid.Row="1" Grid.Column="1" Name="chkAddIocRegistry" IsChecked="True" Margin="5"/>

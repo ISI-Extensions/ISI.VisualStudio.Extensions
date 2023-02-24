@@ -280,7 +280,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	{
         ///
         ///		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
-        ///		str [rest of string was truncated]&quot;;.
+        ///		${P [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Project_RecordManagerRecord_PrimaryKey_Template {
             get {

@@ -1187,7 +1187,7 @@ namespace ${Namespace}
 	{
 
 		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
-		string ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;.PrimaryKey =&gt; XXXXXX;
+		${PrimaryKeyType} ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;.PrimaryKey =&gt; XXXXXX;
 
 		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
 		DateTime ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecordWithArchiveDateTime.ArchiveDateTime =&gt; ModifyDateTimeUtc;
@@ -1215,7 +1215,7 @@ namespace ${Namespace}
 	{
 
 		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
-		string ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;.PrimaryKey =&gt; XXXXXXXXXX;
+		${PrimaryKeyType} ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;.PrimaryKey =&gt; XXXXXXXXXX;
 
 		${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt; ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;.GetRecordIndexes()
 		{
