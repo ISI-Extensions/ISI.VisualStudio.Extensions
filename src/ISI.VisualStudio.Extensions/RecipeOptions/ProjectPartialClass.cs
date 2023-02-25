@@ -45,13 +45,5 @@ namespace ISI.VisualStudio.Extensions
 		[Category(ProjectPartialClass_Category)]
 		[DisplayName("DataTransferObject Response Template")]
 		public string Project_DataTransferObjectResponse_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.DataTransferObjectResponse_Template;
-
-		[Category(ProjectPartialClass_Category)]
-		[DisplayName("Serializable DataTransferObject Request Template")]
-		public string Project_SerializableDataTransferObjectRequest_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.SerializableDataTransferObjectRequest_Template;
-
-		[Category(ProjectPartialClass_Category)]
-		[DisplayName("Serializable DataTransferObject Response Template")]
-		public string Project_SerializableDataTransferObjectResponse_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.SerializableDataTransferObjectResponse_Template;
 	}
 }

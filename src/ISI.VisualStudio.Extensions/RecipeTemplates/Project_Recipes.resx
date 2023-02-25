@@ -1251,4 +1251,30 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
+  <data name="SerializableObject_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	[DataContract]
+	[${SerialNamespace}.PreferredSerializerJsonDataContract]
+	[${SerialNamespace}.SerializerContractUuid("${ContractUuid}")]
+	public class ${ClassName} : XXXXXX
+	{
+		public static ${ClassName} ToSerializable(LOCALENTITIES.${ClassName} source)
+		{
+			return new ${ClassName}()
+			{
+			};
+		}
+
+		public LOCALENTITIES.${ClassName} Export()
+		{
+			return new LOCALENTITIES.${ClassName}()
+			{
+			};
+		}
+	}
+}</value>
+  </data>
 </root>

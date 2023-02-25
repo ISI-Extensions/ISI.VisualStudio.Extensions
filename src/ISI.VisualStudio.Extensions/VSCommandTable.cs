@@ -89,6 +89,7 @@ namespace ISI.VisualStudio.Extensions
         public const int RecipeExtensions_ProjectPartialClass_SyncPartialClassUsingStatements_MenuItemId = 0x04A6;
         public const int RecipeExtensions_ProjectPartialClass_AddDataTransferObjectRequestResponse_MenuItemId = 0x04AA;
         public const int RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_MenuItemId = 0x04AB;
+        public const int RecipeExtensions_Project_AddSerializableObject_MenuItemId = 0x04AC;
         public const int RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId = 0x04B1;
         public const int RecipeExtensions_Project_AddStartUpClass_MenuItemId = 0x04C0;
         public const int RecipeExtensions_Project_AddDependencyRegisterClass_MenuItemId = 0x04C1;

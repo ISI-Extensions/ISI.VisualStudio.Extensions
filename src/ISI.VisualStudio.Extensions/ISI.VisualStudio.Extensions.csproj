@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="CakeOptions\Cake.cs" />
     <Compile Include="CakeOptions\__CakeOptions.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddSerializableObject_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_UseLocalSourcePackages_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_AddMissingLocalSourcePackages_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddRecordManager_Command.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="AboutDialog.xaml.cs">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProjectExtensions_Helper\AddSerializableObjectAsync.cs" />
     <Compile Include="SolutionExtensions_Helper\_AddLocalSourceProjectToSolution.cs" />
     <Compile Include="SolutionExtensions_Helper\_GetLibrarySolutionFolder.cs" />
     <Compile Include="SolutionExtensions_Helper\UseLocalSourcePackages.cs" />

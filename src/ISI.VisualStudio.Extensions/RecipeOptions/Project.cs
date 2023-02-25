@@ -53,5 +53,17 @@ namespace ISI.VisualStudio.Extensions
 		[Category(Project_Category)]
 		[DisplayName("ISI Libraries SqlServer RecordManager Template")]
 		public string Project_ISI_Libraries_SqlServer_RecordManager_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Libraries_SqlServer_RecordManager_Template;
+
+		[Category(Project_Category)]
+		[DisplayName("Serializable Object Template")]
+		public string Project_SerializableObject_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.SerializableObject_Template;
+
+		[Category(Project_Category)]
+		[DisplayName("Serializable DataTransferObject Request Template")]
+		public string Project_SerializableDataTransferObjectRequest_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.SerializableDataTransferObjectRequest_Template;
+
+		[Category(Project_Category)]
+		[DisplayName("Serializable DataTransferObject Response Template")]
+		public string Project_SerializableDataTransferObjectResponse_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.SerializableDataTransferObjectResponse_Template;
 	}
 }

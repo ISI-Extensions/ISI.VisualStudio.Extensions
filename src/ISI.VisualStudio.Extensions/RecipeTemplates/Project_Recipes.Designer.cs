@@ -374,6 +374,38 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         
         /// <summary>
         ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	[DataContract]
+        ///	[${SerialNamespace}.PreferredSerializerJsonDataContract]
+        ///	[${SerialNamespace}.SerializerContractUuid(&quot;${ContractUuid}&quot;)]
+        ///	public class ${ClassName} : XXXXXX
+        ///	{
+        ///		public static ${ClassName} ToSerializable(LOCALENTITIES.${ClassName} source)
+        ///		{
+        ///			return new ${ClassName}()
+        ///			{
+        ///			};
+        ///		}
+        ///
+        ///		public LOCALENTITIES.${ClassName} Export()
+        ///		{
+        ///			return new LOCALENTITIES.${ClassName}()
+        ///			{
+        ///			};
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string SerializableObject_Template {
+            get {
+                return ResourceManager.GetString("SerializableObject_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
         ///using Microsoft.Extensions.DependencyInjection;
         ///
         ///namespace ${Namespace}
