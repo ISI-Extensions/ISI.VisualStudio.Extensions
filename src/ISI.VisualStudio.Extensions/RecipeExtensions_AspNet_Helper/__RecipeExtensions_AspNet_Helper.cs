@@ -9,6 +9,7 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class RecipeExtensions_AspNet_Helper : ProjectExtensions_Helper
 	{
+		public const string ContentRoot = "wwwroot";
 		public const string AreasFolderName = "Areas";
 		public const string ControllersFolderName = "Controllers";
 		public const string JavaScriptsFolderName = "JavaScripts";

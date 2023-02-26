@@ -78,6 +78,9 @@ namespace ISI.VisualStudio.Extensions
 						var areasDirectory = RecipeExtensionsHelper.GetAreasDirectory(project);
 						var areaDirectory = RecipeExtensionsHelper.GetAreaDirectory(solutionItem);
 
+						var contentAreasDirectory = RecipeExtensionsHelper.GetContentAreasDirectory(project, areaName);
+						var contentAreaDirectory = (string.IsNullOrWhiteSpace(areaName) ? contentAreasDirectory : System.IO.Path.Combine(contentAreasDirectory, areaName));
+
 						var controllersDirectory = System.IO.Path.Combine(areaDirectory, RecipeExtensions_AspNetMvc_6x_Helper.ControllersFolderName);
 						var controllerDirectory = System.IO.Path.Combine(controllersDirectory, controllerKey);
 
@@ -113,13 +116,13 @@ namespace ISI.VisualStudio.Extensions
 						System.IO.Directory.CreateDirectory(modelsDirectory);
 						var modelsControllerDirectory = System.IO.Path.Combine(modelsDirectory, controllerKey);
 						System.IO.Directory.CreateDirectory(modelsControllerDirectory);
-						var javaScriptsDirectory = System.IO.Path.Combine(areaDirectory, "JavaScripts");
+						var javaScriptsDirectory = System.IO.Path.Combine(contentAreaDirectory, "JavaScripts");
 						System.IO.Directory.CreateDirectory(javaScriptsDirectory);
 						var javaScriptsSharedDirectory = System.IO.Path.Combine(javaScriptsDirectory, "_Shared");
 						System.IO.Directory.CreateDirectory(javaScriptsSharedDirectory);
 						var javaScriptsControllerDirectory = System.IO.Path.Combine(javaScriptsDirectory, controllerKey);
 						System.IO.Directory.CreateDirectory(javaScriptsControllerDirectory);
-						var styleSheetsDirectory = System.IO.Path.Combine(areaDirectory, "StyleSheets");
+						var styleSheetsDirectory = System.IO.Path.Combine(contentAreaDirectory, "StyleSheets");
 						System.IO.Directory.CreateDirectory(styleSheetsDirectory);
 						var styleSheetsSharedDirectory = System.IO.Path.Combine(styleSheetsDirectory, "_Shared");
 						System.IO.Directory.CreateDirectory(styleSheetsSharedDirectory);
@@ -139,13 +142,13 @@ namespace ISI.VisualStudio.Extensions
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsControllerDirectory, string.Format("{0}Model.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithView_Model_Template), modelsControllerDirectory, modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(javaScriptsSharedDirectory, "_Layout.js"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_JavaScriptsSharedLayout_Template), javaScriptsSharedDirectory, javaScriptsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(javaScriptsControllerDirectory, "_Layout.js"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_JavaScriptsControllerLayout_Template), javaScriptsControllerDirectory, javaScriptsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(javaScriptsControllerDirectory, string.Format("{0}.js", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithView_JavaScript_Template), javaScriptsControllerDirectory, javaScriptsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(javaScriptsSharedDirectory, "_Layout.js"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_JavaScriptsSharedLayout_Template), javaScriptsSharedDirectory, javaScriptsDirectory, contentAreaDirectory, contentAreasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(javaScriptsControllerDirectory, "_Layout.js"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_JavaScriptsControllerLayout_Template), javaScriptsControllerDirectory, javaScriptsDirectory, contentAreaDirectory, contentAreasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(javaScriptsControllerDirectory, string.Format("{0}.js", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithView_JavaScript_Template), javaScriptsControllerDirectory, javaScriptsDirectory, contentAreaDirectory, contentAreasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(styleSheetsSharedDirectory, "_Layout.css"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_StyleSheetsSharedLayout_Template), styleSheetsSharedDirectory, styleSheetsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(styleSheetsControllerDirectory, "_Layout.css"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_StyleSheetsControllerLayout_Template), styleSheetsControllerDirectory, styleSheetsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(styleSheetsControllerDirectory, string.Format("{0}.css", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithView_StyleSheet_Template), styleSheetsControllerDirectory, styleSheetsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(styleSheetsSharedDirectory, "_Layout.css"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_StyleSheetsSharedLayout_Template), styleSheetsSharedDirectory, styleSheetsDirectory, contentAreaDirectory, contentAreasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(styleSheetsControllerDirectory, "_Layout.css"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_StyleSheetsControllerLayout_Template), styleSheetsControllerDirectory, styleSheetsDirectory, contentAreaDirectory, contentAreasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(styleSheetsControllerDirectory, string.Format("{0}.css", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithView_StyleSheet_Template), styleSheetsControllerDirectory, styleSheetsDirectory, contentAreaDirectory, contentAreasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(viewsSharedDirectory, "_Layout.cshtml"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ViewsSharedLayout_Template), viewsSharedDirectory, viewsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(viewsControllerDirectory, "_Layout.cshtml"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ViewsControllerLayout_Template), viewsControllerDirectory, viewsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),

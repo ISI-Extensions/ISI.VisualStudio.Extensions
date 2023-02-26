@@ -428,7 +428,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         /// <summary>
         ///   Looks up a localized string similar to &lt;#
         ////*
-        ///Copyright (c) 2022, Integrated Solutions, Inc.
+        ///Copyright (c) 2023, Integrated Solutions, Inc.
         ///All rights reserved.
         ///
         ///Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

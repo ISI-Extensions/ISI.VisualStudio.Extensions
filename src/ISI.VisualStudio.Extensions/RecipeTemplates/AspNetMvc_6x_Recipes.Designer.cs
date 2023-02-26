@@ -191,12 +191,12 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section StyleSheetIncludes
         ///{
-        ///	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_css)
+        ///	@Html.AddStyleSheet(${Namespace}.T4Links.wwwroot.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_css)
         ///}
         ///
         ///@section JavaScriptIncludes
         ///{
-        ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts [rest of string was truncated]&quot;;.
+        ///	@Html.AddJavaScript(${Namespace}.T4Links.wwwroot.${Areas.Area [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ActionWithView_View_Template {
             get {
@@ -483,7 +483,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section StyleSheetIncludes
         ///{
-        ///	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_css)
+        ///	@Html.AddStyleSheet(${Namespace}.T4Links.wwwroot.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_css)
         ///	@RenderSection(&quot;StyleSheetIncludes&quot;, false)
         ///}
         ///
@@ -491,7 +491,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section JavaScriptIncludes
         ///{
-        ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${Controller [rest of string was truncated]&quot;;.
+        ///	@Html.AddJavaScript(${Namespace}.T4Links.wwwroot.${Areas.AreaName}JavaScri [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ViewsControllerLayout_Template {
             get {
@@ -509,7 +509,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section StyleSheetIncludes
         ///{
-        ///	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets._Shared._Layout_css)
+        ///	@Html.AddStyleSheet(${Namespace}.T4Links.wwwroot.${Areas.AreaName}StyleSheets._Shared._Layout_css)
         ///	@RenderSection(&quot;StyleSheetIncludes&quot;, false)
         ///}
         ///
@@ -517,8 +517,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///@section JavaScriptIncludes
         ///{
-        ///	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts._Shared._Layout_js)
-        ///	@RenderSection(&quot;JavaScriptInclude [rest of string was truncated]&quot;;.
+        ///	@Html.AddJavaScript(${Namespace}.T4Links.wwwroot.${Areas.AreaName}JavaScripts._Shared._Layout_js)
+        ///	@RenderSection(&quot;J [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ViewsSharedLayout_Template {
             get {

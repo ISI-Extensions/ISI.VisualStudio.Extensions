@@ -237,12 +237,12 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 
 @section StyleSheetIncludes
 {
-	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_css)
+	@Html.AddStyleSheet(${Namespace}.T4Links.wwwroot.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_css)
 }
 
 @section JavaScriptIncludes
 {
-	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}.${ControllerActionKey}_js)
+	@Html.AddJavaScript(${Namespace}.T4Links.wwwroot.${Areas.AreaName}JavaScripts.${ControllerKey}.${ControllerActionKey}_js)
 }
 
 @section JavaScriptContent
@@ -453,7 +453,7 @@ namespace ${Namespace.Area}.Controllers
 
 @section StyleSheetIncludes
 {
-	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_css)
+	@Html.AddStyleSheet(${Namespace}.T4Links.wwwroot.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_css)
 	@RenderSection("StyleSheetIncludes", false)
 }
 
@@ -461,7 +461,7 @@ namespace ${Namespace.Area}.Controllers
 
 @section JavaScriptIncludes
 {
-	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts.${ControllerKey}._Layout_js)
+	@Html.AddJavaScript(${Namespace}.T4Links.wwwroot.${Areas.AreaName}JavaScripts.${ControllerKey}._Layout_js)
 	@RenderSection("JavaScriptIncludes", false)
 }
 
@@ -480,7 +480,7 @@ namespace ${Namespace.Area}.Controllers
 
 @section StyleSheetIncludes
 {
-	@Html.AddStyleSheet(${Namespace}.T4Links.${Areas.AreaName}StyleSheets._Shared._Layout_css)
+	@Html.AddStyleSheet(${Namespace}.T4Links.wwwroot.${Areas.AreaName}StyleSheets._Shared._Layout_css)
 	@RenderSection("StyleSheetIncludes", false)
 }
 
@@ -488,7 +488,7 @@ namespace ${Namespace.Area}.Controllers
 
 @section JavaScriptIncludes
 {
-	@Html.AddJavaScript(${Namespace}.T4Links.${Areas.AreaName}JavaScripts._Shared._Layout_js)
+	@Html.AddJavaScript(${Namespace}.T4Links.wwwroot.${Areas.AreaName}JavaScripts._Shared._Layout_js)
 	@RenderSection("JavaScriptIncludes", false)
 }
 

@@ -355,7 +355,7 @@ namespace ${Namespace}
   <data name="T4LocalContent.Generator.t4_Template" xml:space="preserve">
     <value>&lt;#
 /*
-Copyright (c) 2022, Integrated Solutions, Inc.
+Copyright (c) 2023, Integrated Solutions, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -914,7 +914,20 @@ public static partial class &lt;#= projectFolderSlug #&gt;
 {
 	public static string _root()
 	{
+&lt;#+
+			if(string.Equals(projectFolder.Name, "wwwroot", StringComparison.InvariantCultureIgnoreCase))
+			{
+#&gt;
+		return &lt;#= classNamespace #&gt;._root();
+&lt;#+
+			}
+			else
+			{
+#&gt;
 		return string.Format("{0}&lt;#= projectFolder.Name #&gt;/", &lt;#= classNamespace #&gt;._root());
+&lt;#+
+			}
+#&gt;
 	}
 
 	private static global::${IContentRoot}.IContentUrl _directory = null;
@@ -1044,6 +1057,7 @@ public static partial class &lt;#= projectFolderSlug #&gt;
 
 		readonly string[] LocalContentFileFolders = new string[] 
 				{
+						"wwwroot",
 						"StyleSheets",
 						"JavaScripts",
 						"Scripts",
