@@ -18,7 +18,7 @@ namespace ISI.VisualStudio.Extensions
 
 			var message = string.Format("{0}, Version: {1}", Vsix.Name, version);
 
-			void clearOptions()
+			void resetOptions()
 			{
 				var recipeExtensionsOptions = RecipeOptions.GetLiveInstanceAsync().GetAwaiter().GetResult();
 
@@ -35,7 +35,7 @@ namespace ISI.VisualStudio.Extensions
 				recipeExtensionsOptions.Save();
 			}
 
-			var inputDialog = new AboutDialog(message, clearOptions);
+			var inputDialog = new AboutDialog(message, resetOptions);
 
 			var inputDialogResult = await inputDialog.ShowDialogAsync();
 		}

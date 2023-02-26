@@ -30,7 +30,7 @@
 			<Image Grid.Row="0" Grid.Column="0" Source="Resources/Lantern.png" />
 			<TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="5" Foreground="Black" Name="lblInformation" />
 
-			<Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  x:Name="btnClearOptions" Click="btnClearOptions_Click" Width="100" Height="25" Content="Clear Options"/>
+			<Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  x:Name="btnResetOptions" Click="btnResetOptions_Click" Width="100" Height="25" Content="Reset Options"/>
 			<Button Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"  IsDefault="True" x:Name="btnOk" Click="btnOk_Click" Width="100" Height="25" Content="_OK"/>
 		</Grid>
 

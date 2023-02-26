@@ -24,25 +24,25 @@ namespace ISI.VisualStudio.Extensions
 	/// 
 	public partial class AboutDialog
 	{
-		protected System.Action ClearOptions { get; }
+		protected System.Action ResetOptions { get; }
 
 		public AboutDialog(
 			string message,
-			System.Action clearOptions)
+			System.Action resetOptions)
 		{
 			InitializeComponent();
 
 			Title = Vsix.Name;
 
 			lblInformation.Text = message;
-			ClearOptions = clearOptions;
+			ResetOptions = resetOptions;
 
 			btnOk.Focus();
 		}
 
-		private void btnClearOptions_Click(object sender, System.Windows.RoutedEventArgs e)
+		private void btnResetOptions_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-			ClearOptions?.Invoke();
+			ResetOptions?.Invoke();
 			Close();
 		}
 
