@@ -86,9 +86,10 @@ namespace ISI.VisualStudio.Extensions
 						}
 
 						lines.Insert(insertUsingStatementsIndex, string.Empty);
-						for (int index = sortedUsingStatements.Count - 1; index >= 0; index--)
+						var usings = sortedUsingStatements.ToArray();
+						for (var index = usings.Length - 1; index >= 0; index--)
 						{
-							lines.Insert(insertUsingStatementsIndex, string.Format("using {0};", sortedUsingStatements[index]));
+							lines.Insert(insertUsingStatementsIndex, string.Format("using {0};", usings[index]));
 						}
 
 						System.IO.File.WriteAllText(fileName, string.Join(Environment.NewLine, lines));

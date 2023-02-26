@@ -60,7 +60,7 @@ namespace ISI.VisualStudio.Extensions
 						var solutionItem = await VS.Solutions.GetActiveItemAsync();
 						var solution = await VS.Solutions.GetCurrentSolutionAsync();
 						var project = await VS.Solutions.GetActiveProjectAsync();
-						
+
 						await project?.SaveAsync();
 
 						var @namespace = project.GetRootNamespace();
@@ -93,7 +93,7 @@ namespace ISI.VisualStudio.Extensions
 						usings.Add("ISI.Extensions.Extensions");
 
 						var controllerFileName = System.IO.Directory.GetFiles(controllerDirectory).OrderBy(controllerFileName => controllerFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
-						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, new []{controllerFileName});
+						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, new[] { controllerFileName });
 
 						var contentReplacements = new Dictionary<string, string>
 						{
@@ -152,6 +152,15 @@ namespace ISI.VisualStudio.Extensions
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(viewsControllerDirectory, string.Format("{0}.cshtml", controllerActionKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_ActionWithView_View_Template), viewsControllerDirectory, viewsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
+								(projectItems, fullName, content, replacementValues) =>
+								{
+									var usings = new ProjectExtensions_Helper.Usings(sortedUsingStatements);
+									usings.Add("ISI.Extensions.AspNetCore");
+									usings.Add("ISI.Extensions.AspNetCore.Extensions");
+
+									replacementValues.Remove("${Usings}");
+									replacementValues.Add("${Usings}", usings.GetFormatted());
+								},
 								(projectItems, fullName, content, replacementValues) =>
 								{
 									RecipeExtensionsHelper.ReplaceFileContent(fullName, new Dictionary<string, string>

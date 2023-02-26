@@ -107,7 +107,16 @@ namespace ISI.VisualStudio.Extensions
 							{
 								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllersDirectory, "__Controller.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_Area_Controller_Template), controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(modelsDirectory, "_BaseModel.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_Area_BaseModel_Template), modelsDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
-								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, "__Routes.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_Area_Routes_Template), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, "__Routes.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.AspNetMvc_6x_Area_Routes_Template), routesDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), false, 
+									(projectItems, fullName, content, replacementValues) =>
+									{
+										var usings = new ProjectExtensions_Helper.Usings(sortedUsingStatements);
+										usings.Add("ISI.Extensions.AspNetCore");
+										usings.Add("ISI.Extensions.AspNetCore.Extensions");
+
+										replacementValues.Remove("${Usings}");
+										replacementValues.Add("${Usings}", usings.GetFormatted());
+									}),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

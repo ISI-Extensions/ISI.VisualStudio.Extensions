@@ -9,7 +9,7 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class ProjectExtensions_Helper
 	{
-		public class Usings : List<string>
+		public class Usings : HashSet<string>
 		{
 			public Usings()
 			{

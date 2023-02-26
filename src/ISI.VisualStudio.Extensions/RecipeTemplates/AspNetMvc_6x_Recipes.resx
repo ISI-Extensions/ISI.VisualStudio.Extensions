@@ -223,7 +223,8 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 }</value>
   </data>
   <data name="ActionWithView_StyleSheet_Template" xml:space="preserve">
-    <value />
+    <value>body {
+}</value>
   </data>
   <data name="ActionWithView_View_Template" xml:space="preserve">
     <value>@using ISI.Extensions.AspNetCore.Extensions
@@ -289,9 +290,9 @@ namespace ${Namespace}.Areas.${AreaName}
 
 namespace ${Namespace}.Models
 {
-	public abstract class BaseModel
+	public abstract class BaseModel : ISI.Extensions.AspNetCore.IHasTitleModel
 	{
-
+		public Microsoft.AspNetCore.Html.IHtmlContent Title { get; set; }
 	}
 }</value>
   </data>
@@ -435,10 +436,12 @@ namespace ${Namespace.Area}.Controllers
 }</value>
   </data>
   <data name="StyleSheetsControllerLayout_Template" xml:space="preserve">
-    <value />
+    <value>body {
+}</value>
   </data>
   <data name="StyleSheetsSharedLayout_Template" xml:space="preserve">
-    <value />
+    <value>body {
+}</value>
   </data>
   <data name="ViewsControllerLayout_Template" xml:space="preserve">
     <value>@using ISI.Extensions.AspNetCore.Extensions

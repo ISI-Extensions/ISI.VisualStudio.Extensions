@@ -171,7 +171,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to body {
+        ///}.
         /// </summary>
         internal static string ActionWithView_StyleSheet_Template {
             get {
@@ -278,9 +279,9 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}.Models
         ///{
-        ///	public abstract class BaseModel
+        ///	public abstract class BaseModel : ISI.Extensions.AspNetCore.IHasTitleModel
         ///	{
-        ///
+        ///		public Microsoft.AspNetCore.Html.IHtmlContent Title { get; set; }
         ///	}
         ///}.
         /// </summary>
@@ -453,7 +454,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to body {
+        ///}.
         /// </summary>
         internal static string StyleSheetsControllerLayout_Template {
             get {
@@ -462,7 +464,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to body {
+        ///}.
         /// </summary>
         internal static string StyleSheetsSharedLayout_Template {
             get {

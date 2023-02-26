@@ -135,6 +135,15 @@ namespace ISI.VisualStudio.Extensions
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
 								(projectItems, fullName, content, replacementValues) =>
 								{
+									var usings = new ProjectExtensions_Helper.Usings(sortedUsingStatements);
+									usings.Add("ISI.Extensions.AspNetCore");
+									usings.Add("ISI.Extensions.AspNetCore.Extensions");
+
+									replacementValues.Remove("${Usings}");
+									replacementValues.Add("${Usings}", usings.GetFormatted());
+								},
+								(projectItems, fullName, content, replacementValues) =>
+								{
 									RecipeExtensionsHelper.ReplaceFileContent(fullName, new Dictionary<string, string>
 									{
 										{ "//${RouteNames}", string.Format("[RouteName] public const string {0} = \"{0}-{1}\";\r\n\t\t\t\t//${{RouteNames}}", controllerActionKey, Guid.NewGuid().Formatted(GuidExtensions.GuidFormat.WithHyphens)) },

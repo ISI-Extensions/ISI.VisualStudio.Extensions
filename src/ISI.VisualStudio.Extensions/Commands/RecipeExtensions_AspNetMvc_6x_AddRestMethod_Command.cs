@@ -94,7 +94,7 @@ namespace ISI.VisualStudio.Extensions
 						usings.Add(string.Format("DTOs = {0}.Models.{1}.SerializableModels", areaNamespace, controllerKey));
 
 						var controllerFileName = System.IO.Directory.GetFiles(controllerDirectory).OrderBy(controllerFileName => controllerFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
-						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, new []{controllerFileName});
+						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, new[] { controllerFileName });
 
 						var contentReplacements = new Dictionary<string, string>
 						{
@@ -123,6 +123,15 @@ namespace ISI.VisualStudio.Extensions
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(controllerDirectory, string.Format("{0}Async.cs", controllerActionKey)), RecipeExtensionsHelper.GetContent( nameof(RecipeOptions.AspNetMvc_6x_RestMethod_Action_Template), controllerDirectory, controllersDirectory, areaDirectory, areasDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 
 							new Extensions_Helper.RecipeItem(System.IO.Path.Combine(routesDirectory, string.Format("{0}.cs", controllerKey)), null, false,
+								(projectItems, fullName, content, replacementValues) =>
+								{
+									var usings = new ProjectExtensions_Helper.Usings(sortedUsingStatements);
+									usings.Add("ISI.Extensions.AspNetCore");
+									usings.Add("ISI.Extensions.AspNetCore.Extensions");
+
+									replacementValues.Remove("${Usings}");
+									replacementValues.Add("${Usings}", usings.GetFormatted());
+								},
 								(projectItems, fullName, content, replacementValues) =>
 								{
 									RecipeExtensionsHelper.ReplaceFileContent(fullName, new Dictionary<string, string>

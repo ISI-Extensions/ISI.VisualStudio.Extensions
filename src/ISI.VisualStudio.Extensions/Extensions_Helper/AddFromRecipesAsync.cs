@@ -10,20 +10,26 @@ namespace ISI.VisualStudio.Extensions
 		{
 			foreach (var recipeItem in recipeItems)
 			{
+				var recipeReplacementValues = new Dictionary<string, string>();
+				foreach (var replacementValue in replacementValues ?? System.Array.Empty<KeyValuePair<string, string>>())
+				{
+					recipeReplacementValues.Add(replacementValue.Key, replacementValue.Value);
+				}
+
+				recipeItem.PreAction?.Invoke(project, recipeItem.FullName, recipeItem.Content, recipeReplacementValues);
+
 				if (!System.IO.File.Exists(recipeItem.FullName) && !string.IsNullOrEmpty(recipeItem.Content))
 				{
-					await AddFromRecipeAsync(project, recipeItem.FullName, recipeItem.Content, replacementValues);
+					await AddFromRecipeAsync(project, recipeItem.FullName, recipeItem.Content, recipeReplacementValues).ContinueWith(task =>
+					{
+						if (recipeItem.Open)
+						{
+							Community.VisualStudio.Toolkit.VS.Documents.OpenViaProjectAsync(recipeItem.FullName).GetAwaiter().GetResult();
+						}
+					});
 				}
 
-				recipeItem.PostAction?.Invoke(project, recipeItem.FullName, recipeItem.Content, replacementValues);
-			}
-
-			foreach (var recipeItem in recipeItems)
-			{
-				if (recipeItem.Open)
-				{
-					await Community.VisualStudio.Toolkit.VS.Documents.OpenViaProjectAsync(recipeItem.FullName);
-				}
+				recipeItem.PostAction?.Invoke(project, recipeItem.FullName, recipeItem.Content, recipeReplacementValues);
 			}
 		}
 	}
