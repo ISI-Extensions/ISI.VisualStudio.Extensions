@@ -867,6 +867,34 @@ public static partial class &lt;#= projectFolderSlug #&gt;
 						}
 					}
 				}
+
+				if(projectItem.ProjectItems != null)
+				{
+					foreach (ProjectItem subProjectItem in projectItem.ProjectItems)
+					{
+						foreach (var fileName in ExpandFileName(subProjectItem.Name))
+						{
+							if (!usedNames.Contains(fileName))
+							{
+#&gt;
+	public static readonly string &lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; = _root() + "&lt;#= subProjectItem.Name #&gt;";
+&lt;#+
+		if (BuildT4Resources)
+		{
+#&gt;
+	public static System.IO.Stream Get&lt;#= CreateSlug(projectItem.Name) #&gt;Stream()
+	{
+		return typeof(&lt;#= Namespace #&gt;.&lt;#= ResourcesSubClassName #&gt;).Assembly.GetManifestResourceStream(&lt;#= CreateSlug(subProjectItem.Name) #&gt;);
+	}
+&lt;#+
+		}
+#&gt;
+&lt;#+
+								usedNames.Add(fileName);
+							}
+						}
+					}
+				}
 			}
 #&gt;
 }
@@ -956,6 +984,24 @@ public static partial class &lt;#= projectFolderSlug #&gt;
 	public static global::${IContentRoot}.IContentUrl &lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; =&gt; _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; ??= GetContentUrl(_root() + "&lt;#= projectItem.Name #&gt;", true);
 &lt;#+
 							usedNames.Add(fileName);
+						}
+					}
+
+					if(projectItem.ProjectItems != null)
+					{
+						foreach (ProjectItem subProjectItem in projectItem.ProjectItems)
+						{
+							foreach (var fileName in ExpandFileName(subProjectItem.Name))
+							{
+								if (!usedNames.Contains(fileName))
+								{
+#&gt;
+	private static global::ISI.Extensions.AspNetCore.IContentUrl _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; = null;
+	public static global::ISI.Extensions.AspNetCore.IContentUrl &lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; =&gt; _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; ??= GetContentUrl(_root() + "&lt;#= subProjectItem.Name #&gt;", true);
+&lt;#+
+									usedNames.Add(fileName);
+								}
+							}
 						}
 					}
 				}

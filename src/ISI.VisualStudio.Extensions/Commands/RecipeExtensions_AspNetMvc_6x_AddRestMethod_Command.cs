@@ -37,13 +37,14 @@ namespace ISI.VisualStudio.Extensions
 		{
 			try
 			{
-				var inputDialog = new InputDialog("New Rest Method");
+				var inputDialog = new AddRestMethodDialog();
 
 				var inputDialogResult = await inputDialog.ShowDialogAsync();
 
-				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.Value))
+				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.NewRestMethodName))
 				{
-					var controllerActionKey = inputDialog.Value.Replace(" ", string.Empty);
+					var addSerializableDTOs = inputDialog.AddSerializableDTOs;
+					var controllerActionKey = inputDialog.NewRestMethodName.Replace(" ", string.Empty);
 
 					controllerActionKey = controllerActionKey.TrimEnd("Async");
 
@@ -55,7 +56,7 @@ namespace ISI.VisualStudio.Extensions
 
 						await outputWindowPane.ClearAsync();
 
-						await outputWindowPane.WriteLineAsync("New Action With View");
+						await outputWindowPane.WriteLineAsync("New Rest Action");
 
 						var solutionItem = await VS.Solutions.GetActiveItemAsync();
 						var solution = await VS.Solutions.GetCurrentSolutionAsync();
@@ -91,7 +92,10 @@ namespace ISI.VisualStudio.Extensions
 						usings.Add("Microsoft.AspNetCore.Mvc");
 						usings.Add("Microsoft.Extensions.DependencyInjection");
 						usings.Add("ISI.Extensions.Extensions");
-						usings.Add(string.Format("DTOs = {0}.Models.{1}.SerializableModels", areaNamespace, controllerKey));
+						if (addSerializableDTOs)
+						{
+							usings.Add(string.Format("DTOs = {0}.Models.{1}.SerializableModels", areaNamespace, controllerKey));
+						}
 
 						var controllerFileName = System.IO.Directory.GetFiles(controllerDirectory).OrderBy(controllerFileName => controllerFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
 						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, new[] { controllerFileName });
@@ -115,7 +119,10 @@ namespace ISI.VisualStudio.Extensions
 						var modelsControllerDirectory = System.IO.Path.Combine(modelsDirectory, controllerKey);
 						System.IO.Directory.CreateDirectory(modelsControllerDirectory);
 						var serializableModelsControllerDirectory = System.IO.Path.Combine(modelsControllerDirectory, "SerializableModels");
-						System.IO.Directory.CreateDirectory(serializableModelsControllerDirectory);
+						if (addSerializableDTOs)
+						{
+							System.IO.Directory.CreateDirectory(serializableModelsControllerDirectory);
+						}
 						var routesDirectory = System.IO.Path.Combine(areaDirectory, "Routes");
 
 						var recipes = new[]
@@ -143,7 +150,10 @@ namespace ISI.VisualStudio.Extensions
 
 						await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
 
-						await RecipeExtensionsHelper.AddSerializableDataTransferObjectRequestResponseAsync(solution, project, serializableModelsControllerDirectory, string.Format("{0}.Models.{1}.SerializableModels", areaNamespace, controllerKey), controllerActionKey);
+						if (addSerializableDTOs)
+						{
+							await RecipeExtensionsHelper.AddSerializableDataTransferObjectRequestResponseAsync(solution, project, serializableModelsControllerDirectory, string.Format("{0}.Models.{1}.SerializableModels", areaNamespace, controllerKey), controllerActionKey);
+						}
 
 						await outputWindowPane.WriteLineAsync("Done\n");
 						await outputWindowPane.ActivateAsync();

@@ -54,6 +54,9 @@
     <Compile Include="..\ISI.VisualStudio.Extensions.Version.cs">
       <Link>Properties\ISI.VisualStudio.Extensions.Version.cs</Link>
     </Compile>
+    <Compile Include="AddRestMethodDialog.xaml.cs">
+      <DependentUpon>AddRestMethodDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddRecordManagerDialog.xaml.cs">
       <DependentUpon>AddRecordManagerDialog.xaml</DependentUpon>
     </Compile>
@@ -454,6 +457,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AddRestMethodDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AddRecordManagerDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
