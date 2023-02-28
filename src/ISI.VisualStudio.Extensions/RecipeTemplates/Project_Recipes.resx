@@ -1241,7 +1241,7 @@ namespace ${Namespace}
 
 namespace ${Namespace}
 {
-	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${RecordName}s")]
+	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${Name}s")]
 	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;, ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecordWithArchiveDateTime, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
 	{
 
@@ -1269,7 +1269,7 @@ namespace ${Namespace}
 
 namespace ${Namespace}
 {
-	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${RecordName}s")]
+	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${Name}s")]
 	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;, ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecord, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
 	{
 
@@ -1294,7 +1294,7 @@ namespace ${Namespace}
 
 namespace ${Namespace}
 {
-	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${RecordName}s")]
+	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${Name}s")]
 	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecord, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
 	{
 

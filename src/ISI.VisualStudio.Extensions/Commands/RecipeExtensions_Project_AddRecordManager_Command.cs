@@ -157,6 +157,7 @@ namespace ISI.VisualStudio.Extensions
 							{ "${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted()) },
 							{ "${codeExtensionProvider.Namespace}", codeExtensionProvider.Namespace },
 							{ "${Namespace}", @namespace },
+							{ "${Name}", recordManagerName.TrimEnd("Record", StringComparison.InvariantCultureIgnoreCase) },
 							{ "${RecordName}", recordManagerName },
 							{ "${RecordManager}", recordManager },
 							{ "${PrimaryKeyType}", addRecordManagerDialog.PrimaryKeyType },

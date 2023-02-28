@@ -275,12 +275,12 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
-        ///	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = &quot;XXXXXXX&quot;, TableName = &quot;${RecordName}s&quot;)]
+        ///	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = &quot;XXXXXXX&quot;, TableName = &quot;${Name}s&quot;)]
         ///	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;, ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecord, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
         ///	{
         ///
         ///		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
-        ///		${P [rest of string was truncated]&quot;;.
+        ///		${Primary [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Project_RecordManagerRecord_PrimaryKey_Template {
             get {
@@ -293,11 +293,11 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
-        ///	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = &quot;XXXXXXX&quot;, TableName = &quot;${RecordName}s&quot;)]
+        ///	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = &quot;XXXXXXX&quot;, TableName = &quot;${Name}s&quot;)]
         ///	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;, ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecordWithArchiveDateTime, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
         ///	{
         ///
-        ///		[${codeExtensionProvider.Namespace}.Repository.IgnoreRec [rest of string was truncated]&quot;;.
+        ///		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordPro [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Project_RecordManagerRecord_PrimaryKeyWithArchive_Template {
             get {
@@ -310,11 +310,11 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
-        ///	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = &quot;XXXXXXX&quot;, TableName = &quot;${RecordName}s&quot;)]
+        ///	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = &quot;XXXXXXX&quot;, TableName = &quot;${Name}s&quot;)]
         ///	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecord, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
         ///	{
         ///
-        ///		${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt; ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;.Get [rest of string was truncated]&quot;;.
+        ///		${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt; ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;.GetRecord [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Project_RecordManagerRecord_Template {
             get {
