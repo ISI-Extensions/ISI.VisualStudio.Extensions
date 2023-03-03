@@ -56,7 +56,9 @@ namespace ISI.VisualStudio.Extensions
 				var transformFile = addExistingFilesResponse.NullCheckedFirstOrDefault();
 				if (transformFile != null)
 				{
-					await parentPhysicalFile.AddNestedFileAsync(transformFile);
+					await transformFile.TrySetAttributeAsync(PhysicalFileAttribute.DependentUpon, parentPhysicalFile.Name.Split('/','\\').LastOrDefault());
+
+					//await parentPhysicalFile.AddNestedFileAsync(transformFile);
 				}
 			}
 		}

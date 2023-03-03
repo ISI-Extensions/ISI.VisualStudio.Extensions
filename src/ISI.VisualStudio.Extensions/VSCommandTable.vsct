@@ -275,6 +275,17 @@
 				</Strings>
 			</Button>
 
+			<Button guid="PackageUuid" id="AppSettingsExtensions_AddTransform_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ItemMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>AppSettingsExtensions_AddTransform_MenuItemId</CommandName>
+					<ButtonText>Add Transformation</ButtonText>
+				</Strings>
+			</Button>
+
 
 			<!-- Cake Extensions -->
 			<Button guid="PackageUuid" id="CakeExtensions_ExecuteDefaultTarget_MenuItemId" priority="0x0100" type="Button">
@@ -766,6 +777,10 @@
 		<CommandPlacement guid="PackageUuid" id="XmlConfigurationExtensions_AddTransform_MenuItemId" priority="0x0600">
 			<Parent guid="VSMainMenu" id="Project.AddMiscGroup"/>
 		</CommandPlacement>
+
+		<CommandPlacement guid="PackageUuid" id="AppSettingsExtensions_AddTransform_MenuItemId" priority="0x0600">
+			<Parent guid="VSMainMenu" id="Project.AddMiscGroup"/>
+		</CommandPlacement>
 	</CommandPlacements>
 
 	<KeyBindings>
@@ -798,6 +813,7 @@
 			<IDSymbol name="XmlConfigurationExtensions_ExecuteTransform_SubMenuId" value="0x0302" />
 			<IDSymbol name="XmlConfigurationExtensions_Execute_MenuItemId" value="0x0303" />
 
+			<IDSymbol name="AppSettingsExtensions_AddTransform_MenuItemId" value="0x0330" />
 
 			<IDSymbol name="RecipeExtensions_AspNetMvc_5x_MenuSubgroupId" value="0x0410" />
 			<IDSymbol name="RecipeExtensions_AspNetMvc_5x_SubMenuId" value="0x0411" />

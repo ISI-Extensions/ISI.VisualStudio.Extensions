@@ -56,6 +56,7 @@ namespace ISI.VisualStudio.Extensions
         public const int XmlConfigurationExtensions_ExecuteTransform_MenuSubgroupId = 0x0301;
         public const int XmlConfigurationExtensions_ExecuteTransform_SubMenuId = 0x0302;
         public const int XmlConfigurationExtensions_Execute_MenuItemId = 0x0303;
+        public const int AppSettingsExtensions_AddTransform_MenuItemId = 0x0330;
         public const int RecipeExtensions_AspNetMvc_5x_MenuSubgroupId = 0x0410;
         public const int RecipeExtensions_AspNetMvc_5x_SubMenuId = 0x0411;
         public const int RecipeExtensions_AspNetMvc_5x_CreateTemplates_MenuItemId = 0x0412;

@@ -68,6 +68,7 @@
     <Compile Include="Commands\RecipeExtensions_Project_AddRecordManager_Command.cs" />
     <Compile Include="Commands\ReferenceExtensions_PasteAsProjectReferences_Command.cs" />
     <Compile Include="Commands\ReferenceExtensions_CopyReferencesAsProjectReferences_Command.cs" />
+    <Compile Include="Commands\AppSettingsExtensions_AddTransform_Command.cs" />
     <Compile Include="EmbeddedFileNamesDialog.xaml.cs">
       <DependentUpon>EmbeddedFileNamesDialog.xaml</DependentUpon>
     </Compile>
