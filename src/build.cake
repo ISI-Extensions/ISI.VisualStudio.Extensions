@@ -33,7 +33,7 @@ Information("BuildDateTimeStampVersion: {0}", buildDateTimeStampVersion);
 
 var buildArtifactVsixFile = File(string.Format("../Publish/{0}.{1}.vsix", artifactName, buildDateTimeStamp));
 
-var nugetPackOutputDirectory = Argument("NugetPackOutputDirectory", "../Nuget");
+var nugetPackOutputDirectory = Argument("NugetPackOutputDirectory", System.IO.Path.GetFullPath("../Nuget"));
 
 Task("Clean")
 	.Does(() =>
