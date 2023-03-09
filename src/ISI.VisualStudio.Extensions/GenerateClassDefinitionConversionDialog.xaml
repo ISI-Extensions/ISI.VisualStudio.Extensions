@@ -47,6 +47,7 @@
 			<StackPanel>
 				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternConstructor" Checked="rdoConversionPatternConstructor_OnChecked" IsChecked="True">_Constructor</RadioButton>
 				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternConstructorExport" Checked="rdoConversionPatternConstructorExport_OnChecked">Constructor _Export</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternRequesr" Checked="rdoConversionPatternRequest_OnChecked">_Request</RadioButton>
 				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternAssignment" Checked="rdoConversionPatternAssignment_OnChecked">_Assignment</RadioButton>
 				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternCustom" Checked="rdoConversionPatternCustom_OnChecked">Custom</RadioButton>
 			</StackPanel>
@@ -92,6 +93,29 @@
 
 				<Label Grid.Row="1" Grid.Column="0">Source:</Label>
 				<TextBox Grid.Row="1" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3"></TextBox>
+
+				<Label Grid.Row="2" Grid.Column="0">Separator:</Label>
+				<TextBox Grid.Row="2" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3">,</TextBox>
+			</Grid>
+		</GroupBox>
+
+		<GroupBox Grid.Row="1" Grid.Column="1" Padding="3" Margin="3" Name="gpxConversionPatternRequest" Header="Assignment" Visibility="Hidden">
+			<Grid Margin="5">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="64" />
+					<ColumnDefinition Width="367" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="40" />
+					<RowDefinition Height="40" />
+					<RowDefinition Height="40" />
+				</Grid.RowDefinitions>
+
+				<Label Grid.Row="0" Grid.Column="0">Target:</Label>
+				<TextBox  Grid.Row="0" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3"></TextBox>
+
+				<Label Grid.Row="1" Grid.Column="0">Source:</Label>
+				<TextBox  Grid.Row="1" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3">request</TextBox>
 
 				<Label Grid.Row="2" Grid.Column="0">Separator:</Label>
 				<TextBox Grid.Row="2" Grid.Column="1" IsEnabled="False" BorderThickness="1" Margin="0,4,0,0" Padding="3,3,3,3">,</TextBox>

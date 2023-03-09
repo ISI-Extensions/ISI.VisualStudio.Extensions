@@ -13,6 +13,7 @@ namespace ISI.VisualStudio.Extensions
 		{
 			Constructor,
 			ConstructorExport,
+			Request,
 			Assignment,
 			Custom,
 		}
@@ -70,6 +71,13 @@ namespace ISI.VisualStudio.Extensions
 			UpdatePreview();
 		}
 
+		private void rdoConversionPatternRequest_OnChecked(object sender, RoutedEventArgs e)
+		{
+			ConversionPattern = GenerateClassDefinitionConversionDialogConversionPattern.Request;
+
+			UpdatePreview();
+		}
+
 		private void rdoConversionPatternAssignment_OnChecked(object sender, RoutedEventArgs e)
 		{
 			ConversionPattern = GenerateClassDefinitionConversionDialogConversionPattern.Assignment;
@@ -112,6 +120,7 @@ namespace ISI.VisualStudio.Extensions
 			{
 				gpxConversionPatternConstructor.Visibility = (ConversionPattern == GenerateClassDefinitionConversionDialogConversionPattern.Constructor ? Visibility.Visible : Visibility.Hidden);
 				gpxConversionPatternConstructorExport.Visibility = (ConversionPattern == GenerateClassDefinitionConversionDialogConversionPattern.ConstructorExport ? Visibility.Visible : Visibility.Hidden);
+				gpxConversionPatternRequest.Visibility = (ConversionPattern == GenerateClassDefinitionConversionDialogConversionPattern.Request ? Visibility.Visible : Visibility.Hidden);
 				gpxConversionPatternAssignment.Visibility = (ConversionPattern == GenerateClassDefinitionConversionDialogConversionPattern.Assignment ? Visibility.Visible : Visibility.Hidden);
 				gpxConversionPatternCustom.Visibility = (ConversionPattern == GenerateClassDefinitionConversionDialogConversionPattern.Custom ? Visibility.Visible : Visibility.Hidden);
 
@@ -130,6 +139,12 @@ namespace ISI.VisualStudio.Extensions
 					case GenerateClassDefinitionConversionDialogConversionPattern.ConstructorExport:
 						targetEntityName = null;
 						sourceEntityName = null;
+						conversionSeparator = ",";
+						break;
+
+					case GenerateClassDefinitionConversionDialogConversionPattern.Request:
+						targetEntityName = null;
+						sourceEntityName = "request";
 						conversionSeparator = ",";
 						break;
 
