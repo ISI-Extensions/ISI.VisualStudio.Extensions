@@ -42,7 +42,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var configDirectory = System.IO.Path.GetDirectoryName(parentPhysicalFile.FullPath);
 
-				var fullName = System.IO.Path.Combine(configDirectory, string.Format("{0}.{1}.config", System.IO.Path.GetFileNameWithoutExtension(parentPhysicalFile.Name), configurationKey));
+				var fullName = System.IO.Path.Combine(configDirectory, string.Format("{0}.{1}.config", System.IO.Path.GetFileNameWithoutExtension(parentPhysicalFile.FullPath), configurationKey));
 
 				using (var stream = System.IO.File.CreateText(fullName))
 				{
@@ -56,9 +56,16 @@ namespace ISI.VisualStudio.Extensions
 				var transformFile = addExistingFilesResponse.NullCheckedFirstOrDefault();
 				if (transformFile != null)
 				{
-					await transformFile.TrySetAttributeAsync(PhysicalFileAttribute.DependentUpon, parentPhysicalFile.Name.Split('/','\\').LastOrDefault());
-
-					//await parentPhysicalFile.AddNestedFileAsync(transformFile);
+					await transformFile.TrySetAttributeAsync(PhysicalFileAttribute.DependentUpon, parentPhysicalFile.Name.Split('/', '\\').LastOrDefault()).ContinueWith(async _ =>
+					{
+						await project.SaveAsync().ContinueWith(async _ =>
+						{
+							await project.UnloadAsync().ContinueWith(async _ =>
+							{
+								await project.LoadAsync();
+							});
+						});
+					});
 				}
 			}
 		}
