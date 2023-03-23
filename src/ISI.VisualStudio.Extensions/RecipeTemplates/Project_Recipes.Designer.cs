@@ -85,7 +85,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
-        ///	public partial class ${ClassNamePrefix}Request
+        ///	public class ${ClassNamePrefix}Request
         ///	{
         ///
         ///		public System.Threading.CancellationToken CancellationToken { get; set; } = default;
