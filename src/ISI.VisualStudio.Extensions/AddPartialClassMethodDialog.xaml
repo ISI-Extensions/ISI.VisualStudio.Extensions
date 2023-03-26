@@ -12,7 +12,7 @@
 											 toolkit:Themes.UseVsTheme="True"
 											 mc:Ignorable="d"
 											 WindowStartupLocation="CenterScreen"
-											 Width="654" Height="187">
+											 Width="654" Height="227">
 	<StackPanel Margin="2">
 		<Grid Margin="5">
 			<Grid.ColumnDefinitions>
@@ -21,6 +21,7 @@
 				<ColumnDefinition Width="420" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
+				<RowDefinition Height="30" />
 				<RowDefinition Height="30" />
 				<RowDefinition Height="30" />
 				<RowDefinition Height="30" />
@@ -35,6 +36,10 @@
 			<TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Add DTOs:</TextBlock>
 			<CheckBox Grid.Row="2" Grid.Column="1" Name="chkAddDTOs" Margin="5,5,5,5"/>
 			<TextBlock Grid.Row="2" Grid.Column="2" Name="txtAddDTOs" Margin="2,6,2,2"/>
+
+			<TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Is Async:</TextBlock>
+			<CheckBox Grid.Row="3" Grid.Column="1" Name="chkIsAsync" Margin="5,5,5,5"/>
+			<TextBlock Grid.Row="3" Grid.Column="2" Name="txtIsAsync" Margin="2,6,2,2"/>
 		</Grid>
 
 		<WrapPanel Margin="0,5,60,0" HorizontalAlignment="Right">

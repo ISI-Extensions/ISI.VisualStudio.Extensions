@@ -1,4 +1,19 @@
-﻿using Community.VisualStudio.Toolkit;
+﻿#region Copyright & License
+/*
+Copyright (c) 2023, Integrated Solutions, Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+		* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+		* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+		* Neither the name of the Integrated Solutions, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+#endregion
+ 
+using Community.VisualStudio.Toolkit;
 using ISI.Extensions.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.Shell;
@@ -87,6 +102,7 @@ namespace ISI.VisualStudio.Extensions
 				var @namespace = GetNamespace(project, solutionItem);
 
 				var contractProjectDirectory = GetProjectDirectory(contractProject);
+				var @contractNamespace = GetNamespace(contractProject, contractProject);
 
 				var directory = (solutionItem.Type == SolutionItemType.Project ? projectDirectory : solutionItem.FullPath);
 				var partialClassDirectory = System.IO.Path.Combine(directory, partialClassName);
@@ -101,6 +117,8 @@ namespace ISI.VisualStudio.Extensions
 						var classInjectors = codeExtensionProvider.DefaultClassInjectors.ToList();
 
 						var usings = new List<string>();
+
+						#region Api Template
 						if (partialClassName.EndsWith("Api", StringComparison.InvariantCulture))
 						{
 							try
@@ -131,7 +149,9 @@ namespace ISI.VisualStudio.Extensions
 							{
 							}
 						}
+						#endregion
 
+						#region Repository Template
 						if (partialClassName.EndsWith("Repository", StringComparison.InvariantCulture))
 						{
 							try
@@ -142,6 +162,20 @@ namespace ISI.VisualStudio.Extensions
 							{
 							}
 						}
+						#endregion
+
+						#region Generic Template
+						if (!partialClassName.EndsWith("Api", StringComparison.InvariantCulture) && !partialClassName.EndsWith("Repository", StringComparison.InvariantCulture))
+						{
+							try
+							{
+								usings.Add(string.Format("DTOs = {0}.DataTransferObjects.{1}", @contractNamespace, partialClassName));
+							}
+							catch
+							{
+							}
+						}
+						#endregion
 
 						var sortedUsingStatements = GetSortedUsings(codeExtensionProvider, usings, null);
 
@@ -167,6 +201,7 @@ namespace ISI.VisualStudio.Extensions
 					{
 						var usings = new List<string>();
 
+						#region Api Template
 						if (partialClassName.EndsWith("Api", StringComparison.InvariantCulture))
 						{
 							try
@@ -177,7 +212,9 @@ namespace ISI.VisualStudio.Extensions
 							{
 							}
 						}
+						#endregion
 
+						#region Repository Template
 						if (partialClassName.EndsWith("Repository", StringComparison.InvariantCulture))
 						{
 							try
@@ -188,6 +225,20 @@ namespace ISI.VisualStudio.Extensions
 							{
 							}
 						}
+						#endregion
+
+						#region Generic Template
+						if (!partialClassName.EndsWith("Api", StringComparison.InvariantCulture) && !partialClassName.EndsWith("Repository", StringComparison.InvariantCulture))
+						{
+							try
+							{
+								usings.Add(string.Format("DTOs = {0}.DataTransferObjects.{1}", @contractNamespace, partialClassName));
+							}
+							catch
+							{
+							}
+						}
+						#endregion
 
 						var interfaceName = string.Format("I{0}", partialClassName);
 

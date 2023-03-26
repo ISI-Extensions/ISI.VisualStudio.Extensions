@@ -3,7 +3,7 @@ extensions: .cpp .h
 extensions: .cs
 #region Copyright & License
 /*
-Copyright (c) 2022, Integrated Solutions, Inc.
+Copyright (c) 2023, Integrated Solutions, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -18,7 +18,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
  
 extensions: .aspx .ascx
 <%-- 
-Copyright (c) 2022, Integrated Solutions, Inc.
+Copyright (c) 2023, Integrated Solutions, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -31,7 +31,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 --%>
  
 extensions: .vb
-'Copyright (c) 2022, Integrated Solutions, Inc.
+'Copyright (c) 2023, Integrated Solutions, Inc.
 'All rights reserved.
 '
 'Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:''
@@ -44,7 +44,7 @@ extensions: .vb
  
 extensions:  .xml .config .xsd
 <!--
-Copyright (c) 2022, Integrated Solutions, Inc.
+Copyright (c) 2023, Integrated Solutions, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -58,7 +58,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
  
 extensions:  .js
 /*
-Copyright (c) 2022, Integrated Solutions, Inc.
+Copyright (c) 2023, Integrated Solutions, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -72,7 +72,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
  
 extensions: .cshtml
 @*
-Copyright (c) 2022, Integrated Solutions, Inc.
+Copyright (c) 2023, Integrated Solutions, Inc.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

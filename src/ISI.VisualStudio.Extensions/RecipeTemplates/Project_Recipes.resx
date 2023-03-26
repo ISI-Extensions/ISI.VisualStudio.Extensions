@@ -303,18 +303,6 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
-  <data name="AsyncDataTransferObjectRequest_Template" xml:space="preserve">
-    <value>${Usings}
-
-namespace ${Namespace}
-{
-	public class ${ClassNamePrefix}Request
-	{
-
-		public System.Threading.CancellationToken CancellationToken { get; set; } = default;
-	}
-}</value>
-  </data>
   <data name="ServiceRegistrarClass_Template" xml:space="preserve">
     <value>${Usings}
 using Microsoft.Extensions.DependencyInjection;
