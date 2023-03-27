@@ -51,18 +51,17 @@ namespace ISI.VisualStudio.Extensions
 		{
 			try
 			{
-				var inputDialog = new InputDialog("New Partial Class Private Method");
+				var inputDialog = new AddPartialClassPrivateMethodDialog();
 
 				var inputDialogResult = await inputDialog.ShowDialogAsync();
 
-				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.Value))
+				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.NewPartialClassPrivateMethodName))
 				{
-					var methodName = inputDialog.Value.Replace(" ", string.Empty);
+					var methodName = inputDialog.NewPartialClassPrivateMethodName.Replace(" ", string.Empty);
 
-					var isAsync = methodName.EndsWith("Async", StringComparison.InvariantCulture);
-					if (isAsync)
+					if (inputDialog.IsAsync)
 					{
-						methodName = methodName.Substring(0, methodName.Length - "Async".Length);
+						methodName = methodName.TrimEnd("Async");
 					}
 
 					if (!string.IsNullOrWhiteSpace(methodName))
@@ -108,7 +107,7 @@ namespace ISI.VisualStudio.Extensions
 
 							var recipes = new[]
 							{
-								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(partialClassDirectory, string.Format("_{0}{1}.cs", methodName, (isAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent((isAsync ? nameof(RecipeOptions.ProjectPartialClass_AsyncPartialClassPrivateMethod_Template) : nameof(RecipeOptions.ProjectPartialClass_PartialClassPrivateMethod_Template)), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(partialClassDirectory, string.Format("_{0}{1}.cs", methodName, (inputDialog.IsAsync ? "Async" : string.Empty))), RecipeExtensionsHelper.GetContent((inputDialog.IsAsync ? nameof(RecipeOptions.ProjectPartialClass_AsyncPartialClassPrivateMethod_Template) : nameof(RecipeOptions.ProjectPartialClass_PartialClassPrivateMethod_Template)), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);

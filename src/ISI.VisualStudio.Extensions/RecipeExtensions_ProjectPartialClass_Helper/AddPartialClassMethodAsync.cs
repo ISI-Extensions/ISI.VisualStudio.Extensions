@@ -68,7 +68,7 @@ namespace ISI.VisualStudio.Extensions
 
 					if (inputDialog.IsAsync)
 					{
-						methodName = methodName.Substring(0, methodName.Length - "Async".Length);
+						methodName = methodName.TrimEnd("Async");
 					}
 
 					if (!string.IsNullOrWhiteSpace(methodName))

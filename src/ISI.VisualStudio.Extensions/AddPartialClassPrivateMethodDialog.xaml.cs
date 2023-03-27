@@ -1,4 +1,4 @@
-#region Copyright & License
+﻿#region Copyright & License
 /*
 Copyright (c) 2023, Integrated Solutions, Inc.
 All rights reserved.
@@ -12,35 +12,45 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 #endregion
-
+ 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using ISI.Extensions.Extensions;
-using System.Runtime.InteropServices;
-using System.ComponentModel;
 
 namespace ISI.VisualStudio.Extensions
 {
-	internal partial class OptionsProvider
+	/// <summary>
+	/// Interaction logic for AddPartialClassMethodDialog.xaml
+	/// </summary>
+
+	public partial class AddPartialClassPrivateMethodDialog
 	{
-		// Register the options with these attributes on your package class:
-		[ComVisible(true)]
-		public class PackageOptionsPage : Community.VisualStudio.Toolkit.BaseOptionPage<PackageOptions> { }
-	}
+		public string NewPartialClassPrivateMethodName => txtNewPartialClassPrivateMethodName.Text.Replace(" ", string.Empty);
+		public bool IsAsync => chkIsAsync.IsChecked.GetValueOrDefault();
 
-	public partial class PackageOptions : Community.VisualStudio.Toolkit.BaseOptionModel<PackageOptions>
-	{
-		public const string PackageOptions_Category = "Options";
+		public AddPartialClassPrivateMethodDialog()
+		{
+			InitializeComponent();
 
-		[Category(PackageOptions_Category)]
-		[DisplayName("Extension Version")]
-		public string ExtensionVersion { get; set; }
+			Title = Vsix.Name;
 
-		[Category(PackageOptions_Category)]
-		[DisplayName("Auto Update Recipes")]
-		public bool AutoUpdateRecipes { get; set; } = true;
+			txtNewPartialClassPrivateMethodName.TextChanged += Update;
+
+			txtNewPartialClassPrivateMethodName.Focus();
+		}
+
+		private void Update(object sender, object args)
+		{
+			if (NewPartialClassPrivateMethodName.EndsWith("Async", StringComparison.InvariantCultureIgnoreCase))
+			{
+				chkIsAsync.IsChecked = true;
+			}
+		}
+
+		private void btnOk_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			DialogResult = true;
+		}
 	}
 }

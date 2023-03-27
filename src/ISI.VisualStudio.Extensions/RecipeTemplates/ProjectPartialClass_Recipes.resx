@@ -124,7 +124,7 @@ namespace ${Namespace}
 {
 	public partial class ${ClassName}
 	{
-		public async Task&lt;DTOs.${MethodName}Response&gt; ${MethodName}Async(DTOs.${MethodName}Request request, System.Threading.CancellationToken cancellationToken)
+		public async Task&lt;DTOs.${MethodName}Response&gt; ${MethodName}Async(DTOs.${MethodName}Request request, System.Threading.CancellationToken cancellationToken = default)
 		{
 			var response = new DTOs.${MethodName}Response();
 			
@@ -141,7 +141,7 @@ namespace ${Namespace}
 {
 	public partial class ${ClassName}
 	{
-		private async Task ${MethodName}(System.Threading.CancellationToken cancellationToken)
+		private async Task ${MethodName}Async(System.Threading.CancellationToken cancellationToken = default)
 		{
 
 		}
