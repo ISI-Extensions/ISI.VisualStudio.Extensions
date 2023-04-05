@@ -235,18 +235,15 @@ namespace ${Namespace.Area}.Models.${ControllerKey}
 	Layout = ${Namespace}.T4Files.${Areas.AreaName}Views.${ControllerKey}._Layout_cshtml;
 }
 
-@section StyleSheetIncludes
-{
+@section StyleSheetIncludes {
 	@Html.AddStyleSheet(${Namespace}.T4Links.wwwroot.${Areas.AreaName}StyleSheets.${ControllerKey}.${ControllerActionKey}_css)
 }
 
-@section JavaScriptIncludes
-{
+@section JavaScriptIncludes {
 	@Html.AddJavaScript(${Namespace}.T4Links.wwwroot.${Areas.AreaName}JavaScripts.${ControllerKey}.${ControllerActionKey}_js)
 }
 
-@section JavaScriptContent
-{
+@section JavaScriptContent {
 }</value>
   </data>
   <data name="Area_BaseModel_Template" xml:space="preserve">
@@ -451,23 +448,20 @@ namespace ${Namespace.Area}.Controllers
 	Layout = ${Namespace}.T4Files.${Areas.AreaName}Views._Shared._Layout_cshtml;
 }
 
-@section StyleSheetIncludes
-{
+@section StyleSheetIncludes {
 	@Html.AddStyleSheet(${Namespace}.T4Links.wwwroot.${Areas.AreaName}StyleSheets.${ControllerKey}._Layout_css)
-	@RenderSection("StyleSheetIncludes", false)
+	@await RenderSectionAsync("StyleSheetIncludes", false)
 }
 
 @RenderBody()
 
-@section JavaScriptIncludes
-{
+@section JavaScriptIncludes {
 	@Html.AddJavaScript(${Namespace}.T4Links.wwwroot.${Areas.AreaName}JavaScripts.${ControllerKey}._Layout_js)
-	@RenderSection("JavaScriptIncludes", false)
+	@await RenderSectionAsync("JavaScriptIncludes", false)
 }
 
-@section JavaScriptContent
-{
-	@RenderSection("JavaScriptContent", false)
+@section JavaScriptContent {
+	@await RenderSectionAsync("JavaScriptContent", false)
 }</value>
   </data>
   <data name="ViewsSharedLayout_Template" xml:space="preserve">
@@ -478,23 +472,20 @@ namespace ${Namespace.Area}.Controllers
 	Layout = ${Namespace}.T4Files.Views._Shared._Layout_cshtml;
 }
 
-@section StyleSheetIncludes
-{
+@section StyleSheetIncludes {
 	@Html.AddStyleSheet(${Namespace}.T4Links.wwwroot.${Areas.AreaName}StyleSheets._Shared._Layout_css)
-	@RenderSection("StyleSheetIncludes", false)
+	@await RenderSectionAsync("StyleSheetIncludes", false)
 }
 
 @RenderBody()
 
-@section JavaScriptIncludes
-{
+@section JavaScriptIncludes {
 	@Html.AddJavaScript(${Namespace}.T4Links.wwwroot.${Areas.AreaName}JavaScripts._Shared._Layout_js)
-	@RenderSection("JavaScriptIncludes", false)
+	@await RenderSectionAsync("JavaScriptIncludes", false)
 }
 
-@section JavaScriptContent
-{
-	@RenderSection("JavaScriptContent", false)
+@section JavaScriptContent {
+	@await RenderSectionAsync("JavaScriptContent", false)
 }</value>
   </data>
 </root>
