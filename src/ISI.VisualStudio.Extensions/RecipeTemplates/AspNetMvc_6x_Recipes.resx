@@ -440,6 +440,13 @@ namespace ${Namespace.Area}.Controllers
     <value>body {
 }</value>
   </data>
+  <data name="ViewImports_Template" xml:space="preserve">
+    <value>@using ISI.Extensions.Extensions
+@using ISI.Extensions.AspNetCore.Extensions
+@using ${Namespace.Area}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, ${Namespace.Area}</value>
+  </data>
   <data name="ViewsControllerLayout_Template" xml:space="preserve">
     <value>@using ISI.Extensions.AspNetCore.Extensions
 @model ${Namespace.Area}.Models.${ControllerKey}.BaseModel

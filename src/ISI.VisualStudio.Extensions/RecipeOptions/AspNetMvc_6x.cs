@@ -114,6 +114,10 @@ namespace ISI.VisualStudio.Extensions
 		public string AspNetMvc_6x_ViewsControllerLayout_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_6x_Recipes.ViewsControllerLayout_Template;
 
 		[Category(AspNetMvc_6x_Category)]
+		[DisplayName("ViewImports Template")]
+		public string AspNetMvc_6x_ViewImports_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_6x_Recipes.ViewImports_Template;
+
+		[Category(AspNetMvc_6x_Category)]
 		[DisplayName("Rest Method Action Template")]
 		public string AspNetMvc_6x_RestMethod_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.AspNetMvc_6x_Recipes.RestMethod_Action_Template;
 	}

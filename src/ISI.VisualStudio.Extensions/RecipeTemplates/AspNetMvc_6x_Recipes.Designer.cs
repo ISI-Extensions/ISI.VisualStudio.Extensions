@@ -472,6 +472,19 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @using ISI.Extensions.Extensions
+        ///@using ISI.Extensions.AspNetCore.Extensions
+        ///@using ${Namespace.Area}
+        ///@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+        ///@addTagHelper *, ${Namespace.Area}.
+        /// </summary>
+        internal static string ViewImports_Template {
+            get {
+                return ResourceManager.GetString("ViewImports_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @using ISI.Extensions.AspNetCore.Extensions
         ///@model ${Namespace.Area}.Models.${ControllerKey}.BaseModel
         ///
