@@ -142,11 +142,11 @@ namespace ISI.VisualStudio.Extensions
 						{
 							if (addRecordManagerDialog.HasArchive)
 							{
-								recordManager = string.Format("RecordManagerPrimaryKey<{0}, {1}>", recordManagerName, addRecordManagerDialog.PrimaryKeyType);
+								recordManager = string.Format("RecordManagerPrimaryKeyWithArchive<{0}, {1}>", recordManagerName, addRecordManagerDialog.PrimaryKeyType);
 							}
 							else
 							{
-								recordManager = string.Format("RecordManagerPrimaryKeyWithArchive<{0}, {1}>", recordManagerName, addRecordManagerDialog.PrimaryKeyType);
+								recordManager = string.Format("RecordManagerPrimaryKey<{0}, {1}>", recordManagerName, addRecordManagerDialog.PrimaryKeyType);
 							}
 						}
 
