@@ -73,7 +73,7 @@ namespace ISI.VisualStudio.Extensions
 					{
 						var selection = activeDocumentView.TextView?.Selection.SelectedSpans.FirstOrDefault();
 
-						activeDocumentView?.TextBuffer.Replace(selection.Value, generateClassDefinitionDialog.PasteText);
+						activeDocumentView?.TextBuffer?.Replace(selection.Value, generateClassDefinitionDialog.PasteText);
 
 						if (GenerateClassDefinitionDialog.IncludeDataContractAttributes != ISI.Extensions.VisualStudio.IncludePropertyAttribute.No)
 						{

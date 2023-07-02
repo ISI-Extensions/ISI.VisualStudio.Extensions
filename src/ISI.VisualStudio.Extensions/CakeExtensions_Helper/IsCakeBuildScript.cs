@@ -23,7 +23,10 @@ namespace ISI.VisualStudio.Extensions
 		{
 			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFile)
 			{
-				return string.Equals(System.IO.Path.GetFileName(solutionItem.FullPath), "build.cake", StringComparison.InvariantCultureIgnoreCase);
+				return  CakeApi.IsBuildScriptFile(new ()
+				{
+					BuildScriptFullName = solutionItem.FullPath,
+				})?.IsBuildFile ?? false;
 			}
 
 			return false;
