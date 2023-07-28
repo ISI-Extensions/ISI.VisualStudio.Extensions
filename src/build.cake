@@ -163,7 +163,7 @@ Task("Publish")
 		}
 		CopyFile(buildArtifactVsixFile, simpleVsixFile);
 
-		var authenticationToken = GetVsExtensionsAuthenticationToken(new ISI.Cake.Addin.VsExtensions.GetVsExtensionsAuthenticationTokenRequest()
+		var vsExtensionsApiKey = GetVsExtensionsAuthenticationToken(new ISI.Cake.Addin.VsExtensions.GetVsExtensionsAuthenticationTokenRequest()
 		{
 			VsExtensionsApiUri = GetNullableUri(settings.VsExtensions.ApiUrl),
 			UserName = settings.ActiveDirectory.GetDomainUserName(),
@@ -173,7 +173,7 @@ Task("Publish")
 		UploadVsExtension(new ISI.Cake.Addin.VsExtensions.UploadVsExtensionRequest()
 		{
 			VsExtensionsApiUri = GetNullableUri(settings.VsExtensions.ApiUrl),
-			VsExtensionsApiKey = authenticationToken,
+			VsExtensionsApiKey = vsExtensionsApiKey,
 			VsExtensionPath = simpleVsixFile,
 		});
 	});
