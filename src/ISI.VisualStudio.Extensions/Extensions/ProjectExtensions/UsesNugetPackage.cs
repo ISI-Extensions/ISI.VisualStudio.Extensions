@@ -12,7 +12,7 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 #endregion
- 
+
 using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
@@ -21,7 +21,15 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public static bool UsesISIExtensionsAspNetCore(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Extensions.AspNetCore");
 
-		public static bool UsesISIExtensionsRepositorySqlServer(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Extensions.Repository.SqlServer");
+		public static bool UsesISIExtensionsRepositorySqlServer(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, new[]
+		{
+			"ISI.Extensions.Repository.Cassandra",
+			"ISI.Extensions.Repository.Cosmos",
+			"ISI.Extensions.Repository.Oracle",
+			"ISI.Extensions.Repository.PostgreSQL",
+			"ISI.Extensions.Repository.RavenDb",
+			"ISI.Extensions.Repository.SqlServer",
+		});
 
 		public static bool UsesISILibrariesWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Web.Mvc");
 
@@ -31,29 +39,43 @@ namespace ISI.VisualStudio.Extensions
 
 		public static bool UsesISILibrariesBootstrapWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Bootstrap.Web.Mvc");
 
-		public static bool UsesISILibrariesRepositorySqlServer(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Repository.SqlServer");
-		
-		public static bool UsesNugetPackage(this Community.VisualStudio.Toolkit.Project project, string packageName)
+		public static bool UsesISILibrariesRepositorySqlServer(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, new[]
+		{
+			"ISI.Libraries.Repository.Cosmos",
+			"ISI.Libraries.Repository.DynamoDB",
+			"ISI.Libraries.Repository.FileSystem",
+			"ISI.Libraries.Repository.HBase.Phoenix",
+			"ISI.Libraries.Repository.Oracle",
+			"ISI.Libraries.Repository.RavenDB",
+			"ISI.Libraries.Repository.SqlServer",
+		});
+
+		public static bool UsesNugetPackage(this Community.VisualStudio.Toolkit.Project project, string packageName) => UsesAnyNugetPackage(project, new[] { packageName });
+
+		public static bool UsesAnyNugetPackage(this Community.VisualStudio.Toolkit.Project project, System.Collections.Generic.IEnumerable<string> packageNames)
 		{
 			if (project != null)
 			{
 				var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
 
-				if (referenceNames.Contains(packageName))
+				foreach (var packageName in packageNames)
 				{
-					return true;
-				}
+					if (referenceNames.Contains(packageName))
+					{
+						return true;
+					}
 
-				var content = System.IO.File.ReadAllText(project.FullPath);
+					var content = System.IO.File.ReadAllText(project.FullPath);
 
-				if (content.IndexOf(string.Format("\"{0}", packageName)) >= 0)
-				{
-					return true;
-				}
+					if (content.IndexOf(string.Format("\"{0}", packageName)) >= 0)
+					{
+						return true;
+					}
 
-				if (content.IndexOf(string.Format("\\{0}", packageName)) >= 0)
-				{
-					return true;
+					if (content.IndexOf(string.Format("\\{0}", packageName)) >= 0)
+					{
+						return true;
+					}
 				}
 			}
 
