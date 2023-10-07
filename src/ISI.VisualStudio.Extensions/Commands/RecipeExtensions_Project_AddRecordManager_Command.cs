@@ -44,7 +44,7 @@ namespace ISI.VisualStudio.Extensions
 			{
 				var project = solutionItem as Project;
 
-				showCommand = project.UsesISIExtensionsRepositorySqlServer() || project.UsesISILibrariesRepositorySqlServer();
+				showCommand = project.UsesISIExtensionsRepository() || project.UsesISILibrariesRepository();
 			}
 
 			Command.Visible = showCommand;
@@ -106,14 +106,16 @@ namespace ISI.VisualStudio.Extensions
 
 					var codeExtensionProvider = project.GetCodeExtensionProvider();
 
+					var repositoryType = project.UsesWhichRepositoryType();
+
 					var recipeName = string.Empty;
 					if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider.CodeExtensionProviderUuid)
 					{
-						recipeName = nameof(RecipeOptions.Project_ISI_Extensions_SqlServer_RecordManager_Template);
+						recipeName = nameof(RecipeOptions.Project_ISI_Extensions_Repository_RecordManager_Template);
 					}
 					else if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Libraries.CodeExtensionProvider.CodeExtensionProviderUuid)
 					{
-						recipeName = nameof(RecipeOptions.Project_ISI_Libraries_SqlServer_RecordManager_Template);
+						recipeName = nameof(RecipeOptions.Project_ISI_Libraries_Repository_RecordManager_Template);
 					}
 
 					if (!string.IsNullOrWhiteSpace(recipeName))
@@ -158,6 +160,7 @@ namespace ISI.VisualStudio.Extensions
 							{ "${codeExtensionProvider.Namespace}", codeExtensionProvider.Namespace },
 							{ "${Namespace}", @namespace },
 							{ "${Name}", recordManagerName.TrimEnd("Record", StringComparison.InvariantCultureIgnoreCase) },
+							{ "${RepositoryType)", repositoryType },
 							{ "${RecordName}", recordManagerName },
 							{ "${RecordManager}", recordManager },
 							{ "${PrimaryKeyType}", addRecordManagerDialog.PrimaryKeyType },

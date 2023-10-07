@@ -19,17 +19,30 @@ namespace ISI.VisualStudio.Extensions
 {
 	public static partial class ProjectExtensions
 	{
+		public static System.Collections.Generic.Dictionary<string, string> ISIExtensionsRepositoryTypes = new()
+		{
+			{ "ISI.Extensions.Repository.Cassandra", "Cassandra" },
+			{ "ISI.Extensions.Repository.Cosmos", "Cosmos" },
+			{ "ISI.Extensions.Repository.Oracle", "Oracle" },
+			{ "ISI.Extensions.Repository.PostgreSQL", "PostgreSQL" },
+			{ "ISI.Extensions.Repository.RavenDb", "RavenDb" },
+			{ "ISI.Extensions.Repository.SqlServer", "SqlServer" },
+		};
+
+		public static System.Collections.Generic.Dictionary<string, string> ISILibrariesRepositoryTypes = new()
+		{
+			{ "ISI.Libraries.Repository.Cosmos", "Cosmos" },
+			{ "ISI.Libraries.Repository.DynamoDB", "DynamoDB" },
+			{ "ISI.Libraries.Repository.FileSystem", "FileSystem" },
+			{ "ISI.Libraries.Repository.HBase.Phoenix", "HBase.Phoenix" },
+			{ "ISI.Libraries.Repository.Oracle", "Oracle" },
+			{ "ISI.Libraries.Repository.RavenDB", "RavenDB" },
+			{ "ISI.Libraries.Repository.SqlServer", "SqlServer" },
+		};
+
 		public static bool UsesISIExtensionsAspNetCore(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Extensions.AspNetCore");
 
-		public static bool UsesISIExtensionsRepositorySqlServer(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, new[]
-		{
-			"ISI.Extensions.Repository.Cassandra",
-			"ISI.Extensions.Repository.Cosmos",
-			"ISI.Extensions.Repository.Oracle",
-			"ISI.Extensions.Repository.PostgreSQL",
-			"ISI.Extensions.Repository.RavenDb",
-			"ISI.Extensions.Repository.SqlServer",
-		});
+		public static bool UsesISIExtensionsRepository(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISIExtensionsRepositoryTypes.Keys);
 
 		public static bool UsesISILibrariesWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Web.Mvc");
 
@@ -39,16 +52,7 @@ namespace ISI.VisualStudio.Extensions
 
 		public static bool UsesISILibrariesBootstrapWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Bootstrap.Web.Mvc");
 
-		public static bool UsesISILibrariesRepositorySqlServer(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, new[]
-		{
-			"ISI.Libraries.Repository.Cosmos",
-			"ISI.Libraries.Repository.DynamoDB",
-			"ISI.Libraries.Repository.FileSystem",
-			"ISI.Libraries.Repository.HBase.Phoenix",
-			"ISI.Libraries.Repository.Oracle",
-			"ISI.Libraries.Repository.RavenDB",
-			"ISI.Libraries.Repository.SqlServer",
-		});
+		public static bool UsesISILibrariesRepository(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISILibrariesRepositoryTypes.Keys);
 
 		public static bool UsesNugetPackage(this Community.VisualStudio.Toolkit.Project project, string packageName) => UsesAnyNugetPackage(project, new[] { packageName });
 
@@ -80,6 +84,39 @@ namespace ISI.VisualStudio.Extensions
 			}
 
 			return false;
+		}
+
+		public static string UsesWhichRepositoryType(this Community.VisualStudio.Toolkit.Project project)
+		{
+			if (project != null)
+			{
+				var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
+
+				foreach (var repositoryTypes in new[] { ISIExtensionsRepositoryTypes, ISILibrariesRepositoryTypes })
+				{
+					foreach (var repositoryType in repositoryTypes)
+					{
+						if (referenceNames.Contains(repositoryType.Key))
+						{
+							return repositoryType.Value;
+						}
+
+						var content = System.IO.File.ReadAllText(project.FullPath);
+
+						if (content.IndexOf(string.Format("\"{0}", repositoryType.Key)) >= 0)
+						{
+							return repositoryType.Value;
+						}
+
+						if (content.IndexOf(string.Format("\\{0}", repositoryType.Key)) >= 0)
+						{
+							return repositoryType.Value;
+						}
+					}
+				}
+			}
+
+			return null;
 		}
 	}
 }

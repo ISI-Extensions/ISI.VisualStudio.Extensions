@@ -1178,12 +1178,12 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
-  <data name="ISI_Extensions_SqlServer_RecordManager_Template" xml:space="preserve">
+  <data name="ISI_Extensions_Repository_RecordManager_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
 {
-	public partial class ${RecordName}Manager : ISI.Extensions.Repository.SqlServer.${RecordManager}, I${RecordName}Manager
+	public partial class ${RecordName}Manager : ISI.Extensions.Repository.${RepositoryType).${RecordManager}, I${RecordName}Manager
 	{
 		public ${RecordName}Manager(
 			Microsoft.Extensions.Configuration.IConfiguration configuration,
@@ -1197,12 +1197,12 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
-  <data name="ISI_Libraries_SqlServer_RecordManager_Template" xml:space="preserve">
+  <data name="ISI_Libraries_Repository_RecordManager_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
 {
-	public partial class ${RecordName}Manager : ISI.Libraries.Repository.SqlServer.${RecordManager}, I${RecordName}Manager
+	public partial class ${RecordName}Manager : ISI.Libraries.Repository.${RepositoryType).${RecordManager}, I${RecordName}Manager
 	{
 		public ${RecordName}Manager(
 			ISI.Libraries.Tracing.ITrace trace,

@@ -62,12 +62,12 @@ namespace ISI.VisualStudio.Extensions
 		public string Project_RecordManagerRecord_PrimaryKeyWithArchive_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.Project_RecordManagerRecord_PrimaryKeyWithArchive_Template;
 		
 		[Category(Project_Category)]
-		[DisplayName("ISI Extensions SqlServer RecordManager Template")]
-		public string Project_ISI_Extensions_SqlServer_RecordManager_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Extensions_SqlServer_RecordManager_Template;
+		[DisplayName("ISI Extensions Repository RecordManager Template")]
+		public string Project_ISI_Extensions_Repository_RecordManager_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Extensions_Repository_RecordManager_Template;
 
 		[Category(Project_Category)]
-		[DisplayName("ISI Libraries SqlServer RecordManager Template")]
-		public string Project_ISI_Libraries_SqlServer_RecordManager_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Libraries_SqlServer_RecordManager_Template;
+		[DisplayName("ISI Libraries Repository RecordManager Template")]
+		public string Project_ISI_Libraries_Repository_RecordManager_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Libraries_Repository_RecordManager_Template;
 
 		[Category(Project_Category)]
 		[DisplayName("Serializable Object Template")]
