@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -344,23 +344,23 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Community.VisualStudio.Toolkit.DependencyInjection.Core.17">
-      <Version>17.0.13</Version>
+      <Version>17.0.20</Version>
     </PackageReference>
     <PackageReference Include="Community.VisualStudio.VSCT" Version="16.0.29.6" PrivateAssets="all" />
     <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.507" ExcludeAssets="Runtime">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8700.39170</Version>
+      <Version>10.0.8704.38047</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8700.39170</Version>
+      <Version>10.0.8704.38047</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.JsonSerialization.Newtonsoft">
-      <Version>10.0.8700.39170</Version>
+      <Version>10.0.8704.38047</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8700.39170</Version>
+      <Version>10.0.8704.38047</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.7.2</Version>
@@ -384,13 +384,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8700.39170" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8700.39170" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8700.39170" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8700.39170" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8700.39170" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8700.39170" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8700.39170" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8704.38047" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8704.38047" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8704.38047" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8704.38047" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8704.38047" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8704.38047" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8704.38047" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>17.7.0</Version>
