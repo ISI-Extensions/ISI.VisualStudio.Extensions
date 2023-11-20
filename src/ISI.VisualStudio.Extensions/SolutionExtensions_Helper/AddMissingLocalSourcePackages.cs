@@ -92,7 +92,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var projectReferences = ProjectApi.GetProjectReferences(new ISI.Extensions.VisualStudio.DataTransferObjects.ProjectApi.GetProjectReferencesRequest()
 				{
-					ProjectFileName = projectDetails.ProjectFullName,
+					Project = projectDetails.ProjectFullName,
 				}).ProjectReferences;
 
 				if (projectReferences.NullCheckedAny())

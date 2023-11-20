@@ -101,7 +101,7 @@ namespace ISI.VisualStudio.Extensions
 				.AddSingleton<XmlConfigurationExtensions_Helper>()
 
 				.AddConfigurationRegistrations(configurationRoot)
-				.ProcessServiceRegistrars()
+				.ProcessServiceRegistrars(configurationRoot)
 				;
 
 			ServiceProvider = services.BuildServiceProvider<ISI.Extensions.DependencyInjection.Iunq.ServiceProviderBuilder>(configurationRoot);
