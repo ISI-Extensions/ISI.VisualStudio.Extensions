@@ -36,7 +36,7 @@ namespace ISI.VisualStudio.Extensions
 					BuildScriptFullName = solutionItem.FullPath,
 					Target = target,
 					UseShell = CakeOptions.Instance.Execute_Options_Use_Shell,
-					AddToLog = description => _outputWindowPane.WriteLine(description.TrimEnd('\r', '\n')),
+					AddToLog = (logEntryLevel, description) => _outputWindowPane.WriteLine(description.TrimEnd('\r', '\n')),
 				});
 			});
 		}
