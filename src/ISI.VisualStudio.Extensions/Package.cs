@@ -122,6 +122,13 @@ namespace ISI.VisualStudio.Extensions
 			VsRegisterScciProvider = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider;
 			VsGetScciProviderInterface = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsGetScciProviderInterface;
 
+
+			//var repository = await GetServiceAsync(typeof(Microsoft.VisualStudio.ExtensionManager.SVsExtensionRepository)) as IVsExtensionRepository;
+			//var manager = await GetServiceAsync(typeof(SVsExtensionManager)) as IVsExtensionManager;
+
+
+
+
 			if (PackageOptions.Instance.AutoUpdateRecipes)
 			{
 				var priorExtensionVersion = PackageOptions.Instance.ExtensionVersion ?? string.Empty;
