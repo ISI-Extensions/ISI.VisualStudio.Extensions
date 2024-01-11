@@ -26,7 +26,7 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public bool IsAspNetMvc_6x_Project(Community.VisualStudio.Toolkit.Project project)
 		{
-			return project.UsesAnyNugetPackage("ISI.Extensions.AspNetCore", "ISI.Platforms.AspNetCore");
+			return project.UsesISIExtensionsAspNetCore();
 		}
 	}
 }

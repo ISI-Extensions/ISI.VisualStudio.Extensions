@@ -41,7 +41,7 @@ namespace ISI.VisualStudio.Extensions
 			{ "ISI.Libraries.Repository.SqlServer", "SqlServer" },
 		};
 
-		public static bool UsesISIExtensionsAspNetCore(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Extensions.AspNetCore");
+		public static bool UsesISIExtensionsAspNetCore(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, "ISI.Extensions.AspNetCore", "ISI.Platforms.AspNetCore");
 
 		public static bool UsesISIExtensionsRepository(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISIExtensionsRepositoryTypes.Keys);
 
