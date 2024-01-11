@@ -13,6 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 #endregion
 
+using System.Linq;
 using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
@@ -56,7 +57,9 @@ namespace ISI.VisualStudio.Extensions
 
 		public static bool UsesNugetPackage(this Community.VisualStudio.Toolkit.Project project, string packageName) => UsesAnyNugetPackage(project, new[] { packageName });
 
-		public static bool UsesAnyNugetPackage(this Community.VisualStudio.Toolkit.Project project, System.Collections.Generic.IEnumerable<string> packageNames)
+		public static bool UsesAnyNugetPackage(this Community.VisualStudio.Toolkit.Project project, System.Collections.Generic.IEnumerable<string> packageNames) => UsesAnyNugetPackage(project, packageNames.ToArray());
+
+		public static bool UsesAnyNugetPackage(this Community.VisualStudio.Toolkit.Project project, params string[] packageNames)
 		{
 			if (project != null)
 			{
