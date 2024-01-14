@@ -47,7 +47,7 @@
 			<StackPanel>
 				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternConstructor" Checked="rdoConversionPatternConstructor_OnChecked" IsChecked="True">_Constructor</RadioButton>
 				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternConstructorExport" Checked="rdoConversionPatternConstructorExport_OnChecked">Constructor _Export</RadioButton>
-				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternRequesr" Checked="rdoConversionPatternRequest_OnChecked">_Request</RadioButton>
+				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternRequesr" Checked="rdoConversionPatternRequest_OnChecked">Re_quest</RadioButton>
 				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternAssignment" Checked="rdoConversionPatternAssignment_OnChecked">_Assignment</RadioButton>
 				<RadioButton Margin="5,5,0,0" GroupName="ConversionPattern" Name="rdoConversionPatternCustom" Checked="rdoConversionPatternCustom_OnChecked">Custom</RadioButton>
 			</StackPanel>
