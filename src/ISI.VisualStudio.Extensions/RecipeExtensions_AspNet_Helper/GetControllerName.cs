@@ -22,9 +22,9 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class RecipeExtensions_AspNet_Helper
 	{
-		public string GetControllerName(Community.VisualStudio.Toolkit.SolutionItem solutionItem)
+		public string GetControllerName(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
-			if (IsControllerFolder(solutionItem))
+			if (IsControllerFolder(project, solutionItem))
 			{
 				return solutionItem.Text.TrimEnd("Controller");
 			}

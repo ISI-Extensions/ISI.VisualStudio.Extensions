@@ -65,6 +65,8 @@
     </Compile>
     <Compile Include="CakeOptions\Cake.cs" />
     <Compile Include="CakeOptions\__CakeOptions.cs" />
+    <Compile Include="Commands\RecipeExtensions_MessageBus_AddMethod_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_MessageBus_AddController_Command.cs" />
     <Compile Include="Commands\VisualStudioExtensions_Export_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddSerializableObject_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_UseLocalSourcePackages_Command.cs" />
@@ -83,7 +85,25 @@
     </Compile>
     <Compile Include="PackageOptions\__PackageOptions.cs" />
     <Compile Include="ProjectExtensions_Helper\AddSerializableObjectAsync.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsAreasFolder.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsControllerFolder.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsControllersFolder.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\IsAreasFolder.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\IsControllerFolder.cs" />
+    <Compile Include="RecipeExtensions_AspNetMvc_6x_Helper\IsControllersFolder.cs" />
+    <Compile Include="RecipeExtensions_MessageBus_Helper\GetControllerName.cs" />
+    <Compile Include="RecipeExtensions_MessageBus_Helper\GetOutputWindowPaneAsync.cs" />
+    <Compile Include="RecipeExtensions_MessageBus_Helper\IsControllerFolder.cs" />
+    <Compile Include="RecipeExtensions_MessageBus_Helper\IsControllersFolder.cs" />
+    <Compile Include="RecipeExtensions_MessageBus_Helper\IsMessageBus_Project.cs" />
+    <Compile Include="RecipeExtensions_MessageBus_Helper\__RecipeExtensions_MessageBus_Helper.cs" />
     <Compile Include="RecipeExtensions_AspNet_Helper\GetContentAreasDirectory.cs" />
+    <Compile Include="RecipeOptions\MessageBus.cs" />
+    <Compile Include="RecipeTemplates\MessageBus_Recipes.Designer.cs">
+      <DependentUpon>MessageBus_Recipes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="SolutionExtensions_Helper\_AddLocalSourceProjectToSolution.cs" />
     <Compile Include="SolutionExtensions_Helper\_GetLibrarySolutionFolder.cs" />
     <Compile Include="SolutionExtensions_Helper\UseLocalSourcePackages.cs" />
@@ -297,6 +317,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RecipeTemplates\MessageBus_Recipes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessageBus_Recipes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="RecipeTemplates\AspNetMvc_6x_Recipes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AspNetMvc_6x_Recipes.Designer.cs</LastGenOutput>
@@ -352,16 +377,16 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Git">
-      <Version>10.0.8779.10518</Version>
+      <Version>10.0.8784.24820</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Jenkins.Forms">
-      <Version>10.0.8779.10518</Version>
+      <Version>10.0.8784.24820</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.JsonSerialization.Newtonsoft">
-      <Version>10.0.8779.10518</Version>
+      <Version>10.0.8784.24820</Version>
     </PackageReference>
     <PackageReference Include="ISI.Extensions.Nuget.Forms">
-      <Version>10.0.8779.10518</Version>
+      <Version>10.0.8784.24820</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Build">
       <Version>17.8.3</Version>
@@ -388,13 +413,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8779.10518" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8779.10518" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8779.10518" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8779.10518" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8779.10518" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8779.10518" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8779.10518" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8784.24820" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8784.24820" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8784.24820" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8784.24820" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8784.24820" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8784.24820" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8784.24820" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     <PackageReference Include="NuGet.VisualStudio">
       <Version>17.8.0</Version>

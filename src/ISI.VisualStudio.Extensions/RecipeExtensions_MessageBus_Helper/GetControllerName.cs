@@ -15,35 +15,21 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
  
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_AspNet_Helper
+	public partial class RecipeExtensions_MessageBus_Helper
 	{
-		public virtual bool IsControllersFolder(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
+		public string GetControllerName(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
-			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFolder)
+			if (IsControllerFolder(project, solutionItem))
 			{
-				var directory = solutionItem.FullPath.TrimEnd('\\','/');
-
-				if (string.Equals(directory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault(), ControllersFolderName, StringComparison.InvariantCultureIgnoreCase))
-				{
-					var projectRootDirectory = System.IO.Path.GetDirectoryName(project.FullPath);
-					var rootDirectory = directory.TrimEnd(ControllersFolderName, StringComparison.InvariantCultureIgnoreCase);
-
-					if (ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, rootDirectory))
-					{
-						return true;
-					}
-
-					projectRootDirectory = string.Format("{0}\\", System.IO.Path.Combine(projectRootDirectory, AreasFolderName));
-
-					return ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, ISI.Extensions.IO.Path.GetCommonPath(new[] { rootDirectory, projectRootDirectory }));
-				}
+				return solutionItem.Text.TrimEnd("Controller");
 			}
 
-			return false;
+			return string.Empty;
 		}
 	}
 }

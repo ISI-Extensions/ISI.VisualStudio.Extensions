@@ -247,7 +247,7 @@ namespace ISI.VisualStudio.Extensions
 						var contentReplacements = new Dictionary<string, string>
 						{
 							{"${Usings}", string.Join(Environment.NewLine, sortedUsingStatements.GetFormatted())},
-							{ "${Namespace}", @namespace.TrimEnd(".Repository").TrimEnd(".Api") },
+							{ "${Namespace}", @contractNamespace },
 							{ "${InterfaceName}", interfaceName },
 						};
 

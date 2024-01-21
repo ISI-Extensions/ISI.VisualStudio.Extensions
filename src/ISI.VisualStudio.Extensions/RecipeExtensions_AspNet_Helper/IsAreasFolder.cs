@@ -21,7 +21,7 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class RecipeExtensions_AspNet_Helper
 	{
-		public bool IsAreasFolder(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
+		public virtual bool IsAreasFolder(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
 			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFolder)
 			{

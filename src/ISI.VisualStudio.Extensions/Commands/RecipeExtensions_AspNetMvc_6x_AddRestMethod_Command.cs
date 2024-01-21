@@ -12,7 +12,7 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 #endregion
- 
+
 using Community.VisualStudio.Toolkit;
 using ISI.Extensions.Extensions;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,12 +36,9 @@ namespace ISI.VisualStudio.Extensions
 			var showCommand = false;
 
 			var project = VS.Solutions.GetActiveProjectAsync().GetAwaiter().GetResult();
-			if (RecipeExtensionsHelper.IsAspNetMvc_6x_Project(project))
-			{
-				var solutionItem = VS.Solutions.GetActiveItemAsync().GetAwaiter().GetResult();
+			var solutionItem = VS.Solutions.GetActiveItemAsync().GetAwaiter().GetResult();
 
-				showCommand = RecipeExtensionsHelper.IsControllerFolder(solutionItem);
-			}
+			showCommand = RecipeExtensionsHelper.IsControllerFolder(project, solutionItem);
 
 			Command.Visible = showCommand;
 
@@ -82,7 +79,7 @@ namespace ISI.VisualStudio.Extensions
 						var @namespace = project.GetRootNamespace();
 						var areaName = RecipeExtensionsHelper.GetAreaName(solutionItem);
 						var areaNamespace = string.Format("{0}{1}", @namespace, (string.IsNullOrWhiteSpace(areaName) ? string.Empty : string.Format(".Areas.{0}", areaName)));
-						var controllerKey = RecipeExtensionsHelper.GetControllerName(solutionItem);
+						var controllerKey = RecipeExtensionsHelper.GetControllerName(project, solutionItem);
 
 						var viewTitle = System.Text.RegularExpressions.Regex.Replace((string.Equals(controllerActionKey, "Index", StringComparison.InvariantCultureIgnoreCase) ? controllerKey : controllerActionKey), @"(?<begin>(\w*?))(?<end>[A-Z]+)", string.Format(@"${{begin}}{0}${{end}}", " ")).Trim();
 

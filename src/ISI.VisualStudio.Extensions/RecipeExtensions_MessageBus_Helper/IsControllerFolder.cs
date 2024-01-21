@@ -19,27 +19,22 @@ using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_AspNet_Helper
+	public partial class RecipeExtensions_MessageBus_Helper
 	{
-		public virtual bool IsControllersFolder(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
+		public bool IsControllerFolder(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
 			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFolder)
 			{
-				var directory = solutionItem.FullPath.TrimEnd('\\','/');
+				var directory = solutionItem.FullPath;
 
-				if (string.Equals(directory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault(), ControllersFolderName, StringComparison.InvariantCultureIgnoreCase))
+				var fileNameParts = new System.Collections.Generic.Stack<string>(directory.Split(new [] { "\\" }, StringSplitOptions.RemoveEmptyEntries));
+				fileNameParts.Pop();
+
+				if (fileNameParts.Count > 0)
 				{
-					var projectRootDirectory = System.IO.Path.GetDirectoryName(project.FullPath);
-					var rootDirectory = directory.TrimEnd(ControllersFolderName, StringComparison.InvariantCultureIgnoreCase);
+					var fileName = fileNameParts.Pop();
 
-					if (ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, rootDirectory))
-					{
-						return true;
-					}
-
-					projectRootDirectory = string.Format("{0}\\", System.IO.Path.Combine(projectRootDirectory, AreasFolderName));
-
-					return ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, ISI.Extensions.IO.Path.GetCommonPath(new[] { rootDirectory, projectRootDirectory }));
+					return string.Equals(fileName, ControllersFolderName, System.StringComparison.OrdinalIgnoreCase);
 				}
 			}
 

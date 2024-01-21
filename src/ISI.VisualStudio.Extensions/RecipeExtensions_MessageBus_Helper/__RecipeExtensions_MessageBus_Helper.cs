@@ -1,4 +1,4 @@
-﻿#region Copyright & License
+#region Copyright & License
 /*
 Copyright (c) 2024, Integrated Solutions, Inc.
 All rights reserved.
@@ -14,36 +14,26 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #endregion
  
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_AspNet_Helper
+	public partial class RecipeExtensions_MessageBus_Helper : ProjectExtensions_Helper
 	{
-		public virtual bool IsControllersFolder(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
+		public const string MessageBusFolderName = "MessageBus";
+		public const string ControllersFolderName = "Controllers";
+		public const string SubscriptionsFolderName = "Subscriptions";
+
+		public RecipeExtensions_MessageBus_Helper(
+			ISI.Extensions.VisualStudio.SolutionApi solutionApi,
+			ISI.Extensions.VisualStudio.ProjectApi projectApi)
+			: base(solutionApi, projectApi)
 		{
-			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFolder)
-			{
-				var directory = solutionItem.FullPath.TrimEnd('\\','/');
 
-				if (string.Equals(directory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault(), ControllersFolderName, StringComparison.InvariantCultureIgnoreCase))
-				{
-					var projectRootDirectory = System.IO.Path.GetDirectoryName(project.FullPath);
-					var rootDirectory = directory.TrimEnd(ControllersFolderName, StringComparison.InvariantCultureIgnoreCase);
-
-					if (ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, rootDirectory))
-					{
-						return true;
-					}
-
-					projectRootDirectory = string.Format("{0}\\", System.IO.Path.Combine(projectRootDirectory, AreasFolderName));
-
-					return ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, ISI.Extensions.IO.Path.GetCommonPath(new[] { rootDirectory, projectRootDirectory }));
-				}
-			}
-
-			return false;
 		}
 	}
 }

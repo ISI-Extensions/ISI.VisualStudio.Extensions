@@ -13,37 +13,28 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 #endregion
  
-using System;
-using System.Linq;
-using ISI.Extensions.Extensions;
+using System.ComponentModel;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeExtensions_AspNet_Helper
+	public partial class RecipeOptions
 	{
-		public virtual bool IsControllersFolder(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
-		{
-			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFolder)
-			{
-				var directory = solutionItem.FullPath.TrimEnd('\\','/');
+		public const string  MessageBus_Category = "MessageBus Recipes";
 
-				if (string.Equals(directory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault(), ControllersFolderName, StringComparison.InvariantCultureIgnoreCase))
-				{
-					var projectRootDirectory = System.IO.Path.GetDirectoryName(project.FullPath);
-					var rootDirectory = directory.TrimEnd(ControllersFolderName, StringComparison.InvariantCultureIgnoreCase);
+		[Category(MessageBus_Category)]
+		[DisplayName("Controller Controller Template")]
+		public string MessageBus_Controller_Controller_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.MessageBus_Recipes.Controller_Controller_Template;
 
-					if (ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, rootDirectory))
-					{
-						return true;
-					}
+		[Category(MessageBus_Category)]
+		[DisplayName("Controller SubscriptionsRoot Template")]
+		public string MessageBus_Controller_SubscriptionsRoot_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.MessageBus_Recipes.Controller_SubscriptionsRoot_Template;
 
-					projectRootDirectory = string.Format("{0}\\", System.IO.Path.Combine(projectRootDirectory, AreasFolderName));
+		[Category(MessageBus_Category)]
+		[DisplayName("Controller Subscriptions Template")]
+		public string MessageBus_Controller_Subscriptions_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.MessageBus_Recipes.Controller_Subscriptions_Template;
 
-					return ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, ISI.Extensions.IO.Path.GetCommonPath(new[] { rootDirectory, projectRootDirectory }));
-				}
-			}
-
-			return false;
-		}
+		[Category(MessageBus_Category)]
+		[DisplayName("Method Action Template")]
+		public string MessageBus_Method_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.MessageBus_Recipes.Controller_Method_Action_Template;
 	}
 }

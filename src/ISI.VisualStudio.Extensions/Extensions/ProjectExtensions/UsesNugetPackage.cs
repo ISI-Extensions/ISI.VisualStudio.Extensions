@@ -20,6 +20,15 @@ namespace ISI.VisualStudio.Extensions
 {
 	public static partial class ProjectExtensions
 	{
+		public static System.Collections.Generic.Dictionary<string, string> ISIExtensionsMessageBusTypes = new()
+		{
+			{ "ISI.Extensions.MessageBus.AzureServiceBus", "MessageBus.AzureServiceBus" },
+			{ "ISI.Extensions.MessageBus.MassTransit", "MassTransit" },
+			{ "ISI.Extensions.MessageBus.MassTransit.InMemory", "MassTransit.InMemory" },
+			{ "ISI.Extensions.MessageBus.MassTransit.RabbitMQ", "MassTransit.RabbitMQ" },
+			{ "ISI.Extensions.MessageBus.Redis", "MessageBus.Redis" },
+		};
+
 		public static System.Collections.Generic.Dictionary<string, string> ISIExtensionsRepositoryTypes = new()
 		{
 			{ "ISI.Extensions.Repository.Cassandra", "Cassandra" },
@@ -45,6 +54,8 @@ namespace ISI.VisualStudio.Extensions
 
 		public static bool UsesISIExtensionsRepository(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISIExtensionsRepositoryTypes.Keys);
 
+		public static bool UsesISIExtensionsMessageBus(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISIExtensionsMessageBusTypes.Keys);
+
 		public static bool UsesISILibrariesWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Web.Mvc");
 
 		public static bool UsesISILibrariesJQueryWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.JQuery.Web.Mvc");
@@ -65,14 +76,14 @@ namespace ISI.VisualStudio.Extensions
 			{
 				var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
 
+				var content = System.IO.File.ReadAllText(project.FullPath);
+
 				foreach (var packageName in packageNames)
 				{
 					if (referenceNames.Contains(packageName))
 					{
 						return true;
 					}
-
-					var content = System.IO.File.ReadAllText(project.FullPath);
 
 					if (content.IndexOf(string.Format("\"{0}", packageName)) >= 0)
 					{
