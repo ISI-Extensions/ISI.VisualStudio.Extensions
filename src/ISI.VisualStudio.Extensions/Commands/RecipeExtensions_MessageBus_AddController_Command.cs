@@ -73,7 +73,7 @@ namespace ISI.VisualStudio.Extensions
 
 						await project?.SaveAsync();
 
-						var @namespace = project.GetRootNamespace();
+						var @namespace = $"{project.GetRootNamespace()}.MessageBus";
 
 						var codeExtensionProvider = project.GetCodeExtensionProvider();
 

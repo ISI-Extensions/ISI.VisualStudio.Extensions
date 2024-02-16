@@ -49,7 +49,7 @@ namespace ISI.VisualStudio.Extensions
 		{
 			try
 			{
-				var inputDialog = new InputDialog("New Controller");
+				var inputDialog = new InputDialog("Add Method");
 
 				var inputDialogResult = await inputDialog.ShowDialogAsync();
 
@@ -67,7 +67,7 @@ namespace ISI.VisualStudio.Extensions
 
 						await outputWindowPane.ClearAsync();
 
-						await outputWindowPane.WriteLineAsync("New Action");
+						await outputWindowPane.WriteLineAsync("Add Method");
 
 						var solutionItem = await VS.Solutions.GetActiveItemAsync();
 						var solution = await VS.Solutions.GetCurrentSolutionAsync();
@@ -75,7 +75,7 @@ namespace ISI.VisualStudio.Extensions
 
 						await project?.SaveAsync();
 
-						var @namespace = project.GetRootNamespace();
+						var @namespace = $"{project.GetRootNamespace()}.MessageBus";
 						var controllerKey = RecipeExtensionsHelper.GetControllerName(project, solutionItem);
 
 						var solutionDirectory = System.IO.Path.GetDirectoryName(solution.FullPath);
@@ -118,7 +118,7 @@ namespace ISI.VisualStudio.Extensions
 								{
 									RecipeExtensionsHelper.ReplaceFileContent(fullName, new Dictionary<string, string>
 									{
-										{ "//${Subscriptions}", $"messageQueueConfigurator.Subscribe<Controllers.{controllerKey}Controller, SerializableDTOs.{controllerActionKey}Request, SerializableDTOs.{controllerActionKey}Response>(async (service, request, cancellationToken) => await service.{controllerActionKey}Async(request, cancellationToken), null);\r\n\t\t\t\t\t//${{Subscriptions}}" },
+										{ "//${Subscriptions}", $"messageQueueConfigurator.Subscribe<Controllers.{controllerKey}Controller, DTOs.{controllerActionKey}Request, DTOs.{controllerActionKey}Response>(async (service, request, cancellationToken) => await service.{controllerActionKey}Async(request, cancellationToken), null);\r\n\t\t\t\t\t//${{Subscriptions}}" },
 									});
 								}),
 						};
