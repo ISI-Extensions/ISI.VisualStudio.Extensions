@@ -1100,6 +1100,7 @@ public static partial class &lt;#= projectFolderSlug #&gt;
 						"Templates",
 						"DocumentTemplates",
 						"EmailTemplates",
+						"EmailMessageTemplates",
 						"NotificationTemplates",
 				};
 
@@ -1138,10 +1139,708 @@ public static partial class &lt;#= projectFolderSlug #&gt;
 #&gt;</value>
   </data>
   <data name="T4LocalContent.tt_Template" xml:space="preserve">
-    <value>&lt;#@ template language="C#" debug="true" hostspecific="true" #&gt;
-&lt;#@ output extension=".generatedcode.cs" #&gt;
-&lt;#@ Include File="T4LocalContent.settings.t4" #&gt;
-&lt;#@ Include File="T4LocalContent.Generator.t4" #&gt;</value>
+    <value>&lt;#
+/*
+Copyright (c) 2024, Integrated Solutions, Inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+		* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+		* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+		* Neither the name of the Integrated Solutions, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+#&gt;
+&lt;#@ assembly name="System.Core" #&gt;
+&lt;#@ assembly name="Microsoft.VisualStudio.Shell.Interop.8.0" #&gt;
+&lt;#@ assembly name="EnvDTE" #&gt;
+&lt;#@ assembly name="EnvDTE80" #&gt;
+&lt;#@ assembly name="VSLangProj" #&gt;
+&lt;#@ import namespace="System.Collections.Generic" #&gt;
+&lt;#@ import namespace="System.IO" #&gt;
+&lt;#@ import namespace="System.Linq" #&gt;
+&lt;#@ import namespace="System.Text" #&gt;
+&lt;#@ import namespace="System.Text.RegularExpressions" #&gt;
+&lt;#@ import namespace="Microsoft.VisualStudio.Shell.Interop" #&gt;
+&lt;#@ import namespace="EnvDTE" #&gt;
+&lt;#@ import namespace="EnvDTE80" #&gt;
+&lt;#@ import namespace="Microsoft.VisualStudio.TextTemplating" #&gt;
+&lt;#		Initialize(); #&gt;
+// &lt;auto-generated /&gt;
+// Make sure the compiler doesn't complain about missing Xml comments
+#pragma warning disable 1591
+
+using System;
+using System.Diagnostics;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+&lt;#
+		if (BuildT4Files)
+		{
+			var separator = "/";
+#&gt;
+#region &lt;#= Namespace #&gt;&lt;#= (string.IsNullOrWhiteSpace(FilesSubClassName) ? string.Empty : string.Format(".{0}", FilesSubClassName)) #&gt;
+namespace &lt;#= Namespace #&gt;
+{
+&lt;#
+				foreach (var subClassName in FilesSubClassNames)
+				{
+					PushIndent("\t");
+#&gt;
+[&lt;#= 		GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class &lt;#= subClassName #&gt;
+{
+&lt;#
+				}
+
+#&gt;
+	public static string __root = &lt;#= (IsWebRoot ? "\"~/\"" : "null") #&gt;;
+	public static string _root()
+	{
+		return (__root ??= ISI.Extensions.VirtualFileVolumesFileProvider.GetPathPrefix(typeof(&lt;#= FilesSubClassName #&gt;)));
+	}
+
+&lt;#
+
+			var classNamespace = FilesSubClassName;
+
+			foreach (ProjectItem projectItem in Project.ProjectItems)
+			{
+				if (RootFileNames.Exists(fileName =&gt; string.Equals(fileName, projectItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+				{
+#&gt;
+	public static readonly string &lt;#= CreateSlug(projectItem.Name) #&gt; = _root() + "&lt;#= projectItem.Name #&gt;";
+&lt;#
+				}
+			}
+
+				foreach (ProjectItem folderItem in Project.ProjectItems)
+				{
+					if (IsFolder(folderItem))
+					{
+						if (string.Equals(ViewsFolder, folderItem.Name, StringComparison.InvariantCultureIgnoreCase) || LocalContentFileFolders.Any(name =&gt; string.Equals(name, folderItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+						{
+							Files_ProcessContentFolder(folderItem, classNamespace, separator);
+						}
+						if (string.Equals(AreasRootFolder, folderItem.Name, StringComparison.InvariantCultureIgnoreCase))
+						{
+							PushIndent("\t");
+#&gt;
+[&lt;#= 						GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class Areas
+{
+	public static string _root()
+	{
+		return string.Format("{0}Areas&lt;#= separator #&gt;", &lt;#= classNamespace #&gt;._root());
+	}
+
+&lt;#
+							foreach (ProjectItem areaItem in folderItem.ProjectItems)
+							{
+								if (IsFolder(areaItem))
+								{
+									Files_ProcessArea(areaItem, string.Format("{0}.Areas", classNamespace), separator);
+								}
+							}
+#&gt;
+}
+&lt;#
+							PopIndent();
+						}
+					}
+				}
+
+				foreach (var subClassName in FilesSubClassNames)
+				{
+#&gt;
+}
+&lt;#
+					PopIndent();
+				}
+#&gt;
+}
+#endregion
+
+&lt;#
+		}
+
+		if (BuildT4Links)
+		{
+#&gt;
+#region &lt;#= Namespace #&gt;&lt;#= (string.IsNullOrWhiteSpace(LinksSubClassName) ? string.Empty : string.Format(".{0}", LinksSubClassName)) #&gt;
+namespace &lt;#= Namespace #&gt;
+{
+&lt;#
+				foreach (var subClassName in LinksSubClassNames)
+				{
+					PushIndent("\t");
+#&gt;
+[&lt;#= 		GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class &lt;#= subClassName #&gt;
+{
+	private static Func&lt;string, bool, global::ISI.Extensions.AspNetCore.IContentUrl&gt; _getContentUrl = null;
+	public static Func&lt;string, bool, global::ISI.Extensions.AspNetCore.IContentUrl&gt; GetContentUrl 
+	{
+		get =&gt; _getContentUrl ??= (url, isOriginalUrl) =&gt; new global::ISI.Extensions.AspNetCore.ContentUrl(url, isOriginalUrl);
+		set =&gt; _getContentUrl = value;
+	}
+
+	[ISI.Extensions.AspNetCore.ContentUrlGeneratorSetter]
+	public class ContentUrlGeneratorSetter : global::ISI.Extensions.AspNetCore.IContentUrlGeneratorSetter
+	{
+		public void SetContentUrlGenerator(Func&lt;string, bool, global::ISI.Extensions.AspNetCore.IContentUrl&gt; setter)
+		{
+			GetContentUrl = setter;
+		}
+	}
+
+&lt;#
+				}
+
+#&gt;
+	public static string __root = &lt;#= (IsWebRoot ? "\"~/\"" : "null") #&gt;;
+	public static string _root()
+	{
+		return (__root ??= ISI.Extensions.VirtualFileVolumesFileProvider.GetPathPrefix(typeof(&lt;#= LinksSubClassName #&gt;)));
+	}
+
+&lt;#
+			var classNamespace = LinksSubClassName;
+
+			var hasRootItem = false;
+			foreach (ProjectItem projectItem in Project.ProjectItems)
+			{
+				if (RootFileNames.Exists(fileName =&gt; string.Equals(fileName, projectItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+				{
+					if (!hasRootItem)
+					{
+#&gt;
+	private static global::ISI.Extensions.AspNetCore.IContentUrl _directory = null;
+	public static global::ISI.Extensions.AspNetCore.IContentUrl _Directory =&gt; _directory ??= GetContentUrl(_root(), true);
+&lt;#
+						hasRootItem = true;
+					}
+#&gt;
+	private static global::ISI.Extensions.AspNetCore.IContentUrl _&lt;#= CreateSlug(projectItem.Name) #&gt; = null;
+	public static global::ISI.Extensions.AspNetCore.IContentUrl &lt;#= CreateSlug(projectItem.Name) #&gt; =&gt; _&lt;#= CreateSlug(projectItem.Name) #&gt; ??= GetContentUrl(_root() + "&lt;#= projectItem.Name #&gt;", true);
+&lt;#
+				}
+			}
+				if (hasRootItem)
+				{
+#&gt;
+
+&lt;#
+				}
+
+				foreach (ProjectItem folderItem in Project.ProjectItems)
+				{
+					if (IsFolder(folderItem))
+					{
+						if (string.Equals(AreasRootFolder, folderItem.Name, StringComparison.InvariantCultureIgnoreCase))
+						{
+							PushIndent("\t");
+#&gt;
+[&lt;#= 						GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class Areas
+{
+	public static string _root()
+	{
+		return string.Format("{0}Areas/", &lt;#= classNamespace #&gt;._root());
+	}
+
+&lt;#
+							foreach (ProjectItem areaItem in folderItem.ProjectItems)
+							{
+								if (IsFolder(areaItem))
+								{
+									Links_ProcessArea(areaItem, string.Format("{0}.Areas", classNamespace));
+								}
+							}
+#&gt;
+}
+&lt;#
+							PopIndent();
+						}
+						if (LocalContentFileFolders.Any(name =&gt; string.Equals(name, folderItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+						{
+							Links_ProcessContentFolder(folderItem, classNamespace);
+						}
+					}
+				}
+
+				foreach (var subClassName in LinksSubClassNames)
+				{
+#&gt;
+}
+&lt;#
+					PopIndent();
+				}
+#&gt;
+}
+#endregion
+&lt;#
+		}
+
+		if (BuildT4Embedded)
+		{
+			var separator = "/";
+#&gt;
+
+#region &lt;#= Namespace #&gt;&lt;#= (string.IsNullOrWhiteSpace(EmbeddedSubClassName) ? string.Empty : string.Format(".{0}", EmbeddedSubClassName)) #&gt;
+namespace &lt;#= Namespace #&gt;
+{
+&lt;#
+				foreach (var subClassName in EmbeddedSubClassNames)
+				{
+					PushIndent("\t");
+#&gt;
+[&lt;#= 		GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class &lt;#= subClassName #&gt;
+{
+&lt;#
+				}
+
+#&gt;
+	public static string _root()
+	{
+		return "pack://application:,,,/&lt;#= Namespace #&gt;;component/";
+	}
+
+&lt;#
+
+			var classNamespace = EmbeddedSubClassName;
+
+			foreach (ProjectItem projectItem in Project.ProjectItems)
+			{
+				if (RootFileNames.Exists(fileName =&gt; string.Equals(fileName, projectItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+				{
+#&gt;
+	public static readonly string &lt;#= CreateSlug(projectItem.Name) #&gt; = _root() + "&lt;#= projectItem.Name #&gt;";
+&lt;#
+				}
+			}
+
+				foreach (ProjectItem folderItem in Project.ProjectItems)
+				{
+					if (IsFolder(folderItem))
+					{
+						if (string.Equals(ViewsFolder, folderItem.Name, StringComparison.InvariantCultureIgnoreCase) || LocalContentFileFolders.Any(name =&gt; string.Equals(name, folderItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+						{
+							Files_ProcessContentFolder(folderItem, classNamespace, separator);
+						}
+						if (string.Equals(AreasRootFolder, folderItem.Name, StringComparison.InvariantCultureIgnoreCase))
+						{
+							PushIndent("\t");
+#&gt;
+[&lt;#= 						GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class Areas
+{
+	public static string _root()
+	{
+		return string.Format("{0}Areas&lt;#= separator #&gt;", &lt;#= classNamespace #&gt;._root());
+	}
+
+&lt;#
+							foreach (ProjectItem areaItem in folderItem.ProjectItems)
+							{
+								if (IsFolder(areaItem))
+								{
+									Files_ProcessArea(areaItem, string.Format("{0}.Areas", classNamespace), separator);
+								}
+							}
+#&gt;
+}
+&lt;#
+							PopIndent();
+						}
+					}
+				}
+
+				foreach (var subClassName in EmbeddedSubClassNames)
+				{
+#&gt;
+}
+&lt;#
+					PopIndent();
+				}
+#&gt;
+}
+#endregion
+
+&lt;#
+		}
+
+		if (BuildT4Resources)
+		{
+			var separator = ".";
+#&gt;
+#region &lt;#= Namespace #&gt;&lt;#= (string.IsNullOrWhiteSpace(ResourcesSubClassName) ? string.Empty : string.Format(".{0}", ResourcesSubClassName)) #&gt;
+namespace &lt;#= Namespace #&gt;
+{
+&lt;#
+				foreach (var subClassName in ResourcesSubClassNames)
+				{
+					PushIndent("\t");
+#&gt;
+[&lt;#= 		GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class &lt;#= subClassName #&gt;
+{
+&lt;#
+				}
+
+#&gt;
+	public static string _root()
+	{
+		return "&lt;#= Namespace #&gt;.";
+	}
+
+&lt;#
+
+			var classNamespace = ResourcesSubClassName;
+
+			foreach (ProjectItem projectItem in Project.ProjectItems)
+			{
+				if (RootFileNames.Exists(fileName =&gt; string.Equals(fileName, projectItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+				{
+#&gt;
+	public static readonly string &lt;#= CreateSlug(projectItem.Name) #&gt; = _root() + "&lt;#= projectItem.Name #&gt;";&lt;#
+					if (BuildT4Resources)
+					{
+#&gt;
+	public static System.IO.Stream Get&lt;#= CreateSlug(projectItem.Name) #&gt;Stream()
+	{
+		return typeof(&lt;#= Namespace #&gt;.&lt;#= ResourcesSubClassName #&gt;).Assembly.GetManifestResourceStream(&lt;#= CreateSlug(projectItem.Name) #&gt;);
+	}
+&lt;#
+					}
+				}
+			}
+
+				foreach (ProjectItem folderItem in Project.ProjectItems)
+				{
+					if (IsFolder(folderItem))
+					{
+						if (string.Equals(ViewsFolder, folderItem.Name, StringComparison.InvariantCultureIgnoreCase) || LocalContentFileFolders.Any(name =&gt; string.Equals(name, folderItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+						{
+							Files_ProcessContentFolder(folderItem, classNamespace, separator);
+						}
+						if (string.Equals(AreasRootFolder, folderItem.Name, StringComparison.InvariantCultureIgnoreCase))
+						{
+							PushIndent("\t");
+#&gt;
+[&lt;#= 						GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class Areas
+{
+	public static string _root()
+	{
+		return string.Format("{0}Areas&lt;#= separator #&gt;", &lt;#= classNamespace #&gt;._root());
+	}
+
+&lt;#
+							foreach (ProjectItem areaItem in folderItem.ProjectItems)
+							{
+								if (IsFolder(areaItem))
+								{
+									Files_ProcessArea(areaItem, string.Format("{0}.Areas", classNamespace), separator);
+								}
+							}
+#&gt;
+}
+&lt;#
+							PopIndent();
+						}
+					}
+				}
+
+				foreach (var subClassName in ResourcesSubClassNames)
+				{
+#&gt;
+}
+&lt;#
+					PopIndent();
+				}
+#&gt;
+}
+#endregion
+
+&lt;#
+		}
+#&gt;
+
+&lt;#+ 
+		private void Files_ProcessArea(ProjectItem projectItem, string classNamespace, string separator)
+		{
+			var projectItemSlug = CreateSlug(projectItem.Name);
+			PushIndent("\t");
+#&gt;
+[&lt;#= 			GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class &lt;#= projectItemSlug #&gt;
+{
+	public static string _root()
+	{
+		return string.Format("{0}&lt;#= projectItem.Name #&gt;&lt;#= separator #&gt;", &lt;#= classNamespace #&gt;._root());
+	}
+
+&lt;#+
+			foreach (ProjectItem folderItem in projectItem.ProjectItems)
+			{
+				if (IsFolder(folderItem))
+				{
+					if (string.Equals(ViewsFolder, folderItem.Name, StringComparison.InvariantCultureIgnoreCase) || LocalContentFileFolders.Any(name =&gt; string.Equals(name, folderItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+					{
+						Files_ProcessContentFolder(folderItem, string.Format("{0}.{1}", classNamespace, projectItemSlug), separator);
+					}
+				}
+			}
+#&gt;
+}
+&lt;#+
+			PopIndent();
+		}
+
+		private void Files_ProcessContentFolder(ProjectItem projectFolder, string classNamespace, string separator)
+		{
+			var projectFolderSlug = CreateSlug(projectFolder.Name);
+			PushIndent("\t");
+#&gt;
+[&lt;#= 			GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class &lt;#= projectFolderSlug #&gt;
+{
+	public static string _root()
+	{
+		return string.Format("{0}&lt;#= projectFolder.Name #&gt;&lt;#= separator #&gt;", &lt;#= classNamespace #&gt;._root());
+	}
+
+&lt;#+
+			var usedNames = new List&lt;string&gt;();
+			foreach (ProjectItem projectItem in projectFolder.ProjectItems)
+			{
+				if (IsFolder(projectItem))
+				{
+					if (!usedNames.Contains(projectItem.Name))
+					{
+						Files_ProcessContentFolder(projectItem, string.Format("{0}.{1}", classNamespace, projectFolderSlug), separator);
+						usedNames.Add(projectItem.Name);
+					}
+				}
+				else if (!LocalContentFileIgnoreFileExtensions.Any(e =&gt; projectItem.Name.EndsWith(e, StringComparison.InvariantCultureIgnoreCase)))
+				{
+					foreach (var fileName in ExpandFileName(projectItem.Name))
+					{
+						if (!usedNames.Contains(fileName))
+						{
+#&gt;
+	public static readonly string &lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; = _root() + "&lt;#= projectItem.Name #&gt;";
+&lt;#+
+		if (BuildT4Resources)
+		{
+#&gt;
+	public static System.IO.Stream Get&lt;#= CreateSlug(projectItem.Name) #&gt;Stream()
+	{
+		return typeof(&lt;#= Namespace #&gt;.&lt;#= ResourcesSubClassName #&gt;).Assembly.GetManifestResourceStream(&lt;#= CreateSlug(projectItem.Name) #&gt;);
+	}
+&lt;#+
+		}
+#&gt;
+&lt;#+
+							usedNames.Add(fileName);
+						}
+					}
+				}
+			}
+#&gt;
+}
+&lt;#+
+			PopIndent();
+		}
+
+		private void Links_ProcessArea(ProjectItem projectItem, string classNamespace)
+		{
+			var projectItemSlug = CreateSlug(projectItem.Name);
+			PushIndent("\t");
+#&gt;
+[&lt;#= 			GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class &lt;#= projectItemSlug #&gt;
+{
+	public static string _root()
+	{
+		return string.Format("{0}&lt;#= projectItem.Name #&gt;/", &lt;#= classNamespace #&gt;._root());
+	}
+
+&lt;#+
+			foreach (ProjectItem folderItem in projectItem.ProjectItems)
+			{
+				if (IsFolder(folderItem))
+				{
+					if (LocalContentFileFolders.Any(name =&gt; string.Equals(name, folderItem.Name, StringComparison.InvariantCultureIgnoreCase)))
+					{
+						Links_ProcessContentFolder(folderItem, string.Format("{0}.{1}", classNamespace, projectItemSlug));
+					}
+				}
+			}
+#&gt;
+}
+&lt;#+
+			PopIndent();
+		}
+
+		private void Links_ProcessContentFolder(ProjectItem projectFolder, string classNamespace)
+		{
+			var projectFolderSlug = CreateSlug(projectFolder.Name);
+			PushIndent("\t");
+#&gt;
+[&lt;#= 			GeneratedCode #&gt;, DebuggerNonUserCode]
+public static partial class &lt;#= projectFolderSlug #&gt;
+{
+	public static string _root()
+	{
+&lt;#+
+			if(string.Equals(projectFolder.Name, "wwwroot", StringComparison.InvariantCultureIgnoreCase))
+			{
+#&gt;
+		return &lt;#= classNamespace #&gt;._root();
+&lt;#+
+			}
+			else
+			{
+#&gt;
+		return string.Format("{0}&lt;#= projectFolder.Name #&gt;/", &lt;#= classNamespace #&gt;._root());
+&lt;#+
+			}
+#&gt;
+	}
+
+	private static global::ISI.Extensions.AspNetCore.IContentUrl _directory = null;
+	public static global::ISI.Extensions.AspNetCore.IContentUrl _Directory =&gt; _directory ??= GetContentUrl(&lt;#= classNamespace #&gt;._root() + "&lt;#= projectFolder.Name #&gt;", true);
+
+&lt;#+
+			var usedNames = new List&lt;string&gt;();
+			foreach (ProjectItem projectItem in projectFolder.ProjectItems)
+			{
+				if (IsFolder(projectItem))
+				{
+					if (!usedNames.Contains(projectItem.Name))
+					{
+						Links_ProcessContentFolder(projectItem, string.Format("{0}.{1}", classNamespace, projectFolderSlug));
+						usedNames.Add(projectItem.Name);
+					}
+				}
+				else if (!LocalContentFileIgnoreFileExtensions.Any(e =&gt; projectItem.Name.EndsWith(e, StringComparison.InvariantCultureIgnoreCase)))
+				{
+					foreach (var fileName in ExpandFileName(projectItem.Name))
+					{
+						if (!usedNames.Contains(fileName))
+						{
+#&gt;
+	private static global::ISI.Extensions.AspNetCore.IContentUrl _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; = null;
+	public static global::ISI.Extensions.AspNetCore.IContentUrl &lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; =&gt; _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; ??= GetContentUrl(_root() + "&lt;#= projectItem.Name #&gt;", true);
+&lt;#+
+							usedNames.Add(fileName);
+						}
+					}
+
+					if(projectItem.ProjectItems != null)
+					{
+						foreach (ProjectItem subProjectItem in projectItem.ProjectItems)
+						{
+							foreach (var fileName in ExpandFileName(subProjectItem.Name))
+							{
+								if (!usedNames.Contains(fileName))
+								{
+#&gt;
+	private static global::ISI.Extensions.AspNetCore.IContentUrl _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; = null;
+	public static global::ISI.Extensions.AspNetCore.IContentUrl &lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; =&gt; _&lt;#= CreateSlug(fileName, projectFolderSlug) #&gt; ??= GetContentUrl(_root() + "&lt;#= subProjectItem.Name #&gt;", true);
+&lt;#+
+									usedNames.Add(fileName);
+								}
+							}
+						}
+					}
+				}
+			}
+#&gt;
+}
+&lt;#+
+			PopIndent();
+		}
+
+	static DTE Dte;
+	static Project Project;
+	static Microsoft.CSharp.CSharpCodeProvider codeProvider;
+	static string GeneratedCode;
+	static string[] FilesSubClassNames;
+	static string[] LinksSubClassNames;
+	static string[] EmbeddedSubClassNames;
+	static string[] ResourcesSubClassNames;
+	static Dictionary&lt;System.Text.RegularExpressions.Regex, string&gt; rgFileNameReplacements;
+
+	private void Initialize()
+	{
+		var serviceProvider = Host as IServiceProvider;
+		if (serviceProvider != null)
+		{
+			Dte = serviceProvider.GetService(typeof (SDTE)) as DTE;
+		}
+
+		Project = Dte.Solution.FindProjectItem(Host.TemplateFile).ContainingProject;
+
+		codeProvider = new Microsoft.CSharp.CSharpCodeProvider();
+		GeneratedCode = @"GeneratedCode(""T4LocalContent"", ""1.0"")";
+
+		FilesSubClassNames = FilesSubClassName.Split(new string[] {"."}, StringSplitOptions.RemoveEmptyEntries);
+		LinksSubClassNames = LinksSubClassName.Split(new string[] {"."}, StringSplitOptions.RemoveEmptyEntries);
+		EmbeddedSubClassNames = EmbeddedSubClassName.Split(new string[] {"."}, StringSplitOptions.RemoveEmptyEntries);
+		ResourcesSubClassNames = ResourcesSubClassName.Split(new string[] {"."}, StringSplitOptions.RemoveEmptyEntries);
+	}
+
+	private static List&lt;string&gt; ExpandFileName(string fileName)
+	{
+		var result = new List&lt;string&gt;();
+
+		result.Add(fileName);
+		if (LocalContentFileNameReplacements != null)
+		{
+			foreach (var fileNameReplacement in LocalContentFileNameReplacements)
+			{
+				if (fileNameReplacement.Key.Match(fileName).Success)
+				{
+					result.Add(fileNameReplacement.Value);
+				}
+			}
+		}
+
+		return result;
+	}
+
+	private static bool IsFolder(ProjectItem item)
+	{
+		return (item.Kind == EnvDTE.Constants.vsProjectItemKindPhysicalFolder);
+	}
+
+	private static string CreateSlug(string value, string className = "")
+	{
+		var result = value.Trim();
+
+		result = Regex.Replace(result, @"[\W\b]", "_", RegexOptions.IgnoreCase);
+		result = Regex.Replace(result, @"^\d", @"_$0");
+
+		result = codeProvider.CreateEscapedIdentifier(result).Replace("@", "_");
+
+		if (!string.IsNullOrEmpty(className) &amp;&amp; string.Equals(className, result, StringComparison.InvariantCulture))
+		{
+			result = "_" + result;
+		}
+
+		return result;
+	}
+
+#&gt;</value>
   </data>
   <data name="AssemblyInfo" xml:space="preserve">
     <value>using System.Reflection;
