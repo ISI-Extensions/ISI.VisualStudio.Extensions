@@ -50,6 +50,8 @@ namespace ISI.VisualStudio.Extensions
 				var rootNamespace = project.GetRootNamespace();
 				var rootNamespaceQueue = new List<string>(rootNamespace.Split(new[] { '.' }));
 
+				var partialClassApiDtoNamespace = (string)null;
+
 				if (!string.IsNullOrWhiteSpace(partialClassConstructorFullName))
 				{
 					var dtoLine = System.IO.File.ReadAllLines(partialClassConstructorFullName)
@@ -57,14 +59,15 @@ namespace ISI.VisualStudio.Extensions
 
 					if (!string.IsNullOrWhiteSpace(dtoLine))
 					{
-						var partialClassRootNamespace = dtoLine.Trim()
+						partialClassApiDtoNamespace = dtoLine.Trim()
 							.TrimStart("using", StringComparison.InvariantCultureIgnoreCase).Trim()
 							.TrimStart("DTOs", StringComparison.InvariantCultureIgnoreCase).Trim()
-							.TrimStart("=", StringComparison.InvariantCultureIgnoreCase).Trim();
+							.TrimStart("=", StringComparison.InvariantCultureIgnoreCase).Trim()
+							.TrimEnd(";", StringComparison.InvariantCultureIgnoreCase).Trim();
 
-						partialClassRootNamespace = partialClassRootNamespace.Substring(0, partialClassRootNamespace.IndexOf(".DataTransferObjects.", StringComparison.InvariantCultureIgnoreCase));
+						var partialClassDtoRootNamespace = partialClassApiDtoNamespace.Substring(0, partialClassApiDtoNamespace.IndexOf(".DataTransferObjects.", StringComparison.InvariantCultureIgnoreCase));
 
-						contractProjectDescription ??= projectDescriptions.FirstOrDefault(projectDescription => string.Equals(projectDescription.RootNamespace, partialClassRootNamespace, StringComparison.InvariantCultureIgnoreCase));
+						contractProjectDescription ??= projectDescriptions.FirstOrDefault(projectDescription => string.Equals(projectDescription.RootNamespace, partialClassDtoRootNamespace, StringComparison.InvariantCultureIgnoreCase));
 					}
 				}
 
@@ -143,6 +146,14 @@ namespace ISI.VisualStudio.Extensions
 								var dtosDirectory = System.IO.Path.Combine(contractProjectDirectory, "DataTransferObjects", partialClassName);
 
 								var dtosNamespace = GetNamespace(contractProjectDescription.Project, dtosDirectory);
+
+								if (!string.IsNullOrWhiteSpace(partialClassApiDtoNamespace))
+								{
+									var dtoNamespace = partialClassApiDtoNamespace.Substring( partialClassApiDtoNamespace.IndexOf(".DataTransferObjects.", StringComparison.InvariantCultureIgnoreCase)).TrimStart(".DataTransferObjects.", StringComparison.InvariantCultureIgnoreCase);
+
+									dtosDirectory = System.IO.Path.Combine(contractProjectDirectory, "DataTransferObjects", dtoNamespace.Replace(".", "\\"));
+									dtosNamespace = partialClassApiDtoNamespace;
+								}
 
 								await AddDataTransferObjectRequestResponseAsync(solution, contractProjectDescription.Project, dtosDirectory, dtosNamespace, methodName);
 							}
