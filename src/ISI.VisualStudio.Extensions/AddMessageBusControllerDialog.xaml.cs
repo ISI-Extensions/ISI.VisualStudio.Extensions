@@ -13,32 +13,38 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 #endregion
  
-using System.ComponentModel;
+using System;
+using System.Linq;
+using System.Windows;
+using ISI.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
 {
-	public partial class RecipeOptions
+	/// <summary>
+	/// Interaction logic for AddMessageBusControllerDialog.xaml
+	/// </summary>
+
+	public partial class AddMessageBusControllerDialog
 	{
-		public const string  MessageBus_Category = "MessageBus Recipes";
+		public string NewControllerName => txtNewControllerName.Text.Replace(" ", string.Empty);
+		public bool AddIsAuthorized => chkAddIsAuthorized.IsChecked.GetValueOrDefault();
 
-		[Category(MessageBus_Category)]
-		[DisplayName("Controller Controller Template")]
-		public string MessageBus_Controller_Controller_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.MessageBus_Recipes.Controller_Controller_Template;
+		protected System.Collections.Generic.IDictionary<string, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> ProjectLookUp { get; }
 
-		[Category(MessageBus_Category)]
-		[DisplayName("Controller SubscriptionsRoot Template")]
-		public string MessageBus_Controller_SubscriptionsRoot_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.MessageBus_Recipes.Controller_SubscriptionsRoot_Template;
+		public AddMessageBusControllerDialog()
+		{
+			InitializeComponent();
 
-		[Category(MessageBus_Category)]
-		[DisplayName("Controller Subscriptions Template")]
-		public string MessageBus_Controller_Subscriptions_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.MessageBus_Recipes.Controller_Subscriptions_Template;
+			Title = Vsix.Name;
 
-		[Category(MessageBus_Category)]
-		[DisplayName("Controller Subscriptions With Authentication Template")]
-		public string MessageBus_Controller_SubscriptionsWithAuthentication_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.MessageBus_Recipes.Controller_SubscriptionsWithAuthentication_Template;
+			chkAddIsAuthorized.IsChecked = true;
 
-		[Category(MessageBus_Category)]
-		[DisplayName("Method Action Template")]
-		public string MessageBus_Method_Action_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.MessageBus_Recipes.Controller_Method_Action_Template;
+			txtNewControllerName.Focus();
+		}
+
+		private void btnOk_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			DialogResult = true;
+		}
 	}
 }

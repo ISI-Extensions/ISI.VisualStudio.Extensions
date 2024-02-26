@@ -43,10 +43,30 @@ namespace ISI.VisualStudio.Extensions
 
 				var partialClassName = partialClassDirectory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
 
+				var partialClassConstructorFullName = System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
+
 				var contractProjectDescription = (SolutionExtensions.ProjectDescription)null;
 
 				var rootNamespace = project.GetRootNamespace();
 				var rootNamespaceQueue = new List<string>(rootNamespace.Split(new[] { '.' }));
+
+				if (!string.IsNullOrWhiteSpace(partialClassConstructorFullName))
+				{
+					var dtoLine = System.IO.File.ReadAllLines(partialClassConstructorFullName)
+						.FirstOrDefault(line => line.Trim().StartsWith("using ", StringComparison.InvariantCultureIgnoreCase) && (line.IndexOf(" DTOs ", StringComparison.InvariantCultureIgnoreCase) > 0));
+
+					if (!string.IsNullOrWhiteSpace(dtoLine))
+					{
+						var partialClassRootNamespace = dtoLine.Trim()
+							.TrimStart("using", StringComparison.InvariantCultureIgnoreCase).Trim()
+							.TrimStart("DTOs", StringComparison.InvariantCultureIgnoreCase).Trim()
+							.TrimStart("=", StringComparison.InvariantCultureIgnoreCase).Trim();
+
+						partialClassRootNamespace = partialClassRootNamespace.Substring(0, partialClassRootNamespace.IndexOf(".DataTransferObjects.", StringComparison.InvariantCultureIgnoreCase));
+
+						contractProjectDescription ??= projectDescriptions.FirstOrDefault(projectDescription => string.Equals(projectDescription.RootNamespace, partialClassRootNamespace, StringComparison.InvariantCultureIgnoreCase));
+					}
+				}
 
 				while (rootNamespaceQueue.Any() && (contractProjectDescription == null))
 				{
@@ -94,7 +114,7 @@ namespace ISI.VisualStudio.Extensions
 						{
 							var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-							var sortedUsingStatements = GetSortedUsings(codeExtensionProvider, null, new []{System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault()});
+							var sortedUsingStatements = GetSortedUsings(codeExtensionProvider, null, new[] { partialClassConstructorFullName });
 
 							var contentReplacements = new Dictionary<string, string>
 							{

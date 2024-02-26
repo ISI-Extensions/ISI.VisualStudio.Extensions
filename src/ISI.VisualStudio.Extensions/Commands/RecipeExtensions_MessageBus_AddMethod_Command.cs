@@ -116,9 +116,16 @@ namespace ISI.VisualStudio.Extensions
 								},
 								(projectItems, fullName, content, replacementValues) =>
 								{
+									var isAuthorized = "null";
+
+									if (System.IO.File.Exists(fullName) && (System.IO.File.ReadAllText(fullName).IndexOf("bool IsAuthorized(", StringComparison.InvariantCultureIgnoreCase) > 0))
+									{
+										isAuthorized = "IsAuthorized";
+									}
+
 									RecipeExtensionsHelper.ReplaceFileContent(fullName, new Dictionary<string, string>
 									{
-										{ "//${Subscriptions}", $"messageQueueConfigurator.Subscribe<Controllers.{controllerKey}Controller, DTOs.{controllerActionKey}Request, DTOs.{controllerActionKey}Response>(async (service, request, cancellationToken) => await service.{controllerActionKey}Async(request, cancellationToken), null);\r\n\t\t\t\t\t//${{Subscriptions}}" },
+										{ "//${Subscriptions}", $"messageQueueConfigurator.Subscribe<Controllers.{controllerKey}Controller, DTOs.{controllerActionKey}Request, DTOs.{controllerActionKey}Response>(async (service, request, cancellationToken) => await service.{controllerActionKey}Async(request, cancellationToken), {isAuthorized});\r\n\t\t\t\t\t//${{Subscriptions}}" },
 									});
 								}),
 						};

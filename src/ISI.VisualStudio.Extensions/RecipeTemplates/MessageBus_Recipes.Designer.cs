@@ -159,5 +159,28 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
                 return ResourceManager.GetString("Controller_SubscriptionsRoot_Template", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}.MessageBus
+        ///{
+        ///	public partial class Subscriptions
+        ///	{
+        ///		public class ${ControllerKey}
+        ///		{
+        ///			private static Configuration _configuration = null;
+        ///			private static Configuration Configuration =&gt; _configuration ??= ISI.Extensions.ServiceLocator.Current.GetService&lt;Configuration&gt;();
+        ///
+        ///			private static bool IsAuthorized(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection headers, object request)
+        ///			{
+        ///				if (string.IsNullOrWhiteSpace(Configuration.ApiToken))
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Controller_SubscriptionsWithAuthentication_Template {
+            get {
+                return ResourceManager.GetString("Controller_SubscriptionsWithAuthentication_Template", resourceCulture);
+            }
+        }
     }
 }

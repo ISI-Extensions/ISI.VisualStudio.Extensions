@@ -169,6 +169,52 @@ namespace ${Namespace}.MessageBus
 	}
 }</value>
   </data>
+  <data name="Controller_SubscriptionsWithAuthentication_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}.MessageBus
+{
+	public partial class Subscriptions
+	{
+		public class ${ControllerKey}
+		{
+			private static Configuration _configuration = null;
+			private static Configuration Configuration =&gt; _configuration ??= ISI.Extensions.ServiceLocator.Current.GetService&lt;Configuration&gt;();
+
+			private static bool IsAuthorized(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection headers, object request)
+			{
+				if (string.IsNullOrWhiteSpace(Configuration.ApiToken))
+				{
+					return true;
+				}
+
+				headers ??= new ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection();
+
+				if (headers.TryGetValue(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection.Keys.Authorization, out var apiKey))
+				{
+					apiKey = apiKey.TrimStart(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection.Keys.Bearer).Trim();
+
+					return string.Equals(Configuration.ApiToken, apiKey, StringComparison.InvariantCultureIgnoreCase);
+				}
+
+				return false;
+			}
+
+			public static ISI.Extensions.MessageBus.IMessageBusBuildRequest GetAddSubscriptions()
+			{
+				var response = new ISI.Extensions.MessageBus.DefaultMessageBusBuildRequest();
+
+				response.AddSubscriptions.Add(messageQueueConfigurator =&gt;
+				{
+					//${Subscriptions}
+				});
+
+				return response;
+			}
+		}
+	}
+}</value>
+  </data>
   <data name="Controller_Subscriptions_Template" xml:space="preserve">
     <value>${Usings}
 

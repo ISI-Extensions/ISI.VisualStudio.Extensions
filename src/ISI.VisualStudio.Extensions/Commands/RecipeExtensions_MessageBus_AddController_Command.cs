@@ -49,16 +49,18 @@ namespace ISI.VisualStudio.Extensions
 		{
 			try
 			{
-				var inputDialog = new InputDialog("New Controller");
+				var inputDialog = new AddMessageBusControllerDialog();
 
 				var inputDialogResult = await inputDialog.ShowDialogAsync();
 
-				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.Value))
+				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.NewControllerName))
 				{
-					var controllerKey = inputDialog.Value.Replace(" ", string.Empty);
+					var controllerKey = inputDialog.NewControllerName.Replace(" ", string.Empty);
 
 					if (!string.IsNullOrWhiteSpace(controllerKey))
 					{
+						var addIsAuthorized = inputDialog.AddIsAuthorized;
+
 						var outputWindowPane = await RecipeExtensionsHelper.GetOutputWindowPaneAsync();
 
 						await outputWindowPane.ActivateAsync();
@@ -111,7 +113,7 @@ namespace ISI.VisualStudio.Extensions
 							{
 								new(System.IO.Path.Combine(controllerDirectory, string.Format("__{0}Controller.cs", controllerKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.MessageBus_Controller_Controller_Template), controllerDirectory, controllersDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory)),
 								new(System.IO.Path.Combine(subscriptionsDirectory, "__Subscriptions.cs"), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.MessageBus_Controller_SubscriptionsRoot_Template), subscriptionsDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), false),
-								new(System.IO.Path.Combine(subscriptionsDirectory, string.Format("{0}.cs", controllerKey)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.MessageBus_Controller_Subscriptions_Template), subscriptionsDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), false),
+								new(System.IO.Path.Combine(subscriptionsDirectory, string.Format("{0}.cs", controllerKey)), RecipeExtensionsHelper.GetContent((addIsAuthorized ? nameof(RecipeOptions.MessageBus_Controller_SubscriptionsWithAuthentication_Template) : nameof(RecipeOptions.MessageBus_Controller_Subscriptions_Template)), subscriptionsDirectory, projectDirectory, solutionRecipesDirectory, solutionDirectory), false),
 							};
 
 							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
