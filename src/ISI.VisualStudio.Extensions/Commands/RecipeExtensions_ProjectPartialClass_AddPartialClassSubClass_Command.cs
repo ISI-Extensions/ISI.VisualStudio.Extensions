@@ -89,7 +89,7 @@ namespace ISI.VisualStudio.Extensions
 						{
 							var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-							var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, new []{System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault()});
+							var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, new[] { System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault() });
 
 							var contentReplacements = new Dictionary<string, string>
 							{

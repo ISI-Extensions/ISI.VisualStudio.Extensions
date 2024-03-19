@@ -66,12 +66,20 @@ namespace ISI.VisualStudio.Extensions
 		public string Project_ISI_Extensions_Repository_RecordManager_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Extensions_Repository_RecordManager_Template;
 
 		[Category(Project_Category)]
+		[DisplayName("ISI Extensions Repository RecordManager Convert Method")]
+		public string Partial_Class_Private_Convert_Method_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.PartialClassPrivateConvertMethod_Template;
+
+		[Category(Project_Category)]
 		[DisplayName("ISI Libraries Repository RecordManager Template")]
 		public string Project_ISI_Libraries_Repository_RecordManager_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.ISI_Libraries_Repository_RecordManager_Template;
 
 		[Category(Project_Category)]
-		[DisplayName("Serializable Object Template")]
-		public string Project_SerializableObject_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.SerializableObject_Template;
+		[DisplayName("Serializable Record Interface Template")]
+		public string Project_SerializableRecordInterface_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.SerializableRecordInterface_Template;
+
+		[Category(Project_Category)]
+		[DisplayName("Serializable Record Template")]
+		public string Project_SerializableRecord_Template { get; set; } = ISI.VisualStudio.Extensions.RecipeTemplates.Project_Recipes.SerializableRecord_Template;
 
 		[Category(Project_Category)]
 		[DisplayName("Serializable DataTransferObject Request Template")]

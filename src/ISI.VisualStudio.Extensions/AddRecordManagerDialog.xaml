@@ -12,7 +12,7 @@
 											 toolkit:Themes.UseVsTheme="True"
 											 mc:Ignorable="d"
 											 WindowStartupLocation="CenterScreen"
-											 Width="654" Height="320">
+											 Width="654" Height="360">
 	<StackPanel Margin="2">
 		<Grid Margin="5">
 			<Grid.ColumnDefinitions>
@@ -21,6 +21,7 @@
 				<ColumnDefinition Width="460" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
+				<RowDefinition Height="30" />
 				<RowDefinition Height="30" />
 				<RowDefinition Height="30" />
 				<RowDefinition Height="30" />
@@ -52,6 +53,9 @@
 
 			<TextBlock Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Has Archive:</TextBlock>
 			<CheckBox Grid.Row="6" Grid.Column="1" Name="chkHasArchive" Margin="5"/>
+
+			<TextBlock Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" Margin="5">Add Convert to:</TextBlock>
+			<ComboBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Name="cboConvertClass" Margin="2,-2,38,2" Padding="2,2,0,0" BorderThickness="1"/>
 		</Grid>
 
 		<WrapPanel Margin="0,5,0,0" HorizontalAlignment="Right">

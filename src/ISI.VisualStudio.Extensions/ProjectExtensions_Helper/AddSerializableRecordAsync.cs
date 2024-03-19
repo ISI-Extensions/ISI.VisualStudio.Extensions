@@ -12,7 +12,7 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 #endregion
- 
+
 using Community.VisualStudio.Toolkit;
 using ISI.Extensions.Extensions;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,25 +28,25 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class ProjectExtensions_Helper
 	{
-		public async Task AddSerializableObjectAsync()
+		public async Task AddSerializableRecordAsync()
 		{
 			try
 			{
-				var inputDialog = new InputDialog("Add Serializable Object");
+				var inputDialog = new AddSerializableRecordDialog();
 
 				var inputDialogResult = await inputDialog.ShowDialogAsync();
 
-				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.Value))
+				if (inputDialogResult.GetValueOrDefault() && !string.IsNullOrWhiteSpace(inputDialog.NewSerializableRecordName))
 				{
-					var className = inputDialog.Value.Replace(" ", string.Empty);
+					var className = inputDialog.NewSerializableRecordName.Replace(" ", string.Empty);
 
 					var solution = await VS.Solutions.GetCurrentSolutionAsync();
-					var project = await VS.Solutions.GetActiveProjectAsync();
 					var solutionItem = await VS.Solutions.GetActiveItemAsync();
+					var project = await VS.Solutions.GetActiveProjectAsync();
 
 					var @namespace = GetNamespace(project, solutionItem);
 
-					await AddSerializableObjectAsync(solution, project, solutionItem.FullPath, @namespace, className);
+					await AddSerializableRecordAsync(solution, project, solutionItem.FullPath, @namespace, className, inputDialog.AddInterface);
 				}
 			}
 			catch (Exception exception)
@@ -59,7 +59,7 @@ namespace ISI.VisualStudio.Extensions
 			}
 		}
 
-		public async Task AddSerializableObjectAsync(Solution solution, Project project, string directory, string @namespace, string className)
+		public async Task AddSerializableRecordAsync(Solution solution, Project project, string directory, string @namespace, string className, bool addInterface)
 		{
 			if (!string.IsNullOrWhiteSpace(className))
 			{
@@ -69,7 +69,7 @@ namespace ISI.VisualStudio.Extensions
 
 				await outputWindowPane.ClearAsync();
 
-				await outputWindowPane.WriteLineAsync("Add Serializable Object");
+				await outputWindowPane.WriteLineAsync("Add Serializable Record");
 
 				await project?.SaveAsync();
 
@@ -89,6 +89,29 @@ namespace ISI.VisualStudio.Extensions
 				usings.Add("using System.Runtime.Serialization;");
 				usings.Add("using LOCALENTITIES = XXXXXXX;");
 
+				var classInterfaceName = $"I{className}";
+				var entityClassName = className.TrimEnd("Record");
+
+				var versionKey = (new System.Text.RegularExpressions.Regex("(?:V(?:(?:\\d+)|(?:\\*)))$")).Match(className)?.Value;
+				if (!string.IsNullOrWhiteSpace(versionKey))
+				{
+					if (versionKey.EndsWith("*"))
+					{
+						var version = System.IO.Directory.GetFiles(directory, versionKey, System.IO.SearchOption.TopDirectoryOnly)
+							.Select(fileName => System.IO.Path.GetFileName(fileName).TrimStart(versionKey.TrimEnd('*')).ToInt())
+							.NullCheckedMax() + 1;
+
+						classInterfaceName = $"I{className.TrimEnd("V*").TrimEnd("Record")}";
+						entityClassName = $"{className.TrimEnd("V*").TrimEnd("Record")}";
+						className = $"{className.TrimEnd('*')}{version}";
+					}
+					else
+					{
+						classInterfaceName = $"I{className.TrimEnd(versionKey).TrimEnd("Record")}";
+						entityClassName = $"{className.TrimEnd(versionKey).TrimEnd("Record")}";
+					}
+				}
+
 				var sortedUsingStatements = GetSortedUsings(codeExtensionProvider, usings, null);
 
 				var contentReplacements = new Dictionary<string, string>
@@ -97,8 +120,8 @@ namespace ISI.VisualStudio.Extensions
 					{ "${Namespace}", @namespace },
 					{ "${ContractUuid}", Guid.NewGuid().Formatted(GuidExtensions.GuidFormat.WithHyphens) },
 					{ "${ClassName}", className },
-					{ "${ClassInterfaceName}", className },
-					{ "${EntityClassName}", className },
+					{ "${ClassInterfaceName}", classInterfaceName },
+					{ "${EntityClassName}", entityClassName },
 				};
 
 				if (codeExtensionProvider.CodeExtensionProviderUuid == ISI.Extensions.VisualStudio.CodeExtensionProviders.ISI.Extensions.CodeExtensionProvider.CodeExtensionProviderUuid)
@@ -110,10 +133,14 @@ namespace ISI.VisualStudio.Extensions
 					contentReplacements.Add("${SerialNamespace}", "ISI.Libraries.Serializers");
 				}
 
-				var recipes = new[]
+				var recipes = new List<Extensions_Helper.RecipeItem>();
+
+				if (addInterface)
 				{
-					new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("{0}.cs", className)), GetContent(nameof(RecipeOptions.Project_SerializableRecord_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
-				};
+					recipes.Add(new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("{0}.cs", classInterfaceName)), GetContent(nameof(RecipeOptions.Project_SerializableRecordInterface_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), false));
+				}
+
+				recipes.Add(new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("{0}.cs", className)), GetContent(nameof(RecipeOptions.Project_SerializableRecord_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true));
 
 				await AddFromRecipesAsync(project, recipes, contentReplacements);
 			}

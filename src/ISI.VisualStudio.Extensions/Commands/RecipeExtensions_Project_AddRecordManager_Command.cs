@@ -23,7 +23,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Threading.Tasks;
 using ISI.Extensions.Repository;
-using static ISI.VisualStudio.Extensions.Extensions.SolutionExtensions;
 using ISI.VisualStudio.Extensions.Extensions;
 
 namespace ISI.VisualStudio.Extensions
@@ -44,7 +43,7 @@ namespace ISI.VisualStudio.Extensions
 			{
 				var project = solutionItem as Project;
 
-				showCommand = project.UsesISIExtensionsRepository() || project.UsesISILibrariesRepository();
+				showCommand = project.UsesISIExtensionsRepositoryImplementation() || project.UsesISILibrariesRepositoryImplementation();
 			}
 
 			Command.Visible = showCommand;
@@ -207,6 +206,36 @@ namespace ISI.VisualStudio.Extensions
 							{
 								await RecipeExtensionsHelper.AddDependencyRegisterClassAsync(solution, project, serviceRegistrations);
 							}
+						}
+
+						if (!string.IsNullOrEmpty(addRecordManagerDialog.ConvertDirectory))
+						{
+							var partialClassName = System.IO.Path.GetFileName(addRecordManagerDialog.ConvertDirectory);
+
+							var entityName =recordManagerName.TrimEnd("Record", StringComparison.InvariantCultureIgnoreCase);
+
+							var partialClassConstructorFullName = System.IO.Directory.GetFiles(addRecordManagerDialog.ConvertDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
+
+							var partialClassConstructorLines = System.IO.File.ReadAllLines(partialClassConstructorFullName);
+							@namespace = partialClassConstructorLines.FirstOrDefault(line => line.Trim(' ', '\t').StartsWith("namespace"))?.Trim(' ', '\t')?.TrimStart("namespace")?.Trim(' ', '\t') ?? "XXXXXXXXXXXXXXXXXXX";
+
+							sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, new[] { partialClassConstructorFullName });
+
+							contentReplacements = new Dictionary<string, string>
+							{
+								{ "${Usings}", sortedUsingStatements.GetFormatted() },
+								{ "${Namespace}", @namespace },
+								{ "${ClassName}", partialClassName },
+								{ "${RecordName}", recordManagerName },
+								{ "${EntityName}", entityName },
+							};
+
+							var recipes = new[]
+							{
+								new Extensions_Helper.RecipeItem(System.IO.Path.Combine(addRecordManagerDialog.ConvertDirectory, string.Format("_{0}.cs", entityName)), RecipeExtensionsHelper.GetContent( nameof(RecipeOptions.Partial_Class_Private_Convert_Method_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true),
+							};
+
+							await RecipeExtensionsHelper.AddFromRecipesAsync(project, recipes, contentReplacements);
 						}
 					}
 				}

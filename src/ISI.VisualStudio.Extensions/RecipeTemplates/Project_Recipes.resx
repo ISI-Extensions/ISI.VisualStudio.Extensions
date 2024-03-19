@@ -1998,7 +1998,7 @@ namespace ${Namespace}
 	}
 }</value>
   </data>
-  <data name="SerializableObject_Template" xml:space="preserve">
+  <data name="SerializableRecord_Template" xml:space="preserve">
     <value>${Usings}
 
 namespace ${Namespace}
@@ -2006,20 +2006,52 @@ namespace ${Namespace}
 	[DataContract]
 	[${SerialNamespace}.PreferredSerializerJsonDataContract]
 	[${SerialNamespace}.SerializerContractUuid("${ContractUuid}")]
-	public class ${ClassName} : XXXXXX
+	public class ${ClassName} : ${ClassInterfaceName}
 	{
-		public static ${ClassName} ToSerializable(LOCALENTITIES.${ClassName} source)
+		public static ${ClassInterfaceName} ToSerializable(LOCALENTITIES.${ClassName} source)
 		{
 			return new ${ClassName}()
 			{
 			};
 		}
 
-		public LOCALENTITIES.${ClassName} Export()
+		public LOCALENTITIES.${EntityClassName} Export()
 		{
 			return new LOCALENTITIES.${ClassName}()
 			{
 			};
+		}
+	}
+}</value>
+  </data>
+  <data name="SerializableRecordInterface_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public interface ${ClassInterfaceName} : ISI.Extensions.Converters.IExportTo&lt;LOCALENTITIES.${EntityClassName}&gt;
+	{
+	}
+}</value>
+  </data>
+  <data name="PartialClassPrivateConvertMethod_Template" xml:space="preserve">
+    <value>${Usings}
+
+namespace ${Namespace}
+{
+	public partial class ${ClassName}
+	{
+		public ${RecordName} Convert(LOCALENTITIES.${EntityName} source)
+		{
+			return new ${RecordName}()
+			{
+
+			};
+		}
+
+		public LOCALENTITIES.${EntityName} Convert(${RecordName} record)
+		{
+			return record.XXXXXXXXXXX?.Export();
 		}
 	}
 }</value>

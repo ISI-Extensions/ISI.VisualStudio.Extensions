@@ -257,6 +257,34 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///namespace ${Namespace}
         ///{
+        ///	public partial class ${ClassName}
+        ///	{
+        ///		public ${RecordName} Convert(LOCALENTITIES.${EntityName} source)
+        ///		{
+        ///			return new ${RecordName}()
+        ///			{
+        ///
+        ///			};
+        ///		}
+        ///
+        ///		public LOCALENTITIES.${EntityName} Convert(${RecordName} record)
+        ///		{
+        ///			return record.XXXXXXXXXXX?.Export();
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string PartialClassPrivateConvertMethod_Template {
+            get {
+                return ResourceManager.GetString("PartialClassPrivateConvertMethod_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
         ///	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = &quot;XXXXXXX&quot;, TableName = &quot;${Name}s&quot;)]
         ///	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;, ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecord, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
         ///	{
@@ -362,16 +390,16 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	[DataContract]
         ///	[${SerialNamespace}.PreferredSerializerJsonDataContract]
         ///	[${SerialNamespace}.SerializerContractUuid(&quot;${ContractUuid}&quot;)]
-        ///	public class ${ClassName} : XXXXXX
+        ///	public class ${ClassName} : ${ClassInterfaceName}
         ///	{
-        ///		public static ${ClassName} ToSerializable(LOCALENTITIES.${ClassName} source)
+        ///		public static ${ClassInterfaceName} ToSerializable(LOCALENTITIES.${ClassName} source)
         ///		{
         ///			return new ${ClassName}()
         ///			{
         ///			};
         ///		}
         ///
-        ///		public LOCALENTITIES.${ClassName} Export()
+        ///		public LOCALENTITIES.${EntityClassName} Export()
         ///		{
         ///			return new LOCALENTITIES.${ClassName}()
         ///			{
@@ -380,9 +408,25 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	}
         ///}.
         /// </summary>
-        internal static string SerializableObject_Template {
+        internal static string SerializableRecord_Template {
             get {
-                return ResourceManager.GetString("SerializableObject_Template", resourceCulture);
+                return ResourceManager.GetString("SerializableRecord_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ${Usings}
+        ///
+        ///namespace ${Namespace}
+        ///{
+        ///	public interface ${ClassInterfaceName} : ISI.Extensions.Converters.IExportTo&lt;LOCALENTITIES.${EntityClassName}&gt;
+        ///	{
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string SerializableRecordInterface_Template {
+            get {
+                return ResourceManager.GetString("SerializableRecordInterface_Template", resourceCulture);
             }
         }
         

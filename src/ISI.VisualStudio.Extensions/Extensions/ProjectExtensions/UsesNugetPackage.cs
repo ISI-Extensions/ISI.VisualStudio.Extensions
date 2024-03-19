@@ -29,7 +29,7 @@ namespace ISI.VisualStudio.Extensions
 			{ "ISI.Extensions.MessageBus.Redis", "MessageBus.Redis" },
 		};
 
-		public static System.Collections.Generic.Dictionary<string, string> ISIExtensionsRepositoryTypes = new()
+		public static System.Collections.Generic.Dictionary<string, string> ISIExtensionsRepositoryImplementationTypes = new()
 		{
 			{ "ISI.Extensions.Repository.Cassandra", "Cassandra" },
 			{ "ISI.Extensions.Repository.Cosmos", "Cosmos" },
@@ -39,7 +39,7 @@ namespace ISI.VisualStudio.Extensions
 			{ "ISI.Extensions.Repository.SqlServer", "SqlServer" },
 		};
 
-		public static System.Collections.Generic.Dictionary<string, string> ISILibrariesRepositoryTypes = new()
+		public static System.Collections.Generic.Dictionary<string, string> ISILibrariesRepositoryImplementationTypes = new()
 		{
 			{ "ISI.Libraries.Repository.Cosmos", "Cosmos" },
 			{ "ISI.Libraries.Repository.DynamoDB", "DynamoDB" },
@@ -52,7 +52,7 @@ namespace ISI.VisualStudio.Extensions
 
 		public static bool UsesISIExtensionsAspNetCore(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, "ISI.Extensions.AspNetCore", "ISI.Platforms.AspNetCore");
 
-		public static bool UsesISIExtensionsRepository(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISIExtensionsRepositoryTypes.Keys);
+		public static bool UsesISIExtensionsRepositoryImplementation(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISIExtensionsRepositoryImplementationTypes.Keys);
 
 		public static bool UsesISIExtensionsMessageBus(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISIExtensionsMessageBusTypes.Keys);
 
@@ -64,7 +64,7 @@ namespace ISI.VisualStudio.Extensions
 
 		public static bool UsesISILibrariesBootstrapWebMvc(this Community.VisualStudio.Toolkit.Project project) => UsesNugetPackage(project, "ISI.Libraries.Bootstrap.Web.Mvc");
 
-		public static bool UsesISILibrariesRepository(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISILibrariesRepositoryTypes.Keys);
+		public static bool UsesISILibrariesRepositoryImplementation(this Community.VisualStudio.Toolkit.Project project) => UsesAnyNugetPackage(project, ISILibrariesRepositoryImplementationTypes.Keys);
 
 		public static bool UsesNugetPackage(this Community.VisualStudio.Toolkit.Project project, string packageName) => UsesAnyNugetPackage(project, new[] { packageName });
 
@@ -106,7 +106,7 @@ namespace ISI.VisualStudio.Extensions
 			{
 				var referenceNames = project.References.ToNullCheckedHashSet(reference => reference.Name, NullCheckCollectionResult.Empty);
 
-				foreach (var repositoryTypes in new[] { ISIExtensionsRepositoryTypes, ISILibrariesRepositoryTypes })
+				foreach (var repositoryTypes in new[] { ISIExtensionsRepositoryImplementationTypes, ISILibrariesRepositoryImplementationTypes })
 				{
 					foreach (var repositoryType in repositoryTypes)
 					{

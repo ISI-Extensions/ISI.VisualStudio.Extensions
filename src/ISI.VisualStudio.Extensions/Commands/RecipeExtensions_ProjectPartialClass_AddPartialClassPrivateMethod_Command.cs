@@ -94,8 +94,8 @@ namespace ISI.VisualStudio.Extensions
 						{
 							var codeExtensionProvider = project.GetCodeExtensionProvider();
 
-							var controllerFileName = System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
-							var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, new []{controllerFileName});
+							var partialClassConstructorFullName = System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
+							var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, new[] { partialClassConstructorFullName });
 
 							var contentReplacements = new Dictionary<string, string>
 							{

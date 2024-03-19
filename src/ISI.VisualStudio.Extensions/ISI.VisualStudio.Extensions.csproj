@@ -57,6 +57,9 @@
     <Compile Include="AddMessageBusControllerDialog.xaml.cs">
       <DependentUpon>AddMessageBusControllerDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddSerializableRecordDialog.xaml.cs">
+      <DependentUpon>AddSerializableRecordDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddPartialClassPrivateMethodDialog.xaml.cs">
       <DependentUpon>AddPartialClassPrivateMethodDialog.xaml</DependentUpon>
     </Compile>
@@ -70,6 +73,7 @@
     <Compile Include="CakeOptions\__CakeOptions.cs" />
     <Compile Include="Commands\RecipeExtensions_MessageBus_AddMethod_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_MessageBus_AddController_Command.cs" />
+    <Compile Include="Commands\RecipeExtensions_Project_AddSerializableRecord_Command.cs" />
     <Compile Include="Commands\VisualStudioExtensions_Export_Command.cs" />
     <Compile Include="Commands\RecipeExtensions_Project_AddSerializableObject_Command.cs" />
     <Compile Include="Commands\SolutionExtensions_UseLocalSourcePackages_Command.cs" />
@@ -87,6 +91,7 @@
       <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="PackageOptions\__PackageOptions.cs" />
+    <Compile Include="ProjectExtensions_Helper\AddSerializableRecordAsync.cs" />
     <Compile Include="ProjectExtensions_Helper\AddSerializableObjectAsync.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsAreasFolder.cs" />
     <Compile Include="RecipeExtensions_AspNetMvc_5x_Helper\IsControllerFolder.cs" />
@@ -377,18 +382,18 @@
     <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.507" ExcludeAssets="Runtime">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.Git" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.Jenkins.Forms" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.JsonSerialization.Newtonsoft" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.Nuget.Forms" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.Sbom" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8840.29750" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8840.29750" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.Git" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.Jenkins.Forms" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.JsonSerialization.Newtonsoft" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.Nuget.Forms" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.Sbom" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8842.2703" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8842.2703" />
     <PackageReference Include="Microsoft.Build" Version="17.9.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
@@ -470,6 +475,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AddMessageBusControllerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddSerializableRecordDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

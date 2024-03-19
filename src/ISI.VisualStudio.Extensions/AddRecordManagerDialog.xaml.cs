@@ -16,8 +16,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 using System;
 using System.Linq;
 using System.Windows;
-using Microsoft.VisualStudio.RpcContracts.Commands;
+using System.Collections.Generic;
 using ISI.Extensions.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ISI.VisualStudio.Extensions
 {
@@ -27,6 +28,9 @@ namespace ISI.VisualStudio.Extensions
 
 	public partial class AddRecordManagerDialog
 	{
+		private static RecipeExtensions_Project_Helper _recipeExtensionsHelper = null;
+		protected RecipeExtensions_Project_Helper RecipeExtensionsHelper => _recipeExtensionsHelper ??= ISI.Extensions.ServiceLocator.Current.GetService<RecipeExtensions_Project_Helper>();
+
 		public string RecordManagerName => txtRecordManagerName.Text.Replace(" ", string.Empty).TrimEnd("Manager", StringComparison.InvariantCultureIgnoreCase);
 		public bool AddIocRegistry => chkAddIocRegistry.IsChecked.GetValueOrDefault();
 		public string ContractProjectDescription => cboContractProject.SelectedValue as string;
@@ -34,10 +38,13 @@ namespace ISI.VisualStudio.Extensions
 		public bool AddRecord => chkAddRecord.IsChecked.GetValueOrDefault();
 		public string PrimaryKeyType => cboPrimaryKeyType.SelectedValue as string;
 		public bool HasArchive => !string.IsNullOrWhiteSpace(PrimaryKeyType) && chkHasArchive.IsChecked.GetValueOrDefault();
+		public string ConvertDirectory => (cboConvertClass.SelectedIndex >= 0 ? ConvertDirectories[cboConvertClass.SelectedIndex] : string.Empty);
 
-		protected System.Collections.Generic.IDictionary<string, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> ProjectLookUp { get; }
+		protected List<string> ConvertDirectories { get; } = new();
 
-		public AddRecordManagerDialog(System.Collections.Generic.IEnumerable<ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> projectDescriptions, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription contractProject)
+		protected IDictionary<string, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> ProjectLookUp { get; }
+
+		public AddRecordManagerDialog(IEnumerable<ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription> projectDescriptions, ISI.VisualStudio.Extensions.Extensions.SolutionExtensions.ProjectDescription contractProject)
 		{
 			InitializeComponent();
 
@@ -56,6 +63,7 @@ namespace ISI.VisualStudio.Extensions
 					cboContractProject.SelectedValue = projectDescription.Description;
 				}
 			}
+			cboContractProject.Tag = -1;
 
 			cboPrimaryKeyType.Items.Add(string.Empty);
 			cboPrimaryKeyType.Items.Add("Guid");
@@ -63,6 +71,7 @@ namespace ISI.VisualStudio.Extensions
 			cboPrimaryKeyType.Items.Add("string");
 
 			txtRecordManagerName.TextChanged += Update;
+			cboContractProject.SelectionChanged += Update;
 			cboPrimaryKeyType.SelectionChanged += Update;
 
 			Update(null, null);
@@ -72,15 +81,39 @@ namespace ISI.VisualStudio.Extensions
 		
 		private void Update(object sender, object args)
 		{
-			ProjectLookUp.TryGetValue(cboContractProject.SelectedValue as string ?? string.Empty, out var projectDescription);
+			ProjectLookUp.TryGetValue(cboContractProject.SelectedValue as string ?? string.Empty, out var project);
 
-			var contractRootNamespace = projectDescription?.RootNamespace ?? string.Empty;
+			var contractRootNamespace = project?.RootNamespace ?? string.Empty;
 			
 			txtInterface.Text = string.Format("{0}.I{1}Manager", contractRootNamespace, RecordManagerName);
 			
 			txtRecord.Text = string.Format("{0}.{1}", contractRootNamespace, RecordManagerName);
 
 			chkHasArchive.IsEnabled = !string.IsNullOrWhiteSpace(PrimaryKeyType);
+
+			if ((int)cboContractProject.Tag != cboContractProject.SelectedIndex)
+			{
+				cboConvertClass.Items.Clear();
+				ConvertDirectories.Clear();
+
+				ConvertDirectories.Add(string.Empty);
+				cboConvertClass.Items.Add("<none>");
+			
+				var convertDirectories = project.Project.Children.Where(RecipeExtensionsHelper.IsProjectFolder).Select(projectFolder => projectFolder.FullPath.TrimEnd(System.IO.Path.DirectorySeparatorChar));
+
+				foreach (var convertDirectory in convertDirectories)
+				{
+					ConvertDirectories.Add(convertDirectory);
+					cboConvertClass.Items.Add(System.IO.Path.GetFileName(convertDirectory));
+
+					if (convertDirectory.EndsWith("Repository", StringComparison.InvariantCultureIgnoreCase))
+					{
+						cboConvertClass.SelectedIndex = ConvertDirectories.Count - 1;
+					}
+				}
+
+				cboContractProject.Tag = cboContractProject.SelectedIndex;
+			}
 		}
 
 		private void btnOk_Click(object sender, System.Windows.RoutedEventArgs e)

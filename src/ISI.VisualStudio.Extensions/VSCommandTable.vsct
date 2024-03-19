@@ -644,6 +644,17 @@
 				</Strings>
 			</Button>
 
+			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddSerializableRecord_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="FolderMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>RecipeExtensions_Project_AddSerializableRecord_MenuItemId</CommandName>
+					<ButtonText>Add Serializable Record</ButtonText>
+				</Strings>
+			</Button>
+
 			<Button guid="PackageUuid" id="RecipeExtensions_Project_AddSerializableObject_MenuItemId" priority="0x0100" type="Button">
 				<Parent guid="PackageUuid" id="FolderMenuGroupId" />
 				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
@@ -806,6 +817,9 @@
 		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_MenuItemId" priority="0x0600">
 			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu.AddItemGroup"/>
 		</CommandPlacement>
+		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_AddSerializableRecord_MenuItemId" priority="0x0600">
+			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu.AddItemGroup"/>
+		</CommandPlacement>
 		<CommandPlacement guid="PackageUuid" id="RecipeExtensions_Project_AddSerializableObject_MenuItemId" priority="0x0600">
 			<Parent guid="VSMainMenu" id="SolutionFolder.AddGroup.AddMenu.AddItemGroup"/>
 		</CommandPlacement>
@@ -900,6 +914,7 @@
 
 			<IDSymbol name="RecipeExtensions_Project_AddSerializableDataTransferObjectRequestResponse_MenuItemId" value="0x04AB" />
 			<IDSymbol name="RecipeExtensions_Project_AddSerializableObject_MenuItemId" value="0x04AC" />
+			<IDSymbol name="RecipeExtensions_Project_AddSerializableRecord_MenuItemId" value="0x04AD" />
 			<IDSymbol name="RecipeExtensions_Project_AddEnumTextTemplate_MenuItemId" value="0x04B1" />
 			<IDSymbol name="RecipeExtensions_Project_AddStartUpClass_MenuItemId" value="0x04C0" />
 			<IDSymbol name="RecipeExtensions_Project_AddDependencyRegisterClass_MenuItemId" value="0x04C1" />
