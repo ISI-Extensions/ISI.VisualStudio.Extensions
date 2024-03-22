@@ -28,6 +28,8 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class ProjectExtensions_Helper
 	{
+		private static readonly System.Text.RegularExpressions.Regex regexLocalEntity = new("(?:(?:using)(?:\\s+)(?:LOCALENTITIES)(?:\\s+)(?:=)(?:\\s+)(?<LocalEntity>[\\w|\\.]+)(?:\\s*)(?:;))");
+
 		public async Task AddSerializableRecordAsync()
 		{
 			try
@@ -85,9 +87,26 @@ namespace ISI.VisualStudio.Extensions
 
 				var codeExtensionProvider = project.GetCodeExtensionProvider();
 
+				var localEntities = "XXXXXXXXXXXXXXXXXXX";
+
+				foreach (var fullName in System.IO.Directory.GetFiles(directory, "*.cs", System.IO.SearchOption.TopDirectoryOnly))
+				{
+					var lines = System.IO.File.ReadAllLines(fullName);
+
+					foreach (var line in lines)
+					{
+						var match = regexLocalEntity.Match(line);
+
+						if (match.Success)
+						{
+							localEntities = match.Groups["LocalEntity"].Value;
+						}
+					}
+				}
+
 				var usings = new List<string>();
 				usings.Add("using System.Runtime.Serialization;");
-				usings.Add("using LOCALENTITIES = XXXXXXX;");
+				usings.Add($"using LOCALENTITIES = {localEntities};");
 
 				var classInterfaceName = $"I{className}";
 				var entityClassName = className.TrimEnd("Record");
@@ -97,8 +116,8 @@ namespace ISI.VisualStudio.Extensions
 				{
 					if (versionKey.EndsWith("*"))
 					{
-						var version = System.IO.Directory.GetFiles(directory, versionKey, System.IO.SearchOption.TopDirectoryOnly)
-							.Select(fileName => System.IO.Path.GetFileName(fileName).TrimStart(versionKey.TrimEnd('*')).ToInt())
+						var version = System.IO.Directory.GetFiles(directory, $"{entityClassName}.cs", System.IO.SearchOption.TopDirectoryOnly)
+							.Select(fileName => System.IO.Path.GetFileNameWithoutExtension(fileName).TrimStart(entityClassName.TrimEnd('*')).ToInt())
 							.NullCheckedMax() + 1;
 
 						classInterfaceName = $"I{className.TrimEnd("V*").TrimEnd("Record")}";
