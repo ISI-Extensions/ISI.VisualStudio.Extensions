@@ -392,7 +392,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	[${SerialNamespace}.SerializerContractUuid(&quot;${ContractUuid}&quot;)]
         ///	public class ${ClassName} : ${ClassInterfaceName}
         ///	{
-        ///		public static ${ClassInterfaceName} ToSerializable(LOCALENTITIES.${ClassName} source)
+        ///		public static ${ClassInterfaceName} ToSerializable(LOCALENTITIES.${EntityClassName} source)
         ///		{
         ///			return new ${ClassName}()
         ///			{
@@ -401,12 +401,11 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///
         ///		public LOCALENTITIES.${EntityClassName} Export()
         ///		{
-        ///			return new LOCALENTITIES.${ClassName}()
+        ///			return new LOCALENTITIES.${EntityClassName}()
         ///			{
         ///			};
         ///		}
-        ///	}
-        ///}.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SerializableRecord_Template {
             get {

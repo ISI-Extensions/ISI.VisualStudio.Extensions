@@ -2008,7 +2008,7 @@ namespace ${Namespace}
 	[${SerialNamespace}.SerializerContractUuid("${ContractUuid}")]
 	public class ${ClassName} : ${ClassInterfaceName}
 	{
-		public static ${ClassInterfaceName} ToSerializable(LOCALENTITIES.${ClassName} source)
+		public static ${ClassInterfaceName} ToSerializable(LOCALENTITIES.${EntityClassName} source)
 		{
 			return new ${ClassName}()
 			{
@@ -2017,7 +2017,7 @@ namespace ${Namespace}
 
 		public LOCALENTITIES.${EntityClassName} Export()
 		{
-			return new LOCALENTITIES.${ClassName}()
+			return new LOCALENTITIES.${EntityClassName}()
 			{
 			};
 		}
