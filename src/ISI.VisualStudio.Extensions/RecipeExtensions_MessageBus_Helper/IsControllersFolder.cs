@@ -23,7 +23,7 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public bool IsControllersFolder(Community.VisualStudio.Toolkit.Project project, Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
-			if ((solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFolder) && IsMessageBus_Project(project))
+			if (solutionItem?.Type == Community.VisualStudio.Toolkit.SolutionItemType.PhysicalFolder)
 			{
 				var directory = solutionItem.FullPath.TrimEnd('\\', '/');
 

@@ -109,7 +109,7 @@ namespace ISI.VisualStudio.Extensions
 				usings.Add($"using LOCALENTITIES = {localEntities};");
 
 				var classInterfaceName = $"I{className}";
-				var entityClassName = className.TrimEnd("Record");
+				var entityClassName = className;
 
 				var versionKey = (new System.Text.RegularExpressions.Regex("(?:V(?:(?:\\d+)|(?:\\*)))$")).Match(className)?.Value;
 				if (!string.IsNullOrWhiteSpace(versionKey))
@@ -120,14 +120,14 @@ namespace ISI.VisualStudio.Extensions
 							.Select(fileName => System.IO.Path.GetFileNameWithoutExtension(fileName).TrimStart(entityClassName.TrimEnd('*')).ToInt())
 							.NullCheckedMax() + 1;
 
-						classInterfaceName = $"I{className.TrimEnd("V*").TrimEnd("Record")}";
-						entityClassName = $"{className.TrimEnd("V*").TrimEnd("Record")}";
+						classInterfaceName = $"I{className.TrimEnd("V*")}";
+						entityClassName = $"{className.TrimEnd("V*")}";
 						className = $"{className.TrimEnd('*')}{version}";
 					}
 					else
 					{
-						classInterfaceName = $"I{className.TrimEnd(versionKey).TrimEnd("Record")}";
-						entityClassName = $"{className.TrimEnd(versionKey).TrimEnd("Record")}";
+						classInterfaceName = $"I{className.TrimEnd(versionKey)}";
+						entityClassName = $"{className.TrimEnd(versionKey)}";
 					}
 				}
 
