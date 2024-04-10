@@ -155,7 +155,7 @@ namespace ${Namespace}.Controllers
   <data name="Controller_SubscriptionsRoot_Template" xml:space="preserve">
     <value>${Usings}
 
-namespace ${Namespace}.MessageBus
+namespace ${Namespace}
 {
 	public partial class Subscriptions
 	{
@@ -172,7 +172,7 @@ namespace ${Namespace}.MessageBus
   <data name="Controller_SubscriptionsWithAuthentication_Template" xml:space="preserve">
     <value>${Usings}
 
-namespace ${Namespace}.MessageBus
+namespace ${Namespace}
 {
 	public partial class Subscriptions
 	{
@@ -218,7 +218,7 @@ namespace ${Namespace}.MessageBus
   <data name="Controller_Subscriptions_Template" xml:space="preserve">
     <value>${Usings}
 
-namespace ${Namespace}.MessageBus
+namespace ${Namespace}
 {
 	public partial class Subscriptions
 	{

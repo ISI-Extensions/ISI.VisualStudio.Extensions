@@ -110,7 +110,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         /// <summary>
         ///   Looks up a localized string similar to ${Usings}
         ///
-        ///namespace ${Namespace}.MessageBus
+        ///namespace ${Namespace}
         ///{
         ///	public partial class Subscriptions
         ///	{
@@ -140,7 +140,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         /// <summary>
         ///   Looks up a localized string similar to ${Usings}
         ///
-        ///namespace ${Namespace}.MessageBus
+        ///namespace ${Namespace}
         ///{
         ///	public partial class Subscriptions
         ///	{
@@ -163,7 +163,7 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         /// <summary>
         ///   Looks up a localized string similar to ${Usings}
         ///
-        ///namespace ${Namespace}.MessageBus
+        ///namespace ${Namespace}
         ///{
         ///	public partial class Subscriptions
         ///	{
@@ -175,7 +175,8 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///			private static bool IsAuthorized(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection headers, object request)
         ///			{
         ///				if (string.IsNullOrWhiteSpace(Configuration.ApiToken))
-        /// [rest of string was truncated]&quot;;.
+        ///				{
+        ///				 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Controller_SubscriptionsWithAuthentication_Template {
             get {

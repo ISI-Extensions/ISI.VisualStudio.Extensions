@@ -38,7 +38,7 @@ namespace ISI.VisualStudio.Extensions
 			var project = VS.Solutions.GetActiveProjectAsync().GetAwaiter().GetResult();
 			var solutionItem = VS.Solutions.GetActiveItemAsync().GetAwaiter().GetResult();
 
-			showCommand = RecipeExtensionsHelper.IsControllersFolder(project, solutionItem);
+			showCommand = (RecipeExtensionsHelper.IsProjectRoot(solutionItem) || RecipeExtensionsHelper.IsControllersFolder(project, solutionItem));
 
 			Command.Visible = showCommand;
 
