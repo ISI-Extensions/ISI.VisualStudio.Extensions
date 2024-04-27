@@ -382,18 +382,18 @@
     <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.507" ExcludeAssets="Runtime">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.Git" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.Jenkins.Forms" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.JsonSerialization.Newtonsoft" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.Nuget.Forms" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.Sbom" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8880.35129" />
-    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8880.35129" />
+    <PackageReference Include="ISI.Extensions.Cake" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.DependencyInjection.Iunq" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.Git" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.Jenkins" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.Jenkins.Forms" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.JsonSerialization.Newtonsoft" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.Nuget" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.Nuget.Forms" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.Sbom" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.Scm" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.Svn" Version="10.0.8883.33377" />
+    <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.8883.33377" />
     <PackageReference Include="Microsoft.Build" Version="17.9.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
@@ -402,7 +402,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="17.9.37000" />
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.9.37000" />
     <PackageReference Include="Microsoft.VisualStudio.Threading" Version="17.9.28" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.9.3174">
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.9.3184">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
