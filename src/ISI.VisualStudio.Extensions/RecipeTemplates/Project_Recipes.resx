@@ -1929,14 +1929,11 @@ namespace ${Namespace}
 namespace ${Namespace}
 {
 	[${codeExtensionProvider.Namespace}.Repository.Record(Schema = "XXXXXXX", TableName = "${Name}s")]
-	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;, ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecordWithArchiveDateTime, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
+	public class ${RecordName} : ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;, ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecordWithArchive, ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;
 	{
 
 		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
 		${PrimaryKeyType} ${codeExtensionProvider.Namespace}.Repository.IRecordManagerPrimaryKeyRecord&lt;${PrimaryKeyType}&gt;.PrimaryKey =&gt; XXXXXX;
-
-		[${codeExtensionProvider.Namespace}.Repository.IgnoreRecordProperty]
-		DateTime ${codeExtensionProvider.Namespace}.Repository.IRecordManagerRecordWithArchiveDateTime.ArchiveDateTime =&gt; ModifyDateTimeUtc;
 
 		${codeExtensionProvider.Namespace}.Repository.RecordIndexCollection&lt;${RecordName}&gt; ${codeExtensionProvider.Namespace}.Repository.IRecordIndexDescriptions&lt;${RecordName}&gt;.GetRecordIndexes()
 		{
