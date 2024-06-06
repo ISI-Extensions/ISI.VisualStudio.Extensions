@@ -178,26 +178,38 @@ namespace ${Namespace}
 	{
 		public class ${ControllerKey}
 		{
-			private static Configuration _configuration = null;
-			private static Configuration Configuration =&gt; _configuration ??= ISI.Extensions.ServiceLocator.Current.GetService&lt;Configuration&gt;();
+			private static ISI.Services.XXXXX.Configuration _configuration = null;
+			private static ISI.Services.XXXXX.Configuration Configuration =&gt; _configuration ??= ISI.Extensions.ServiceLocator.Current.GetService&lt;ISI.Services.XXXXX.Configuration&gt;();
+
+			private static Microsoft.Extensions.Logging.ILogger _logger = null;
+			private static Microsoft.Extensions.Logging.ILogger Logger =&gt; _logger ??= ISI.Extensions.ServiceLocator.Current.GetService&lt;Microsoft.Extensions.Logging.ILogger&gt;();
 
 			private static bool IsAuthorized(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection headers, object request)
 			{
-				if (string.IsNullOrWhiteSpace(Configuration.ApiToken))
+				var isAuthorized = true;
+
+				if (!string.IsNullOrWhiteSpace(Configuration.Token))
 				{
-					return true;
+					headers ??= new ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection();
+
+					if (headers.TryGetValue(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection.Keys.Authorization, out var apiKey))
+					{
+						apiKey = apiKey.TrimStart(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection.Keys.Bearer).Trim();
+
+						isAuthorized = string.Equals(Configuration.ApiToken, apiKey, StringComparison.InvariantCultureIgnoreCase);
+					}
+					else
+					{
+						isAuthorized = false;
+					}
 				}
 
-				headers ??= new ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection();
-
-				if (headers.TryGetValue(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection.Keys.Authorization, out var apiKey))
+				if (!isAuthorized)
 				{
-					apiKey = apiKey.TrimStart(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection.Keys.Bearer).Trim();
-
-					return string.Equals(Configuration.ApiToken, apiKey, StringComparison.InvariantCultureIgnoreCase);
+					Logger.LogWarning($"MessageBus, Request not Authorized, request type: {request.GetType().AssemblyQualifiedNameWithoutVersion()}");
 				}
 
-				return false;
+				return isAuthorized;
 			}
 
 			public static ISI.Extensions.MessageBus.IMessageBusBuildRequest GetAddSubscriptions()

@@ -169,14 +169,11 @@ namespace ISI.VisualStudio.Extensions.RecipeTemplates {
         ///	{
         ///		public class ${ControllerKey}
         ///		{
-        ///			private static Configuration _configuration = null;
-        ///			private static Configuration Configuration =&gt; _configuration ??= ISI.Extensions.ServiceLocator.Current.GetService&lt;Configuration&gt;();
+        ///			private static ISI.Services.XXXXX.Configuration _configuration = null;
+        ///			private static ISI.Services.XXXXX.Configuration Configuration =&gt; _configuration ??= ISI.Extensions.ServiceLocator.Current.GetService&lt;ISI.Services.XXXXX.Configuration&gt;();
         ///
-        ///			private static bool IsAuthorized(ISI.Extensions.MessageBus.MessageBusMessageHeaderCollection headers, object request)
-        ///			{
-        ///				if (string.IsNullOrWhiteSpace(Configuration.ApiToken))
-        ///				{
-        ///				 [rest of string was truncated]&quot;;.
+        ///			private static Microsoft.Extensions.Logging.ILogger _logger = null;
+        ///			private static Microsoft.Extensions.Logging.ILogger Logger =&gt; _logg [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Controller_SubscriptionsWithAuthentication_Template {
             get {
