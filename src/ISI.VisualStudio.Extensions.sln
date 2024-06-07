@@ -5,6 +5,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISI.VisualStudio.Extensions", "ISI.VisualStudio.Extensions\ISI.VisualStudio.Extensions.csproj", "{8B701B80-00E0-46DE-9098-4BA6348B526F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{1AFD4286-D160-4FEC-8175-E33C49ECAD6F}"
+	ProjectSection(SolutionItems) = preProject
+		..\build.cake = ..\build.cake
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +30,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2D8A226E-FA94-4438-84A4-AC185B971725}
-	EndGlobalSection
-EndGlobal
-Solution
 		SolutionGuid = {2D8A226E-FA94-4438-84A4-AC185B971725}
 	EndGlobalSection
 EndGlobal
