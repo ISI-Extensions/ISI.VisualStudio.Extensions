@@ -12,9 +12,9 @@ var settings = GetSettings(settingsFullName);
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-var solutionFile = File("./ISI.VisualStudio.Extensions.sln");
+var solutionFile = File("./src/ISI.VisualStudio.Extensions.sln");
 var solution = ParseSolution(solutionFile);
-var rootProjectFile = File("./ISI.VisualStudio.Extensions/ISI.VisualStudio.Extensions.csproj");
+var rootProjectFile = File("./src/ISI.VisualStudio.Extensions/ISI.VisualStudio.Extensions.csproj");
 var rootAssemblyVersionKey = "ISI.VisualStudio.Extensions";
 var artifactName = "ISI.VisualStudio.Extensions";
 var artifactFileStoreUuid = new System.Guid("e9533a8c-0577-4883-a955-16f988cff620");
@@ -31,9 +31,7 @@ var buildDateTimeStampVersion = new ISI.Extensions.Scm.DateTimeStampVersion(buil
 
 Information("BuildDateTimeStampVersion: {0}", buildDateTimeStampVersion);
 
-var buildArtifactVsixFile = File(string.Format("../Publish/{0}.{1}.vsix", artifactName, buildDateTimeStamp));
-
-var nugetPackOutputDirectory = Argument("NugetPackOutputDirectory", System.IO.Path.GetFullPath("../Nuget"));
+var buildArtifactVsixFile = File(string.Format("./Publish/{0}.{1}.vsix", artifactName, buildDateTimeStamp));
 
 Task("Clean")
 	.Does(() =>
