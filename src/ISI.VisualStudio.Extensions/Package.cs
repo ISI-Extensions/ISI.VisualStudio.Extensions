@@ -12,7 +12,7 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 #endregion
- 
+
 using Community.VisualStudio.Toolkit;
 using Community.VisualStudio.Toolkit.DependencyInjection;
 using Microsoft.VisualStudio.Shell;
@@ -53,6 +53,8 @@ namespace ISI.VisualStudio.Extensions
 		public Microsoft.VisualStudio.Shell.Interop.IVsShell VsShell { get; private set; } = null!;
 		public Microsoft.VisualStudio.Shell.Interop.IVsGetScciProviderInterface VsGetScciProviderInterface { get; private set; } = null!;
 		public Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider VsRegisterScciProvider { get; private set; } = null!;
+
+		public LaunchSettings_Helper LaunchSettingsHelper { get; private set; } = null!;
 
 		private OutputWindowPane OutputWindowPane = null;
 
@@ -122,11 +124,10 @@ namespace ISI.VisualStudio.Extensions
 			VsRegisterScciProvider = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider;
 			VsGetScciProviderInterface = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsGetScciProviderInterface;
 
+			LaunchSettingsHelper = ServiceProvider.GetService<LaunchSettings_Helper>();
 
 			//var repository = await GetServiceAsync(typeof(Microsoft.VisualStudio.ExtensionManager.SVsExtensionRepository)) as IVsExtensionRepository;
 			//var manager = await GetServiceAsync(typeof(SVsExtensionManager)) as IVsExtensionManager;
-
-
 
 
 			if (PackageOptions.Instance.AutoUpdateRecipes)
@@ -157,6 +158,12 @@ namespace ISI.VisualStudio.Extensions
 					await packagesOptions.SaveAsync();
 				}
 			}
+
+			VS.Events.SolutionEvents.OnAfterOpenProject += LaunchSettingsHelper.CheckProjectPortReservations;
+
+			var solution = await VS.Solutions.GetCurrentSolutionAsync();
+
+			LaunchSettingsHelper.CheckProjectPortReservations(solution);
 		}
 	}
 }

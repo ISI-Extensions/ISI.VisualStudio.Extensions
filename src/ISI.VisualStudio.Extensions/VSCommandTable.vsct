@@ -721,6 +721,17 @@
 				</Strings>
 			</Button>
 
+			<Button guid="PackageUuid" id="ProjectExtensions_CheckProjectPortReservations_MenuItemId" priority="0x0100" type="Button">
+				<Parent guid="PackageUuid" id="ProjectMenuGroupId" />
+				<Icon guid="guidOfficeIcon" id="msotcidNoIcon" />
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<CommandName>ProjectExtensions_CheckProjectPortReservations_MenuItemId</CommandName>
+					<ButtonText>Check Project Port Reservations</ButtonText>
+				</Strings>
+			</Button>
+
 		</Buttons>
 	</Commands>
 
@@ -922,6 +933,7 @@
 			<IDSymbol name="RecipeExtensions_Project_AddT4LocalContent_MenuItemId" value="0x04C3" />
 			<IDSymbol name="RecipeExtensions_Project_ProjectProperties_MenuItemId" value="0x04C4" />
 			<IDSymbol name="RecipeExtensions_Project_AddRecordManager_MenuItemId" value="0x04C5" />
+			<IDSymbol name="ProjectExtensions_CheckProjectPortReservations_MenuItemId" value="0x04C6" />
 
 
 			<IDSymbol name="CakeExtensions_ExecuteDefaultTarget_MenuItemId" value="0x0520" />

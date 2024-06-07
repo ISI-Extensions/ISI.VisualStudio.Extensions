@@ -103,6 +103,7 @@ namespace ISI.VisualStudio.Extensions
         public const int RecipeExtensions_Project_AddT4LocalContent_MenuItemId = 0x04C3;
         public const int RecipeExtensions_Project_ProjectProperties_MenuItemId = 0x04C4;
         public const int RecipeExtensions_Project_AddRecordManager_MenuItemId = 0x04C5;
+        public const int ProjectExtensions_CheckProjectPortReservations_MenuItemId = 0x04C6;
         public const int CakeExtensions_ExecuteDefaultTarget_MenuItemId = 0x0520;
         public const int CakeExtensions_ExecuteTarget_MenuSubgroupId = 0x0521;
         public const int CakeExtensions_ExecuteTarget_SubMenuId = 0x0522;
