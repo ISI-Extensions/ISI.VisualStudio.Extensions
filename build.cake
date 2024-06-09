@@ -60,7 +60,7 @@ Task("Build")
 	{
 		SetAssemblyVersionFiles(assemblyVersions);
 
-		var vsixmanifestFile = File("./ISI.VisualStudio.Extensions/source.extension.vsixmanifest");
+		var vsixmanifestFile = File("./src/ISI.VisualStudio.Extensions/source.extension.vsixmanifest");
 
 		var xPath = "//vsx:PackageManifest/vsx:Metadata/vsx:Identity/@Version";
 		
@@ -82,7 +82,7 @@ Task("Build")
 				.SetVerbosity(Verbosity.Quiet)
 				.WithTarget("Rebuild"));
 
-			var vsixFile = File("./ISI.VisualStudio.Extensions/bin/" + configuration + "/ISI.VisualStudio.Extensions.vsix");
+			var vsixFile = File("./src/ISI.VisualStudio.Extensions/bin/" + configuration + "/ISI.VisualStudio.Extensions.vsix");
 
 			var publishDirectory = buildArtifactVsixFile.Path.GetDirectory().FullPath;
 			if (!System.IO.Directory.Exists(publishDirectory))
@@ -154,7 +154,7 @@ Task("Publish")
 	.IsDependentOn("Sign")
 	.Does(() =>
 	{
-		var simpleVsixFile = File(string.Format("../Publish/{0}.vsix", artifactName));
+		var simpleVsixFile = File(string.Format("./Publish/{0}.vsix", artifactName));
 		if(FileExists(simpleVsixFile))
 		{
 			DeleteFile(simpleVsixFile);
