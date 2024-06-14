@@ -12,7 +12,7 @@ namespace ISI.VisualStudio.Extensions
         public const string Description = @"ISI.VisualStudio.Extensions";
         public const string Language = "en-US";
         public const string Version = "2022.9";
-        public const string Author = "ISI";
-        public const string Tags = "";
+        public const string Author = "Integrated Solution Inc";
+        public const string Tags = "Cake,Jenkins";
     }
 }

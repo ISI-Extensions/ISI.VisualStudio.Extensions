@@ -60,7 +60,7 @@ Task("Build")
 	{
 		SetAssemblyVersionFiles(assemblyVersions);
 
-		var vsixmanifestFile = File("./src/ISI.VisualStudio.Extensions/source.extension.vsixmanifest");
+		var vsixManifestFile = File("./src/ISI.VisualStudio.Extensions/source.extension.vsixmanifest");
 
 		var xPath = "//vsx:PackageManifest/vsx:Metadata/vsx:Identity/@Version";
 		
@@ -71,8 +71,8 @@ Task("Build")
 		xmlPokeSettings.Namespaces.Add("vsx", "http://schemas.microsoft.com/developer/vsx-schema/2011");
 
 
-		var vsixmanifestValue = XmlPeek(vsixmanifestFile, xPath, xmlPeekSettings);
-		XmlPoke(vsixmanifestFile, xPath, assemblyVersions[rootAssemblyVersionKey].AssemblyVersion, xmlPokeSettings);
+		var vsixmanifestValue = XmlPeek(vsixManifestFile, xPath, xmlPeekSettings);
+		XmlPoke(vsixManifestFile, xPath, assemblyVersions[rootAssemblyVersionKey].AssemblyVersion, xmlPokeSettings);
 
 		try
 		{
@@ -96,7 +96,7 @@ Task("Build")
 		}
 		finally
 		{
-			XmlPoke(vsixmanifestFile, xPath, vsixmanifestValue, xmlPokeSettings);
+			XmlPoke(vsixManifestFile, xPath, vsixmanifestValue, xmlPokeSettings);
 
 			ResetAssemblyVersionFiles(assemblyVersions);
 		}
@@ -154,6 +154,12 @@ Task("Publish")
 	.IsDependentOn("Sign")
 	.Does(() =>
 	{
+		var buildArtifactsApiKey = GetBuildArtifactsApiKey(new ISI.Cake.Addin.BuildArtifacts.GetBuildArtifactsApiKeyUsingSettingsActiveDirectoryRequest()
+		{
+			Settings = settings,
+		}).BuildArtifactsApiKey;
+
+
 		var simpleVsixFile = File(string.Format("./Publish/{0}.vsix", artifactName));
 		if(FileExists(simpleVsixFile))
 		{
@@ -173,6 +179,84 @@ Task("Publish")
 			VsExtensionsApiUri = GetNullableUri(settings.VsExtensions.ApiUrl),
 			VsExtensionsApiKey = vsExtensionsApiKey,
 			VsExtensionPath = simpleVsixFile,
+		});
+		
+		UploadBuildArtifact(new ISI.Cake.Addin.BuildArtifacts.UploadBuildArtifactRequest()
+		{
+			BuildArtifactsApiUri = GetNullableUri(settings.BuildArtifacts.ApiUrl),
+			BuildArtifactsApiKey = buildArtifactsApiKey,
+			SourceFileName = simpleVsixFile.Path.FullPath,
+			BuildArtifactName = artifactName,
+			DateTimeStampVersion = buildDateTimeStampVersion,
+		});
+
+		SetBuildArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.SetBuildArtifactEnvironmentDateTimeStampVersionRequest()
+		{
+			BuildArtifactsApiUri = GetNullableUri(settings.BuildArtifacts.ApiUrl),
+			BuildArtifactsApiKey = buildArtifactsApiKey,
+			BuildArtifactName = artifactName,
+			Environment = "Build",
+			DateTimeStampVersion = buildDateTimeStampVersion,
+		});
+	});
+
+Task("Production-Publish")
+	.Does(() =>
+	{
+		var buildArtifactsApiKey = GetBuildArtifactsApiKey(new ISI.Cake.Addin.BuildArtifacts.GetBuildArtifactsApiKeyUsingSettingsActiveDirectoryRequest()
+		{
+			Settings = settings,
+		}).BuildArtifactsApiKey;
+
+		var dateTimeStampVersion = GetBuildArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.GetBuildArtifactEnvironmentDateTimeStampVersionRequest()
+		{
+			BuildArtifactsApiUri = GetNullableUri(settings.BuildArtifacts.ApiUrl),
+			BuildArtifactsApiKey = buildArtifactsApiKey,
+			BuildArtifactName = artifactName,
+			Environment = "Build",
+		}).DateTimeStampVersion;
+
+		using(var tempDirectory = GetNewTempDirectory())
+		{
+			var simpleVsixFile = File(tempDirectory.FullName + "/" + string.Format("{0}.vsix", artifactName));
+
+			DownloadBuildArtifact(new ISI.Cake.Addin.BuildArtifacts.DownloadBuildArtifactRequest()
+			{
+				BuildArtifactsApiUri = GetNullableUri(settings.BuildArtifacts.ApiUrl),
+				BuildArtifactsApiKey = buildArtifactsApiKey,
+				BuildArtifactName = artifactName,
+				DateTimeStampVersion = dateTimeStampVersion,
+				TargetFileName = simpleVsixFile.Path.FullPath,
+			});
+
+			PublishVsixExtension(new ISI.Cake.Addin.VsExtensions.PublishVsixExtensionUsingSettingsRequest()
+			{
+				Settings = settings,
+
+				InternalName = "ISI-VisualStudio-Extensions",
+				Version = dateTimeStampVersion.Version.ToString(),
+
+				VsixFullName = simpleVsixFile.Path.FullPath,
+				VsixManifestFullName = File("./src/ISI.VisualStudio.Extensions/source.extension.vsixmanifest").Path.FullPath,
+
+				ReadMeFullName = File("./README.md").Path.FullPath,
+				PriceCategory = ISI.Extensions.VisualStudio.DataTransferObjects.VsixPublisherApi.GenerateVsixPublishManifestRequestPricingCategory.Free,
+				Categories = new[]
+				{
+					"Coding",
+					"Data",
+					"Modeling",
+				},
+			});
+		});
+
+		SetBuildArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.SetBuildArtifactEnvironmentDateTimeStampVersionRequest()
+		{
+			BuildArtifactsApiUri = GetNullableUri(settings.BuildArtifacts.ApiUrl),
+			BuildArtifactsApiKey = buildArtifactsApiKey,
+			BuildArtifactName = artifactName,
+			Environment = "Production",
+			DateTimeStampVersion = buildDateTimeStampVersion,
 		});
 	});
 

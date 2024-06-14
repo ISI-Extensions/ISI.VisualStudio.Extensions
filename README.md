@@ -1,10 +1,5 @@
 # ISI.VisualStudio.Extensions
 
-To install, add https://vsextensions.isi-net.com/gallery/feed.xml to
-
-Options -> Environment -> Extensions and Updates
-
-
 ###  AppSettings
 
 * Add Transform
