@@ -237,10 +237,10 @@ Task("Production-Publish")
 				Version = dateTimeStampVersion.Version.ToString(),
 
 				VsixFullName = simpleVsixFile.Path.FullPath,
-				VsixManifestFullName = File("./src/ISI.VisualStudio.Extensions/source.extension.vsixmanifest").Path.FullPath,
+				VsixManifestFullName = MakeAbsolute(File("./src/ISI.VisualStudio.Extensions/source.extension.vsixmanifest")).FullPath,
 
-				ReadMeFullName = File("./README.md").Path.FullPath,
-				PriceCategory = ISI.Extensions.VisualStudio.DataTransferObjects.VsixPublisherApi.GenerateVsixPublishManifestRequestPricingCategory.Free,
+				ReadMeFullName = MakeAbsolute(File("./README.md")).FullPath,
+				PriceCategory = ISI.Cake.Addin.VsExtensions.PublishVsixExtensionRequestPricingCategory.Free,
 				Categories = new[]
 				{
 					"Coding",
@@ -248,7 +248,7 @@ Task("Production-Publish")
 					"Modeling",
 				},
 			});
-		});
+		}
 
 		SetBuildArtifactEnvironmentDateTimeStampVersion(new ISI.Cake.Addin.BuildArtifacts.SetBuildArtifactEnvironmentDateTimeStampVersionRequest()
 		{
