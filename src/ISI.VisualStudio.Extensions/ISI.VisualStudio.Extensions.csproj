@@ -463,6 +463,7 @@
     </Content>
     <Content Include="Resources\Lantern-128x128.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Resources\Lantern.ico">
       <IncludeInVSIX>true</IncludeInVSIX>
