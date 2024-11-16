@@ -85,7 +85,7 @@ namespace ISI.VisualStudio.Extensions
 
 			cboImplicitUsings.Items.Add(string.Empty);
 			cboImplicitUsings.Items.Add("Remove");
-			cboNullable.Items.Add("Enable");
+			cboImplicitUsings.Items.Add("Enable");
 
 			cboUseSharedAssemblyInfo.Items.Add(string.Empty);
 			foreach (var sharedAssemblyInfo in (sharedAssemblyInfos ?? Array.Empty<string>()))
