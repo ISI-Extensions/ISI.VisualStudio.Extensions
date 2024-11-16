@@ -380,7 +380,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Community.VisualStudio.Toolkit.DependencyInjection.Core.17" Version="17.0.25" />
+    <PackageReference Include="Community.VisualStudio.Toolkit.DependencyInjection.Core.17" Version="17.0.27" />
     <PackageReference Include="Community.VisualStudio.VSCT" Version="16.0.29.6" PrivateAssets="all" />
     <PackageReference Include="Community.VisualStudio.Toolkit.17" Version="17.0.527" ExcludeAssets="Runtime">
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -397,19 +397,19 @@
     <PackageReference Include="ISI.Extensions.Scm" Version="10.0.9086.33554" />
     <PackageReference Include="ISI.Extensions.Svn" Version="10.0.9086.33554" />
     <PackageReference Include="ISI.Extensions.VisualStudio" Version="10.0.9086.33554" />
-    <PackageReference Include="Microsoft.Build" Version="17.11.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="17.11.40262" />
-    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.11.40262" />
-    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="17.11.20" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.11.435">
+    <PackageReference Include="Microsoft.Build" Version="17.12.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="17.12.40391" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.12.40392" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="17.12.19" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.12.2069">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="NuGet.VisualStudio" Version="17.11.0" />
+    <PackageReference Include="NuGet.VisualStudio" Version="17.12.1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lantern-128x128.png">
