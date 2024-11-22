@@ -170,6 +170,7 @@ namespace ISI.VisualStudio.Extensions
 			catch (Exception exception)
 			{
 				var logFullName = ISI.Extensions.IO.Path.GetFileNameDeMasked(@"{ApplicationData}\ISI.VisualStudio.Extensions\log{YYYYMMDD.HHmmssfff}.txt");
+				
 				System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(logFullName));
 
 				System.IO.File.WriteAllText(logFullName, exception.ErrorMessageFormatted());
