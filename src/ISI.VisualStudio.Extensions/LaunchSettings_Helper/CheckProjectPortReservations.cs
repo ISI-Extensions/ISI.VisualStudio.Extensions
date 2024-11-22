@@ -58,7 +58,7 @@ namespace ISI.VisualStudio.Extensions
 
 			if (System.IO.File.Exists(launchSettingsJsonFullName))
 			{
-				var launchSettingsJsonNode = System.Text.Json.Nodes.JsonNode.Parse(System.IO.File.ReadAllText(launchSettingsJsonFullName));
+				var launchSettingsJsonNode = global::Newtonsoft.Json.Linq.JObject.Parse(System.IO.File.ReadAllText(launchSettingsJsonFullName));
 
 				var profilesJsonNode = launchSettingsJsonNode["profiles"];
 
@@ -72,7 +72,7 @@ namespace ISI.VisualStudio.Extensions
 
 						if (applicationUrlJsonNode != null)
 						{
-							var applicationUris = applicationUrlJsonNode.GetValue<string>().Split(new[] { ';' }).ToNullCheckedArray(applicationUrl => new UriBuilder(applicationUrl));
+							var applicationUris = ((string)applicationUrlJsonNode).Split(new[] { ';' }).ToNullCheckedArray(applicationUrl => new UriBuilder(applicationUrl));
 
 							if (applicationUris.Any())
 							{
@@ -99,10 +99,7 @@ namespace ISI.VisualStudio.Extensions
 
 										launchSettingJsonNode["applicationUrl"] = string.Join(";", applicationUris.Select(applicationUri => applicationUri.Uri.ToString()));
 
-										System.IO.File.WriteAllText(launchSettingsJsonFullName, launchSettingsJsonNode.ToJsonString(new System.Text.Json.JsonSerializerOptions()
-										{
-											WriteIndented = true,
-										}));
+										System.IO.File.WriteAllText(launchSettingsJsonFullName, launchSettingsJsonNode.ToString());
 									}
 								}
 							}

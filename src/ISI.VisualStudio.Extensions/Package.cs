@@ -60,110 +60,122 @@ namespace ISI.VisualStudio.Extensions
 
 		protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
 		{
-			await base.InitializeAsync(cancellationToken, progress);
-
-			await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-
-			var configurationBuilder = new Microsoft.Extensions.Configuration.ConfigurationBuilder();
-			var configurationRoot = configurationBuilder.Build();
-
-			var services = new ServiceCollection();
-			services
-				.AddOptions()
-				.AddSingleton<Microsoft.Extensions.Configuration.IConfiguration>(configurationRoot);
-
-			services.AddAllConfigurations(configurationRoot)
-
-				.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.Abstractions.NullLoggerFactory>()
-				//.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.LoggerFactory>()
-				//.AddLogging(builder => builder
-				//		//.AddConsole()
-				//	//.AddFilter(level => level >= Microsoft.Extensions.Logging.LogLevel.Information)
-				//)
-				//.AddSingleton<Microsoft.Extensions.Logging.ILogger>(_ => new ISI.Extensions.NullLogger())
-				//.AddSingleton<Microsoft.Extensions.Logging.ILogger, ISI.Extensions.NullLogger>()
-				.UseNullLogger()
-
-				.AddSingleton<ISI.Extensions.DateTimeStamper.IDateTimeStamper, ISI.Extensions.DateTimeStamper.LocalMachineDateTimeStamper>()
-
-				.AddSingleton<ISI.Extensions.JsonSerialization.IJsonSerializer, ISI.Extensions.JsonSerialization.Newtonsoft.NewtonsoftJsonSerializer>()
-				.AddSingleton<ISI.Extensions.Serialization.ISerialization, ISI.Extensions.Serialization.Serialization>()
-
-				.AddSingleton<SolutionExtensions_Helper>()
-				.AddSingleton<ProjectExtensions_Helper>()
-				.AddSingleton<Extensions_Helper>()
-				.AddSingleton<CakeExtensions_Helper>()
-				.AddSingleton<JenkinsExtensions_Helper>()
-				.AddSingleton<NugetExtensions_Helper>()
-				.AddSingleton<RecipeExtensions_AspNet_Helper>()
-				.AddSingleton<RecipeExtensions_AspNetMvc_5x_Helper>()
-				.AddSingleton<RecipeExtensions_AspNetMvc_6x_Helper>()
-				.AddSingleton<RecipeExtensions_Project_Helper>()
-				.AddSingleton<RecipeExtensions_ProjectPartialClass_Helper>()
-				.AddSingleton<XmlConfigurationExtensions_Helper>()
-
-				.AddConfigurationRegistrations(configurationRoot)
-				.ProcessServiceRegistrars(configurationRoot)
-				;
-
-			ServiceProvider = services.BuildServiceProvider<ISI.Extensions.DependencyInjection.Iunq.ServiceProviderBuilder>(configurationRoot);
-
-			ServiceProvider.SetServiceLocator();
-
-			OutputWindowPane ??= await VS.Windows.CreateOutputWindowPaneAsync(Vsix.Name);
-
-			DTE2 = await GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE80.DTE2;
-			Microsoft.Assumes.Present(DTE2);
-
-			await this.RegisterCommandsAsync();
-
-			await OutputWindowPane.ActivateAsync();
-			await OutputWindowPane.WriteLineAsync(string.Format("{0} Loaded", Vsix.Name));
-
-			VsShell = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.SVsShell)) as Microsoft.VisualStudio.Shell.Interop.IVsShell;
-			VsRegisterScciProvider = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider;
-			VsGetScciProviderInterface = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsGetScciProviderInterface;
-
-			LaunchSettingsHelper = ServiceProvider.GetService<LaunchSettings_Helper>();
-
-			//var repository = await GetServiceAsync(typeof(Microsoft.VisualStudio.ExtensionManager.SVsExtensionRepository)) as IVsExtensionRepository;
-			//var manager = await GetServiceAsync(typeof(SVsExtensionManager)) as IVsExtensionManager;
-
-
-			if (PackageOptions.Instance.AutoUpdateRecipes)
+			try
 			{
-				var priorExtensionVersion = PackageOptions.Instance.ExtensionVersion ?? string.Empty;
-				var currentExtensionVersion = ISI.Extensions.SystemInformation.GetAssemblyVersion(typeof(OptionsProvider).Assembly);
+				await base.InitializeAsync(cancellationToken, progress);
 
-				if (!string.Equals(priorExtensionVersion, currentExtensionVersion, StringComparison.InvariantCultureIgnoreCase))
+				await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
+				var configurationBuilder = new Microsoft.Extensions.Configuration.ConfigurationBuilder();
+				var configurationRoot = configurationBuilder.Build();
+
+				var services = new ServiceCollection();
+				services
+					.AddOptions()
+					.AddSingleton<Microsoft.Extensions.Configuration.IConfiguration>(configurationRoot);
+
+				services.AddAllConfigurations(configurationRoot)
+
+					.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.Abstractions.NullLoggerFactory>()
+					//.AddSingleton<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Logging.LoggerFactory>()
+					//.AddLogging(builder => builder
+					//		//.AddConsole()
+					//	//.AddFilter(level => level >= Microsoft.Extensions.Logging.LogLevel.Information)
+					//)
+					//.AddSingleton<Microsoft.Extensions.Logging.ILogger>(_ => new ISI.Extensions.NullLogger())
+					//.AddSingleton<Microsoft.Extensions.Logging.ILogger, ISI.Extensions.NullLogger>()
+					.UseNullLogger()
+
+					.AddSingleton<ISI.Extensions.DateTimeStamper.IDateTimeStamper, ISI.Extensions.DateTimeStamper.LocalMachineDateTimeStamper>()
+
+					.AddSingleton<ISI.Extensions.JsonSerialization.IJsonSerializer, ISI.Extensions.JsonSerialization.Newtonsoft.NewtonsoftJsonSerializer>()
+					.AddSingleton<ISI.Extensions.Serialization.ISerialization, ISI.Extensions.Serialization.Serialization>()
+
+					.AddSingleton<SolutionExtensions_Helper>()
+					.AddSingleton<ProjectExtensions_Helper>()
+					.AddSingleton<Extensions_Helper>()
+					.AddSingleton<CakeExtensions_Helper>()
+					.AddSingleton<JenkinsExtensions_Helper>()
+					.AddSingleton<NugetExtensions_Helper>()
+					.AddSingleton<RecipeExtensions_AspNet_Helper>()
+					.AddSingleton<RecipeExtensions_AspNetMvc_5x_Helper>()
+					.AddSingleton<RecipeExtensions_AspNetMvc_6x_Helper>()
+					.AddSingleton<RecipeExtensions_Project_Helper>()
+					.AddSingleton<RecipeExtensions_ProjectPartialClass_Helper>()
+					.AddSingleton<XmlConfigurationExtensions_Helper>()
+
+					.AddConfigurationRegistrations(configurationRoot)
+					.ProcessServiceRegistrars(configurationRoot)
+					;
+
+				ServiceProvider = services.BuildServiceProvider<ISI.Extensions.DependencyInjection.Iunq.ServiceProviderBuilder>(configurationRoot);
+
+				ServiceProvider.SetServiceLocator();
+
+				OutputWindowPane ??= await VS.Windows.CreateOutputWindowPaneAsync(Vsix.Name);
+
+				DTE2 = await GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE80.DTE2;
+				Microsoft.Assumes.Present(DTE2);
+
+				await this.RegisterCommandsAsync();
+
+				await OutputWindowPane.ActivateAsync();
+				await OutputWindowPane.WriteLineAsync(string.Format("{0} Loaded", Vsix.Name));
+
+				VsShell = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.SVsShell)) as Microsoft.VisualStudio.Shell.Interop.IVsShell;
+				VsRegisterScciProvider = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider;
+				VsGetScciProviderInterface = await GetServiceAsync(typeof(Microsoft.VisualStudio.Shell.Interop.IVsRegisterScciProvider)) as Microsoft.VisualStudio.Shell.Interop.IVsGetScciProviderInterface;
+
+				LaunchSettingsHelper = ServiceProvider.GetService<LaunchSettings_Helper>();
+
+				//var repository = await GetServiceAsync(typeof(Microsoft.VisualStudio.ExtensionManager.SVsExtensionRepository)) as IVsExtensionRepository;
+				//var manager = await GetServiceAsync(typeof(SVsExtensionManager)) as IVsExtensionManager;
+
+
+				if (PackageOptions.Instance.AutoUpdateRecipes)
 				{
-					var recipeExtensionsOptions = await RecipeOptions.GetLiveInstanceAsync();
+					var priorExtensionVersion = PackageOptions.Instance.ExtensionVersion ?? string.Empty;
+					var currentExtensionVersion = ISI.Extensions.SystemInformation.GetAssemblyVersion(typeof(OptionsProvider).Assembly);
 
-					var recipeOptions = new RecipeOptions();
-
-					foreach (var propertyInfo in typeof(RecipeOptions).GetProperties())
+					if (!string.Equals(priorExtensionVersion, currentExtensionVersion, StringComparison.InvariantCultureIgnoreCase))
 					{
-						if (propertyInfo.PropertyType == typeof(string))
+						var recipeExtensionsOptions = await RecipeOptions.GetLiveInstanceAsync();
+
+						var recipeOptions = new RecipeOptions();
+
+						foreach (var propertyInfo in typeof(RecipeOptions).GetProperties())
 						{
-							propertyInfo.SetValue(recipeExtensionsOptions, propertyInfo.GetValue(recipeOptions));
+							if (propertyInfo.PropertyType == typeof(string))
+							{
+								propertyInfo.SetValue(recipeExtensionsOptions, propertyInfo.GetValue(recipeOptions));
+							}
 						}
+
+						await recipeExtensionsOptions.SaveAsync();
+
+						var packagesOptions = await PackageOptions.GetLiveInstanceAsync();
+
+						packagesOptions.ExtensionVersion = currentExtensionVersion;
+
+						await packagesOptions.SaveAsync();
 					}
-
-					await recipeExtensionsOptions.SaveAsync();
-
-					var packagesOptions = await PackageOptions.GetLiveInstanceAsync();
-
-					packagesOptions.ExtensionVersion = currentExtensionVersion;
-
-					await packagesOptions.SaveAsync();
 				}
+
+				VS.Events.SolutionEvents.OnAfterOpenProject += LaunchSettingsHelper.CheckProjectPortReservations;
+
+				var solution = await VS.Solutions.GetCurrentSolutionAsync();
+
+				LaunchSettingsHelper.CheckProjectPortReservations(solution);
 			}
+			catch (Exception exception)
+			{
+				var logFullName = ISI.Extensions.IO.Path.GetFileNameDeMasked(@"{ApplicationData}\ISI.VisualStudio.Extensions\log{YYYYMMDD.HHmmssfff}.txt");
+				System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(logFullName));
 
-			VS.Events.SolutionEvents.OnAfterOpenProject += LaunchSettingsHelper.CheckProjectPortReservations;
+				System.IO.File.WriteAllText(logFullName, exception.ErrorMessageFormatted());
 
-			var solution = await VS.Solutions.GetCurrentSolutionAsync();
-
-			LaunchSettingsHelper.CheckProjectPortReservations(solution);
+				throw;
+			}
 		}
 	}
 }
