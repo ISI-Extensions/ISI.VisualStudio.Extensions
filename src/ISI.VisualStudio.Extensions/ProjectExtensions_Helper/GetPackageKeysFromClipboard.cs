@@ -30,7 +30,7 @@ namespace ISI.VisualStudio.Extensions
 				var clipboardText = System.Windows.Forms.Clipboard.GetText();
 				if (clipboardText.Length != 0)
 				{
-					var lines = clipboardText.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries).ToArray();
+					var lines = clipboardText.Split(["\r\n", "\n", "\r"], StringSplitOptions.RemoveEmptyEntries).ToArray();
 
 					foreach (var line in lines)
 					{

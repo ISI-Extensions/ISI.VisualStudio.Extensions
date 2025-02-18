@@ -41,7 +41,7 @@ namespace ISI.VisualStudio.Extensions
 
 			if (!string.IsNullOrWhiteSpace(path))
 			{
-				var pathParts = new List<string>(path.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries));
+				var pathParts = new List<string>(path.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries));
 
 				if (pathParts.NullCheckedAny())
 				{

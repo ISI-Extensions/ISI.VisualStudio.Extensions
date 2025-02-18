@@ -24,7 +24,7 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public string FilterWebConfig(Community.VisualStudio.Toolkit.Project project, string content)
 		{
-			var contentLines = content.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None).ToList();
+			var contentLines = content.Split(["\r\n", "\r", "\n"], StringSplitOptions.None).ToList();
 
 			if (!IsProjectUsingCmsExtensions(project))
 			{

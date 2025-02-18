@@ -24,7 +24,7 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public string GetAreaName(Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
-			var pathDirectoryNames = new Stack<string>(solutionItem.FullPath.Split(new[] { "\\" }, StringSplitOptions.RemoveEmptyEntries));
+			var pathDirectoryNames = new Stack<string>(solutionItem.FullPath.Split(["\\"], StringSplitOptions.RemoveEmptyEntries));
 
 			var areaName = string.Empty;
 

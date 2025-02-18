@@ -165,12 +165,12 @@ namespace ISI.VisualStudio.Extensions
 							{ "${PrimaryKeyType}", addRecordManagerDialog.PrimaryKeyType },
 						};
 
-						await RecipeExtensionsHelper.AddFromRecipesAsync(project, new[] { new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("__{0}Manager.cs", recordManagerName)), RecipeExtensionsHelper.GetContent(recipeName, projectDirectory, solutionRecipesDirectory, solutionDirectory), true) }, contentReplacements);
+						await RecipeExtensionsHelper.AddFromRecipesAsync(project, [new Extensions_Helper.RecipeItem(System.IO.Path.Combine(directory, string.Format("__{0}Manager.cs", recordManagerName)), RecipeExtensionsHelper.GetContent(recipeName, projectDirectory, solutionRecipesDirectory, solutionDirectory), true)], contentReplacements);
 
 						if (addRecordManagerDialog.AddInterface)
 						{
 							contentReplacements["${Namespace}"] = contractProjectDescription.RootNamespace;
-							await RecipeExtensionsHelper.AddFromRecipesAsync(contractProjectDescription.Project, new[] { new Extensions_Helper.RecipeItem(System.IO.Path.Combine(contractProjectDirectory, string.Format("I{0}Manager.cs", recordManagerName)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.Project_RecordManagerInterface_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true) }, contentReplacements);
+							await RecipeExtensionsHelper.AddFromRecipesAsync(contractProjectDescription.Project, [new Extensions_Helper.RecipeItem(System.IO.Path.Combine(contractProjectDirectory, string.Format("I{0}Manager.cs", recordManagerName)), RecipeExtensionsHelper.GetContent(nameof(RecipeOptions.Project_RecordManagerInterface_Template), projectDirectory, solutionRecipesDirectory, solutionDirectory), true)], contentReplacements);
 						}
 
 						if (addRecordManagerDialog.AddRecord)
@@ -190,7 +190,7 @@ namespace ISI.VisualStudio.Extensions
 								}
 							}
 
-							await RecipeExtensionsHelper.AddFromRecipesAsync(contractProjectDescription.Project, new[] { new Extensions_Helper.RecipeItem(System.IO.Path.Combine(contractProjectDirectory, string.Format("{0}.cs", recordManagerName)), RecipeExtensionsHelper.GetContent(recordRecipeName, projectDirectory, solutionRecipesDirectory, solutionDirectory), true) }, contentReplacements);
+							await RecipeExtensionsHelper.AddFromRecipesAsync(contractProjectDescription.Project, [new Extensions_Helper.RecipeItem(System.IO.Path.Combine(contractProjectDirectory, string.Format("{0}.cs", recordManagerName)), RecipeExtensionsHelper.GetContent(recordRecipeName, projectDirectory, solutionRecipesDirectory, solutionDirectory), true)], contentReplacements);
 						}
 
 						if (addRecordManagerDialog.AddIocRegistry)
@@ -219,7 +219,7 @@ namespace ISI.VisualStudio.Extensions
 							var partialClassConstructorLines = System.IO.File.ReadAllLines(partialClassConstructorFullName);
 							@namespace = partialClassConstructorLines.FirstOrDefault(line => line.Trim(' ', '\t').StartsWith("namespace"))?.Trim(' ', '\t')?.TrimStart("namespace")?.Trim(' ', '\t') ?? "XXXXXXXXXXXXXXXXXXX";
 
-							sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, new[] { partialClassConstructorFullName });
+							sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, [partialClassConstructorFullName]);
 
 							contentReplacements = new Dictionary<string, string>
 							{

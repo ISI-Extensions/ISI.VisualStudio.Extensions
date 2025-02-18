@@ -23,14 +23,14 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class ProjectExtensions_Helper
 	{
-		private readonly string[] _filteredFileNameSearchPatterns = new[]
-		{
+		private readonly string[] _filteredFileNameSearchPatterns =
+		[
 			"**\\*.tt",
 			"**\\*.t4",
 			"**\\*.@",
 			"**\\*.$",
 			"**\\*.config"
-		};
+		];
 
 		public string[] GetFilteredFileNameSearchPatterns() => _filteredFileNameSearchPatterns;
 	}

@@ -104,7 +104,7 @@ namespace ISI.VisualStudio.Extensions
 						usings.Add("ISI.Libraries.Web.Mvc.Extensions");
 
 						var controllerFileName = System.IO.Directory.GetFiles(controllerDirectory).OrderBy(controllerFileName => controllerFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
-						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, new[] { controllerFileName });
+						var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, usings, [controllerFileName]);
 
 						var contentReplacements = new Dictionary<string, string>
 						{

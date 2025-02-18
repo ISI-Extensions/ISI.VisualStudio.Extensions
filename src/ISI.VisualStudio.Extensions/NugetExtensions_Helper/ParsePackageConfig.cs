@@ -31,7 +31,7 @@ namespace ISI.VisualStudio.Extensions
 				{
 					try
 					{
-						var keyValues = line.Replace("<package ", string.Empty).Replace("/>", string.Empty).Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Select(item => item.Split(new[] { "=\"", "\"" }, StringSplitOptions.None)).ToDictionary(item => item[0].Trim(' ', '\t'), item => item[1].Trim(' ', '\t'), StringComparer.InvariantCultureIgnoreCase);
+						var keyValues = line.Replace("<package ", string.Empty).Replace("/>", string.Empty).Split([' '], StringSplitOptions.RemoveEmptyEntries).Select(item => item.Split(["=\"", "\""], StringSplitOptions.None)).ToDictionary(item => item[0].Trim(' ', '\t'), item => item[1].Trim(' ', '\t'), StringComparer.InvariantCultureIgnoreCase);
 
 						var nugetPackageKey = new ISI.Extensions.Nuget.NugetPackageKey();
 

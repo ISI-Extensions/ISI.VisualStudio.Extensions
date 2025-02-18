@@ -86,7 +86,7 @@ namespace ISI.VisualStudio.Extensions
 						var projectDirectory = RecipeExtensionsHelper.GetProjectDirectory(project);
 						var partialClassDirectory = solutionItem.FullPath;
 
-						var partialClassName = partialClassDirectory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+						var partialClassName = partialClassDirectory.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries).Last();
 
 						var @namespace = RecipeExtensionsHelper.GetNamespace(project, solutionItem, partialClassName);
 
@@ -95,7 +95,7 @@ namespace ISI.VisualStudio.Extensions
 							var codeExtensionProvider = project.GetCodeExtensionProvider();
 
 							var partialClassConstructorFullName = System.IO.Directory.GetFiles(partialClassDirectory).OrderBy(partialClassFileName => partialClassFileName, StringComparer.InvariantCultureIgnoreCase).FirstOrDefault();
-							var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, new[] { partialClassConstructorFullName });
+							var sortedUsingStatements = RecipeExtensionsHelper.GetSortedUsings(codeExtensionProvider, null, [partialClassConstructorFullName]);
 
 							var contentReplacements = new Dictionary<string, string>
 							{

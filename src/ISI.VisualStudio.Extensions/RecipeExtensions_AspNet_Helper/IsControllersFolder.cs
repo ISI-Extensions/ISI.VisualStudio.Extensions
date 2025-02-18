@@ -27,7 +27,7 @@ namespace ISI.VisualStudio.Extensions
 			{
 				var directory = solutionItem.FullPath.TrimEnd('\\','/');
 
-				if (string.Equals(directory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault(), ControllersFolderName, StringComparison.InvariantCultureIgnoreCase))
+				if (string.Equals(directory.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries).LastOrDefault(), ControllersFolderName, StringComparison.InvariantCultureIgnoreCase))
 				{
 					var projectRootDirectory = System.IO.Path.GetDirectoryName(project.FullPath);
 					var rootDirectory = directory.TrimEnd(ControllersFolderName, StringComparison.InvariantCultureIgnoreCase);
@@ -39,7 +39,7 @@ namespace ISI.VisualStudio.Extensions
 
 					projectRootDirectory = string.Format("{0}\\", System.IO.Path.Combine(projectRootDirectory, AreasFolderName));
 
-					return ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, ISI.Extensions.IO.Path.GetCommonPath(new[] { rootDirectory, projectRootDirectory }));
+					return ISI.Extensions.IO.Path.IsPathEqual(projectRootDirectory, ISI.Extensions.IO.Path.GetCommonPath([rootDirectory, projectRootDirectory]));
 				}
 			}
 

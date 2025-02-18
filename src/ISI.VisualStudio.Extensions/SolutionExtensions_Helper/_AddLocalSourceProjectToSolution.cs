@@ -28,7 +28,7 @@ namespace ISI.VisualStudio.Extensions
 			var projectRelativeDirectoryName = System.IO.Path.GetDirectoryName(projectRelativeName);
 			var projectRelativeParentDirectoryName = System.IO.Path.GetDirectoryName(projectRelativeDirectoryName);
 
-			var projectRelativeParentDirectoryNames = projectRelativeParentDirectoryName.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries);
+			var projectRelativeParentDirectoryNames = projectRelativeParentDirectoryName.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries);
 
 			if (projectRelativeParentDirectoryNames.NullCheckedAny())
 			{

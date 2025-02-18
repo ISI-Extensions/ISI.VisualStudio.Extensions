@@ -57,7 +57,7 @@ namespace ISI.VisualStudio.Extensions
 
 				var formattedText = new System.Text.StringBuilder();
 
-				foreach (var line in clipboardText.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.None))
+				foreach (var line in clipboardText.Split(["\r\n", "\n", "\r"], StringSplitOptions.None))
 				{
 					formattedText.AppendFormat("cmd.Append(\"{0}\\n\");\r\n", line);
 				}

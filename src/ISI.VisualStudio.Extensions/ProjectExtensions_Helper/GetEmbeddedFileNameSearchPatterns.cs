@@ -23,8 +23,8 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class ProjectExtensions_Helper
 	{
-		private readonly string[] _embeddedFileNameSearchPatterns = new[]
-		{
+		private readonly string[] _embeddedFileNameSearchPatterns =
+		[
 			"**\\*.aspx",
 			"**\\*.ascx",
 			"**\\*.cshtml",
@@ -65,7 +65,7 @@ namespace ISI.VisualStudio.Extensions
 			"**\\*.csjs",
 			"**\\*.vbjs",
 			"**\\web.config"
-		};
+		];
 
 		public string[] GetEmbeddedFileNameSearchPatterns() => _embeddedFileNameSearchPatterns;
 	}

@@ -22,6 +22,6 @@ namespace ISI.VisualStudio.Extensions
 {
 	public partial class Extensions_Helper
 	{
-		protected virtual HashSet<string> _contentFileExtensions { get; } = new HashSet<string>(new[] { "tt" }, StringComparer.InvariantCultureIgnoreCase);
+		protected virtual HashSet<string> _contentFileExtensions { get; } = new HashSet<string>(["tt"], StringComparer.InvariantCultureIgnoreCase);
 	}
 }

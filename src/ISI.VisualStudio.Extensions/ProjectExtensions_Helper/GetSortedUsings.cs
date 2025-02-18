@@ -51,7 +51,7 @@ namespace ISI.VisualStudio.Extensions
 					{
 						foreach (var @using in System.IO.File.ReadAllLines(fileName).Where(line => line.StartsWith("using ", StringComparison.InvariantCulture)))
 						{
-							usingStatements.Add(@using.Replace('\t', ' ').Replace(';', ' ').Trim(' ').Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries)[1]);
+							usingStatements.Add(@using.Replace('\t', ' ').Replace(';', ' ').Trim(' ').Split([' '], 2, StringSplitOptions.RemoveEmptyEntries)[1]);
 						}
 					}
 				}

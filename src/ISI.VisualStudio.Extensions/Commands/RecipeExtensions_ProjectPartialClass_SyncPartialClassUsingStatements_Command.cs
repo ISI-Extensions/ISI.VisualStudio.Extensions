@@ -83,7 +83,7 @@ namespace ISI.VisualStudio.Extensions
 						var inUsingSection = false;
 						foreach (var line in System.IO.File.ReadAllLines(fileName))
 						{
-							var currentLine = line.Replace('\t', ' ').Trim().Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault() ?? string.Empty;
+							var currentLine = line.Replace('\t', ' ').Trim().Split([';'], StringSplitOptions.RemoveEmptyEntries).FirstOrDefault() ?? string.Empty;
 							if (currentLine.StartsWith("using ") && (currentLine.Length > 6) && (currentLine.IndexOf("(") < 0))
 							{
 								insertUsingStatementsIndex = lines.Count;

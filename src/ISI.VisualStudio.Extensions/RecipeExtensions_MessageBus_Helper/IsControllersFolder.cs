@@ -27,7 +27,7 @@ namespace ISI.VisualStudio.Extensions
 			{
 				var directory = solutionItem.FullPath.TrimEnd('\\', '/');
 
-				if (string.Equals(directory.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).LastOrDefault(), ControllersFolderName, StringComparison.InvariantCultureIgnoreCase))
+				if (string.Equals(directory.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries).LastOrDefault(), ControllersFolderName, StringComparison.InvariantCultureIgnoreCase))
 				{
 					var projectRootDirectory = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(project.FullPath), MessageBusFolderName);
 					var rootDirectory = directory.TrimEnd(ControllersFolderName, StringComparison.InvariantCultureIgnoreCase);

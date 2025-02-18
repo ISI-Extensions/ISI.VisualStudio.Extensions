@@ -39,7 +39,7 @@ namespace ISI.VisualStudio.Extensions
 
 			string FormatExtension(string fileName)
 			{
-				fileName = fileName.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries).Last().Trim().ToLower();
+				fileName = fileName.Split(['\\'], StringSplitOptions.RemoveEmptyEntries).Last().Trim().ToLower();
 
 				if (string.Equals(fileName, "web.config", StringComparison.InvariantCulture))
 				{
@@ -47,7 +47,7 @@ namespace ISI.VisualStudio.Extensions
 				}
 				else
 				{
-					fileName = fileName.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries).Last().Trim();
+					fileName = fileName.Split(['.'], StringSplitOptions.RemoveEmptyEntries).Last().Trim();
 					fileName = string.Format("**\\*.{0}", fileName);
 				}
 
@@ -79,7 +79,7 @@ namespace ISI.VisualStudio.Extensions
 							{
 								fileNames ??= ProjectExtensionsHelper.GetEmbeddedFileNameSearchPatterns().ToDictionary(ef => ef.ToLower(), ef => false);
 
-								foreach (var fileName in itemInstance.Include.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Select(FormatExtension))
+								foreach (var fileName in itemInstance.Include.Split([';'], StringSplitOptions.RemoveEmptyEntries).Select(FormatExtension))
 								{
 									if (ProjectExtensionsHelper.GetFilteredFileNameSearchPatterns().Any(f => fileName.StartsWith(f, StringComparison.InvariantCultureIgnoreCase)))
 									{
@@ -110,7 +110,7 @@ namespace ISI.VisualStudio.Extensions
 							string.Equals(itemInstance.ItemType, "Content", StringComparison.InvariantCulture) ||
 							string.Equals(itemInstance.ItemType, "EmbeddedResource", StringComparison.InvariantCulture))
 					{
-						foreach (var fileName in itemInstance.Include.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Select(FormatExtension))
+						foreach (var fileName in itemInstance.Include.Split([';'], StringSplitOptions.RemoveEmptyEntries).Select(FormatExtension))
 						{
 							if (ProjectExtensionsHelper.GetFilteredFileNameSearchPatterns().Any(f => fileName.StartsWith(f, StringComparison.InvariantCultureIgnoreCase)))
 							{

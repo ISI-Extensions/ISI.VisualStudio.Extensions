@@ -156,7 +156,7 @@ namespace ISI.VisualStudio.Extensions
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedAssemblyInfo))
 						{
-							neededIncludes.Add((ElementName: "Compile", Include: inputDialog.UseSharedAssemblyInfo, Link: string.Format("Properties\\{0}", inputDialog.UseSharedAssemblyInfo.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last())));
+							neededIncludes.Add((ElementName: "Compile", Include: inputDialog.UseSharedAssemblyInfo, Link: string.Format("Properties\\{0}", inputDialog.UseSharedAssemblyInfo.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries).Last())));
 						}
 					}
 
@@ -164,7 +164,7 @@ namespace ISI.VisualStudio.Extensions
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedVersion))
 						{
-							neededIncludes.Add((ElementName: "Compile", Include: inputDialog.UseSharedVersion, Link: string.Format("Properties\\{0}", inputDialog.UseSharedVersion.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last())));
+							neededIncludes.Add((ElementName: "Compile", Include: inputDialog.UseSharedVersion, Link: string.Format("Properties\\{0}", inputDialog.UseSharedVersion.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries).Last())));
 						}
 					}
 
@@ -263,7 +263,7 @@ namespace ISI.VisualStudio.Extensions
 					{
 						if (!string.IsNullOrWhiteSpace(inputDialog.UseSharedLicenseHeader))
 						{
-							neededIncludes.Add((ElementName: "None", Include: inputDialog.UseSharedLicenseHeader, Link: inputDialog.UseSharedLicenseHeader.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last()));
+							neededIncludes.Add((ElementName: "None", Include: inputDialog.UseSharedLicenseHeader, Link: inputDialog.UseSharedLicenseHeader.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries).Last()));
 						}
 					}
 
@@ -480,8 +480,8 @@ namespace ISI.VisualStudio.Extensions
 			{
 				if (!string.IsNullOrWhiteSpace(currentFilePath))
 				{
-					var currentLinkValue = currentFilePath.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
-					var linkValue = filePath.Split(new[] { '\\', '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+					var currentLinkValue = currentFilePath.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries).Last();
+					var linkValue = filePath.Split(['\\', '/'], StringSplitOptions.RemoveEmptyEntries).Last();
 
 					foreach (var itemGroupElement in csProjXml.GetElementsByLocalName("ItemGroup"))
 					{

@@ -122,7 +122,7 @@ namespace ISI.VisualStudio.Extensions
 
 			cboImplicitUsings.SelectedValue = (projectProperties.ImplicitUsings.HasValue ? (projectProperties.ImplicitUsings.Value ? "Enable" : "Remove") : string.Empty);
 
-			var hasRuntimeIdentifiers = new HashSet<string>((projectProperties.RuntimeIdentifiers ?? string.Empty).Split(new[] { ';', ' ' }, StringSplitOptions.RemoveEmptyEntries), StringComparer.InvariantCultureIgnoreCase);
+			var hasRuntimeIdentifiers = new HashSet<string>((projectProperties.RuntimeIdentifiers ?? string.Empty).Split([';', ' '], StringSplitOptions.RemoveEmptyEntries), StringComparer.InvariantCultureIgnoreCase);
 			chkRuntimeIdentifiers_win.IsChecked = hasRuntimeIdentifiers.Contains("win");
 			chkRuntimeIdentifiers_win_x86.IsChecked = hasRuntimeIdentifiers.Contains("win-x86");
 			chkRuntimeIdentifiers_win_x64.IsChecked = hasRuntimeIdentifiers.Contains("win-x64");

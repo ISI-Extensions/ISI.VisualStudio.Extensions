@@ -26,10 +26,10 @@ namespace ISI.VisualStudio.Extensions
 				return CakeApi.GetTargetKeysFromBuildScript(new ISI.Extensions.Cake.DataTransferObjects.CakeApi.GetTargetKeysFromBuildScriptRequest()
 				{
 					BuildScriptFullName = solutionItem.FullPath,
-				}).Targets ?? Array.Empty<string>();
+				}).Targets ?? [];
 			}
 
-			return Array.Empty<string>();
+			return [];
 		}
 	}
 }

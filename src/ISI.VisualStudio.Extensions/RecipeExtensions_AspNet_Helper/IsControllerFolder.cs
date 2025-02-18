@@ -27,7 +27,7 @@ namespace ISI.VisualStudio.Extensions
 			{
 				var directory = solutionItem.FullPath;
 
-				var fileNameParts = new System.Collections.Generic.Stack<string>(directory.Split(new [] { "\\" }, StringSplitOptions.RemoveEmptyEntries));
+				var fileNameParts = new System.Collections.Generic.Stack<string>(directory.Split(["\\"], StringSplitOptions.RemoveEmptyEntries));
 				fileNameParts.Pop();
 
 				if (fileNameParts.Count > 0)
