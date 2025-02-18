@@ -12,7 +12,7 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 #endregion
- 
+
 using System;
 
 namespace ISI.VisualStudio.Extensions
@@ -21,10 +21,15 @@ namespace ISI.VisualStudio.Extensions
 	{
 		public string[] GetTargetKeysFromBuildScript(Community.VisualStudio.Toolkit.SolutionItem solutionItem)
 		{
-			return CakeApi.GetTargetKeysFromBuildScript(new ISI.Extensions.Cake.DataTransferObjects.CakeApi.GetTargetKeysFromBuildScriptRequest()
+			if (string.Equals(System.IO.Path.GetFileName(solutionItem.FullPath), ISI.Extensions.Cake.CakeApi.BuildScriptFileName, StringComparison.CurrentCultureIgnoreCase))
 			{
-				BuildScriptFullName = solutionItem.FullPath,
-			}).Targets ?? Array.Empty<string>();
+				return CakeApi.GetTargetKeysFromBuildScript(new ISI.Extensions.Cake.DataTransferObjects.CakeApi.GetTargetKeysFromBuildScriptRequest()
+				{
+					BuildScriptFullName = solutionItem.FullPath,
+				}).Targets ?? Array.Empty<string>();
+			}
+
+			return Array.Empty<string>();
 		}
 	}
 }
