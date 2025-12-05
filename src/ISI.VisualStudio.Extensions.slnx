@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/.build/">
+    <File Path="../build.cake" />
+  </Folder>
+  <Project Path="ISI.VisualStudio.Extensions/ISI.VisualStudio.Extensions.csproj" Id="8b701b80-00e0-46de-9098-4ba6348b526f" />
+</Solution>

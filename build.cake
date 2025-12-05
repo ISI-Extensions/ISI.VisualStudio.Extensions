@@ -12,10 +12,12 @@ var settings = GetSettings(settingsFullName);
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-var solutionFile = File("./src/ISI.VisualStudio.Extensions.sln");
-var solution = ParseSolution(solutionFile);
+var solutionFile = File("./src/ISI.VisualStudio.Extensions.slnx");
+var solutionDetails = GetSolutionDetails(solutionFile);
+
 var rootProjectFile = File("./src/ISI.VisualStudio.Extensions/ISI.VisualStudio.Extensions.csproj");
 var rootAssemblyVersionKey = "ISI.VisualStudio.Extensions";
+
 var artifactName = "ISI.VisualStudio.Extensions";
 var artifactFileStoreUuid = new System.Guid("e9533a8c-0577-4883-a955-16f988cff620");
 var artifactVersionFileStoreUuid = new System.Guid("25c1e176-6862-4f2d-acfa-28f247870039");
@@ -38,7 +40,7 @@ Task("Clean")
 	{
 		Information("Cleaning Projects ...");
 
-		foreach(var projectPath in new HashSet<string>(solution.Projects.Select(p => p.Path.GetDirectory().ToString())))
+		foreach(var projectPath in new HashSet<string>(solutionDetails.ProjectDetailsSet.Select(project => project.ProjectDirectory)))
 		{
 			Information("Cleaning {0}", projectPath);
 			CleanDirectories(projectPath + "/**/bin/" + configuration);
@@ -51,7 +53,7 @@ Task("NugetPackageRestore")
 	.Does(() =>
 	{
 		Information("Restoring Nuget Packages ...");
-		NuGetRestore(solutionFile);
+		RestoreNugetPackages(solutionFile);
 	});
 
 Task("Build")
@@ -76,11 +78,20 @@ Task("Build")
 
 		try
 		{
-			MSBuild(solutionFile, configurator => configurator
-				.SetConfiguration(configuration)
-				.SetPlatformTarget(PlatformTarget.MSIL)
-				.SetVerbosity(Verbosity.Quiet)
-				.WithTarget("Rebuild"));
+			BuildSolution(solutionFile, new ISI.Cake.Addin.VisualStudio.BuildSolutionRequest()
+			{
+				Configuration = configuration,
+				Target = "Rebuild",
+				UseMSBuild = true,
+				//MsBuildVersion = ISI.Extensions.VisualStudio.MSBuildVersion.MSBuild17,
+				Verbosity = ISI.Extensions.VisualStudio.MSBuildVerbosity.Quiet,
+			});
+
+			//MSBuild(solutionFile, configurator => configurator
+			//	.SetConfiguration(configuration)
+			//	.SetPlatformTarget(PlatformTarget.MSIL)
+			//	.SetVerbosity(Verbosity.Quiet)
+			//	.WithTarget("Rebuild"));
 
 			var vsixFile = File("./src/ISI.VisualStudio.Extensions/bin/" + configuration + "/ISI.VisualStudio.Extensions.vsix");
 

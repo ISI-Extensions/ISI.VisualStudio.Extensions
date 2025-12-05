@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="ISI.VisualStudio.Extensions.9ccf3f26-98d6-4e65-abc4-92c62db4a0df" Version="2022.9" Language="en-US" Publisher="Integrated Solution Inc" />
+        <Identity Id="ISI.VisualStudio.Extensions.9ccf3f26-98d6-4e65-abc4-92c62db4a0df" Version="2025.12" Language="en-US" Publisher="Integrated Solution Inc" />
         <DisplayName>ISI.VisualStudio.Extensions</DisplayName>
         <Description xml:space="preserve">ISI.VisualStudio.Extensions</Description>
         <MoreInfo>https://github.com/ISI-Extensions/ISI.VisualStudio.Extensions</MoreInfo>
@@ -12,13 +12,13 @@
         <Tags>Cake,Jenkins</Tags>
     </Metadata>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,)">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
-        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Pro">
+        <InstallationTarget Version="[17.0,)" Id="Microsoft.VisualStudio.Pro">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
-        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
+        <InstallationTarget Version="[17.0,)" Id="Microsoft.VisualStudio.Enterprise">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
     </Installation>

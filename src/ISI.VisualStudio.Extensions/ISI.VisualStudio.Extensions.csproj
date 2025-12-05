@@ -1,8 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <LangVersion>latest</LangVersion>
+    <RuntimeIdentifiers>win;win-x86;win-x64</RuntimeIdentifiers>
+	  <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+	  <IncludePackageReferencesDuringMarkupCompilation>false</IncludePackageReferencesDuringMarkupCompilation>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Lantern.ico</ApplicationIcon>
