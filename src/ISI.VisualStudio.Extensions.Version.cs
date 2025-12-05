@@ -8,4 +8,4 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyVersion("2023.2.8924.35110")]
+[assembly: AssemblyVersion("2025.12.*")]
